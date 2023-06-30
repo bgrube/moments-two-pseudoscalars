@@ -1,0 +1,791 @@
+% collection of macros
+% use \newcommand* for all macros unless you really need the macro to be "long"
+% see <http://tex.stackexchange.com/questions/1050> for further info
+
+% ------------------------------------------------------------------------------
+% colors
+% requires xcolor
+\definecolor[named]{lightgray}{rgb}{0.75,0.75,0.75}
+\definecolor[named]{midgray}{rgb}{0.5,0.5,0.5}
+\definecolor[named]{darkgray}{rgb}{0.414,0.414,0.414}
+\definecolor[named]{darkred}{rgb}{0.5,0,0}
+\definecolor[named]{darkgreen}{rgb}{0,0.25,0}
+\definecolor[named]{darkblue}{rgb}{0,0,0.5}
+\definecolor[named]{darkyellow}{rgb}{0.5,0.5,0}
+\definecolor[named]{darkcyan}{rgb}{0,0.5,0.5}
+\definecolor[named]{darkmagenta}{rgb}{0.5,0,0.5}
+\definecolor[named]{lightblue}{rgb}{0,0.5,1}
+\definecolor[named]{lightred}{rgb}{1,0.4,0.4}
+% ROOT colors
+\definecolor[named]{kBlue}{rgb}{0,0,1}
+\definecolor[named]{kBlue+1}{rgb}{0,0,0.8}
+\definecolor[named]{kRed+1}{rgb}{0.8,0,0}
+\definecolor[named]{kGreen+2}{rgb}{0,0.6,0}
+\newcommand*{\red}[1]{{\color{kRed+1}#1}}
+\newcommand*{\green}[1]{{\color{kGreen+2}#1}}
+\newcommand*{\blue}[1]{{\color{kBlue+1}#1}}
+
+% ------------------------------------------------------------------------------
+% text expressions
+\newcommand*{\wrt}{{with respect to}\xspace}
+\newcommand*{\Wrt}{{With respect to}\xspace}
+\newcommand*{\wolog}{{without loss of generality}\xspace}
+\newcommand*{\Wolog}{{Without loss of generality}\xspace}
+\newcommand*{\apriori}{\emph{a priori}\xspace}
+\newcommand*{\Apriori}{\emph{A priori}\xspace}
+\newcommand*{\confer}{\xperiodafter{cf}}
+\newcommand*{\Confer}{\xperiodafter{Cf}}
+\newcommand*{\etal}{\xperiodafter{\textit{et al}}}
+\newcommand*{\eg}{\xperiodafter{e.g}}  % exempli gratia
+\newcommand*{\Eg}{\xperiodafter{E.g}}
+\newcommand*{\ie}{\xperiodafter{i.e}}  % id est
+\newcommand*{\Ie}{\xperiodafter{I.e}}
+\newcommand*{\ia}{\xperiodafter{i.a}}  % inter alia
+\newcommand*{\Argand}{{Argand diagram}\xspace}
+\newcommand*{\Argands}{{Argand diagrams}\xspace}
+% macros for direct citation of refrences
+\newcommand*{\refCite}[1]{{Ref.~\cite{#1}}\xspace}
+\newcommand*{\refsCite}[1]{{Refs.~\cite{#1}}\xspace}
+\newcommand*{\RefCite}[1]{{Reference~\cite{#1}}\xspace}
+\newcommand*{\RefsCite}[1]{{References~\cite{#1}}\xspace}
+% enumeration labels
+\newcommand*{\one}{{\textit{(i)})}\xspace}
+\newcommand*{\two}{{\textit{(ii)})}\xspace}
+\newcommand*{\three}{{\textit{(iii)})}\xspace}
+\newcommand*{\four}{{\textit{(iv)})}\xspace}
+\newcommand*{\five}{{\textit{(v)})}\xspace}
+\newcommand*{\six}{{\textit{(vi)}}\xspace}
+\newcommand*{\seven}{{\textit{(vii)}}\xspace}
+\newcommand*{\eight}{{\textit{(viii)}}\xspace}
+\newcommand*{\nine}{{\textit{(ix)}}\xspace}
+\newcommand*{\ten}{{\textit{(x)}}\xspace}
+% macro for tagging colored plots
+\newcommand*{\colorPlot}{{(color online)}\xspace}  % not used by PRD anymore
+% macro that prints subfloat label only
+\newrobustcmd{\subfloatLabel}[1]{\ifMultiColumnLayout{\subref*{#1}}{\subref{#1}}}
+% official macros to typeset name of BaBar collaboration
+% Huge boldface
+\newcommand*{\hbabar}{\mbox{{\huge\bfseries\slshape B}\hspace{-0.1em}{\LARGE\bfseries\slshape A}\hspace{-0.03em}{\huge\bfseries\slshape B}\hspace{-0.1em}{\LARGE\bfseries\slshape A\hspace{-0.03em}R}}\xspace}
+% LARGE
+\newcommand*{\Lbabar}{\mbox{{\LARGE\slshape B}\hspace{-0.15em}{\Large\slshape A}\hspace{-0.07em}{\LARGE\slshape B}\hspace{-0.15em}{\Large\slshape A\hspace{-0.02em}R}}\xspace}
+% Large
+\newcommand*{\lbabar}{\mbox{{\large\slshape B}\hspace{-0.4em} {\normalsize\slshape A}\hspace{-0.03em}{\large\slshape B}\hspace{-0.4em} {\normalsize\slshape A\hspace{-0.02em}R}}\xspace}
+% scalable version; needs relsize package
+\newcommand*{\babar}{\mbox{\slshape B\kern-0.1em{\smaller A}\kern-0.1em B\kern-0.1em{\smaller A\kern-0.2em R}}\xspace}
+
+
+% ------------------------------------------------------------------------------
+% setup minted syntax highlighting
+\usemintedstyle{friendly}
+\definecolor{mintedEnvBg}{rgb}{0.95,0.95,0.95}
+% define environments and macros with defaults
+\newminted{py}{autogobble,bgcolor=mintedEnvBg}                     % pycode environment
+\newminted[pycodeBw]{py}{autogobble,bgcolor=mintedEnvBg,style=bw}  % pycodeBw environment; black and white
+\newmintinline[pyinlineCol]{py}{bgcolor=mintedEnvBg}               % \pyinlineCol{...} macro; with syntax highlighting
+\newmintinline{py}{style=bw}                                       % \pyinline{...} macro; black and white
+
+
+% ------------------------------------------------------------------------------
+% math symbols
+\newcommand*{\imag}{\ensuremath{\mathbbmsl{i}}}  % alternatives: \Complex{I,J}, \ii, \jj, or \{i,j}math
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand*{\tr}{\trace\!}  % trace
+\newcommand*{\chisq}{\ensuremath{\chi^2}\xspace}
+% overwrite amsmath's definition of real and imag part
+% alternatively the "physics" package could be used
+\renewcommand*{\Re}{\operatorname{Re}}
+\renewcommand*{\Im}{\operatorname{Im}}
+% overwrite definition of \dif from commath package; add power as optional argument
+\renewcommand*{\dif}[1][]{\ifthenelse{\equal{#1}{}}{\mathop{}\!\mathrm{d}}{\mathop{}\!\mathrm{d}^{#1}}}
+\newcommand*{\pdif}[1][]{\ifthenelse{\equal{#1}{}}{\mathop{}\!\partial}{\mathop{}\!\partial^{#1}}}
+% define "braced" versions of the \under- and \overbrace commands to improve spacing
+% make sure mathtools is loaded as it provides improved redefinitions of \under- and \overbrace
+% see http://tex.stackexchange.com/a/223912
+\newcommand*{\Underbrace}[2]{{\underbrace{#1}_{#2}}}
+\newcommand*{\dUnderbrace}[2]{{\underbrace{#1}_{\displaystyle{#2}}}}
+\newcommand*{\lUnderbrace}[2]{{\underbrace{#1}_{\mathllap{#2}}}}
+\newcommand*{\cUnderbrace}[2]{{\underbrace{#1}_{\mathclap{#2}}}}
+\newcommand*{\rUnderbrace}[2]{{\underbrace{#1}_{\mathrlap{#2}}}}
+\newcommand*{\ldUnderbrace}[2]{{\underbrace{#1}_{\mathllap{\displaystyle{#2}}}}}
+\newcommand*{\cdUnderbrace}[2]{{\underbrace{#1}_{\mathclap{\displaystyle{#2}}}}}
+\newcommand*{\rdUnderbrace}[2]{{\underbrace{#1}_{\mathrlap{\displaystyle{#2}}}}}
+\newcommand*{\Overbrace}[2]{{\overbrace{#1}^{#2}}}
+\newcommand*{\dOverbrace}[2]{{\overbrace{#1}^{\displaystyle{#2}}}}
+\newcommand*{\lOverbrace}[2]{{\overbrace{#1}^{\mathllap{#2}}}}
+\newcommand*{\cOverbrace}[2]{{\overbrace{#1}^{\mathclap{#2}}}}
+\newcommand*{\rOverbrace}[2]{{\overbrace{#1}^{\mathrlap{#2}}}}
+\newcommand*{\ldOverbrace}[2]{{\overbrace{#1}^{\mathllap{\displaystyle{#2}}}}}
+\newcommand*{\cdOverbrace}[2]{{\overbrace{#1}^{\mathclap{\displaystyle{#2}}}}}
+\newcommand*{\rdOverbrace}[2]{{\overbrace{#1}^{\mathrlap{\displaystyle{#2}}}}}
+%\newcommand*{\minusDeg}[1]{$(-)$\SI{#1}{\degree}\xspace}
+%\newcommand*{\plusDeg}[1]{$(+)$\SI{#1}{\degree}\xspace}
+% disable parentheses
+\newcommand*{\minusDeg}[1]{\SI{-#1}{\degree}\xspace}
+\newcommand*{\plusDeg}[1]{\SI{+#1}{\degree}\xspace}
+\newcommand*{\orderOf}[1]{\ensuremath{\mathcal{O}(#1)}\xspace}
+\newcommand*{\imp}{\ensuremath{\Longrightarrow}\xspace}
+\newcommand*{\cVec}[1]{\ensuremath{\begin{pmatrix} #1 \end{pmatrix}}\xspace}  % column vector
+\newcommand*{\odslash}[3][]{\dif[#1]{#2} / \dif{#3}^{#1}}           % derivative with slash
+\newcommand*{\pdslash}[3][]{\partial^{#1}{#2} / \partial{#3}^{#1}}  % partial derivative with slash
+
+
+% ------------------------------------------------------------------------------
+% math operators
+\DeclareMathOperator{\exptValSym}{E}  % expectation value
+\newcommand*{\exptVal}[2][]{\exptValSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
+\DeclareMathOperator{\varSym}{V}  % variance
+\newcommand*{\var}[2][]{\varSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
+\DeclareMathOperator{\covSym}{cov}  % covariance
+\newcommand*{\cov}[2][]{\covSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
+\newcommand*{\covMatSym}{\mathbf{V}}  % covariance matrix
+\newcommand*{\covMat}[2][]{\covMatSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
+\DeclareMathOperator{\grad}{grad}       % gradient
+\newcommand*{\gradient}{\vec{\nabla}}
+\DeclareMathOperator{\divergence}{div}  % divergence
+\DeclareMathOperator{\rot}{rot}         % curl
+\newcommand*{\mustBeEq}{\overset{!}{=}}
+\newcommand*{\equalUsing}[1]{\overset{\text{#1}}{=}}  % equal sign with overset text
+\newcommand*{\equalUsingTwo}[2]{\overset{\text{#1}}{\underset{\text{#2}}{=}}}  % equal sign with over and underset text
+\newcommand*{\arrowLimit}[1]{\xrightarrow{#1}}  % arrow with overset limit
+
+
+% ------------------------------------------------------------------------------
+% physics symbols
+\newcommand*{\hbarc}{\ensuremath{\hbar c}\xspace}
+% kinematic variables
+\newcommand*{\tabs}{\ensuremath{|t|}\xspace}
+\newcommand*{\tmin}{\ensuremath{\tabs_{\text{min}}}\xspace}
+\newcommand*{\tpr}{\ensuremath{{t'}}\xspace}
+\newcommand*{\cosTheta}{\ensuremath{{\cos \theta}}\xspace}
+\newcommand*{\acc}{\ensuremath{{\epsilon}}\xspace}  % acceptance
+% coordinate systems
+\newcommand*{\GJ}{\ensuremath{\text{GJ}}}
+\newcommand*{\HF}{\ensuremath{\text{HF}}}
+\newcommand*{\xGJ}{\ensuremath{{x_{\GJ}}}\xspace}
+\newcommand*{\yGJ}{\ensuremath{{y_{\GJ}}}\xspace}
+\newcommand*{\zGJ}{\ensuremath{{z_{\GJ}}}\xspace}
+\newcommand*{\xHF}{\ensuremath{{x_{\HF}}}\xspace}
+\newcommand*{\yHF}{\ensuremath{{y_{\HF}}}\xspace}
+\newcommand*{\zHF}{\ensuremath{{z_{\HF}}}\xspace}
+\newcommand*{\exGJ}{\ensuremath{{\hat{e}_x^{\GJ}}}\xspace}
+\newcommand*{\eyGJ}{\ensuremath{{\hat{e}_y^{\GJ}}}\xspace}
+\newcommand*{\ezGJ}{\ensuremath{{\hat{e}_z^{\GJ}}}\xspace}
+\newcommand*{\exHF}{\ensuremath{{\hat{e}_x^{\HF}}}\xspace}
+\newcommand*{\eyHF}{\ensuremath{{\hat{e}_y^{\HF}}}\xspace}
+\newcommand*{\ezHF}{\ensuremath{{\hat{e}_z^{\HF}}}\xspace}
+\newcommand*{\xGJv}{\ensuremath{{\vec{x}_{\GJ}}}\xspace}
+\newcommand*{\yGJv}{\ensuremath{{\vec{y}_{\GJ}}}\xspace}
+\newcommand*{\zGJv}{\ensuremath{{\vec{z}_{\GJ}}}\xspace}
+\newcommand*{\xHFv}{\ensuremath{{\vec{x}_{\HF}}}\xspace}
+\newcommand*{\yHFv}{\ensuremath{{\vec{y}_{\HF}}}\xspace}
+\newcommand*{\zHFv}{\ensuremath{{\vec{z}_{\HF}}}\xspace}
+\newcommand*{\anglesGJ}{\ensuremath{{\Omega_{\GJ}}}\xspace}
+\newcommand*{\anglesHF}{\ensuremath{{\Omega_{\HF}}}\xspace}
+\newcommand*{\thetaGJ}{\ensuremath{{\vartheta_{\GJ}}}\xspace}
+\newcommand*{\thetaHF}{\ensuremath{{\vartheta_{\HF}}}\xspace}
+\newcommand*{\thetaGJbose}{\ensuremath{{\hat{\vartheta}_{\GJ}}}\xspace}
+\newcommand*{\thetaHFbose}{\ensuremath{{\hat{\vartheta}_{\HF}}}\xspace}
+\newcommand*{\cosThetaGJ}{\ensuremath{{\cos \thetaGJ}}\xspace}
+\newcommand*{\cosThetaHF}{\ensuremath{{\cos \thetaHF}}\xspace}
+\newcommand*{\cosThetaGJbose}{\ensuremath{{\cos\thetaGJbose}}\xspace}
+\newcommand*{\cosThetaHFbose}{\ensuremath{{\cos\thetaHFbose}}\xspace}
+\newcommand*{\phiGJ}{\ensuremath{{\phi_{\GJ}}}\xspace}
+\newcommand*{\phiHF}{\ensuremath{{\phi_{\HF}}}\xspace}
+\newcommand*{\phiGJbose}{\ensuremath{{\hat{\phi}_{\GJ}}}\xspace}
+\newcommand*{\phiHFbose}{\ensuremath{{\hat{\phi}_{\HF}}}\xspace}
+% quantum number symbols
+\newcommand*{\IG}{\ensuremath{I^G}\xspace}
+\newcommand*{\JP}{\ensuremath{J^P}\xspace}
+\newcommand*{\JPC}{\ensuremath{J^{PC}}\xspace}
+\newcommand*{\Mrefl}{\ensuremath{M^\refl}\xspace}
+\newcommand*{\JPMrefl}{\ensuremath{\JPC\,\Mrefl}\xspace}
+\newcommand*{\JPCMrefl}{\ensuremath{\JPC\,\Mrefl}\xspace}
+\newcommand*{\IGJPC}{\ensuremath{\IG\,\JPC}\xspace}
+\newcommand*{\IGJPCMrefl}{\ensuremath{\IG\,\allowbreak\JPC\,\allowbreak\Mrefl}\xspace}
+\newcommand*{\refl}{\ensuremath{\varepsilon}\xspace}  % reflectivity symbol
+\newcommand*{\reflOp}{\ensuremath{\Pi_y}\xspace}  % reflectivity operator
+\newcommand*{\natur}{\ensuremath{\eta}\xspace}  % naturality symbol
+\newcommand*{\naturEx}{\ensuremath{\eta_\text{ex}}\xspace}  % naturality symbol for exchange particle
+
+% expressions
+\newcommand*{\clebsch}[6]{\ensuremath{({#1}\;{#2},\;{#3}\;{#4}\; |\; {#5}\;{#6})}\xspace}
+% Clebsch-Gordan coefficient \clebsch{J_1}{M_1}{J_2}{M_2}{J}{M}
+\newcommand*{\termSym}[4]{\ensuremath{{#1} \prescript{#2}{}{#3}_{#4}}\xspace}  % quark-model meson term symbol; n, 2S + 1, L, J
+\newcommand*{\wave}[8]{\ensuremath{{#1}^{{#2}}\,\allowbreak{#3}^{#4}\,\allowbreak{#5}\,{[#6]}\,{#7}\,{[#8]}}\xspace}
+% pi pi omega partial-wave definition \wave{J}{PC}{M}{refl}{isobar}{L, S}{bachelor}{L_xi}
+
+%\newcommand*{\free}{\ensuremath{\left[\Ppi\Ppi\right]}\xspace}
+\newcommand*{\intensity}{\ensuremath{\mathcal{I}}\xspace}
+\newcommand*{\prodAmp}{\ensuremath{\mathcal{T}}\xspace}
+\newcommand*{\binnedZeroMode}{\ensuremath{\tilde{\Delta}}\xspace}
+\newcommand*{\zeroModeCoefficient}{\ensuremath{\mathfrak{C}}\xspace}
+\newcommand*{\comaCoefficient}{\ensuremath{\mathfrak{L}}\xspace}
+\newcommand*{\decayAmp}{\ensuremath{\Psi}\xspace}
+\newcommand*{\angularPart}{\ensuremath{\mathcal{K}}\xspace}
+\newcommand*{\dynamicPart}{\ensuremath{\mu}\xspace}
+\newcommand*{\coma}{\ensuremath{\mathbf{V}}\xspace}
+
+
+% ------------------------------------------------------------------------------
+% brackets (see also commath package)
+% macros with capital letter produce automatically sized brackets (no
+% optional argument)
+% the optional argument of these macros can be used to select the
+% bracket size by giving values between 0 and 4
+% round brackets
+\newcommand*{\rbrk}[1]{\ensuremath{({#1})}\xspace}
+\newcommand*{\rBrk}[2][-1]{\ensuremath{\del[#1]{#2}}\xspace}
+% square brackets
+\newcommand*{\sbrk}[1]{\ensuremath{[{#1}]}\xspace}
+\newcommand*{\sBrk}[2][-1]{\ensuremath{\sbr[#1]{#2}}\xspace}
+% curly bracket
+\newcommand*{\cbrk}[1]{\ensuremath{\{{#1}\}}\xspace}
+\newcommand*{\cBrk}[2][-1]{\ensuremath{\cbr[#1]{#2}}\xspace}
+% other brackets
+\newcommand*{\mean}[1]{\ensuremath{\langle{#1}\rangle}\xspace}
+\newcommand*{\Mean}[1]{\ensuremath{\left\langle{#1}\right\rangle}\xspace}  % commath has no macro for angle brackets
+\renewcommand*{\abs}[1]{\ensuremath{\vert{#1}\vert}\xspace}
+\newcommand*{\Abs}[2][-1]{\ensuremath{\envert[#1]{#2}}\xspace}
+\renewcommand*{\norm}[1]{\ensuremath{\|{#1}\|}\xspace}
+\newcommand*{\Norm}[2][-1]{\ensuremath{\enVert[#1]{#2}}\xspace}
+\newcommand*{\evalAt}[2]{\ensuremath{\eval[0]{#1}_{#2}}\xspace}
+\newcommand*{\EvalAt}[3][-1]{\ensuremath{\eval[#1]{#2}_{#3}}\xspace}
+% add larger brackets than \Bigg
+% see https://tex.stackexchange.com/a/6796
+\newcommand\biggg{\bBigg@{3}}
+\newcommand\Biggg{\bBigg@{3.5}}
+\newcommand\bigggg{\bBigg@{4}}
+\newcommand\Bigggg{\bBigg@{4.5}}
+
+
+% ------------------------------------------------------------------------------
+% table macros
+\newcommand{\minitab}[2][l]{\begin{tabular}{#1}#2\end{tabular}}  % for typesetting line breaks in table cells
+% macros to change style of whole row of a table; see https://texfaq.org/FAQ-wholerow
+% reqires array package
+% e.g.
+%    \begin{tabular}{$c^c^c}  % note the $ and ^ column types
+%      \rowstyle{\bfseries}
+\newcolumntype{$}{>{\global\let\currentrowstyle\relax}}
+\newcolumntype{^}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}#1\ignorespaces}
+
+
+% ------------------------------------------------------------------------------
+% operator definition for textstyle and displaystyle
+\newcommand*{\tint}{\textstyle \int}
+\newcommand*{\tiint}{\textstyle \iint}
+\newcommand*{\tiiint}{\textstyle \iiint}
+\newcommand*{\tiiiint}{\textstyle \iiiint}
+\newcommand*{\tidotsint}{\textstyle \idotsint}
+\newcommand*{\toint}{\textstyle \oint}
+\newcommand*{\tsum}{\textstyle \sum}
+\newcommand*{\tprod}{\textstyle \prod}
+\newcommand*{\tbigcap}{\textstyle \bigcap}
+\newcommand*{\tbigwedge}{\textstyle \bigwedge}
+\newcommand*{\tbigoplus}{\textstyle \bigoplus}
+\newcommand*{\tbigodot}{\textstyle \bigodot}
+\newcommand*{\tbigsqcup}{\textstyle \bigsqcup}
+\newcommand*{\tcoprod}{\textstyle \coprod}
+\newcommand*{\tbigcup}{\textstyle \bigcup}
+\newcommand*{\tbigvee}{\textstyle \bigvee}
+\newcommand*{\tbigotimes}{\textstyle \bigotimes}
+\newcommand*{\tbiguplus}{\textstyle \biguplus}
+%
+\newcommand*{\dint}{\displaystyle \int}
+\newcommand*{\diint}{\displaystyle \iint}
+\newcommand*{\diiint}{\displaystyle \iiint}
+\newcommand*{\diiiint}{\displaystyle \iiiint}
+\newcommand*{\didotsint}{\displaystyle \idotsint}
+\newcommand*{\doint}{\displaystyle \oint}
+\newcommand*{\dsum}{\displaystyle \sum}
+\newcommand*{\dprod}{\displaystyle \prod}
+\newcommand*{\dbigcap}{\displaystyle \bigcap}
+\newcommand*{\dbigwedge}{\displaystyle \bigwedge}
+\newcommand*{\dbigoplus}{\displaystyle \bigoplus}
+\newcommand*{\dbigodot}{\displaystyle \bigodot}
+\newcommand*{\dbigsqcup}{\displaystyle \bigsqcup}
+\newcommand*{\dcoprod}{\displaystyle \coprod}
+\newcommand*{\dbigcup}{\displaystyle \bigcup}
+\newcommand*{\dbigvee}{\displaystyle \bigvee}
+\newcommand*{\dbigotimes}{\displaystyle \bigotimes}
+\newcommand*{\dbiguplus}{\displaystyle \biguplus}
+
+
+% ------------------------------------------------------------------------------
+% particles
+% quark-antiquark combinations
+\newcommand*{\qqbar}{\ensuremath{q\widebar{q}}\xspace}
+\newcommand*{\qqbarPrime}{\ensuremath{q\widebar{q}\,'}\xspace}
+\newcommand*{\nnbar}{\ensuremath{n\widebar{n}}\xspace}
+\newcommand*{\nnbarPrime}{\ensuremath{n\widebar{n}'}\xspace}
+\newcommand*{\uubar}{\ensuremath{u\widebar{u}}\xspace}
+\newcommand*{\ddbar}{\ensuremath{d\widebar{d}}\xspace}
+\newcommand*{\ssbar}{\ensuremath{s\widebar{s}}\xspace}
+% exchange particles
+\newcommand*{\Ppom}{\ensuremath{\mathbbmsl{P}}\xspace}
+\newcommand*{\Preg}{\ensuremath{\mathbbmsl{R}}\xspace}
+% baryons
+\newcommand*{\Ppbar}{\ensuremath{\widebar{p}}\xspace}
+\newcommand*{\ppbar}{\ensuremath{p\widebar{p}}\xspace}
+% meson classes
+\newcommand*{\aJ}{\ensuremath{a_{\!J}}\xspace}
+\newcommand*{\piJ}{\ensuremath{\pi_{\!J}}\xspace}
+% define particle macros using \defParticle{macro suffix}{particle symbol}{mass}
+% e.g. \defParticle{aOne}{a_1}{1260} will define two macros
+% i) an unstarred macro \PaOne that typesets the particle with mass of ground state
+%    it has an optional argument to override mass value: \PaOne[1640]
+%    if mass of -1 is set, no default mass is printed
+% ii) a starred macro \PaOne* that just typeset the particle name (w/o mass)
+\newcommand*{\defParticle}[3]{%
+  \expandafter\newcommand\expandafter*\csname P#1\endcsname[1][]{\ensuremath{#2\ifthenelse{\isempty{##1}}{\ifthenelse{\equal{#3}{-1}}{}{(#3)}}{({##1})}}\xspace}
+  \WithSuffix\expandafter\newcommand\csname P#1\endcsname*[1][]{\ensuremath{#2}\xspace}
+}
+% mesons
+\newcommand*{\PKbar}{\ensuremath{\widebar{K}}\xspace}
+\defParticle{pi}{\pi}{-1}
+\defParticle{eta}{\eta}{548}
+\defParticle{rho}{\rho}{770}
+\defParticle{omega}{\omega}{782}
+\defParticle{etaPr}{\eta'}{958}
+\defParticle{fZero}{f_0}{980}
+\defParticle{aZero}{a_0}{980}
+\defParticle{phi}{\phi}{1020}
+\defParticle{hOne}{h_1}{1170}
+\defParticle{bOne}{b_1}{1235}
+\defParticle{aOne}{a_1}{1260}
+\defParticle{fTwo}{f_2}{1270}
+\defParticle{fOne}{f_1}{1285}
+\defParticle{aTwo}{a_2}{1320}
+\defParticle{piOne}{\pi_1}{1400}
+\defParticle{fTwoPr}{f_2'}{1525}
+\defParticle{etaTwo}{\eta_2}{1645}
+\defParticle{piTwo}{\pi_2}{1670}
+\defParticle{omegaThree}{\omega_3}{1670}
+\defParticle{rhoThree}{\rho_3}{1690}
+\defParticle{phiThree}{\phi_3}{1850}
+\defParticle{aThree}{a_3}{1875}
+\defParticle{bThree}{b_3}{2030}
+\defParticle{aFour}{a_4}{2040}
+\defParticle{fFour}{f_4}{2050}
+\defParticle{J}{J/\psi}{-1}
+\defParticle{X}{X}{-1}
+
+
+% ------------------------------------------------------------------------------
+% particle systems
+%\newcommand*{\Ppi}{\ensuremath{\pi}\xspace}
+\newcommand*{\twoPi}{\ensuremath{{\Ppim\Ppip}}\xspace}
+\newcommand*{\pipi}{\ensuremath{{\Ppi\Ppi}}\xspace}
+\newcommand*{\pipiS}{\ensuremath{[\pipi]_S}\xspace}
+\newcommand*{\pipiSF}{\ensuremath{[\pipi]_{0^{++}}}\xspace}
+\newcommand*{\pipiSW}{{{\pipi} {$S$-wave}}\xspace}
+\newcommand*{\pipiP}{\ensuremath{[\pipi]_P}\xspace}
+\newcommand*{\pipiPF}{\ensuremath{[\pipi]_{1^{--}}}\xspace}
+\newcommand*{\pipiPW}{{{\pipi} {$P$-wave}}\xspace}
+\newcommand*{\pipiD}{\ensuremath{[\pipi]_D}\xspace}
+\newcommand*{\pipiDF}{\ensuremath{[\pipi]_{2^{++}}}\xspace}
+\newcommand*{\pipiDW}{{{\pipi} {$D$-wave}}\xspace}
+\newcommand*{\pipiJF}{\ensuremath{[\pipi]_{\JPC}}\xspace}
+\newcommand*{\etaOrPr}{\ensuremath{\eta^{(}{'}\protect\vphantom{\eta}^{)}}\xspace}
+\newcommand*{\etaOrPrPi}{\ensuremath{{\protect\etaOrPr\pi}}\xspace}
+\newcommand*{\etaOrPrPim}{\ensuremath{{\protect\etaOrPr\pi^-}}\xspace}
+\newcommand*{\threePi}{\ensuremath{{\Ppim\Ppim\Ppip}}\xspace}
+\newcommand*{\threePiN}{\ensuremath{{\Ppim\Ppiz\Ppiz}}\xspace}
+\newcommand*{\reaction}{\ensuremath{\Ppim + \Pp \to \threePi + \Pp}\xspace}
+\newcommand*{\piPiOmega}{\ensuremath{{\Ppim\Ppiz\Pomega}}\xspace}
+\newcommand*{\fivePi}{\ensuremath{{\Ppim\Ppim\Ppiz\Ppiz\Ppip}}\xspace}
+\newcommand*{\twoPim}{\ensuremath{{\Ppim\Ppiz}}\xspace}
+\newcommand*{\piOmega}{\ensuremath{{\Ppi\Pomega}}\xspace}
+\newcommand*{\piOmegam}{\ensuremath{{\Ppim\Pomega}}\xspace}
+\newcommand*{\piOmegaz}{\ensuremath{{\Ppiz\Pomega}}\xspace}
+\newcommand*{\KKbar}{\ensuremath{{K \PKbar}}\xspace}
+\newcommand*{\KKstarbar}{\ensuremath{{K \PKbar^*}}\xspace}
+\newcommand*{\pbarp}{\ensuremath{{\Ppbar p}}\xspace}
+\newcommand*{\pbarn}{\ensuremath{{\Ppbar n}}\xspace}
+% masses
+\newcommand*{\mTwoPi}{\ensuremath{m_\twoPi}\xspace}
+\newcommand*{\mThreePi}{\ensuremath{m_{3\pi}}\xspace}
+
+
+% ------------------------------------------------------------------------------
+% macros to switch between single- and multicolumn layout
+% in order to enable the multicolumn variant define the empty macro \multiColumnLayout
+\newcommand*{\ifMultiColumnLayout}[2]{%
+  \ifdef{\multiColumnLayout}{#1}{#2}%
+}
+% !!! for final submission to PRD: avoid if statements
+%\newcommand*{\ifMultiColumnLayout}[2]{#1}
+% define no-op widetext environment for single-column layout
+% !!!NOTE: \begin{} and \end{} of widetext need to be followed by "%"
+%          otherwise new paragraph is started
+%\ifMultiColumnLayout{}{\newenvironment*{widetext}{}{}}
+% convenience macros
+\newcommand*{\newLineOrHspace}[1]{%
+  \ifMultiColumnLayout{\\}{\hspace*{#1}}%
+}
+\newcommand*{\alignOrNot}{%
+  \ifMultiColumnLayout{&}{}%
+}
+\newcommand*{\newLineOrNot}[1][0pt]{%
+  \ifMultiColumnLayout{\\[#1]}{}%
+}
+\newcommand*{\newLineTimesOrNot}[1][0pt]{%
+  \ifMultiColumnLayout{\\[#1] {} \times}{}%
+}
+\newcommand*{\linewidthOr}[1]{%
+  \ifMultiColumnLayout{\linewidth}{#1}%
+}
+% breaking equations
+% see http://tex.stackexchange.com/questions/298211/using-multline-or-equation-based-on-a-boolean-flag/298215
+\newenvironment*{alignOrEq}
+{\ifMultiColumnLayout{\align}{\equation}}
+{\ifMultiColumnLayout{\endalign}{\endequation}}
+\newenvironment*{multlineOrEq}
+{\ifMultiColumnLayout{\multline}{\equation}}
+{\ifMultiColumnLayout{\endmultline}{\endequation}}
+\newenvironment*{alignedOrNot}
+{\ifMultiColumnLayout{\aligned}{}}
+{\ifMultiColumnLayout{\endaligned}{}}
+\newenvironment*{multlinedOrNot}[1][t]  % requires mathtools package
+{\ifMultiColumnLayout{\multlined[#1]}{}}
+{\ifMultiColumnLayout{\endmultlined}{}}
+\newenvironment*{splitOrNot}
+{\ifMultiColumnLayout{\split}{}}
+{\ifMultiColumnLayout{\endsplit}{}}
+% switching wide layouts
+\newenvironment*{wideTextOrNot} % requires "%" after \begin and \end to not disturb single-column layout
+{\ifMultiColumnLayout{\widetext}{}}
+{\ifMultiColumnLayout{\endwidetext}{}}
+\newenvironment*{wideEqOrNot} % requires "%" after \begin and \end to not disturb single-column layout
+{\ifMultiColumnLayout{\widetext}{}}
+{\ifMultiColumnLayout{\endwidetext}{}}
+\newenvironment*{wideTableOrNot}[1][]
+{\ifMultiColumnLayout{\csname table*\endcsname[#1]}{\table[#1]}}
+{\ifMultiColumnLayout{\csname endtable*\endcsname}{\endtable}}
+\newenvironment*{wideLongTableOrNot}[1][]
+{\ifMultiColumnLayout{\csname longtable*\endcsname[#1]}{\longtable[#1]}}
+{\ifMultiColumnLayout{\csname endlongtable*\endcsname}{\endlongtable}}
+\newenvironment*{wideFigureOrNot}[1][]
+{\ifMultiColumnLayout{\csname figure*\endcsname[#1]}{\figure[#1]}}
+{\ifMultiColumnLayout{\csname endfigure*\endcsname}{\endfigure}}
+
+% macro that executes code depending whether text is in left or right column
+% in one-column layout the code for the left column is used
+\makeatletter
+\newcommand*{\leftOrRightColumn}[2]{%
+  \if@firstcolumn
+  #1%
+  \else
+  #2%
+  \fi
+}
+\makeatother
+
+% double-column-safe macro that clears full-width floats
+\newcommand*{\newAfterPage}{%
+  \leftOrRightColumn{\afterpage{\afterpage{\newpage}}}% if text is on left column
+  {\afterpage{\newpage}}% if text is on right column
+}
+\newcommand*{\clearAfterPage}{%
+  \leftOrRightColumn{\afterpage{\afterpage{\clearpage}}}% if text is on left column
+  {\afterpage{\clearpage}}% if text is on right column
+}
+
+
+% ------------------------------------------------------------------------------
+% macros for typesetting numbers and units
+% energy units \eV, \meV, \keV, \MeV, \GeV, and \TeV are already predefined in siunitx
+% redefine speed-of-light symbol
+\DeclareSIUnit{\clight}{\text{\ensuremath{c}}}
+% momentum units
+\DeclareSIUnit[per-mode=symbol]\eVc{\eV\per\clight}
+\DeclareSIUnit[per-mode=symbol]\meVc{\meV\per\clight}
+\DeclareSIUnit[per-mode=symbol]\keVc{\keV\per\clight}
+\DeclareSIUnit[per-mode=symbol]\MeVc{\MeV\per\clight}
+\DeclareSIUnit[per-mode=symbol]\GeVc{\GeV\per\clight}
+\DeclareSIUnit[per-mode=symbol]\TeVc{\TeV\per\clight}
+% mass units
+\DeclareSIUnit[per-mode=symbol]\eVcc{\eV\per\clight\squared}
+\DeclareSIUnit[per-mode=symbol]\meVcc{\meV\per\clight\squared}
+\DeclareSIUnit[per-mode=symbol]\keVcc{\keV\per\clight\squared}
+\DeclareSIUnit[per-mode=symbol]\MeVcc{\MeV\per\clight\squared}
+\DeclareSIUnit[per-mode=symbol]\GeVcc{\GeV\per\clight\squared}
+\DeclareSIUnit[per-mode=symbol]\TeVcc{\TeV\per\clight\squared}
+% momentum squared units
+\DeclareSIUnit[per-mode=symbol]\eVcsq{(eV/\clight)^2}
+\DeclareSIUnit[per-mode=symbol]\meVcsq{(meV/\clight)^2}
+\DeclareSIUnit[per-mode=symbol]\keVcsq{(keV/\clight)^2}
+\DeclareSIUnit[per-mode=symbol]\MeVcsq{(MeV/\clight)^2}
+\DeclareSIUnit[per-mode=symbol]\GeVcsq{(GeV/\clight)^2}
+\DeclareSIUnit[per-mode=symbol]\TeVcsq{(TeV/\clight)^2}
+% inverse momentum squared units
+\DeclareSIUnit[per-mode=symbol]\pereVcsq{(eV/\clight)^{-2}}
+\DeclareSIUnit[per-mode=symbol]\permeVcsq{(meV/\clight)^{-2}}
+\DeclareSIUnit[per-mode=symbol]\perkeVcsq{(keV/\clight)^{-2}}
+\DeclareSIUnit[per-mode=symbol]\perMeVcsq{(MeV/\clight)^{-2}}
+\DeclareSIUnit[per-mode=symbol]\perGeVcsq{(GeV/\clight)^{-2}}
+\DeclareSIUnit[per-mode=symbol]\perTeVcsq{(TeV/\clight)^{-2}}
+% mass squared units
+\DeclareSIUnit[per-mode=symbol]\eVccsq{(eV/\clight^2)^2}
+\DeclareSIUnit[per-mode=symbol]\meVccsq{(meV/\clight^2)^2}
+\DeclareSIUnit[per-mode=symbol]\keVccsq{(keV/\clight^2)^2}
+\DeclareSIUnit[per-mode=symbol]\MeVccsq{(MeV/\clight^2)^2}
+\DeclareSIUnit[per-mode=symbol]\GeVccsq{(GeV/\clight^2)^2}
+\DeclareSIUnit[per-mode=symbol]\TeVccsq{(TeV/\clight^2)^2}
+% cross section units
+\DeclareSIUnit\mbarn{\milli\barn}
+\DeclareSIUnit\mubarn{\micro\barn}
+\DeclareSIUnit\nbarn{\nano\barn}
+\DeclareSIUnit\pbarn{\pico\barn}
+\DeclareSIUnit\fbarn{\femto\barn}
+\DeclareSIUnit\abarn{\atto\barn}
+
+% macro to typeset symbol with right-adjusted sub- and superscripts
+% see <https://tex.stackexchange.com/a/291303>
+% requires mathtools package
+\DeclareRobustCommand{\subSupRight}[3]{{\mathpalette\makesubsup{{#1}{#2}{#3}}}}
+%
+\makeatletter
+\providecommand{\@firstofthree}[3]{#1}
+\providecommand{\@secondofthree}[3]{#2}
+\providecommand{\@thirdofthree}[3]{#3}
+\newcommand{\makesubsup}[2]{%
+  \sbox\z@{$\m@th#1{}_{\@secondofthree#2}$}%
+  \sbox\tw@{$\m@th#1{}^{\@thirdofthree#2}$}%
+  \dimen@=\wd\z@
+  \ifdim\wd\tw@>\wd\z@ \dimen@=\wd\tw@\fi
+  {\mkern0mu \@firstofthree#2}%
+    _{\mathmakebox[\dimen@][r]{\@secondofthree#2}}%
+    ^{\mathmakebox[\dimen@][r]{\@thirdofthree#2}}%
+}
+\makeatother
+
+% extra commands for numbers with separate statistical and systematic
+% errors as well as asymmetric errors
+\newcommand*{\stat}{\ensuremath{\text{stat.}}}
+\newcommand*{\sys}{\ensuremath{\text{sys.}}}
+\newcommand*{\valueSep}{\,}
+\sisetup{number-unit-product = \valueSep}
+% macros that typeset values with symmetric errors with label
+\newcommand*{\Numerrl}[3][]{% typesets +- error (label)
+  \begingroup
+  \sisetup{#1}%
+  % typeset label as (label)
+  \ensuremath{\pm \num{#2}\valueSep\text{(#3)}}%
+  % typeset label as subscript
+  %\ensuremath{\pm \num{#2}_{\text{#3}}}%
+  \endgroup
+}
+\newcommand*{\numerrl}[4][]{% typesets value +- error (label)
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{\num{#2}\Numerrl{#3}{#4}}%
+  \endgroup
+}
+\newcommand*{\SIerrl}[5][]{% typesets value +- error (label) unit
+  \ensuremath{\numerrl[#1]{#2}{#3}{#4}\valueSep\si{#5}}%
+}
+\newcommand*{\numerrSys}[3][]{% typesets value +- error (sys.)
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{\num{#2}\Numerrl{#3}{\sys}}%
+  \endgroup
+}
+\newcommand*{\SIerrSys}[4][]{% typesets value +- error (sys.) unit
+  \ensuremath{\numerrSys[#1]{#2}{#3}\valueSep\si{#4}}%
+}
+% macros that typeset values with single set of asymmetric errors
+\newcommand*{\Numaerr}[3][]{% typesets +error -error
+  \begingroup
+  \sisetup{#1}%
+  % make sure numbers are right-adjusted
+  \ensuremath{\subSupRight{}{\num[explicit-sign = -]{#3}}{\num[explicit-sign = +]{#2}}}%
+  \endgroup
+}
+\newcommand*{\numaerr}[4][]{% typesets value +error -error
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{\num{#2}\valueSep\Numaerr{#3}{#4}}%
+  \endgroup
+}
+\newcommand*{\SIaerr}[5][]{% typesets value +error -error unit
+  \ensuremath{\numaerr[#1]{#2}{#3}{#4}\valueSep\si{#5}}%
+}
+% macros that typeset values with single set of asymmetric errors with label
+\newcommand*{\Numaerrl}[4][]{% typesets +error -error (label)
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{\Numaerr{#2}{#3}\valueSep\text{(#4)}}%
+  \endgroup
+}
+\newcommand*{\numaerrl}[5][]{% typesets value +error -error (label)
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{\num{#2}\valueSep\Numaerrl{#3}{#4}{#5}}%
+  \endgroup
+}
+\newcommand*{\SIaerrl}[6][]{% typesets value +error -error (label) unit
+  \ensuremath{\numaerrl[#1]{#2}{#3}{#4}{#5}\valueSep\si{#6}}%
+}
+\newcommand*{\numaerrSys}[4][]{% typesets value +error -error (sys.)
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{\num{#2}\valueSep\Numaerrl{#3}{#4}{\sys}}%
+  \endgroup
+}
+\newcommand*{\SIaerrSys}[5][]{% typesets value +error -error (sys.) and unit
+  \ensuremath{\numaerrSys[#1]{#2}{#3}{#4}\valueSep\si{#5}}%
+}
+% macros that typeset values with two symmetric errors with labels
+\newcommand*{\numerrsll}[6][]{% typesets value +- error (label1) +- error (label2)
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{\num{#2}%
+    \Numerrl{#3}{#4}%
+    \Numerrl{#5}{#6}}%
+  \endgroup
+}
+\newcommand*{\SIerrsll}[7][]{% typesets value +- error (label1) +- error (label2) unit
+  \ensuremath{\numerrsll[#1]{#2}{#3}{#4}{#5}{#6}\valueSep\si{#7}}%
+}
+\newcommand*{\numerrs}[4][]{% typesets value +- error (stat.) +- error (sys.)
+  \ensuremath{\numerrsll[#1]{#2}{#3}{\stat}{#4}{\sys}}%
+}
+\newcommand*{\SIerrs}[5][]{% typesets value +- error (stat.) +- error (sys.) unit
+  \ensuremath{\numerrs[#1]{#2}{#3}{#4}\valueSep\si{#5}}%
+}
+\newcommand*{\SIerrsnol}[5][]{% typesets value +- error +- error unit
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{\num{#2}%
+    \pm \num{#3}%
+    \pm \num{#4}%
+    \valueSep\si{#5}}%
+  \endgroup
+}
+% macros that typeset values with two asymmetric errors with labels
+\newcommand*{\numaerrsll}[8][]{% typesets value +error -error (label1) +error -error (label2)
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{\num{#2}%
+    \valueSep\Numaerrl{#3}{#4}{#5}%
+    \valueSep\Numaerrl{#6}{#7}{#8}}%
+  \endgroup
+}
+\newcommand*{\SIaerrsll}[9][]{% typesets value +error -error (label1) +error -error (label2) unit
+  \ensuremath{\numaerrsll[#1]{#2}{#3}{#4}{#5}{#6}{#7}{#8}\valueSep\si{#9}}%
+}
+\newcommand*{\numaerrs}[6][]{% typesets value +error -error (stat.) +error -error (sys.)
+  \ensuremath{\numaerrsll[#1]{#2}{#3}{#4}{\stat}{#5}{#6}{\sys}}%
+}
+\newcommand*{\SIaerrs}[7][]{% typesets value +error -error (stat.) +error -error (sys.) unit
+  \ensuremath{\numaerrs[#1]{#2}{#3}{#4}{#5}{#6}\valueSep\si{#7}}%
+}
+% macros that typeset values with symmetric frist error and asymmetric second error with labels
+\newcommand*{\numsaerrsll}[7][]{% typesets value +- error (label1) +error -error (label2)
+  \begingroup
+  \sisetup{#1}%
+  \ensuremath{\num{#2}%
+    \Numerrl{#3}{#4}%
+    \valueSep\Numaerrl{#5}{#6}{#7}}%
+  \endgroup
+}
+\newcommand*{\SIsaerrsll}[8][]{% typesets value +- error (label1) +error -error (label2) unit
+  \ensuremath{\numsaerrsll[#1]{#2}{#3}{#4}{#5}{#6}{#7}\valueSep\si{#8}}%
+}
+\newcommand*{\numsaerrs}[5][]{% typesets value +- error (stat.) +error -error (sys.)
+  \ensuremath{\numsaerrsll[#1]{#2}{#3}{\stat}{#4}{#5}{\sys}}%
+}
+\newcommand*{\SIsaerrs}[6][]{% typesets value +- error (stat.) +error -error (sys.) unit
+  \ensuremath{\numsaerrs[#1]{#2}{#3}{#4}{#5}\valueSep\si{#6}}%
+}
+% macro that typesets value range like:  min < symbol < max unit
+\newcommand*{\valRange}[3]{\ensuremath{\num{#1} < {#2}\allowbreak < \num{#3}}\xspace}
+\newcommand*{\SIvalRange}[4]{\ensuremath{\num{#1} < {#2}\allowbreak < \SI{#3}{#4}}\xspace}
+\newcommand*{\SIvalRangeInc}[4]{\ensuremath{\num{#1} \leq {#2}\allowbreak \leq \SI{#3}{#4}}\xspace}
+
+
+% ------------------------------------------------------------------------------
+% typesetting macros
+
+\newcommand*{\Widetilde}[1]{{\mathrlap{\widetilde{\phantom{W}}}\,{#1}}}
+
+% macro \widebar as an improved replacement for overline
+% requires amsmath
+% code by Hendrik Vogt
+% see http://tex.stackexchange.com/questions/16337/can-i-get-a-widebar-without-using-the-mathabx-package
+\makeatletter
+\let\save@mathaccent\mathaccent
+\newcommand*{\if@single}[3]{%
+  \setbox0\hbox{${\mathaccent"0362{#1}}^H$}%
+  \setbox2\hbox{${\mathaccent"0362{\kern0pt#1}}^H$}%
+  \ifdim\ht0=\ht2 #3\else #2\fi
+}
+% The bar will be moved to the right by a half of \macc@kerna, which is computed by amsmath:
+\newcommand*{\rel@kern}[1]{\kern#1\dimexpr\macc@kerna}
+% If there's a superscript following the bar, then no negative kern may follow the bar;
+% an additional {} makes sure that the superscript is high enough in this case:
+\newrobustcmd{\widebar}[1]{\@ifnextchar^{{\wide@bar{#1}{0}}}{\wide@bar{#1}{1}}}
+% Use a separate algorithm for single symbols:
+\newcommand*{\wide@bar}[2]{\if@single{#1}{\wide@bar@{#1}{#2}{1}}{\wide@bar@{#1}{#2}{2}}}
+\newcommand*{\wide@bar@}[3]{%
+  \begingroup
+  \def\mathaccent##1##2{%
+    % Enable nesting of accents:
+    \let\mathaccent\save@mathaccent
+    % If there's more than a single symbol, use the first character instead (see below):
+    \if#32 \let\macc@nucleus\first@char \fi
+    % Determine the italic correction:
+    \setbox\z@\hbox{$\macc@style{\macc@nucleus}_{}$}%
+    \setbox\tw@\hbox{$\macc@style{\macc@nucleus}{}_{}$}%
+    \dimen@\wd\tw@
+    \advance\dimen@-\wd\z@
+    % Now \dimen@ is the italic correction of the symbol.
+    \divide\dimen@ 3
+    \@tempdima\wd\tw@
+    \advance\@tempdima-\scriptspace
+    % Now \@tempdima is the width of the symbol.
+    \divide\@tempdima 10
+    \advance\dimen@-\@tempdima
+    % Now \dimen@ = (italic correction / 3) - (Breite / 10)
+    \ifdim\dimen@>\z@ \dimen@0pt\fi
+    % The bar will be shortened in the case \dimen@<0 !
+    \rel@kern{0.6}\kern-\dimen@
+    \if#31
+    \overline{\rel@kern{-0.6}\kern\dimen@\macc@nucleus\rel@kern{0.4}\kern\dimen@}%
+    \advance\dimen@0.4\dimexpr\macc@kerna
+    % Place the combined final kern (-\dimen@) if it is >0 or if a superscript follows:
+    \let\final@kern#2%
+    \ifdim\dimen@<\z@ \let\final@kern1\fi
+    \if\final@kern1 \kern-\dimen@\fi
+    \else
+    \overline{\rel@kern{-0.6}\kern\dimen@#1}%
+    \fi
+  }%
+  \macc@depth\@ne
+  \let\math@bgroup\@empty \let\math@egroup\macc@set@skewchar
+  \mathsurround\z@ \frozen@everymath{\mathgroup\macc@group\relax}%
+  \macc@set@skewchar\relax
+  \let\mathaccentV\macc@nested@a
+  % The following initialises \macc@kerna and calls \mathaccent:
+  \if#31
+  \macc@nested@a\relax111{#1}%
+  \else
+  % If the argument consists of more than one symbol, and if the first token is
+  % a letter, use that letter for the computations:
+  \def\gobble@till@marker##1\endmarker{}%
+  \futurelet\first@char\gobble@till@marker#1\endmarker
+  \ifcat\noexpand\first@char A\else
+  \def\first@char{}%
+  \fi
+  \macc@nested@a\relax111{\first@char}%
+  \fi
+  \endgroup
+}
+\makeatother
+%\newcommand*{\Widebar}[1]{\mathrlap{\widebar{\phantom{#1}}}#1}
+\newcommand*{\Widebar}[1]{\mathrlap{\overline{\phantom{#1}}}#1}
+%\newcommand*{\Widebar}[1]{\mathrlap{\widebar{#1}}#1}  % poor men's solution: draw symbol twice to get bar and subscript spacing right -> leads to antialiasing artifacts

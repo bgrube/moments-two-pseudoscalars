@@ -1,0 +1,75 @@
+\section{Introduction}%
+\label{sec:introduction}
+
+A moment analysis is a special case of a \emph{generalized Fourier
+series}, \ie the expansion of a function into a complete set of
+orthogonal functions.  Assume a set $\cBrk{\varphi_i(x)}$ of complex
+base functions with $i \in \mathbb{N}^+$, which are square-integrable
+over the interval~$R$ and fulfill the orthogonality relation
+\begin{equation}
+  \label{eq:orthogonality}
+  \int_R \dif{x}\, \varphi_i(x)\, \varphi_j^*(x)
+  = c_i\, \delta_{ij}.
+\end{equation}
+Here,
+\begin{equation}
+  \label{eq:normalization}
+  c_i
+  = \int_R \dif{x}\, \Abs{\varphi_i(x)}^2
+\end{equation}
+is the normalization of $\varphi_i(x)$.
+
+If the set of orthogonal functions is complete, \ie if the functions
+fulfill
+\begin{equation}
+  \label{eq:completeness}
+  \sum_{i = 1}^\infty \frac{1}{c_i}\, \varphi_i(x)\, \varphi_i^*(x')
+  = \delta(x' - x),
+\end{equation}
+we can decompose any arbitrary complex function $f(x)$ into a series
+of these base functions, \ie
+\begin{equation}
+  \label{eq:gen_fourier_series}
+  f(x)
+  = \sum_{i = 1}^\infty a_i\, \varphi_i(x),
+\end{equation}
+where the expansion coefficients are given by\footnote{%
+  \Cref{eq:expansion_coefficient} follows from orthogonality:
+  \begin{equation*}
+    \int_R \dif{x}\, f(x)\, \varphi_i^*(x)
+    = \int_R \dif{x}\, \sum_{i = 1}^\infty a_j\, \varphi_j(x)\, \varphi_i^*(x)
+    = \sum_{j = 1}^\infty a_j\, \int_R \dif{x}\, \varphi_j(x)\, \varphi_i^*(x)
+    = \sum_{j = 1}^\infty a_j\, c_j\, \delta_{ji} = a_i\, c_i
+  \end{equation*}
+  and hence
+  \begin{equation*}
+    a_i
+    = \frac{1}{c_i} \int_R \dif{x}\, f(x)\, \varphi_i^*(x).
+  \end{equation*}
+  We can prove \cref{eq:gen_fourier_series} by inserting
+  \cref{eq:expansion_coefficient}, using the completeness in
+  \cref{eq:completeness}:
+  \begin{equation*}
+    f(x)
+    = \sum_{i = 1}^\infty \frac{1}{c_i} \int_R \dif{x'}\, f(x')\, \varphi_i^*(x')\, \varphi_i(x)
+    = \int_R \dif{x'}\, f(x')\, \sum_{i = 1}^\infty \frac{1}{c_i} \varphi_i^*(x')\, \varphi_i(x)
+    = \int_R \dif{x'}\, f(x')\, \delta(x' - x) = f(x).
+  \end{equation*}%
+}
+\begin{equation}
+  \label{eq:expansion_coefficient}
+  a_i
+  = \frac{1}{c_i} \int_R \dif{x}\, f(x)\, \varphi_i^*(x).
+\end{equation}
+
+This decomposition is unitary (Parseval's theorem), \ie
+\begin{equation}
+  \int_R \dif{x}\, f(x)\, f^*(x)
+  \equalUsing{\cref{eq:gen_fourier_series}} \int_R \dif{x}\, \sum_{ij} a_i\, \varphi_i(x)\, a_j^*\, \varphi_j^*(x)
+  = \sum_{ij} a_i\, a_j^*\, \dUnderbrace{\int_R \dif{x}\, \varphi_i(x)\, \varphi_j^*(x)}{\equalUsing{\cref{eq:orthogonality}} c_i\, \delta_{ij}}
+  = \sum_i c_i \abs{a_i}^2.
+\end{equation}
+
+In this note, we will apply this decomposition technique to analyze
+the angular distributions of two (pseudo)scalar particles produced in
+inelastic high-energy scattering reactions.

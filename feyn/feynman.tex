@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage{../packages}
+\usepackage{../macros}
+% \usepackage{xcolor}
+% \usepackage[english]{babel}
+% \usepackage[latin1]{inputenc}
+% \usepackage{isomath}
+
+
+\newenvironment{rkfeyn}[1]%
+{\immediate\write\rkw{#1}\begin{fmfgraph*}}%
+    {\end{fmfgraph*}\pagebreak}
+\newwrite\rkw
+\immediate\openout\rkw=feynman.lst
+
+
+% darker colors
+\colorlet{r}{red!75!black}
+%\colorlet{g}{green!37.5!black}
+\colorlet{g}{green!50!black}
+\definecolor{beamer@blendedblue}{rgb}{0.2,0.2,0.7}
+%\colorlet{b}{beamer@blendedblue!75!black}
+\colorlet{b}{beamer@blendedblue!95!black}
+% lighter colors
+\colorlet{lr}{red!75!white}
+\colorlet{lg}{green!75!white}
+\colorlet{lb}{blue!75!white}
+% gray
+\colorlet{dgray}{white!25!black}
+\colorlet{gray}{white!50!black}
+\colorlet{lgray}{white!75!black}
+
+
+\begin{document}
+
+\begin{fmffile}{feyn}
+\LARGE
+\setlength{\unitlength}{1mm}
+\pagestyle{empty}
+
+
+\fmfcmd{%
+  style_def photon_arrow expr p =
+    draw (wiggly p);
+    fill (arrow p)
+  enddef;%
+}
+
+
+% see http://tex.stackexchange.com/a/85383
+\def\fmfblobEllipse#1#2#3{\fmfcmd{vblobEllipse ((#1), (#2), \fmfpfx{#3});}}
+
+
+\begin{rkfeyn}{diffractive_dissociation_x_pipi_omega_p_isobar_qn}(100,55)
+
+  % pion lines
+  \fmfforce{2w/14,9h/11}{vi1}
+  \fmfforce{5w/14,8h/11}{v1}
+  \fmf{fermion}{vi1,v1}
+  \fmfv{l=$\pi^-_{\text{beam}}$,l.a=180}{vi1}
+
+  % Nucleon lines
+  \fmfforce{2w/14,2h/11}{vi2}
+  \fmfforce{5w/14,3h/11}{v2}
+  \fmfforce{12w/14,2h/11}{vo2}
+  \fmf{fermion}{vi2,v2,vo2}
+  \fmfv{l=$p_{\text{target}}$,l.a=180}{vi2}
+  \fmfv{l=$p_{\text{recoil}}$,l.a=0}{vo2}
+
+  % Pomeron exchange
+  \fmfdot{v1,v2}
+  \fmf{double,label=\Ppom,label.side=left}{v2,v1}
+
+  % meson decay
+  \fmfforce{8w/14,8h/11}{vm1}
+  \fmfforce{10w/14,5.5h/11}{vm2}
+  \fmffreeze\fmfdraw\fmfpen{2.5pt}
+  \fmf{fermion,label=\parbox{4em}{\begin{center} \color{r}{$X^{-}$ \\[-0.5ex]
+       $[J^{PC}M^\epsilon]$} \end{center}},label.side=left,
+       foreground=0.75red,label.dist=-0.25w/14}{v1,vm1}
+  \fmfdot{vm1,vm2}
+  \fmf{fermion,label=\color{b} $\xi^{-}$,label.side=right,label.dist=0.25w/14,foreground=(0.15,,0.15,,0.525)}{vm1,vm2}
+  \fmffreeze\fmfdraw\fmfpen{thin}
+  \fmfforce{12w/14,9h/11}{vp1}
+  \fmf{fermion}{vm1,vp1}
+  \fmfforce{12w/14,6h/11}{vp2}
+  \fmf{fermion}{vm2,vp2}
+  \fmfforce{12w/14,3.5h/11}{vp3}
+  \fmf{fermion}{vm2,vp3}
+
+  % beautification
+  \fmffreeze\fmfdraw
+  \fmfv{l=\color{b} $[L,, S = J_\xi \oplus 1]$,l.a=-20,l.d=1.25w/14}{vm1}
+  \fmfv{l=\parbox{7em}{$\omega(782)_{\text{bachelor}}$},l.a=0,l.d=0.25w/14}{vp1}
+  \fmfv{l=$\pi^{-}$,l.a=0,l.d=0.25w/14}{vp2}
+  \fmfv{l=\color{b} $[L_\xi = J_\xi]$,l.a=-20,l.d=1.75w/14}{vm2}
+  \fmfv{l=$\pi^{0}$,l.a=0,l.d=0.25w/14}{vp3}
+  \fmffreeze\fmfdraw
+
+\end{rkfeyn}
+
+
+\begin{rkfeyn}{diffractive_dissociation_x_pi_piomega_p_isobar_qn}(100,55)
+
+  % pion lines
+  \fmfforce{2w/14,9h/11}{vi1}
+  \fmfforce{5w/14,8h/11}{v1}
+  \fmf{fermion}{vi1,v1}
+  \fmfv{l=$\pi^-_{\text{beam}}$,l.a=180}{vi1}
+
+  % Nucleon lines
+  \fmfforce{2w/14,2h/11}{vi2}
+  \fmfforce{5w/14,3h/11}{v2}
+  \fmfforce{12w/14,2h/11}{vo2}
+  \fmf{fermion}{vi2,v2,vo2}
+  \fmfv{l=$p_{\text{target}}$,l.a=180}{vi2}
+  \fmfv{l=$p_{\text{recoil}}$,l.a=0}{vo2}
+
+  % Pomeron exchange
+  \fmfdot{v1,v2}
+  \fmf{double,label=\Ppom,label.side=left}{v2,v1}
+
+  % meson decay
+  \fmfforce{8w/14,8h/11}{vm1}
+  \fmfforce{10w/14,5.5h/11}{vm2}
+  \fmffreeze\fmfdraw\fmfpen{2.5pt}
+  \fmf{fermion,label=\parbox{4em}{\begin{center} \color{r}{$X^{-}$ \\[-0.5ex]
+       $[J^{PC}M^\epsilon]$} \end{center}},label.side=left,
+       foreground=0.75red,label.dist=-0.25w/14}{v1,vm1}
+  \fmfdot{vm1,vm2}
+  \fmf{fermion,label=\color{b} $\xi^{0,,-}$,label.side=right,label.dist=0.25w/14,foreground=(0.15,,0.15,,0.525)}{vm1,vm2}
+  \fmffreeze\fmfdraw\fmfpen{thin}
+  \fmfforce{12w/14,9h/11}{vp1dummy}
+  \fmfforce{12w/14,9h/11}{vp1}
+  \fmf{fermion}{vm1,vp1}
+  \fmfforce{12w/14,6h/11}{vp2}
+  \fmf{fermion}{vm2,vp2}
+  \fmfforce{12w/14,3.5h/11}{vp3}
+  \fmf{fermion}{vm2,vp3}
+
+  % beautification
+  \fmffreeze\fmfdraw
+  \fmfv{l=\color{white}$\omega(782)_{\text{bachelor}}$,l.a=0,l.d=0.25w/14}{vp1dummy}
+  \fmffreeze\fmfdraw
+  \fmfv{l=\color{b} $[L,, S = J_\xi = L_\xi \oplus 1]$,l.a=-20,l.d=1.25w/14}{vm1}
+  \fmfv{l=$\pi^{-,,0}_{\text{bachelor}}$,l.a=0,l.d=0.25w/14}{vp1}
+  \fmfv{l=$\pi^{0,,-}$,l.a=0,l.d=0.25w/14}{vp2}
+  \fmfv{l=\color{b} $[L_\xi]$,l.a=-20,l.d=1.75w/14}{vm2}
+  \fmfv{l=$\omega(782)$,l.a=0,l.d=0.25w/14}{vp3}
+  \fmffreeze\fmfdraw
+
+\end{rkfeyn}
+
+
+\end{fmffile}
+
+
+\end{document}

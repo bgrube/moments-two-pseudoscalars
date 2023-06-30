@@ -1,0 +1,425 @@
+% style file sets up the packages for the paper
+\ProvidesPackage{packages}[2019/02/19 Version 2 paper packages]
+
+
+% ------------------------------------------------------------------------------
+% define key-value arguments of this package
+\RequirePackage{pgfopts}
+\newif\ifpackages@printGitInfo
+\newif\ifpackages@printDraftLabel
+\newif\ifpackages@useTodoNotes
+\newif\ifpackages@loadTodoNotesPackage
+\newif\ifpackages@printLineNumbers
+\newif\ifpackages@useLinenoAmsPatch
+\newif\ifpackages@highlightChanges
+\newif\ifpackages@loadChangesPackage
+\newif\ifpackages@checkReferences
+\newif\ifpackages@showTextFrame
+\newif\ifpackages@writeFigNameMapToLog
+\newcounter{packages@moreFloats}
+\pgfqkeys{/packages}{
+  % define editing switches
+  printGitInfo/.is if         = packages@printGitInfo,          % if set git repository information is printed on every page
+  printDraftLabel/.is if      = packages@printDraftLabel,       % if set "Draft" watermark is put on first page
+  useTodoNotes/.is if         = packages@useTodoNotes,          % en/disables todo notes
+  loadTodoNotesPackage/.is if = packages@loadTodoNotesPackage,  % force loading of todonotes package if useTodoNotes = false
+  printLineNumbers/.is if     = packages@printLineNumbers,      % if set line numbers are printed
+  useLinenoAmsPatch/.is if    = packages@useLinenoAmsPatch,     % if set amsmath commands are patched to avoid missing line numbers
+  highlightChanges/.is if     = packages@highlightChanges,      % if set changes are highlighted
+  loadChangesPackage/.is if   = packages@loadChangesPackage,    % force loading of changes package if highlightChanges = false
+  checkReferences/.is if      = packages@checkReferences,       % if set references are checked by the refcheck package
+  showTextFrame/.is if        = packages@showTextFrame,         % if set text area is visualized by a frame
+  writeFigNameMapToLog/.is if = packages@writeFigNameMapToLog,  % if set figure file names and figure number are written out into the log file
+  moreFloats/.code            = \setcounter{packages@moreFloats}{#1},  % increases limit of unprocessed floats to get around 'Too many unprocessed floats' error
+  % define default values
+  printGitInfo/.default         = false,
+  printDraftLabel/.default      = false,
+  useTodoNotes/.default         = false,
+  loadTodoNotesPackage/.default = false,
+  printLineNumbers/.default     = false,
+  useLinenoAmsPatch/.default    = false,
+  highlightChanges/.default     = false,
+  loadChangesPackage/.default   = false,
+  checkReferences/.default      = false,
+  showTextFrame/.default        = false,
+  writeFigNameMapToLog/.default = false,
+  moreFloats/.default           = 0
+}
+% apply default values
+\pgfqkeys{/packages}{
+  printGitInfo,
+  printDraftLabel,
+  useTodoNotes,
+  loadTodoNotesPackage,
+  printLineNumbers,
+  useLinenoAmsPatch,
+  highlightChanges,
+  loadChangesPackage,
+  checkReferences,
+  showTextFrame,
+  writeFigNameMapToLog,
+  moreFloats
+}
+\ProcessPgfPackageOptions{/packages}
+
+
+% ------------------------------------------------------------------------------
+% load packages
+% documentation for the individual packages is usually easily accessible by calling
+% texdoc <package name>
+
+
+% ------------------------------------------------------------------------------
+% basic packages
+\RequirePackage{etex}              % extends capabilities of TeX3
+\ifnum \value{packages@moreFloats}>0%
+  %\reserveinserts{\numexpr18+\thepackages@moreFloats\relax}        % needed in TeXlive 2015
+  \RequirePackage[morefloats=\thepackages@moreFloats]{morefloats}  % increases default limit of 18 unprocessed floats by <moreFloats> in order to get around the 'Too many unprocessed floats' error
+  \typeout{>>> package.sty info: increased limit on unprocessed floats by \thepackages@moreFloats.}
+\fi
+\RequirePackage{etoolbox}          % extensive collection of usefull macros for class and package authors
+\RequirePackage{fp}                % fixed point arithmetic for TeX
+\RequirePackage{microtype}         % subliminal refinements towards typographical perfection
+\RequirePackage{ifthen}            % provides \ifthenelse command
+\RequirePackage{xifthen}           % provides extended test expressions for \ifthenelse
+\RequirePackage{xspace}            % automatically adds space after macro expressions, if necessary
+\xspaceaddexceptions{]}
+\RequirePackage{xpunctuate}        % provides macros for post-macro punctuation insertion
+\RequirePackage[utf8]{inputenc}    % set encoding used for .tex files; latin1 corresponds to ISO 8859-1
+\RequirePackage{bold-extra}        % provides bold small caps (bitmap only) with Computer Modern font
+%\RequirePackage[T1]{fontenc}       % the encoding used for fonts; T1 does not work with UTF8 bibtex files
+\RequirePackage{suffix}            % makes definition of *-variants of commands easier
+
+
+% ------------------------------------------------------------------------------
+% graphics packages
+\RequirePackage{graphicx}       % package for including graphics
+\RequirePackage{grffile}        % extends file name processing of graphicx to support larger range of file names
+\RequirePackage{epstopdf}       % provides automatic on-the-fly conversion of .eps to .pdf files using epstopdf
+\RequirePackage[table]{xcolor}  % provides colors, tints, shades, tones, and mixes of arbitrary colors; table option loads colortbl
+\RequirePackage{feynmp}         % draws Feynman graphs with Metapost
+
+
+% ------------------------------------------------------------------------------
+% layout packages
+\RequirePackage{bigdelim}                       % extensions to the standard LATEX tabular environment
+\RequirePackage{blindtext}                      % generates dummy text test purposes
+\RequirePackage{afterpage}                      % expand commands after current page is output; typical example: \afterpage{\clearpage}
+\RequirePackage{geometry}                       % allows to define page layout
+\RequirePackage{babel}                          % defines language specific typesetting
+\RequirePackage[autostyle=true]{csquotes}       % package for quoting text using the correct language-dependent symbols
+\RequirePackage{alphalph}                       % represent numbers with limited set of symbols; \eg a-z, aa-zz, ...
+\RequirePackage{enumitem}                       % adds extended customization interface to lists and enums
+%\RequirePackage{multicol}                       % adds environment for multicolumn output
+\RequirePackage{array}                          % adds extra column formatting capabilities
+\RequirePackage{dcolumn}                        % aligns table or array entries to decimal point
+\RequirePackage{rotating}                       % rotates objects like tables etc.
+\RequirePackage{longtable}                      % typesets multi-page tables
+\RequirePackage{booktabs}                       % additional commands to enhance the quality of tables
+\RequirePackage{tabularx}                       % allows fixed-width tables with flexible column widths
+\RequirePackage{makecell}                       % provides macros for easy line breaks in table cells
+% !!!NOTE!!! RevTeX 4.1 is incompatible with caption and subcaption; use subfig instead
+%\RequirePackage{caption}                        % allows to customize captions of floating environments
+%\RequirePackage{subcaption}                     % makes sub-figures and adds separate captions for them
+\RequirePackage[caption=false]{subfig}          % makes sub-figures and subtables
+%\RequirePackage{authblk}                        % package to typeset author and affiliation blocks
+%\RequirePackage{floatpag}                       % provides commands to apply different pagestyles to the full page floats; default page styles may need to be adjusted
+\RequirePackage[export]{adjustbox}               % macros for boxing and manipulating LaTeX content; "export" exports most keys to \includegraphics
+\RequirePackage[stable]{footmisc}               % allows footnotes in section headings
+\RequirePackage{cite}                           % compresses and sorts lists of numerical citations
+\RequirePackage{siunitx}[=v2]  % typesets numbers and units properly with correct spacing
+\sisetup{%
+  separate-uncertainty=true,  % type set value +- uncertainty
+  multi-part-units=single,  % for value with uncertainty typeset unit only once
+  range-units=single,
+  range-phrase=\ensuremath{\text{ to }},  % make ranges work in math environment
+  list-units=single,
+  % make lists work in math environment
+  list-final-separator=\ensuremath{\text{, and }},  % serial comma
+  list-pair-separator=\ensuremath{\text{ and }},
+  list-separator=\ensuremath{\text{, }},
+  % enable automatic detection of font
+  detect-family=true,
+  detect-weight=true,
+  retain-explicit-plus=true,
+}
+\RequirePackage{relsize}    % provides macros to change text size relative to current size
+\RequirePackage{realboxes}  % provides variants of box macros which reads their content as real box and not as macro argument
+\PassOptionsToPackage{mathlines}{lineno}  % minted loads lineno package
+\RequirePackage{minted}     % typeset highlighted source code
+
+
+% ------------------------------------------------------------------------------
+% math packages
+% \RequirePackage[%
+%   sumlimits,
+%   intlimits,
+%   namelimits]{amsmath}              % extra math commands from AMS
+\RequirePackage{mathtools}          % extension to amsmath
+\RequirePackage{amssymb}            % extra math symbols from AMS
+\RequirePackage{amsfonts}           % extra AMS fonts and symbols
+\RequirePackage{amsxtra}            % a few less often used math commands
+\RequirePackage{IEEEtrantools}      % useful environments for multiline equations
+\RequirePackage{xfrac}              % provides more options for typesetting split-level fractions
+\RequirePackage{commath}            % typographically correct differentials
+\RequirePackage{braket}             % macros for Dirac <bra|ket> notation
+\RequirePackage{oubraces}           % allows to typeset overlapping over- and underbraces
+\RequirePackage[version=3]{mhchem}  % typesets chemical elements and compounds
+%\RequirePackage[low-sup]{subdepth}  % avoid different height of subscript in cases like $A_a$ and $A_a^a$
+
+
+% ------------------------------------------------------------------------------
+% math fonts
+\RequirePackage{isomath}   % italic capital Greek letters, sets up bold italic and sans-serif bold italic math alphabets
+\RequirePackage{bbm}       % roman, sans-serif, and type-writer double-stroke font
+\RequirePackage{amsbsy}    % macros for bold math
+\RequirePackage{bm}        % macros for bold math
+\RequirePackage{mathrsfs}  % calligraphic math font (provides \mathscr)
+% define slanted version for mathbbm
+\DeclareMathAlphabet{\mathbbmsl}{U}{bbm}{m}{sl}
+\SetMathAlphabet\mathbbmsl{bold}{U}{bbm}{bx}{sl}
+% define sans-serif italics version for mathbbm
+%\DeclareMathAlphabet{\mathbbmssit}{U}{bbmss}{m}{it}
+
+
+% ------------------------------------------------------------------------------
+% special packages for editing
+
+% beware that todonotes may be also loaded by changes package for changes v3.0.0
+% since todonotes does not provide a setup command (sigh) we have to
+% load it before the changes package to avoid option clashes
+\ifpackages@useTodoNotes
+  \RequirePackage[%
+    textwidth=2cm,
+    textsize=footnotesize,
+    backgroundcolor=red!10,
+    linecolor=red,
+    bordercolor=red]{todonotes}  % provides commands to annotate text:
+    %
+    % \todo{some text} puts box with "some text" in the margin with a line to the current text position
+    %
+    % !!!NOTE!!! within captions one has to use \todoInl{some text} or \todo[inline]{some text}
+    %
+    % !!!NOTE!!! with RevTeX it is recommended to use \todoInl{}
+    % also in normal text, because otherwise LaTeX will throw strange
+    % errors with too many \todo side notes around
+    %
+    % \missingfigure{some text} puts a warning sign with "some text"
+  \typeout{>>> package.sty info: enabled todo notes.}
+\else
+  \ifpackages@loadTodoNotesPackage
+    \RequirePackage[disable]{todonotes}
+    \typeout{>>> package.sty info: loaded todonotes package with notes disabled.}
+  \fi
+\fi
+\ifthenelse{\boolean{packages@useTodoNotes} \OR \boolean{packages@loadTodoNotesPackage}}%
+{%
+  \setlength{\marginparwidth}{2cm}  % has to be set to same value as textwidth option in todonotes package
+  % make white-space handling of \todo more intuitive
+  \renewcommand{\todo}[2][]{\@bsphack\@todo[{#1}]{#2}\@esphack}%
+  % convenience macro for inline comments (like needed e.g. in captions)
+  \newcommand*{\todoInl}[1]{\todo[inline]{#1}}
+}%
+{}
+
+
+\ifpackages@highlightChanges
+  % changes produces an option clash in the truncate package when
+  % using the cernphprep class
+  % this may temporarily be resolved by commenting out the loading of the
+  % truncate package in cernphprep.cls
+  % in order to solve this in a better way, the package should take an
+  % option, where changes.sty is not loaded at all
+  \RequirePackage[draft]{changes}  % provides manual change markup; use delcmdchanges.bash to remove markup
+                                   % beware since v3.0.0 changes loads todonotes package
+  \definecolor[named]{midred}{rgb}{0.8,0,0}  % = ROOT's kRed + 1
+  \colorlet{Changes@Color}{midred}  % change default color
+  %\setdeletedmarkup{\color{blue}{\sout{#1}}}  % change default layout for deleted text
+  \definecolor[named]{midgray}{rgb}{0.7,0.7,0.7}
+  \setdeletedmarkup{\color{midgray}{#1}}  % avoid all kinds of problems with \sout by just coloringdeleted text
+  % fix missing support for american language when using babel
+  \addto\captionsamerican{\def\listofchangesname{List of changes}}
+  \addto\captionsamerican{\def\summaryofchangesname{Changes}}
+  \addto\captionsamerican{\def\changesaddname{Added}}
+  \addto\captionsamerican{\def\changesdeletename{Deleted}}
+  \addto\captionsamerican{\def\changesreplacename{Replaced}}
+  \addto\captionsamerican{\def\changesauthorname{Author}}
+  \addto\captionsamerican{\def\changesanonymousname{anonymous}}
+  \addto\captionsamerican{\def\changesnoloc{List of changes is available after the next \LaTeX\ run.}}
+  \addto\captionsamerican{\def\changesnosoc{Summary of changes is available after the next \LaTeX\ run.}}
+  %
+  % \sout causes problems with multiple references in \cite ->
+  % workaround is to put \cite into \mbox; see http://tex.stackexchange.com/questions/98222/ulem-incompatibility-with-multiple-entries-in-cite
+  %
+  % fix problem with ulem's \sout and siunitx
+  % see http://tex.stackexchange.com/questions/199055/how-can-i-use-si-from-siunitx-inside-replaced-from-changes
+  \ExplSyntaxOn
+  \cs_set_eq:NN \__siunitx_unit_output_number_sep:
+    \__siunitx_unit_output_number_sep_aux:
+  \ExplSyntaxOff
+  \typeout{>>> package.sty info: marked-up changes are highlighted.}
+\else
+  \ifpackages@loadChangesPackage
+    % keep color definitions for manually marked parts
+    \definecolor[named]{midred}{rgb}{0.8,0,0}  % = ROOT's kRed + 1
+    \definecolor{midgray}{rgb}{0.7,0.7,0.7}
+    \RequirePackage[final]{changes}
+    \typeout{>>> package.sty info: loading changes package in "final" mode.}
+  \fi
+\fi
+
+\ifpackages@printGitInfo
+  \RequirePackage{fancyhdr}  % used to redefine page headers and footers
+  \RequirePackage{currfile}  % provides file name and path information of current input file
+  \RequirePackage{latexgit}  % used to inject repository information into the document
+  % modify footer definition
+  \AtBeginDocument{%
+    \pagestyle{fancyplain}
+    \if@twoside
+      \renewcommand{\headrulewidth}{0pt}  % remove header rule
+      \fancyhead[LE,RO]{\footnotesize Draft rev: \texttt{\gitcommithash}, \gitcommitdate}%
+      \fancyhead[C]{\thepage}
+      \fancyhead[LO,RE]{\footnotesize \texttt{\currfilename}}%
+      \renewcommand{\footrulewidth}{0pt}  % remove footer rule
+      \fancyfoot{}                        % clear all footer fields
+      \fancypagestyle{plain}{%
+        \renewcommand{\headrulewidth}{0pt}  % remove header rule
+        \fancyhead[LE,RO]{\footnotesize Draft rev: \texttt{\gitcommithash}, \gitcommitdate}%
+        \fancyhead[C]{\thepage}
+        \fancyhead[LO,RE]{\footnotesize \texttt{\currfilename}}%
+        \renewcommand{\footrulewidth}{0pt}  % remove footer rule
+        \fancyfoot{}                        % clear all footer fields
+      }
+    \else
+      \renewcommand{\headrulewidth}{0pt}  % remove header rule
+      \fancyhead[L]{\footnotesize Draft rev: \texttt{\gitcommithash}, \gitcommitdate}%
+      \fancyhead[C]{\thepage}
+      \fancyhead[R]{\footnotesize \texttt{\currfilename}}%
+      \renewcommand{\footrulewidth}{0pt}  % remove footer rule
+      \fancyfoot{}                        % clear all footer fields
+      \fancypagestyle{plain}{%
+        \renewcommand{\headrulewidth}{0pt}  % remove header rule
+        \fancyhead[L]{\footnotesize Draft rev: \texttt{\gitcommithash}, \gitcommitdate}%
+        \fancyhead[C]{\thepage}
+        \fancyhead[R]{\footnotesize \texttt{\currfilename}}%
+        \renewcommand{\footrulewidth}{0pt}  % remove footer rule
+        \fancyfoot{}                        % clear all footer fields
+      }
+    \fi
+  }
+  \typeout{>>> package.sty info: putting git repository info on every page.}
+\fi
+
+
+\ifpackages@printDraftLabel
+  \RequirePackage[firstpage]{draftwatermark}  % puts "Draft" watermark on first page
+  \SetWatermarkScale{4}
+  \typeout{>>> package.sty info: putting ``Draft'' watermark on first page.}
+\fi
+
+
+\ifpackages@printLineNumbers
+  % may cause "Improper \prevdepth." errors in \subfloat with REVTeX
+  % \RequirePackage[mathlines]{lineno}  % prints line numbers for each line of text; already loaded by minted
+  \setlength{\linenumbersep}{0.5em}   % decrease distance of numbers from text
+  % enable line numbers
+  \linenumbers
+  \typeout{>>> package.sty info: printing line numbers.}
+\fi
+\AtBeginDocument{%
+  \@ifpackageloaded{lineno}%
+  {% change color of line numbers
+    \definecolor[named]{linenoColor}{rgb}{0.12,0.56,1}%
+    \renewcommand{\linenumberfont}{\normalfont\tiny\sffamily\color{linenoColor}}%
+  }%
+  {}%
+}%
+\ifpackages@useLinenoAmsPatch
+  % fix missing line numbers in math environments
+  % see http://phaseportrait.blogspot.de/2007/08/lineno-and-amsmath-compatibility.html
+  % and https://groups.google.com/forum/#!msg/comp.text.tex/9Oti-kwXXgs/ts_VLUCaa2gJ
+  \newcommand*\patchAmsMathEnvironmentForLineno[1]{%
+    \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname%
+    \expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname%
+    \renewenvironment{#1}%
+    {\linenomath\csname old#1\endcsname}%
+    {\csname oldend#1\endcsname\endlinenomath}}%
+  \newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
+    \patchAmsMathEnvironmentForLineno{#1}%
+    \patchAmsMathEnvironmentForLineno{#1*}}%
+  \AtBeginDocument{%
+    \patchBothAmsMathEnvironmentsForLineno{equation}%
+    \patchBothAmsMathEnvironmentsForLineno{align}%
+    \patchBothAmsMathEnvironmentsForLineno{flalign}%
+    \patchBothAmsMathEnvironmentsForLineno{alignat}%
+    \patchBothAmsMathEnvironmentsForLineno{gather}%
+    \patchBothAmsMathEnvironmentsForLineno{multline}%
+  }%
+  \typeout{>>> package.sty info: patching amsmath commands to fix line numbering.}
+\fi
+
+
+\ifpackages@checkReferences
+  \RequirePackage{refcheck}  % looks for useless labels, unlabelled equations, unused bibliography references and puts labels on margin; also puts "refcheck" messages into log file
+  \typeout{>>> package.sty info: enabled checking of references.}
+\fi
+
+
+\ifpackages@showTextFrame
+  \RequirePackage[showframe,pass]{geometry}
+  \typeout{>>> package.sty info: enabled visualization of text area.}
+\fi
+
+
+\ifpackages@writeFigNameMapToLog
+  % redefine includegraphics command to generate log messages of the form
+  % !!!,<file name>,fig<figure number>
+  % running
+  % ag '\!\!\!' 3pic_2008_paper1_massindep_PRD.log > figureNameMap.csv
+  % gives a csv mapping file that is used by renameFigureFiles.sh to rename figure files
+  % figure file names must NOT contain any ","
+  % in case of long file names the value of max_print_line in the Makefile needs to be increased
+  \let\origIncludegraphics\includegraphics%
+  \newcounter{subFigureNumber}%
+  \newcounter{figureNumber}%
+  \renewcommand*{\includegraphics}[2][]{%
+    \ifthenelse{\isempty{#1}}%
+    {\origIncludegraphics{#2}}%
+    {\origIncludegraphics[#1]{#2}}%
+    \setcounter{figureNumber}{\the\numexpr\arabic{figure}}%
+    \setcounter{subFigureNumber}{\the\numexpr\arabic{subfigure}}%
+    \ifnum\value{subFigureNumber}=0%
+      \stepcounter{figureNumber}%
+    \fi%
+    \typeout{!!!,#2,fig\arabic{figureNumber}\alph{subFigureNumber}}%
+  }%
+  \typeout{>>> package.sty info: enabled writeout of figure file names and figure numbers.}%
+\fi
+
+
+% ------------------------------------------------------------------------------
+% special packages that have to be loaded after all others
+\PassOptionsToPackage{hyphens}{url}    % allow url package loaded by hyperref to line break links
+\RequirePackage{hyperref}              % provides \url command and adds clickable cross references
+\RequirePackage[capitalise]{cleveref}  % formats cross-references automatically by determining their "type" (fig., eq., sec., etc.)
+
+
+% ------------------------------------------------------------------------------
+% other potentially interesting packages
+
+% \RequirePackage{wrapfig}  % Allow text to flow around figures
+% \RequirePackage{floatflt}  % Similar capabilities to wrapfig – allow text to flow around figures
+
+% \RequirePackage{eurosym}  % the EUR symbol
+% \RequirePackage{empheq}         % macros to emphasize equations
+% \RequirePackage{scrpage2}  % Set headers and footer
+% \RequirePackage{standalone}  % Allows you to have a document that you can directly compile for each figure and also input to another document
+% \RequirePackage{titlesec}  % changes the appearance of chapter and section headings
+% \RequirePackage{subfiles}  % Provides a nice alternative to \include
+% \RequirePackage{floatrow}  % enhanced capability for creating subfigure and adds ability to define own floats
+
+% \RequirePackage{diffcoeff}  % easy writing of ordinary and partial differential coefficients of arbitrary order
+% \RequirePackage{diffcoeffx}  % diffcoeff on steroids
+% \RequirePackage{gitfile-info}  % puts git versioning information into document
+% \RequirePackage{breqn}  % facilitates automatic line-breaking of displayed math expressions
+% \RequirePackage{physics}  % makes typesetting equations for physics simpler, faster, and more human-readable

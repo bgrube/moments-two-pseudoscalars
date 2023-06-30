@@ -1,0 +1,183 @@
+\RequirePackage[l2tabu, orthodox]{nag}  % warn user about outdated commands, classes, and packages
+\documentclass[letterpaper,twoside,american]{article}
+
+% ------------------------------------------------------------------------------
+% load packages
+\usepackage[%
+  % printGitInfo=true,
+  printDraftLabel=true,
+  printLineNumbers=true,
+  useLinenoAmsPatch=true,
+  loadTodoNotesPackage=true,
+  useTodoNotes=true,
+  % loadChangesPackage=true,
+  % highlightChanges=true,
+  %writeFigNameMapToLog=true,
+  %showTextFrame=true,
+  %moreFloats=30,
+  %checkReferences=false,
+]{packages}
+% load tikz if not already loaded by other package
+\makeatletter
+\@ifpackageloaded{tikz}%
+{}%
+{\usepackage{tikz}}%
+\makeatother
+\usepackage{animate}   % creates portable, JavaScript-driven PDF animations
+\usepackage{authblk}
+\usepackage{cancel}
+\usepackage{appendix}  % facilities for modifying the typesetting of appendix titles
+\usepackage{accents}   % miscellaneous tools for mathematical accents
+
+
+% ------------------------------------------------------------------------------
+% setup packages
+
+% page layout
+\geometry{text={6.5in,9in},centering}  % set page layout: 14 cm (width) x 24 cm (height), text area centered on page
+
+% paragraph layout
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt plus 4pt minus 2pt}
+\setlength{\baselineskip}{14pt}
+\setlength{\footnotesep}{1.0em}
+
+% formatting of (sub)captions
+\captionsetup{%
+  format=plain,
+  justification=justified,
+  singlelinecheck=true,
+  font=small,
+  labelfont=bf,
+  textfont=normal}
+\captionsetup[subfigure]{%
+  skip=0.5ex  % vertical distance between figure and subcaption
+}
+
+% switch to lowercase alphabetic footnote symbols in brackets
+\renewcommand{\thefootnote}{[\alph{footnote}]}
+% switch also for document title (\maketitle ignores the above)
+\makeatletter
+\let\@fnsymbol\@alph
+\makeatother
+
+% modify \bfseries macro to include \boldmath (from http://tex.stackexchange.com/questions/41379)
+% this makes that for _all_ bold text math symbols are also set in bold
+% particularly useful for section headings
+\makeatletter
+\g@addto@macro\bfseries{\boldmath}
+\makeatother
+
+% hyperref setup
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=darkblue,
+  citecolor=darkmagenta,
+  urlcolor=darkgreen,
+%   pagebackref=true,
+%   hyperindex=true,
+  bookmarksopen
+}
+
+% make cleveref use serial comma
+\newcommand{\creflastconjunction}{, and\nobreakspace}
+
+% make sure floats are top-aligned when on pure float page
+% see http://tex.stackexchange.com/questions/66252/placing-the-figure-exactly-at-the-top-of-the-page-in-latex
+% \makeatletter
+% \setlength{\@fptop}{0pt}
+% \makeatother
+
+
+% ------------------------------------------------------------------------------
+% define graphics search path
+\graphicspath{%
+  {./},%
+  {./feyn/},%
+  {./pics/},%
+  {./Tikz/},%
+}
+
+
+% ------------------------------------------------------------------------------
+% load macros
+% all macro definitions should go into macro.sty
+\usepackage{macros}
+
+% plot widths for figures with two 1D and one 2D plot in a row with no extra horizontal spacing
+\FPeval{\plotHeightRatioOneDTwoD}{550/511}           % ratio of plot heights: h_1D = 550 pt / h_2D = 511 pt
+\FPeval{\widthOneD}{1/(1+\plotHeightRatioOneDTwoD)}  % relative width of 1D plot
+\newlength{\totalPlotWidth}
+\setlength{\totalPlotWidth}{0.9\textwidth}
+% define width and spacing for arrangements with 2 plots in a row
+\newlength{\twoPlotWidth}
+\setlength{\twoPlotWidth}{\totalPlotWidth*\real{\widthOneD}}
+\newlength{\twoPlotWidthTwoD}
+\setlength{\twoPlotWidthTwoD}{\totalPlotWidth-\twoPlotWidth}
+% plot widths and spacing for figures with two 1D plots in a row that
+% match widths and spacing of two 2D plots in a row
+\newlength{\twoPlotWidthOneD}
+\setlength{\twoPlotWidthOneD}{0.5\totalPlotWidth/\real{\plotHeightRatioOneDTwoD}}
+\newlength{\twoPlotSpacingOneD}
+\setlength{\twoPlotSpacingOneD}{\totalPlotWidth-2\twoPlotWidthOneD}  % add horizontal space so that full width is covered
+\setlength{\twoPlotSpacingOneD}{0.5\twoPlotSpacingOneD}              % distribute over two spacings
+\setlength{\twoPlotSpacingOneD}{0.75\twoPlotSpacingOneD}             % fudge factor to improve alignment
+% plot widths for figures with three 1D and one 2D plot in a row with no extra horizontal spacing
+\FPeval{\widthOneD}{1/(2+\plotHeightRatioOneDTwoD)}  % relative width of 1D plot
+\setlength{\totalPlotWidth}{0.87\textwidth}
+\newlength{\threePlotWidth}
+\setlength{\threePlotWidth}{\totalPlotWidth*\real{\widthOneD}}
+\newlength{\threePlotWidthTwoD}
+\setlength{\threePlotWidthTwoD}{\totalPlotWidth-2\threePlotWidth}
+% plot widths for figures with three 1D plots in a row
+\newlength{\twoPlusOnePlotSpacing}
+\setlength{\twoPlusOnePlotSpacing}{\threePlotWidthTwoD-\threePlotWidth}  % horizontal space needed to cover full width
+
+
+% ------------------------------------------------------------------------------
+% frontmatter
+\input{tex/frontmatter}
+
+
+\begin{document}
+
+
+% ------------------------------------------------------------------------------
+% title page and ToC
+
+\thispagestyle{empty}
+\maketitle
+
+\input{tex/abstract}
+
+\tableofcontents
+
+
+
+% ------------------------------------------------------------------------------
+% main text
+% \clearpage
+\input{tex/introduction}
+\input{tex/diffraction}
+\input{tex/photo_prod}
+
+% \appendix
+% \appendixpage
+% \addappheadtotoc
+% \input{tex/pipiomega_decay_ang_mom}
+
+
+% ------------------------------------------------------------------------------
+% bibliography
+\clearpage
+\bibliographystyle{utphys_bgrube}
+\bibliography{references}
+
+
+% ------------------------------------------------------------------------------
+% list of todos
+\clearpage
+\listoftodos
+
+
+\end{document}
