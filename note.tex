@@ -16,18 +16,15 @@
   %showTextFrame=true,
   %moreFloats=30,
   %checkReferences=false,
-]{packages}
+]{./sty/packages}
 % load tikz if not already loaded by other package
-\makeatletter
-\@ifpackageloaded{tikz}%
-{}%
-{\usepackage{tikz}}%
-\makeatother
-\usepackage{animate}   % creates portable, JavaScript-driven PDF animations
-\usepackage{authblk}
-\usepackage{cancel}
-\usepackage{appendix}  % facilities for modifying the typesetting of appendix titles
-\usepackage{accents}   % miscellaneous tools for mathematical accents
+% \makeatletter
+% \@ifpackageloaded{tikz}%
+% {}%
+% {\usepackage{tikz}}%
+% \makeatother
+% \usepackage{animate}   % creates portable, JavaScript-driven PDF animations
+% \usepackage{appendix}  % facilities for modifying the typesetting of appendix titles
 
 
 % ------------------------------------------------------------------------------
@@ -102,7 +99,7 @@
 % ------------------------------------------------------------------------------
 % load macros
 % all macro definitions should go into macro.sty
-\usepackage{macros}
+\usepackage{./sty/macros}
 
 % plot widths for figures with two 1D and one 2D plot in a row with no extra horizontal spacing
 \FPeval{\plotHeightRatioOneDTwoD}{550/511}           % ratio of plot heights: h_1D = 550 pt / h_2D = 511 pt
@@ -170,7 +167,7 @@
 % ------------------------------------------------------------------------------
 % bibliography
 \clearpage
-\bibliographystyle{utphys_bgrube}
+\bibliographystyle{./sty/utphys_bgrube}
 \bibliography{references}
 
 

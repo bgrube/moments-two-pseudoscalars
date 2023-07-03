@@ -127,6 +127,7 @@
 \RequirePackage[export]{adjustbox}               % macros for boxing and manipulating LaTeX content; "export" exports most keys to \includegraphics
 \RequirePackage[stable]{footmisc}               % allows footnotes in section headings
 \RequirePackage{cite}                           % compresses and sorts lists of numerical citations
+\RequirePackage{authblk}                        % package to prepare author and affiliation blocks
 \RequirePackage{siunitx}[=v2]  % typesets numbers and units properly with correct spacing
 \sisetup{%
   separate-uncertainty=true,  % type set value +- uncertainty
@@ -143,10 +144,10 @@
   detect-weight=true,
   retain-explicit-plus=true,
 }
-\RequirePackage{relsize}    % provides macros to change text size relative to current size
-\RequirePackage{realboxes}  % provides variants of box macros which reads their content as real box and not as macro argument
+\RequirePackage{relsize}                  % provides macros to change text size relative to current size
+\RequirePackage{realboxes}                % provides variants of box macros which reads their content as real box and not as macro argument
 \PassOptionsToPackage{mathlines}{lineno}  % minted loads lineno package
-\RequirePackage{minted}     % typeset highlighted source code
+\RequirePackage{minted}                   % typeset highlighted source code
 
 
 % ------------------------------------------------------------------------------
@@ -166,6 +167,8 @@
 \RequirePackage{oubraces}           % allows to typeset overlapping over- and underbraces
 \RequirePackage[version=3]{mhchem}  % typesets chemical elements and compounds
 %\RequirePackage[low-sup]{subdepth}  % avoid different height of subscript in cases like $A_a$ and $A_a^a$
+\RequirePackage{cancel}             % indicate canceling terms
+\RequirePackage{accents}            % miscellaneous tools for mathematical accents
 
 
 % ------------------------------------------------------------------------------
