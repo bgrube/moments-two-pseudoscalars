@@ -22,7 +22,7 @@ The analysis is based on the measured intensity distribution, \ie the
 number density of events, which is decomposed into partial-wave
 amplitudes:
 \begin{equation}
-  \label{eq:intensity_diffraction}
+  \label{eq:diffraction_intensity}
   \mathcal{I}(\Omega; w, t)
   = \frac{\dif{N}}{\dif{w}\, \dif{t}\, \dif{\Omega}}
   = \Abs[3]{\sum_{\ell m}^\infty \mathcal{T\!}_{\ell\, m}(w, t)\, Y_\ell^m(\Omega)}^2.
@@ -39,13 +39,13 @@ momentum~$\ell$ between the two-(pseudo)scalar mesons and a spin
 projection~$m$ \wrt the beam axis.  The angular distribution of the
 $X$~decay products is given by the spherical harmonics
 $Y_\ell^m(\Omega)$~\cite{wikipedia:sphericalHarm}.  In
-\cref{eq:intensity_diffraction}, we have assumed that the effect of
+\cref{eq:diffraction_intensity}, we have assumed that the effect of
 the target spin is negligible and that all partial wave amplitudes are
 fully coherent.
 
 To measure the $\mathcal{T\!}_{\ell\, m}$, which contain the information
 about the produced resonances $X$, the intensity model in
-\cref{eq:intensity_diffraction} is fit to the measured $\Omega$
+\cref{eq:diffraction_intensity} is fit to the measured $\Omega$
 distribution in narrow $(w, t)$ cells.  Within each kinematic cell,
 $\mathcal{T\!}_{\ell\, m}$ is treated as constant.  To simplify notation,
 we hence will omit the~$m$ and $t$~dependencies in all formulas below.
@@ -77,7 +77,7 @@ and instead decompose the \emph{intensity} into spherical harmonics.
 
 Using \cref{eq:gen_fourier_series,eq:expansion_coefficient} we obtain:
 \begin{equation}
-  \label{eq:intensity_moments_diffraction}
+  \label{eq:diffraction_intensity_moments}
   \mathcal{I}(\Omega)
   = \sum_{L M}^\infty H(L, M)\, Y_L^M(\Omega),
 \end{equation}
@@ -85,17 +85,17 @@ with the moments\footnote{The expansion into a series of spherical
 harmonics is also referred to as Laplace
 series~\cite{MathWorld:LaplaceSeries}.}
 \begin{equation}
-  \label{eq:moments_diffraction}
+  \label{eq:diffraction_moments}
   H(L, M)
   = \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega).
 \end{equation}
 It is important to note that although
-\cref{eq:intensity_moments_diffraction} and
-\cref{eq:intensity_diffraction} use the same basis functions, the two
+\cref{eq:diffraction_intensity_moments} and
+\cref{eq:diffraction_intensity} use the same basis functions, the two
 represent different decompositions.  In
-\cref{eq:intensity_diffraction} the amplitudes are decomposed into
+\cref{eq:diffraction_intensity} the amplitudes are decomposed into
 spherical harmonics, \ie partial-wave amplitudes, whereas in
-\cref{eq:intensity_moments_diffraction} the intensity is decomposed.
+\cref{eq:diffraction_intensity_moments} the intensity is decomposed.
 Whereas the former decomposition is based on a physics model of the
 reaction, the moment decomposition is purely mathematical.  An
 advantage of the moment decomposition is that it is unique, whereas
@@ -111,10 +111,10 @@ will be discussed in more detail in \cref{sec:diffraction:moments_pw}.
 \subsection{Reflectivity basis}%
 \label{sec:diffraction:reflectivity}
 
-It is often advantageous to express \cref{eq:intensity_diffraction} in
+It is often advantageous to express \cref{eq:diffraction_intensity} in
 the reflectivity basis
 \begin{equation}
-  \label{eq:refl_def_diffraction}
+  \label{eq:diffraction_refl_def}
   \ket{\refl, \ell, m}
   \equiv \mathcal{N}_m\, \sBrk[2]{\ket{\ell, m} - \refl\, {(-1)}^m\, \ket{\ell, {-m}}},
 \end{equation}
@@ -135,12 +135,12 @@ scattering process.  The normalization factor
 \end{equation}
 ensures that the multiplicity of $2 \ell + 1$ of the spin states is
 conserved by constraining~$m$ to be non-negative.  It is important to
-note that the definition in \cref{eq:refl_def_diffraction} forbids
+note that the definition in \cref{eq:diffraction_refl_def} forbids
 positive-reflectivity states with $m = 0$.
 
 The reflectivity basis is implemented by introducing the functions
 \begin{equation}
-  \label{eq:spherical_harm_refl_diffraction}
+  \label{eq:diffraction_spherical_harm_refl}
   \prescript{\refl}{}{Y}_\ell^m(\Omega)
   \equiv \mathcal{N}_m\, \sBrk[2]{Y_\ell^m(\Omega) - \refl\, {(-1)}^m\, Y_\ell^{(-m)}(\Omega)}.
 \end{equation}
@@ -159,7 +159,7 @@ definition of the spherical harmonics (see Eq.~(1) in Sec.~5.2 of
   = \dUnderbrace{\sqrt{\frac{(2 \ell + 1)}{4 \pi}\, \frac{(\ell -m)!}{(\ell + m)!}}\, P_\ell^m(\cos\theta)}{= Y_\ell^m(\theta, 0)}\, e^{\imag\, m\, \phi},
 \end{equation}
 it follows
-from \cref{eq:spherical_harm_refl_diffraction} that
+from \cref{eq:diffraction_spherical_harm_refl} that
 \begin{equation}
   \prescript{(+)}{}{Y}_\ell^m(\Omega)
   = 2 \imag\, \mathcal{N}_m\, Y_\ell^m(\theta, 0)\, \sin(m\, \phi)
@@ -181,24 +181,24 @@ For convenience, we introduce
 \end{equation}
 Note that $y_\ell^m(\theta)$ is real-valued.
 
-Replacing $Y_\ell^m(\Omega)$ in \cref{eq:intensity_diffraction} by
-\cref{eq:spherical_harm_refl_diffraction} and using the fact that
+Replacing $Y_\ell^m(\Omega)$ in \cref{eq:diffraction_intensity} by
+\cref{eq:diffraction_spherical_harm_refl} and using the fact that
 amplitudes with opposite reflectivities do not interfere, we obtain
 \begin{equation}
-  \label{eq:intensity_diffraction_refl}
+  \label{eq:diffraction_intensity_refl}
   \mathcal{I}(\Omega)
   = \sum_{\refl = \pm 1} \Abs[3]{\sum_{\ell m}^\infty \prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}\, \prescript{\refl}{}{Y}_\ell^m(\Omega)}^2.
 \end{equation}
 
 Expanding the absolute-value-squared term in
-\cref{eq:intensity_diffraction_refl}, we get
+\cref{eq:diffraction_intensity_refl}, we get
 \begin{align}
   \mathcal{I}(\Omega)
   ={}& \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}\, \prescript{\refl}{}{\mathcal{T\!}}_{\ell'\, m'}^*\,
   \prescript{\refl}{}{Y}_\ell^m(\Omega)\, \prescript{\refl}{}{Y}_{\ell'}^{m' *}(\Omega)
   \\
-  \label{eq:intensity_diffraction_refl_spin-dens}
+  \label{eq:diffraction_intensity_refl_spin-dens}
   ={}& \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
   \prescript{\refl}{}{Y}_\ell^m(\Omega)\, \prescript{\refl}{}{Y}_{\ell'}^{m' *}(\Omega),
@@ -216,8 +216,8 @@ where we have introduced the spin-density matrix of~$X$,
 
 In order to relate the partial-wave
 amplitudes~$\prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}$ and the
-moments~$H(L, M)$ we insert \cref{eq:spherical_harm_refl_diffraction}
-into \cref{eq:intensity_diffraction_refl_spin-dens} and use the
+moments~$H(L, M)$ we insert \cref{eq:diffraction_spherical_harm_refl}
+into \cref{eq:diffraction_intensity_refl_spin-dens} and use the
 relation (see Eq.~(A.15) in \refCite{Chung:1971ri})
 \begin{equation}
   Y_{\ell'}^{m' *}(\Omega)\, Y_{\ell}^m(\Omega)
@@ -274,9 +274,9 @@ coefficient enforces that $m' - M = m$.  With this we arrive at
       - \refl\, {(-1)}^m\, \clebsch{\ell'}{m'}{L}{M}{\ell}{-m} \Big]\,
     Y_L^M(\Omega).
 \end{multline}
-Comparing with \cref{eq:intensity_moments_diffraction} we see that
+Comparing with \cref{eq:diffraction_intensity_moments} we see that
 \begin{multline}
-  \label{eq:moments_pw_diffraction}
+  \label{eq:diffraction_moments_pw}
   H(L, M)
   = \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 L + 1}{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
@@ -290,17 +290,17 @@ Comparing with \cref{eq:intensity_moments_diffraction} we see that
 
 It is important to note that we can always calculate all moments from
 a given set of partial-wave amplitudes using
-\cref{eq:moments_pw_diffraction}.  However, in general the converse is
+\cref{eq:diffraction_moments_pw}.  However, in general the converse is
 not true because there are unphysical sets of moments that do not
 correspond to a partial-wave decomposition and even for a physical set
 of moments we need to solve a system of quadratic equations in the
-partial-wave amplitudes given by \cref{eq:moments_pw_diffraction,},
+partial-wave amplitudes given by \cref{eq:diffraction_moments_pw,},
 which may contain ambiguities.
 
 The moments are linear combinations of the spin-density matrix
 elements, \ie of intensities and interference terms of the
 partial-wave amplitudes $\prescript{\refl}{}{\mathcal{T\!}}_{\ell\,
-m}$.  \Cref{eq:moments_pw_diffraction} also shows that~$L$ and~$M$ are
+m}$.  \Cref{eq:diffraction_moments_pw} also shows that~$L$ and~$M$ are
 only indirectly linked to the physical angular momentum quantum
 numbers of the two-body system.  For given~$L$, the Clebsch-Gordan
 coefficients limit the sum to those partial waves, for which $\ell' +
@@ -311,9 +311,9 @@ angular momentum~$\ell$ contributes to moments from $L = 0$ up to $L =
 sum of contributions from both reflectivities, \ie the moments do not
 separate these contributions.
 
-We can derive \cref{eq:moments_pw_diffraction} also by inserting
-\cref{eq:intensity_diffraction_refl} into
-\cref{eq:moments_diffraction} and using
+We can derive \cref{eq:diffraction_moments_pw} also by inserting
+\cref{eq:diffraction_intensity_refl} into
+\cref{eq:diffraction_moments} and using
 \begin{equation}
   \label{eq:spherical_harm_clebsch}
   \int_{4 \pi}\!\!\! \dif{\Omega}\,
@@ -323,7 +323,7 @@ We can derive \cref{eq:moments_pw_diffraction} also by inserting
 (complex conjugate of Eq.~(4) in Sec.~5.9.1 of
 \refCite{Varshalovich:1988krb}).  Doing so, we obtain
 \begin{multline}
-  \label{eq:moments_pw_diffraction_refl}
+  \label{eq:diffraction_moments_pw_refl}
   H(L, M)
   = \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
@@ -333,7 +333,7 @@ We can derive \cref{eq:moments_pw_diffraction} also by inserting
   \sBrk[2]{Y_{\ell'}^{m' *}(\Omega) - \refl\, {(-1)}^{m'}\, Y_{\ell'}^{(-m') *}(\Omega)}\,
   Y_L^{M *}(\Omega),
 \end{multline}
-which is equivalent to \cref{eq:moments_pw_diffraction}.
+which is equivalent to \cref{eq:diffraction_moments_pw}.
 
 
 \subsection{Normalization of moments}%
@@ -341,7 +341,7 @@ which is equivalent to \cref{eq:moments_pw_diffraction}.
 
 In order to derive a more practical normalization, it is instructive
 to look at the lowest moment $H(0, 0)$, which is a special case.  With
-\cref{eq:moments_pw_diffraction} and
+\cref{eq:diffraction_moments_pw} and
 \begin{equation}
   \clebsch{\ell'}{m'}{0}{0}{\ell}{m}
   = \delta_{\ell \ell'}\, \delta_{m m'}
@@ -365,7 +365,7 @@ we get
         \end{cases*}}
   \end{multlined} \notag
   \\
-  \label{eq:moment_00_pw_diffraction}
+  \label{eq:diffraction_moment_00_pw}
   ={}& \frac{1}{\sqrt{4 \pi}} \sum_{\refl = \pm 1} \sum_\ell^\infty \sum_{m = 0}^\ell \prescript{\refl}{}{\varrho}^{\ell\, \ell}_{m\, m},
 \end{align}
 where we have used \cref{eq:refl_norm} and $m, m' \geq 0$.  According
@@ -380,15 +380,15 @@ moments using the replacement
   \to \sqrt{\frac{4 \pi}{2 L + 1}}\, H(L, M).
 \end{equation}
 Applying the above,
-\cref{eq:intensity_moments_diffraction,eq:moments_diffraction} become
+\cref{eq:diffraction_intensity_moments,eq:diffraction_moments} become
 \begin{equation}
-  \label{eq:intensity_moments_diffraction_norm}
+  \label{eq:diffraction_intensity_moments_norm}
   \mathcal{I}(\Omega)
   = \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}\, H(L, M)\, Y_L^M(\Omega),
 \end{equation}
 and
 \begin{equation}
-  \label{eq:moments_diffraction_norm}
+  \label{eq:diffraction_moments_norm}
   H(L, M)
   = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega).
 \end{equation}
@@ -398,12 +398,12 @@ $D$-functions~\cite{wikipedia:wignerD}:
   \sqrt{\frac{2 L + 1}{4 \pi}}\, D^{L *}_{M 0}(\phi, \theta, 0)
   = Y_L^M(\Omega),
 \end{equation}
-\cref{eq:intensity_moments_diffraction_norm,eq:moments_diffraction_norm}
+\cref{eq:diffraction_intensity_moments_norm,eq:diffraction_moments_norm}
 become identical to Eqs.~(6) and~(9) in \refCite{Chung:1997qd}
 
-Similarly, \cref{eq:moments_pw_diffraction} becomes
+Similarly, \cref{eq:diffraction_moments_pw} becomes
 \begin{multline}
-  \label{eq:moments_pw_diffraction_norm}
+  \label{eq:diffraction_moments_pw_norm}
   H(L, M)
   = \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
@@ -418,7 +418,7 @@ which is equivalent to Eqs.~(29) and~(31) in \refCite{Chung:1997qd}.
 
 For the remainder of this section we will use the unnormalized moments
 defined in
-\cref{eq:intensity_moments_diffraction_norm,eq:moments_diffraction_norm,eq:moments_pw_diffraction_norm}.
+\cref{eq:diffraction_intensity_moments_norm,eq:diffraction_moments_norm,eq:diffraction_moments_pw_norm}.
 
 
 \subsection{Symmetry properties of moments}%
@@ -432,7 +432,7 @@ spin-density matrix is Hermitian, \ie
   \rBrk{\prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}}^*
   = \prescript{\refl}{}{\varrho}^{\ell'\, \ell}_{m'\, m}.
 \end{equation}
-Using this together with \cref{eq:moments_pw_diffraction_norm} and
+Using this together with \cref{eq:diffraction_moments_pw_norm} and
 \begin{equation}
   \label{eq:clebsch_sym}
   \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
@@ -469,9 +469,9 @@ Using this together with \cref{eq:moments_pw_diffraction_norm} and
 \end{align}
 where in the last step we first made the replacements $\ell
 \leftrightarrow \ell'$ and $m \leftrightarrow m'$ and then compared to
-\cref{eq:moments_pw_diffraction_norm}.\footnote{%
+\cref{eq:diffraction_moments_pw_norm}.\footnote{%
   Alternatively, we can derive \cref{eq:diffraction_moment_sym_1} from
-  the definition of the moments in \cref{eq:moments_diffraction} and
+  the definition of the moments in \cref{eq:diffraction_moments} and
   using \cref{eq:spherical_harm_sym}:
   \begin{equation}
     H^*(L, M)
@@ -480,7 +480,7 @@ where in the last step we first made the replacements $\ell
     = (-1)^M\, H(L, -M).
   \end{equation}
 }  The above relation ensures that the intensity function in
-\cref{eq:intensity_moments_diffraction_norm} is real-valued:
+\cref{eq:diffraction_intensity_moments_norm} is real-valued:
 \begin{align}
   \mathcal{I}(\Omega)
   ={}& \sum_{L = 0}^\infty \sum_{M = -L}^{+L} \sqrt{\frac{2 L + 1}{4 \pi}}\, H(L, M)\, Y_L^M(\Omega) \notag
@@ -493,14 +493,14 @@ where in the last step we first made the replacements $\ell
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sBrk[4]{H(L, 0)\, Y_L^0(\Omega) + \sum_{M = +1}^{+L}
   \rdUnderbrace{\cBrk{H(L, M)\,Y_L^M(\Omega) + H^*(L, M)\,Y_L^{M *}(\Omega)}}{= 2 \Re{H(L, M)\, Y_L^M(\Omega)}}} \notag
   \\
-  \label{eq:intensity_moments_diffraction_general}
+  \label{eq:diffraction_intensity_moments_general}
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H(L, M)\, Y_L^M(\Omega)}.
 \end{align}
 For the last step, we have used that $Y_L^0(\Omega)$ and hence also
 $H(L, 0)$ are real-valued by construction.  Due to the above, we only
 have to calculate the moments with $M \geq 0$.
 
-Using \cref{eq:moments_pw_diffraction_norm} and the symmetry
+Using \cref{eq:diffraction_moments_pw_norm} and the symmetry
 properties of the Clebsch-Gordan coefficients in
 \cref{eq:clebsch_sym}, we can show that
 \begin{align}
@@ -532,14 +532,14 @@ properties of the Clebsch-Gordan coefficients in
 \end{align}
 where in the last step we first made the replacements $\ell
 \leftrightarrow \ell'$ and $m \leftrightarrow m'$ and then compared to
-\cref{eq:moments_pw_diffraction_norm}.
+\cref{eq:diffraction_moments_pw_norm}.
 
 From \cref{eq:diffraction_moment_sym_1,eq:diffraction_moment_sym_2} follows that
 \begin{equation}
   H^*(L, M) = H(L, M),
 \end{equation}
 \ie all moments must be real-valued.  Inserting
-\Cref{eq:moments_diffraction_norm}, we obtain
+\Cref{eq:diffraction_moments_norm}, we obtain
 \begin{align}
   \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega)
   \mustBeEq{}&
@@ -550,21 +550,21 @@ From \cref{eq:diffraction_moment_sym_1,eq:diffraction_moment_sym_2} follows that
 \end{align}
 Consequently,
 \begin{align}
-  \label{eq:moments_diffraction_imag}
+  \label{eq:diffraction_moments_imag}
   0
   ={}& \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta)\, \sin(M\, \phi) \\
   \intertext{and}
-  \label{eq:moments_diffraction_real}
+  \label{eq:diffraction_moments_real}
   H(L, M)
   ={}& \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta)\, \cos(M\, \phi).
 \end{align}
 
-We can also rewrite \cref{eq:intensity_moments_diffraction_general}:
+We can also rewrite \cref{eq:diffraction_intensity_moments_general}:
 \begin{align}
   \mathcal{I}(\Omega)
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H(L, M)\, \Re{Y_L^M(\Omega)} \notag
   \\
-  \label{eq:intensity_moments_diffraction_real}
+  \label{eq:diffraction_intensity_moments_real}
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H(L, M)\, y_L^M(\theta)\, \cos(M\, \phi).
 \end{align}
 This is identical to Eq.~(13) in \refCite{Chung:1997qd}.
@@ -576,7 +576,7 @@ This is identical to Eq.~(13) in \refCite{Chung:1997qd}.
 \subsubsection{Ideal detector with perfect acceptance}%
 \label{sec:diffraction:moments_data_no_acc}
 
-Using \cref{eq:moments_diffraction_real}, we can calculate the
+Using \cref{eq:diffraction_moments_real}, we can calculate the
 real-valued moments $H(L, M)$ with $M \geq 0$ for a given intensity
 distribution~$\mathcal{I}(\Omega)$.  The moments with $M < 0$ are
 linearly dependent and are given by
@@ -585,10 +585,10 @@ perfect acceptance, the measured events will follow the distribution
 $\mathcal{I}(\Omega)$.  For a data sample with $N$~events, the best
 estimates $\hat{H}(L, M)$ for the moments are hence given by replacing
 the integral over $\mathcal{I}(\Omega)$ in
-\cref{eq:moments_diffraction_real} by a sum over the measured events,
+\cref{eq:diffraction_moments_real} by a sum over the measured events,
 \ie
 \begin{equation}
-  \label{eq:moments_diffraction_estimate}
+  \label{eq:diffraction_moments_estimate}
   \hat{H}(L, M)
   = \sum_{i = 1}^N \sqrt{\frac{4 \pi}{2 L + 1}}\, y_L^M(\theta_i)\, \cos(M\, \phi_i)
   \equiv \sum_{i = 1}^N f_{L M}(\Omega_i),
@@ -611,7 +611,7 @@ number of events.} and with the chosen normalization (see
   = 1
   = \text{const}.
 \end{equation}
-\todo{relate to \cref{eq:moment_00_pw_diffraction}? Why no
+\todo{relate to \cref{eq:diffraction_moment_00_pw}? Why no
 interference effect? integral of interference terms always 0?}This
 means that unnormalized moments are expressed in units of events.
 
@@ -638,7 +638,7 @@ according to $\mathcal{I}(\Omega)$.\footnote{%
   identically distributed (iid) random variables.
 }  Therefore, the variance is given by
 \begin{equation}
-  \label{eq:moments_diffraction_var}
+  \label{eq:diffraction_moments_var}
   \var[1]{\hat{H}(L, M)}
   = \sigma_{\hat{H}(L, M)}^2
   = \var[4]{\sum_{i = 1}^N f_{L M}(\Omega_i)}
@@ -658,7 +658,7 @@ with the sample mean
 \end{equation}
 Hence,
 \begin{equation}
-  \label{eq:moments_diffraction_stdDev}
+  \label{eq:diffraction_moments_stdDev}
   \hat{\sigma}_{\hat{H}(L, M)}^2
   = \frac{N}{N - 1}\, \sum_{i = 1}^N \sBrk[2]{f_{L M}(\Omega_i) - \mean{f_{L M}(\Omega)}}^2.
 \end{equation}
@@ -720,7 +720,7 @@ developed by R.~Jones~\cite{Jones:2023}, which allows to unfold the
 detector resolution.
 
 Decomposing the measured intensity distribution into spherical
-harmonics analogous to \cref{eq:intensity_moments_diffraction_general}
+harmonics analogous to \cref{eq:diffraction_intensity_moments_general}
 we obtain
 \begin{equation}
   \mathcal{I}_\text{meas}(\Omega)
@@ -728,7 +728,7 @@ we obtain
 \end{equation}
 with the measured
 moments\footnote{\label{fn:complex_moment_decomp}Note that we cannot
-use \cref{eq:moments_diffraction_real} here because this equation was
+use \cref{eq:diffraction_moments_real} here because this equation was
 derived using the symmetry property of the physical moments in
 \cref{eq:diffraction_moment_sym_2}, which we derived from the symmetry
 properties of the Clebsch-Gordan coefficients.  However, since
@@ -741,24 +741,24 @@ moments we have to calculate only those with $M \geq 0$.
 Alternatively, one can use the real-valued spherical harmonics $Y_{L
 M}$ (note the different position of the $M$ index) as defined, for
 example, in \refsCite{wikipedia:sphericalHarm,Jones:2023} with $-L
-\leq M \leq +L$.} (\confer \cref{eq:moments_diffraction_norm};
+\leq M \leq +L$.} (\confer \cref{eq:diffraction_moments_norm};
 equivalent to Eq.~(B2) in \refCite{E852:1999xev})
 \begin{equation}
-  \label{eq:moments_diffraction_meas}
+  \label{eq:diffraction_moments_meas}
   H_\text{meas}(L, M)
   = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}_\text{meas}(\Omega)\, Y_L^{M *}(\Omega)
   = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \eta(\Omega)\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega).
 \end{equation}
 
 Inserting the moment decomposition for the physical intensity distribution
-from \cref{eq:intensity_moments_diffraction_real} into
-\cref{eq:moments_diffraction_meas} we get
+from \cref{eq:diffraction_intensity_moments_real} into
+\cref{eq:diffraction_moments_meas} we get
 \begin{align}
   H_\text{meas}(L, M)
   ={}& \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \eta(\Omega)\,
   \sum_{L' = 0}^\infty \sqrt{\frac{2 L' + 1}{4 \pi}} \sum_{M' = 0}^{L'} H(L', M')\, (2 - \delta_{M' 0})\, y_{L'}^{M'}(\theta)\, \cos(M'\, \phi)\,
   Y_L^{M *}(\Omega) \notag \\
-  \label{eq:moments_diffraction_meas2}
+  \label{eq:diffraction_moments_meas2}
   ={}& \sum_{L' = 0}^\infty \sum_{M' = 0}^{L'} H(L', M')
   \dUnderbrace{\sqrt{\frac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0}) \int_{4 \pi}\!\!\! \dif{\Omega}\, \eta(\Omega)\,
   y_{L'}^{M'}(\theta)\, \cos(M'\, \phi)\, Y_L^{M *}(\Omega)}{\equiv I^\text{acc}_{L M\, L' M'}},
@@ -770,7 +770,7 @@ spherical harmonics in the accepted phase space.
 In practice, we want to calculate only a finite set of moments and
 only a finite set of $(L' M')$ quantum numbers contribute to each of
 these moments.  We can hence rewrite
-\cref{eq:moments_diffraction_meas2} as a matrix equation in
+\cref{eq:diffraction_moments_meas2} as a matrix equation in
 quantum-number space, \ie
 \begin{equation}
   \vect{H}_\text{meas}
@@ -888,10 +888,10 @@ R.~Jones~\cite{Jones:2023}.
 \label{sec:diffraction:estimation_uncert}
 
 To obtain an estimate for $\vect{H}_\text{meas}$ from
-\cref{eq:moments_diffraction_meas} we use the same approach as in
-\cref{eq:moments_diffraction_estimate}, \ie
+\cref{eq:diffraction_moments_meas} we use the same approach as in
+\cref{eq:diffraction_moments_estimate}, \ie
 \begin{equation}
-  \label{eq:moments_meas_diffraction_estimate}
+  \label{eq:diffraction_moments_meas_estimate}
   \rBrk[1]{\hat{\vect{H}}_\text{meas}}_{L, M}
   = \hat{H}_\text{meas}(L, M)
   = \sum_{i = 1}^{N_\text{meas}} \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega_i)
@@ -1010,7 +1010,7 @@ $\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{meas}}$~can be calculated
 directly by calling \pyinline{N_meas * numpy.cov(f)}, where
 \pyinline{f} is an array of $N_\text{meas}$ vectors with the values of
 $f_{L M}(\Omega_i)$ as defined in
-\cref{eq:moments_meas_diffraction_estimate}.  However, to calculate
+\cref{eq:diffraction_moments_meas_estimate}.  However, to calculate
 the pseudo-covariance matrix
 $\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$~in NumPy we
 have to use \pyinline{N_meas * numpy.cov(f, numpy.conjugate(f))[:n, n:]}.}
@@ -1030,7 +1030,7 @@ have to use \pyinline{N_meas * numpy.cov(f, numpy.conjugate(f))[:n, n:]}.}
   \sBrk[2]{f_{L M}(\Omega_i) - \mean{f_{L M}(\Omega)}}\, \sBrk[2]{f_{L' M'}(\Omega_i) - \mean{f_{L' M'}(\Omega)}}.
 \end{align}
 Here, $f_{L M}(\Omega)$ is defined in
-\cref{eq:moments_meas_diffraction_estimate}.  From these two matrices,
+\cref{eq:diffraction_moments_meas_estimate}.  From these two matrices,
 we construct the augmented covariance
 matrix~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$
 using \cref{eq:cov_augmented}.\footnote{In NumPy, we can
@@ -1113,7 +1113,7 @@ of~$\hat{\vect{H}}$.
 
 Finally, we can verify that the acceptance correction works correctly
 by checking that the physical moments~$\hat{\vect{H}}$ fulfill
-\cref{eq:moments_diffraction_imag}, \ie that they are real-valued
+\cref{eq:diffraction_moments_imag}, \ie that they are real-valued
 within the uncertainty.
 
 
@@ -1123,7 +1123,7 @@ within the uncertainty.
 Following \refCite{E852:1999xev}, it is instructive to apply the
 moment decomposition also to the detection efficiency $\eta(\Omega)$
 in \cref{eq:diffraction_int_meas}.  Analogous to
-\cref{eq:intensity_moments_diffraction_general} we obtain
+\cref{eq:diffraction_intensity_moments_general} we obtain
 \begin{align}
   \label{eq:diffraction_acc_moment_decomp}
   \eta(\Omega)
@@ -1132,7 +1132,7 @@ in \cref{eq:diffraction_int_meas}.  Analogous to
   ={}& \sum_{L = 0}^\infty \sqrt{4 \pi}\, \sqrt{2 L + 1} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_\text{acc}(L, M)\, Y_L^M(\Omega)}
 \end{align}
 with the acceptance moments defined analogously to
-\cref{eq:moments_diffraction_norm},\footnote{The same arguments as in
+\cref{eq:diffraction_moments_norm},\footnote{The same arguments as in
 \cref{fn:complex_moment_decomp} apply here.} \ie
 \begin{equation}
   \label{eq:diffraction_acc_moment}
@@ -1152,7 +1152,7 @@ the only non-zero acceptance moment is $H_\text{acc}(0, 0) =
 }
 
 Inserting \cref{eq:diffraction_acc_moment_decomp} into the acceptance
-integral matrix defined in \cref{eq:moments_diffraction_meas2}, we get
+integral matrix defined in \cref{eq:diffraction_moments_meas2}, we get
 \begin{align}
   I^\text{acc}_{L M\, L' M'}
   ={}& \sqrt{\frac{2 L' + 1}{2 L + 1}} \sum_{L''\, M''}^\infty \sqrt{4 \pi}\, \sqrt{2 L'' + 1}\, H_\text{acc}(L'', M'')
@@ -1166,7 +1166,7 @@ Here, we have switched back to using the complex-valued spherical
 harmonics and including the negative $M$~values into the sums and we
 have applied \cref{eq:spherical_harm_clebsch}.\todo{Why does Eq.~(B9)
 in \refCite{E852:1999xev} contains $H_\text{acc}^*$?}  From the above
-equation, it is clear that in \cref{eq:moments_diffraction_meas2} a
+equation, it is clear that in \cref{eq:diffraction_moments_meas2} a
 measured moment with given $(L, M)$ depends only on those physical
 moments $H(L', M')$ and those acceptance moments $H_\text{acc}(L'',
 M'')$, for which $L', L'' \leq 2 L$.  This means that under the
