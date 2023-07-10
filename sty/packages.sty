@@ -79,11 +79,12 @@
 \fi
 \RequirePackage{etoolbox}          % extensive collection of usefull macros for class and package authors
 \RequirePackage{fp}                % fixed point arithmetic for TeX
+\RequirePackage{calc}              % arithmetic axpressions for dimensions
 \RequirePackage{microtype}         % subliminal refinements towards typographical perfection
 \RequirePackage{ifthen}            % provides \ifthenelse command
-\RequirePackage{xifthen}           % provides extended test expressions for \ifthenelse
+\RequirePackage{xifthen}           % provides extended test expressions for \ifthenelse and \isempty
 \RequirePackage{xspace}            % automatically adds space after macro expressions, if necessary
-\xspaceaddexceptions{]}
+\xspaceaddexceptions{]\}}
 \RequirePackage{xpunctuate}        % provides macros for post-macro punctuation insertion
 \RequirePackage[utf8]{inputenc}    % set encoding used for .tex files; latin1 corresponds to ISO 8859-1
 \RequirePackage{bold-extra}        % provides bold small caps (bitmap only) with Computer Modern font
@@ -102,6 +103,7 @@
 
 % ------------------------------------------------------------------------------
 % layout packages
+\RequirePackage{appendix}                       % facilities for modifying the typesetting of appendix titles
 \RequirePackage{bigdelim}                       % extensions to the standard LATEX tabular environment
 \RequirePackage{blindtext}                      % generates dummy text test purposes
 \RequirePackage{afterpage}                      % expand commands after current page is output; typical example: \afterpage{\clearpage}
@@ -128,10 +130,12 @@
 \RequirePackage[stable]{footmisc}               % allows footnotes in section headings
 \RequirePackage{cite}                           % compresses and sorts lists of numerical citations
 \RequirePackage{authblk}                        % package to prepare author and affiliation blocks
-\RequirePackage{siunitx}[=v2]  % typesets numbers and units properly with correct spacing
+\RequirePackage{siunitx}                        % typesets numbers and units properly with correct spacing
 \sisetup{%
-  separate-uncertainty=true,  % type set value +- uncertainty
-  multi-part-units=single,  % for value with uncertainty typeset unit only once
+  % forbid-literal-units=true,
+  free-standing-units=true,
+  separate-uncertainty=true,
+  separate-uncertainty-units=single,
   range-units=single,
   range-phrase=\ensuremath{\text{ to }},  % make ranges work in math environment
   list-units=single,
@@ -139,6 +143,9 @@
   list-final-separator=\ensuremath{\text{, and }},  % serial comma
   list-pair-separator=\ensuremath{\text{ and }},
   list-separator=\ensuremath{\text{, }},
+  % use text font for numbers and units
+  detect-all,
+  mode=text,
   % enable automatic detection of font
   detect-family=true,
   detect-weight=true,
@@ -169,6 +176,7 @@
 %\RequirePackage[low-sup]{subdepth}  % avoid different height of subscript in cases like $A_a$ and $A_a^a$
 \RequirePackage{cancel}             % indicate canceling terms
 \RequirePackage{accents}            % miscellaneous tools for mathematical accents
+\RequirePackage{upgreek}            % macros for upright greek letters; e.g. for vector/matrix notation
 
 
 % ------------------------------------------------------------------------------
