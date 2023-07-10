@@ -491,10 +491,10 @@ where in the last step we first made the replacements $\ell
     + H(L, 0)\, Y_L^0(\Omega) + \sum_{M = +1}^{+L} H(L, M)\, Y_L^M(\Omega)} \notag
   \\
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sBrk[4]{H(L, 0)\, Y_L^0(\Omega) + \sum_{M = +1}^{+L}
-  \rdUnderbrace{\cBrk{H(L, M)\,Y_L^M(\Omega) + H^*(L, M)\,Y_L^{M *}(\Omega)}}{= 2 \Re\!\sBrk{H(L, M)\, Y_L^M(\Omega)}}} \notag
+  \rdUnderbrace{\cBrk{H(L, M)\,Y_L^M(\Omega) + H^*(L, M)\,Y_L^{M *}(\Omega)}}{= 2 \Re{H(L, M)\, Y_L^M(\Omega)}}} \notag
   \\
   \label{eq:intensity_moments_diffraction_general}
-  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re\!\sBrk{H(L, M)\, Y_L^M(\Omega)}.
+  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H(L, M)\, Y_L^M(\Omega)}.
 \end{align}
 For the last step, we have used that $Y_L^0(\Omega)$ and hence also
 $H(L, 0)$ are real-valued by construction.  Due to the above, we only
@@ -562,7 +562,7 @@ Consequently,
 We can also rewrite \cref{eq:intensity_moments_diffraction_general}:
 \begin{align}
   \mathcal{I}(\Omega)
-  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H(L, M)\, \Re\!\sBrk{Y_L^M(\Omega)} \notag
+  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H(L, M)\, \Re{Y_L^M(\Omega)} \notag
   \\
   \label{eq:intensity_moments_diffraction_real}
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H(L, M)\, y_L^M(\theta)\, \cos(M\, \phi).
@@ -671,10 +671,10 @@ This is analogous to Monte Carlo integration (see \eg\
 \end{equation}
 
 Similarly, we can estimate the covariance
-matrix~$\hat{\covMatSym}_{\!\hat{H}}$ for a given set of moment
+matrix~$\hat{\covMatSym}_{\!\hat{\vect{H}}}$ for a given set of moment
 estimates using the sample covariance:
 \begin{align}
-  (\hat{\covMatSym}_{\!\hat{H}})_{L M, L' M'}
+  (\hat{\covMatSym}_{\!\hat{\vect{H}}})_{L M, L' M'}
   ={}& \cov[2]{\hat{H}(L, M), \hat{H}(L', M')}
   = N\, \cov[2]{f_{L M}(\Omega), f_{L' M'}(\Omega)} \notag
   \\
@@ -724,7 +724,7 @@ harmonics analogous to \cref{eq:intensity_moments_diffraction_general}
 we obtain
 \begin{equation}
   \mathcal{I}_\text{meas}(\Omega)
-  = \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re\!\sBrk{H_\text{meas}(L, M)\, Y_L^M(\Omega)}
+  = \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_\text{meas}(L, M)\, Y_L^M(\Omega)}
 \end{equation}
 with the measured
 moments\footnote{\label{fn:complex_moment_decomp}Note that we cannot
@@ -773,15 +773,15 @@ these moments.  We can hence rewrite
 \cref{eq:moments_diffraction_meas2} as a matrix equation in
 quantum-number space, \ie
 \begin{equation}
-  \mathbf{H}_\text{meas}
-  = \mathbf{I}^\text{acc}\, \mathbf{H},
+  \vect{H}_\text{meas}
+  = \mat{I}^\text{acc}\, \vect{H},
 \end{equation}
-where $\mathbf{I}^\text{acc}$ is the acceptance integral matrix.  For
-an ideal detector with $\eta(\Omega) = 1$, $\mathbf{I}^\text{acc}$
+where $\mat{I}^\text{acc}$ is the acceptance integral matrix.  For
+an ideal detector with $\eta(\Omega) = 1$, $\mat{I}^\text{acc}$
 becomes a unit matrix in quantum-number space, \ie
 \begin{equation}
   \label{eq:diffraction_integral_matrix_ideal}
-  \rBrk{\mathbf{I}^\text{acc}}_{L M\, L' M'}
+  \rBrk{\mat{I}^\text{acc}}_{L M\, L' M'}
   = I^\text{acc}_{L M\, L' M'}
   = \delta_{L L'}\, \delta_{M M'},
 \end{equation}
@@ -829,30 +829,30 @@ because of the orthonormality of the spherical harmonics (see
   \end{equation}
   we obtain \cref{eq:diffraction_integral_matrix_ideal}.
 }
-In this case, $\mathbf{H}_\text{meas} = \mathbf{H}$, as expected.
+In this case, $\vect{H}_\text{meas} = \vect{H}$, as expected.
 
 For a realistic detector, $\eta(\Omega) \neq 1$ will break the
 orthogonality of the spherical harmonics.  In this case, the diagonal
-elements of $\mathbf{I}^\text{acc}$ represent the acceptance for the
+elements of $\mat{I}^\text{acc}$ represent the acceptance for the
 intensity distribution that corresponds to the respective $(L M)$
-quantum numbers.  The off-diagonal elements of $\mathbf{I}^\text{acc}$
+quantum numbers.  The off-diagonal elements of $\mat{I}^\text{acc}$
 are in general non-zero and are related to the indistinguishability of
 moments with $(L M)$ from those with $(L' M')$ quantum numbers due to
 the limited detection efficiency.  This indistinguishability between
 quantum-number combinations can be quantified by considering the
 normalized acceptance integral matrix
 \begin{equation}
-  \tilde{\mathbf{I}}^\text{acc}
-  = \diag(\mathbf{I}^\text{acc})^{-1/2}\, \mathbf{I}^\text{acc}\, \diag(\mathbf{I}^\text{acc})^{-1/2},
-  \quad\text{\ie}\quad
+  \tilde{\mat{I}}^\text{acc}
+  = \diag(\mat{I}^\text{acc})^{-1/2}\, \mat{I}^\text{acc}\, \diag(\mat{I}^\text{acc})^{-1/2},
+  \quad\text{or equivalently}\quad
   \tilde{I}^\text{acc}_{L M\, L' M'}
   = \frac{I^\text{acc}_{L M\, L' M'}}{\sqrt{I^\text{acc}_{L M\, L M}}\, \sqrt{I^\text{acc}_{L' M'\, L' M'}}}.
 \end{equation}
 If the angular distributions for two moments become indistinguishable
 in the accepted phase space, the corresponding off-diagonal elements
-of $\tilde{\mathbf{I}}^\text{acc}$ will approach~1.
+of $\tilde{\mat{I}}^\text{acc}$ will approach~1.
 
-$\mathbf{I}^\text{acc}$ can be calculated using Monte Carlo
+$\mat{I}^\text{acc}$ can be calculated using Monte Carlo
 integration.  To this end, we first generate $N_\text{gen}$~events
 that are uniformly distributed in the two-body phase
 space\footnote{This means the events are uniformly distributed in the
@@ -862,7 +862,7 @@ From the remaining $N_\text{acc}$ accepted events we calculate the
 elements of the acceptance integral matrix using
 \begin{equation}
   \label{eq:diffraction_integral_matrix}
-  \rBrk{\mathbf{I}^\text{acc}}_{L M\, L' M'}
+  \rBrk{\mat{I}^\text{acc}}_{L M\, L' M'}
   = I^\text{acc}_{L M\, L' M'}
   = \sqrt{\frac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})\,
   \frac{4 \pi}{N_\text{gen}} \sum_{i = 1}^{N_\text{acc}} y_{L'}^{M'}(\theta_i)\, \cos(M'\, \phi_i)\, Y_L^{M *}(\Omega_i).
@@ -870,15 +870,15 @@ elements of the acceptance integral matrix using
 Expect for the factor $4 \pi$ that represents the integration volume,
 this is identical to Eq.~(B6) in \refCite{E852:1999xev}.
 
-If the integral matrix $\mathbf{I}^\text{acc}$ is invertible, we can
+If the integral matrix $\mat{I}^\text{acc}$ is invertible, we can
 calculate the physical moments from the measured ones using
 \begin{equation}
   \label{eq:diffraction_phys_moments}
-  \mathbf{H}
-  = \rBrk[1]{\mathbf{I}^\text{acc}}^{-1}\, \mathbf{H}_\text{meas}.
+  \vect{H}
+  = \rBrk[1]{\mat{I}^\text{acc}}^{-1}\, \vect{H}_\text{meas}.
 \end{equation}
 In case the detection efficiency is close to zero over wide ranges of
-the phase space, $\mathbf{I}^\text{acc}$ may become (nearly) singular.
+the phase space, $\mat{I}^\text{acc}$ may become (nearly) singular.
 In this case, certain moments may become immeasurable and one has to
 revert to the support-vector moments developed by
 R.~Jones~\cite{Jones:2023}.
@@ -887,12 +887,12 @@ R.~Jones~\cite{Jones:2023}.
 \subsubsection{Estimation of measured moments and uncertainty propagation}%
 \label{sec:diffraction:estimation_uncert}
 
-To obtain an estimate for $\mathbf{H}_\text{meas}$ from
+To obtain an estimate for $\vect{H}_\text{meas}$ from
 \cref{eq:moments_diffraction_meas} we use the same approach as in
 \cref{eq:moments_diffraction_estimate}, \ie
 \begin{equation}
   \label{eq:moments_meas_diffraction_estimate}
-  \rBrk[1]{\hat{\mathbf{H}}_\text{meas}}_{L, M}
+  \rBrk[1]{\hat{\vect{H}}_\text{meas}}_{L, M}
   = \hat{H}_\text{meas}(L, M)
   = \sum_{i = 1}^{N_\text{meas}} \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega_i)
   \equiv \sum_{i = 1}^{N_\text{meas}} f_{L M}(\Omega_i).
@@ -900,14 +900,14 @@ To obtain an estimate for $\mathbf{H}_\text{meas}$ from
 This means, the measured moments are given by the
 spherical-harmonics-weighted sum of the $N_\text{meas}$~measured
 events.  From the estimates of the measured moments we calculate the
-estimates~$\hat{\mathbf{H}}$ of the physical moments using
+estimates~$\hat{\vect{H}}$ of the physical moments using
 \cref{eq:diffraction_phys_moments}.
 
 We also have to propagate the uncertainty
-from~$\hat{\mathbf{H}}_\text{meas}$ to~$\hat{\mathbf{H}}$.  This is
+from~$\hat{\vect{H}}_\text{meas}$ to~$\hat{\vect{H}}$.  This is
 complicated by the fact that in general the measured moments
-$\hat{\mathbf{H}}_\text{meas}$~as well as the inverse of the
-acceptance matrix $\rBrk[1]{\mathbf{I}^\text{acc}}^{-1}$ in
+$\hat{\vect{H}}_\text{meas}$~as well as the inverse of the
+acceptance matrix $\rBrk[1]{\mat{I}^\text{acc}}^{-1}$ in
 \cref{eq:diffraction_phys_moments} are complex-valued.  The most
 convenient way to formulate uncertainty propagation for complex-valued
 quantities is to use Wirtinger calculus\footnote{Sometimes this is
@@ -918,107 +918,111 @@ In this approach, the linear uncertainty propagation for
 form\footnote{We use~$\dagger$ to indicate the Hermitian conjugate.}
 \begin{equation}
   \label{eq:complex_uncert_prop}
-  \underaccent{\bar}{\covMatSym}_{\!H}
-  = \underaccent{\bar}{\mathbf{J}}\, \underaccent{\bar}{\covMatSym}_{\!H_\text{meas}}\, \underaccent{\bar}{\mathbf{J}}^\dagger.
+  \underaccent{\bar}{\covMatSym}_{\!\vect{H}}
+  = \underaccent{\bar}{\mat{J}}\, \underaccent{\bar}{\covMatSym}_{\!\vect{H}_\text{meas}}\, \underaccent{\bar}{\mat{J}}^\dagger.
 \end{equation}
 Here, the matrices are expressed in the so-called augmented
-representation (see \eg\ \refsCite{Adali:2014,Grube:2023}), which is
+representation (see \eg Sec.~2.3 in \refsCite{Grube:2023}), which is
 indicated by the underbars.  This representation is obtained by
-stacking the moment vector~$\mathbf{H}$ on top of its
-complex-conjugate vector~$\mathbf{H}^*$, \ie the augmented moment
+stacking the moment vector~$\vect{H}$ on top of its
+complex-conjugate vector~$\vect{H}^*$, \ie the augmented moment
 vector is
 \begin{equation}
-  \underaccent{\bar}{\mathbf{H}}
+  \underaccent{\bar}{\vect{H}}
   \equiv \begin{pmatrix*}[l]
-    \mathbf{H} \\
-    \mathbf{H}^*
+    \vect{H} \\
+    \vect{H}^*
   \end{pmatrix*}
   \in \mathbb{C}^{2n}
 \end{equation}
 with $n$~being the number of moments.
 
 In the augmented representation, the covariance matrix
-of~$\underaccent{\bar}{\mathbf{H}}$\footnote{Analogous expressions
+of~$\underaccent{\bar}{\vect{H}}$ is\footnote{Analogous expressions
 define the covariance matrix
-of~$\underaccent{\bar}{\mathbf{H}}_\text{meas}$.} is a $\mathbb{C}^{2n
-\times 2n}$ matrix, \ie
+of~$\underaccent{\bar}{\vect{H}}_\text{meas}$.}
 \begin{equation}
-  \underaccent{\bar}{\covMatSym}_{\!H}
-  = \cov[1]{\underaccent{\bar}{\mathbf{H}}, \underaccent{\bar}{\mathbf{H}}}
-  = \exptVal[2]{\rBrk[1]{\underaccent{\bar}{\mathbf{H}} - \exptVal[1]{\underaccent{\bar}{\mathbf{H}}}}\,
-  \rBrk[1]{\underaccent{\bar}{\mathbf{H}} - \exptVal[1]{\underaccent{\bar}{\mathbf{H}}}}^\dagger}.
+  \underaccent{\bar}{\covMatSym}_{\!\vect{H}}
+  = \cov[1]{\underaccent{\bar}{\vect{H}}, \underaccent{\bar}{\vect{H}}}
+  = \exptVal[2]{\rBrk[1]{\underaccent{\bar}{\vect{H}} - \exptVal[1]{\underaccent{\bar}{\vect{H}}}}\,
+  \rBrk[1]{\underaccent{\bar}{\vect{H}} - \exptVal[1]{\underaccent{\bar}{\vect{H}}}}^\dagger}
+  \in \mathbb{C}^{2n \times 2n}.
 \end{equation}
 This matrix has a block structure of the form
 \begin{equation}
   \label{eq:cov_augmented}
-  \underaccent{\bar}{\covMatSym}_{\!H}
+  \underaccent{\bar}{\covMatSym}_{\!\vect{H}}
   = \begin{pmatrix*}[l]
-    \covMatSym_{\!H} & \tilde{\covMatSym}_{\!H} \\
-    \tilde{\covMatSym}_{\!H}^* & \covMatSym_{\!H}^*
+    \covMatSym_{\!\vect{H}} & \tilde{\covMatSym}_{\!\vect{H}} \\
+    \tilde{\covMatSym}_{\!\vect{H}}^* & \covMatSym_{\!\vect{H}}^*
   \end{pmatrix*}
 \end{equation}
 where
 \begin{equation}
-  \covMatSym_{\!H}
-  = \cov[1]{\mathbf{H}, \mathbf{H}}
-  = \exptVal[2]{\rBrk[1]{\mathbf{H} - \exptVal[1]{\mathbf{H}}}\, \rBrk[1]{\mathbf{H} - \exptVal[1]{\mathbf{H}}}^\dagger}
+  \covMatSym_{\!\vect{H}}
+  = \cov[1]{\vect{H}, \vect{H}}
+  = \exptVal[2]{\rBrk[1]{\vect{H} - \exptVal[1]{\vect{H}}}\, \rBrk[1]{\vect{H} - \exptVal[1]{\vect{H}}}^\dagger}
+  \in \mathbb{C}^{n \times n}
 \end{equation}
-is the $\mathbb{C}^{n \times n}$ Hermitian covariance matrix
-of~$\mathbf{H}$ and
+is the Hermitian covariance matrix of~$\vect{H}$ and
 \begin{equation}
-  \tilde{\covMatSym}_{\!H}
-  = \cov[1]{\mathbf{H}, \mathbf{H}^*}
-  = \exptVal[2]{\rBrk[1]{\mathbf{H} - \exptVal[1]{\mathbf{H}}}\, \rBrk[1]{\mathbf{H} - \exptVal[1]{\mathbf{H}}}^T}
+  \tilde{\covMatSym}_{\!\vect{H}}
+  = \cov[1]{\vect{H}, \vect{H}^*}
+  = \exptVal[2]{\rBrk[1]{\vect{H} - \exptVal[1]{\vect{H}}}\, \rBrk[1]{\vect{H} - \exptVal[1]{\vect{H}}}^T}
+  \in \mathbb{C}^{n \times n}
 \end{equation}
-is the $\mathbb{C}^{n \times n}$ pseudo-covariance matrix
-of~$\mathbf{H}$.  These matrices are related to the covariance
-matrices of the real and imaginary parts of~$\mathbf{H}$ in the
-following way:
+is the pseudo-covariance matrix of~$\vect{H}$.  These matrices are
+related to the covariance matrices of the real and imaginary parts
+of~$\vect{H}$ in the following way:
 \begin{align}
   \label{eq:cov_ReRe}
-  \covMatSym_{\!H}^{RR}
-  = \exptVal[2]{\rBrk[1]{\Re\!\sBrk{\mathbf{H}} - \exptVal[1]{\Re\!\sBrk{\mathbf{H}}}}\, \rBrk[1]{\Re\!\sBrk{\mathbf{H}} - \exptVal[1]{\Re\!\sBrk{\mathbf{H}}}}^T}
-  ={}& \frac{1}{2}\, \Re\!\sBrk[1]{\covMatSym_{\!H} + \tilde{\covMatSym}_{\!H}}
+  \covMatSym_{\!\vect{H}}^{RR}
+  = \exptVal[2]{\rBrk[1]{\Re{\vect{H}} - \exptVal[1]{\Re{\vect{H}}}}\, \rBrk[1]{\Re{\vect{H}} - \exptVal[1]{\Re{\vect{H}}}}^T}
+  ={}& \frac{1}{2}\, \Re[1]{\covMatSym_{\!\vect{H}} + \tilde{\covMatSym}_{\!\vect{H}}}
+  \in \mathbb{R}^{n \times n}
   \\
   \label{eq:cov_ImIm}
-  \covMatSym_{\!H}^{II}
-  = \exptVal[2]{\rBrk[1]{\Im\!\sBrk{\mathbf{H}} - \exptVal[1]{\Im\!\sBrk{\mathbf{H}}}}\, \rBrk[1]{\Im\!\sBrk{\mathbf{H}} - \exptVal[1]{\Im\!\sBrk{\mathbf{H}}}}^T}
-  ={}& \frac{1}{2}\, \Re\!\sBrk[1]{\covMatSym_{\!H} - \tilde{\covMatSym}_{\!H}}
+  \covMatSym_{\!\vect{H}}^{II}
+  = \exptVal[2]{\rBrk[1]{\Im{\vect{H}} - \exptVal[1]{\Im{\vect{H}}}}\, \rBrk[1]{\Im{\vect{H}} - \exptVal[1]{\Im{\vect{H}}}}^T}
+  ={}& \frac{1}{2}\, \Re[1]{\covMatSym_{\!\vect{H}} - \tilde{\covMatSym}_{\!\vect{H}}}
+  \in \mathbb{R}^{n \times n}
   \\
   \label{eq:cov_ReIm}
-  \covMatSym_{\!H}^{RI}
-  = \exptVal[2]{\rBrk[1]{\Re\!\sBrk{\mathbf{H}} - \exptVal[1]{\Re\!\sBrk{\mathbf{H}}}}\, \rBrk[1]{\Im\!\sBrk{\mathbf{H}} - \exptVal[1]{\Im\!\sBrk{\mathbf{H}}}}^T}
-  ={}& \frac{1}{2}\, \Im\!\sBrk[1]{\covMatSym_{\!H} - \tilde{\covMatSym}_{\!H}}
-  = \rBrk[1]{\covMatSym_{\!H}^{IR}}^T.
+  \covMatSym_{\!\vect{H}}^{RI}
+  = \exptVal[2]{\rBrk[1]{\Re{\vect{H}} - \exptVal[1]{\Re{\vect{H}}}}\, \rBrk[1]{\Im{\vect{H}} - \exptVal[1]{\Im{\vect{H}}}}^T}
+  ={}& \frac{1}{2}\, \Im[1]{\covMatSym_{\!\vect{H}} - \tilde{\covMatSym}_{\!\vect{H}}}
+  = \rBrk[1]{\covMatSym_{\!\vect{H}}^{IR}}^T
+  \in \mathbb{R}^{n \times n}.
 \end{align}
 And conversely,
 \begin{align}
-  \covMatSym_{\!H}
-  = \covMatSym_{\!H}^{RR} + \covMatSym_{\!H}^{II} + \imag \rBrk{\covMatSym_{\!H}^{IR} - \covMatSym_{\!H}^{RI}}
+  \covMatSym_{\!\vect{H}}
+  = \covMatSym_{\!\vect{H}}^{RR} + \covMatSym_{\!\vect{H}}^{II} + \imag \rBrk{\covMatSym_{\!\vect{H}}^{IR} - \covMatSym_{\!\vect{H}}^{RI}}
   \\
-  \tilde{\covMatSym}_{\!H}
-  = \covMatSym_{\!H}^{RR} - \covMatSym_{\!H}^{II} + \imag \rBrk{\covMatSym_{\!H}^{IR} + \covMatSym_{\!H}^{RI}}
+  \tilde{\covMatSym}_{\!\vect{H}}
+  = \covMatSym_{\!\vect{H}}^{RR} - \covMatSym_{\!\vect{H}}^{II} + \imag \rBrk{\covMatSym_{\!\vect{H}}^{IR} + \covMatSym_{\!\vect{H}}^{RI}}
 \end{align}
 
 Analogous to \cref{eq:diffraction_sample_cov} we can estimate the
 Hermitian and the pseudo-covariance matrix for the measured moments
 using the sample covariance:\footnote{In NumPy,
-$\hat{\covMatSym}_{\!\hat{H}_\text{meas}}$~can be calculated directly
-by calling \pyinline{numpy.cov(f)}, where \pyinline{f} is an array of
-$N_\text{meas}$ vectors with the values of $f_{L M}(\Omega_i)$ as
-defined in \cref{eq:moments_meas_diffraction_estimate}.  However, to
-calculate the pseudo-covariance matrix
-$\hat{\tilde{\covMatSym}}_{\!\hat{H}_\text{meas}}$~in NumPy we have to
-use \pyinline{numpy.cov(f, numpy.conjugate(f))[:n, n:]}.}
+$\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{meas}}$~can be calculated
+directly by calling \pyinline{N_meas * numpy.cov(f)}, where
+\pyinline{f} is an array of $N_\text{meas}$ vectors with the values of
+$f_{L M}(\Omega_i)$ as defined in
+\cref{eq:moments_meas_diffraction_estimate}.  However, to calculate
+the pseudo-covariance matrix
+$\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$~in NumPy we
+have to use \pyinline{N_meas * numpy.cov(f, numpy.conjugate(f))[:n, n:]}.}
 \begin{align}
-  (\hat{\covMatSym}_{\!\hat{H}_\text{meas}})_{L M, L' M'}
+  (\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{meas}})_{L M, L' M'}
   ={}& \cov[2]{\hat{H}_\text{meas}(L, M), \hat{H}_\text{meas}(L', M')} \notag
   \\
   \label{eq:diffraction_sample_cov_hermit_meas}
   ={}& \frac{N_\text{meas}}{N_\text{meas} - 1}\, \sum_{i = 1}^{N_\text{meas}}
   \sBrk[2]{f_{L M}(\Omega_i) - \mean{f_{L M}(\Omega)}}\, \sBrk[2]{f_{L' M'}(\Omega_i) - \mean{f_{L' M'}(\Omega)}}^*.
   \\
-  (\hat{\tilde{\covMatSym}}_{\!\hat{H}_\text{meas}})_{L M, L' M'}
+  (\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}})_{L M, L' M'}
   ={}& \cov[2]{\hat{H}_\text{meas}(L, M), \hat{H}_\text{meas}^*(L', M')} \notag
   \\
   \label{eq:diffraction_sample_cov_pseudo_meas}
@@ -1028,85 +1032,87 @@ use \pyinline{numpy.cov(f, numpy.conjugate(f))[:n, n:]}.}
 Here, $f_{L M}(\Omega)$ is defined in
 \cref{eq:moments_meas_diffraction_estimate}.  From these two matrices,
 we construct the augmented covariance
-matrix~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{H}_\text{meas}}$
+matrix~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$
 using \cref{eq:cov_augmented}.\footnote{In NumPy, we can
-calculate~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{H}_\text{meas}}$
-directly by calling \pyinline{numpy.cov(f, numpy.conjugate(f))}.
+calculate~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$
+directly by calling \pyinline{N_meas * numpy.cov(f, numpy.conjugate(f))}.
 Alternatively, one can construct the augmented vector \pyinline{f_aug
 = numpy.block([[f], [numpy.conjugate(f)]])} and call
-\pyinline{numpy.cov(f_aug)}.}
+\pyinline{N_meas * numpy.cov(f_aug)}.}
 
-In \cref{eq:complex_uncert_prop}, $\underaccent{\bar}{\mathbf{J}}$ is
-the $\mathbb{C}^{2n \times 2n}$ augmented Jacobian matrix of
-\cref{eq:diffraction_phys_moments}, which has a similar block
-structure as the augmented covariance matrix in
+In \cref{eq:complex_uncert_prop}, $\underaccent{\bar}{\mat{J}}$ is the
+augmented Jacobian matrix of \cref{eq:diffraction_phys_moments}, which
+has a similar block structure as the augmented covariance matrix in
 \cref{eq:cov_augmented}:
 \begin{equation}
   \label{eq:J_augmented}
-  \underaccent{\bar}{\mathbf{J}}
+  \underaccent{\bar}{\mat{J}}
   = \begin{pmatrix*}[l]
-    \mathbf{J} & \tilde{\mathbf{J}} \\
-    \tilde{\mathbf{J}}^* & \mathbf{J}^*
-  \end{pmatrix*},
+    \mat{J} & \tilde{\mat{J}} \\
+    \tilde{\mat{J}}^* & \mat{J}^*
+  \end{pmatrix*}
+  \in \mathbb{C}^{2n \times 2n},
 \end{equation}
 where
 \begin{equation}
-  \mathbf{J}
-  = \pd{\mathbf{H}}{\mathbf{H}_\text{meas}}
+  \mat{J}
+  = \pd{\vect{H}}{\vect{H}_\text{meas}}
   = \begin{pmatrix}
-    \dpd{H_1}{\mathbf{H}_\text{meas}} \\
+    \dpd{H_1}{\vect{H}_\text{meas}} \\
     \vdots \\
-    \dpd{H_n}{\mathbf{H}_\text{meas}}
+    \dpd{H_n}{\vect{H}_\text{meas}}
   \end{pmatrix}
   = \begin{pmatrix}
     \dpd{H_1}{H_{\text{meas}, 1}} & \ldots & \dpd{H_1}{H_{\text{meas}, n}} \\
     \vdots & & \vdots \\
     \dpd{H_n}{H_{\text{meas}, 1}} & \ldots & \dpd{H_n}{H_{\text{meas}, n}}
   \end{pmatrix}
+  \in \mathbb{C}^{n \times n}
 \end{equation}
-is the $\mathbb{C}^{n \times n}$ Jacobian matrix \wrt~$\mathbf{H}$ and
+is the Jacobian matrix \wrt~$\vect{H}$ and
 \begin{equation}
-  \tilde{\mathbf{J}}
-  = \pd{\mathbf{H}}{{\mathbf{H}_\text{meas}^*}}
+  \tilde{\mat{J}}
+  = \pd{\vect{H}}{{\vect{H}_\text{meas}^*}}
+  \in \mathbb{C}^{n \times n}
 \end{equation}
-is the $\mathbb{C}^{n \times n}$ conjugate Jacobian matrix
-\wrt~$\mathbf{H}^*$.
+is the conjugate Jacobian matrix \wrt~$\vect{H}^*$.
 
-The advantage of Wirtinger calculus is that~$\mathbf{J}$
-and~$\tilde{\mathbf{J}}$ are easily calculable using the same rules as
+The advantage of Wirtinger calculus is that~$\mat{J}$
+and~$\tilde{\mat{J}}$ are easily calculable using the same rules as
 for real-valued expressions if one considers
 \cref{eq:diffraction_phys_moments} as a function of two independent
-variables, ~$\mathbf{H}$ and~$\mathbf{H}^*$.  Hence,
+variables, ~$\vect{H}$ and~$\vect{H}^*$.  Hence,
 \begin{equation}
-  \mathbf{J}
-  = \pd{\mathbf{H}}{\mathbf{H}_\text{meas}}
-  = \mathbf{A}
+  \mat{J}
+  = \pd{\vect{H}}{\vect{H}_\text{meas}}
+  = \mat{A}
   \quad\text{and}\quad
-  \tilde{\mathbf{J}}
-  = \pd{\mathbf{H}}{{\mathbf{H}_\text{meas}^*}}
-  = \mathbf{0},
+  \tilde{\mat{J}}
+  = \pd{\vect{H}}{{\vect{H}_\text{meas}^*}}
+  = \mat{0},
 \end{equation}
 where we have applied the rules from matrix calculus (see \eg\
 \refCite{wikipedia:MatrixCalculus}).  Consequently,
 \begin{equation}
-  \underaccent{\bar}{\mathbf{J}}
+  \underaccent{\bar}{\mat{J}}
   = \begin{pmatrix*}[l]
-    \mathbf{A} & \mathbf{0} \\
-    \mathbf{0} & \mathbf{A}^*
+    \mat{A} & \mat{0} \\
+    \mat{0} & \mat{A}^*
   \end{pmatrix*}.
 \end{equation}
-With the above~$\underaccent{\bar}{\mathbf{J}}$ and
-$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{H}_\text{meas}}$~given
+With~$\underaccent{\bar}{\mat{J}}$ and
+$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$~given
 by
 \cref{eq:diffraction_sample_cov_hermit_meas,eq:diffraction_sample_cov_pseudo_meas,eq:cov_augmented},
 we can calculate the augmented covariance
-matrix~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{H}}$ of the
-physical moments using \cref{eq:complex_uncert_prop} and using
+matrix~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}}$ of
+the physical moments using \cref{eq:complex_uncert_prop} and using
 \cref{eq:cov_ReRe,eq:cov_ImIm,eq:cov_ReIm} the corresponding
-covariance matrices of the real and imaginary parts of~$\hat{\mathbf{H}}$.
+covariance matrices of the real and imaginary parts
+of~$\hat{\vect{H}}$.
 
 Finally, we can verify that the acceptance correction works correctly
-by checking that the physical moments~$\hat{\mathbf{H}}$ fulfill
+by checking that the physical moments~$\hat{\vect{H}}$ fulfill
 \cref{eq:moments_diffraction_imag}, \ie that they are real-valued
 within the uncertainty.
 
@@ -1123,7 +1129,7 @@ in \cref{eq:diffraction_int_meas}.  Analogous to
   \eta(\Omega)
   ={}& \sum_{L = 0}^\infty \sqrt{4 \pi}\, \sqrt{2 L + 1} \sum_{M = -L}^{+L} H_\text{acc}(L, M)\, Y_L^M(\Omega)
   \\
-  ={}& \sum_{L = 0}^\infty \sqrt{4 \pi}\, \sqrt{2 L + 1} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re\!\sBrk{H_\text{acc}(L, M)\, Y_L^M(\Omega)}
+  ={}& \sum_{L = 0}^\infty \sqrt{4 \pi}\, \sqrt{2 L + 1} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_\text{acc}(L, M)\, Y_L^M(\Omega)}
 \end{align}
 with the acceptance moments defined analogously to
 \cref{eq:moments_diffraction_norm},\footnote{The same arguments as in
