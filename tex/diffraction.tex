@@ -29,11 +29,11 @@ amplitudes:
 \end{equation}
 Here, $N$~is the (acceptance-corrected) number of measured events,
 $w$~is the invariant mass of the two-(pseudo)scalar system, $t$~is the
-squared four-momentum~$t$ transferred from the beam to the target
+squared four-momentum transferred from the beam to the target
 particle, and $\Omega = (\theta, \phi)$ is the direction of one of the
 two (pseudo)scalar mesons the~$X$ decays into, measured in the
-Gottfried-Jackson rest frame of~$X$.  The $\mathcal{T\!}_{\ell\, m}(w, t)$
-are the partial-wave amplitudes that correspond to an intermediate
+Gottfried-Jackson rest frame of~$X$.  The $\mathcal{T\!}_{\ell\, m}(w,
+t)$ are the partial-wave amplitudes that correspond to an intermediate
 state with a spin given by the relative orbital angular
 momentum~$\ell$ between the two-(pseudo)scalar mesons and a spin
 projection~$m$ \wrt the beam axis.  The angular distribution of the
@@ -195,13 +195,14 @@ Expanding the absolute-value-squared term in
 \begin{align}
   \mathcal{I}(\Omega)
   ={}& \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-  \prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}\, \prescript{\refl}{}{\mathcal{T\!}}_{\ell'\, m'}^*\,
-  \prescript{\refl}{}{Y}_\ell^m(\Omega)\, \prescript{\refl}{}{Y}_{\ell'}^{m' *}(\Omega)
+  \prescript{\refl}{}{Y}_\ell^m(\Omega)\,
+  \prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}\,
+  \prescript{\refl}{}{\mathcal{T\!}}_{\ell'\, m'}^*\,
+  \prescript{\refl}{}{Y}_{\ell'}^{m' *}(\Omega)
   \\
   \label{eq:diffraction_intensity_refl_spin-dens}
   ={}& \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-  \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
-  \prescript{\refl}{}{Y}_\ell^m(\Omega)\, \prescript{\refl}{}{Y}_{\ell'}^{m' *}(\Omega),
+  \prescript{\refl}{}{Y}_\ell^m(\Omega)\, \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \prescript{\refl}{}{Y}_{\ell'}^{m' *}(\Omega),
 \end{align}
 where we have introduced the spin-density matrix of~$X$,
 \begin{equation}
@@ -1141,14 +1142,14 @@ with the acceptance moments defined analogously to
 \end{equation}
 Note that we have used a slightly different normalization here, which
 was chosen such that for perfect acceptance, \ie $\eta(\Omega) = 1$,
-the only non-zero acceptance moment is $H_\text{acc}(0, 0) =
-1$.\footnote{%
-  This follows from (see Eq.~(1) in Sec.~5.9.1 of
-  \refCite{Varshalovich:1988krb})
+the only non-zero acceptance moment is $H_\text{acc}(0, 0) = 1$.%
+\footnote{%
+  This follows from
   \begin{equation}
     \int_{4 \pi}\!\!\! \dif{\Omega}\, Y_L^M(\Omega)
-    = \sqrt{4 \pi}\, \delta_{L 0}\, \delta_{M 0}.
+    = \sqrt{4 \pi}\, \delta_{L 0}\, \delta_{M 0}
   \end{equation}
+  (see Eq.~(1) in Sec.~5.9.1 of \refCite{Varshalovich:1988krb}).
 }
 
 Inserting \cref{eq:diffraction_acc_moment_decomp} into the acceptance
