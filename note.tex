@@ -9,7 +9,7 @@
   printLineNumbers=true,
   useLinenoAmsPatch=true,
   loadTodoNotesPackage=true,
-  % useTodoNotes=true,
+  useTodoNotes=true,
   % loadChangesPackage=true,
   % highlightChanges=true,
   %writeFigNameMapToLog=true,
@@ -52,7 +52,10 @@
 }
 
 % switch to lowercase alphabetic footnote symbols in brackets
-\renewcommand{\thefootnote}{[\alph{footnote}]}
+% \renewcommand{\thefootnote}{[\alph{footnote}]}
+% use alphalph package to have unlimited number of footnote symbols
+\renewcommand{\thefootnote}{[\alphalph{\value{footnote}}]}
+
 % switch also for document title (\maketitle ignores the above)
 \makeatletter
 \let\@fnsymbol\@alph
