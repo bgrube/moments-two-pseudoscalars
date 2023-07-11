@@ -1,4 +1,119 @@
 \section{Photoproduction with linearly polarized beam}%
 \label{sec:photoprod}
 
-% \cite{Mathieu:2019fts,Mathieu:2019gxo}
+\subsection{Moment decomposition}%
+\label{sec:photoprod:moment}
+
+Systems of two distinguishable spinless particles can also be produced
+in photo-production reactions using stationary proton targets.  As for
+the diffractive reactions, discussed in \cref{sec:diffraction}, we are
+interested in the intermediate resonances~$X$ that are produced in
+these reactions and that decay into the observed two-(pseudo)scalar
+system.  A typical example for such a process is the reaction
+\begin{equation}
+  \gamma\, p \to X^0\, p \to \etaOrPr\pi^0\, p.
+\end{equation}
+How to analyze these reactions was studied in detail by the JPAC
+collaboration in~\refsCite{Mathieu:2019fts,Mathieu:2019gxo}.  We will
+follow these references here and will derive some of the
+equations.\todo{Add figure with scattering process}
+
+The analysis is based on the measured intensity distribution, \ie the
+number density of events, which is decomposed into partial-wave
+amplitudes:\footnote{This corresponds to Eq.~(A3) in
+\refCite{Mathieu:2019fts} with the phase-space factor~$\kappa$
+absorbed into the partial-wave amplitude, \ie with the redefinition
+$\mathcal{T} \to \mathcal{T} / \sqrt{\kappa}$ (see also footnote~6 in
+\refCite{Mathieu:2019fts}), and with Eq.~(A5) inserted.}
+\begin{equation}
+  \mathcal{I}(\Omega, \Phi; w, t)
+  = \frac{\dif{N}}{\dif{w}\, \dif{t}\, \dif{\Omega}\, \dif{\Phi}}
+  = \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  Y_\ell^m(\Omega)~
+  \dUnderbrace{\sum_{\substack{\lambda = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
+  \mathcal{T}^\ell_{\!m\, \lambda; \lambda_1\, \lambda_2}(w, t)\,
+  \varrho^\gamma_{\lambda\, \lambda'}(\Phi)\,
+  \mathcal{T}^{\ell' *}_{\!m'\, \lambda'; \lambda_1\, \lambda_2}(w, t)}{\equiv \varrho^{\ell\, \ell'}_{m\, m'}(w, t, \Phi)}~
+  Y_{\ell'}^{m' *}(\Omega).
+\end{equation}
+Here, $N$~is the (acceptance-corrected) number of measured events,
+$w$~is the invariant mass of the two-(pseudo)scalar system, $t$~is the
+squared four-momentum transferred from the beam to the target
+particle, $\Omega = (\theta, \phi)$ is the direction of one of the two
+(pseudo)scalar mesons the~$X$ decays into, measured in the
+Gottfried-Jackson or helicity rest frame of~$X$, and $\Phi$ is the
+angle between the polarization vector of the linearly polarized photon
+and the reaction plane in the $X$~rest frame.  The
+$\mathcal{T}^\ell_{\!m\, \lambda; \lambda_1\, \lambda_2}(w, t)$ are
+the partial-wave amplitudes that correspond to an intermediate state
+that has a spin, which is given by the relative orbital angular
+momentum~$\ell$ between the two-(pseudo)scalar mesons, and a spin
+projection~$m$ \wrt the beam axis.  This intermediate state is
+produced in the interaction of a photon with helicity~$\lambda$ and a
+target proton with helicity~$\lambda_1$, where the recoil proton has
+helicity~$\lambda_2$.  The angular distribution of the $X$~decay
+products is given by the spherical harmonics
+$Y_\ell^m(\Omega)$~\cite{wikipedia:sphericalHarm}; the dependence on
+the polarization angle~$\Phi$ by the photon spin-density
+matrix~$\mat{\upvarrho}^\gamma(\Phi)$.  In
+\cref{eq:photoprod_intensity}, the $\varrho^{\ell\, \ell'}_{m\, m'}(w,
+t, \Phi)$ are the elements of the spin-density of~$X$ analogous to the
+diffractive case in \cref{eq:diffraction_intensity_refl_spin-dens}.
+
+Using the fact that the three Pauli matrices $\vec{\mat{\upsigma}} =
+(\mat{\upsigma}_1, \mat{\upsigma}_2, \mat{\upsigma}_3)^T$ together
+with $\mat{I}_{2 \times 2}$ form a complete set in the space of
+Hermitian $2 \times 2$ matrices, we can expand
+$\mat{\upvarrho}^\gamma(\Phi)$, \ie
+\begin{equation}
+  \mat{\upvarrho}^\gamma(\Phi)
+  = \frac{1}{2}\, \mat{I}_{2 \times 2} + \frac{1}{2}\, \vec{P}_\gamma(\Phi) \cdot \vec{\mat{\upsigma}}.
+\end{equation}
+Here, $\vec{P}_\gamma(\Phi)$ describes the photon polarization.  Its
+length~$0 \leq P_\gamma \leq 1$ is the degree of polarization and its
+direction depends on the kind of polarization:\footnote{See Eq.~(19)
+in \refCite{Schilling:1969um}.}
+\begin{equation}
+  \vec{P}_\gamma(\Phi)
+  = \begin{cases*}
+    P_\gamma\, (0, 0, \lambda)^T                & for circularly polarized photons with $\lambda = \pm 1$, \\
+    -P_\gamma\, (\cos 2 \Phi, \sin 2 \Phi, 0)^T & for linearly polarized photons with polarization angle~$\Phi$.
+  \end{cases*}
+\end{equation}
+Hence, for linearly polarized photons, the intensity distribution in
+\cref{eq:photoprod_intensity} can be written as the sum of three
+terms:\footnote{See Eq.~(B4) in \refCite{Mathieu:2019fts}.}
+\begin{equation}
+  \mathcal{I}(\Omega, \Phi; w, t)
+  = \mathcal{I}_0(\Omega; w, t)
+  - \mathcal{I}_1(\Omega; w, t)\, P_\gamma\, \cos 2 \Phi
+  - \mathcal{I}_2(\Omega; w, t)\, P_\gamma\, \sin 2 \Phi
+\end{equation}
+with
+\begin{equation}
+  \mathcal{I}_i(\Omega; w, t)
+  = \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  Y_\ell^m(\Omega)\,
+  \prescript{i}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t, \Phi)\,
+  Y_{\ell'}^{m' *}(\Omega)
+\end{equation}
+and\footnote{See Eq.~(11) in \refCite{Mathieu:2019fts}.}
+\begin{align}
+  \prescript{0}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t, \Phi)
+  ={}& \frac{1}{2}\quad \sum_{\substack{\lambda = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
+  \mathcal{T}^\ell_{\!m\, \lambda; \lambda_1\, \lambda_2}(w, t)\,
+  \mathcal{T}^{\ell' *}_{\!m'\, \lambda; \lambda_1\, \lambda_2}(w, t)
+  = \prescript{0}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)
+  \\
+  \prescript{1}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t, \Phi)
+  ={}& \frac{1}{2}\quad \sum_{\substack{\lambda = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
+  \mathcal{T}^\ell_{\!m\, {-\lambda}; \lambda_1\, \lambda_2}(w, t)\,
+  \mathcal{T}^{\ell' *}_{\!m'\, \lambda; \lambda_1\, \lambda_2}(w, t)
+  \\
+  \prescript{2}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t, \Phi)
+  ={}& \frac{\imag}{2}\quad \sum_{\substack{\lambda = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
+  \lambda\,
+  \mathcal{T}^\ell_{\!m\, {-\lambda}; \lambda_1\, \lambda_2}(w, t)\,
+  \mathcal{T}^{\ell' *}_{\!m'\, \lambda; \lambda_1\, \lambda_2}(w, t).
+\end{align}
+
