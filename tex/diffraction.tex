@@ -8,9 +8,10 @@ We start with the simplest reaction, which is the production of a
 system of two distinguishable spinless particles in the strong
 interaction of a highly energetic beam particle (usually pion or kaon)
 with a stationary nucleon or nuclear target.  We are interested in the
-short-lived intermediate states~$X$ (resonances) that are produced in
-these reactions and that decay into the observed two-(pseudo)scalar
-system.  A typical example for such a process is the reaction
+short-lived intermediate mesonic states~$X$ (resonances) that are
+produced in these reactions and that decay into the observed
+two-(pseudo)scalar system.  A typical example for such a process is
+the reaction
 \begin{equation}
   \pi^-\, p \to X^-\, p \to \etaOrPrPim\, p.
 \end{equation}
@@ -48,14 +49,14 @@ about the produced resonances $X$, the intensity model in
 \cref{eq:diffraction_intensity} is fit to the measured $\Omega$
 distribution in narrow $(w, t)$ cells.  Within each kinematic cell,
 $\mathcal{T\!}_{\ell\, m}$ is treated as constant.  To simplify notation,
-we hence will omit the~$m$ and $t$~dependencies in all formulas below.
+we hence will omit the~$w$ and $t$~dependencies in all formulas below.
 
 In addition to the partial-wave analysis, which decomposes the
 \emph{amplitudes} into spherical harmonics, we can exploit the fact
 that the $Y_\ell^m(\Omega)$ constitute a complete orthonormal set of
 base functions on the surface of a unit sphere, \ie they fullfil the
-completeness relation (see Eq.~(1) in Sec.~5.6.1 of
-\refCite{Varshalovich:1988krb})
+completeness relation\footnote{See Eq.~(1) in Sec.~5.6.1 of
+\refCite{Varshalovich:1988krb}.}
 \begin{equation}
   \label{eq:spherical_harm_complete}
   \sum_{\ell m}^\infty Y_\ell^m(\Omega)\, Y_\ell^{m *}(\Omega')
@@ -67,7 +68,8 @@ Throughout the text, we use
   \int_{-1}^{+1}\!\!\! \dif{\cos\theta} \int_{-\pi}^{+\pi}\!\!\! \dif{\phi}
   = \int_{4 \pi}\!\!\! \dif{\Omega}.
 \end{equation}
-} (see Eq.~(2) in Sec.~5.6.1 of \refCite{Varshalovich:1988krb})
+}\footnote{See Eq.~(2) in Sec.~5.6.1 of
+\refCite{Varshalovich:1988krb}.}
 \begin{equation}
   \label{eq:spherical_harm_orthonorm}
   \int_{4 \pi}\!\!\! \dif{\Omega}\, Y_\ell^m(\Omega)\, Y_{\ell'}^{m' *}(\Omega)
@@ -99,7 +101,7 @@ spherical harmonics, \ie partial-wave amplitudes, whereas in
 Whereas the former decomposition is based on a physics model of the
 reaction, the moment decomposition is purely mathematical.  An
 advantage of the moment decomposition is that it is unique, whereas
-the partial-wave decomposition may have ambiguities (see \eg
+the partial-wave decomposition may have ambiguities (see \eg\
 \refCite{Chung:1997qd}).  Another advantage of the moment
 decomposition is that the moments can be rather easily calculated from
 the (acceptance-corrected) data.  The downside of this approach is
@@ -123,7 +125,8 @@ the reflection operator through the production plane that is spanned
 by the beam particle and~$X$.  The corresponding eigenvalues~$\refl =
 \pm 1$, the \emph{reflectivities}, are chosen such that they
 correspond to the naturality of the exchange particle in the
-scattering process.  The normalization factor
+scattering process.\todo{sign chosen for pion beam}  The normalization
+factor
 \begin{equation}
   \label{eq:refl_norm}
   \mathcal{N}_m
@@ -144,15 +147,15 @@ The reflectivity basis is implemented by introducing the functions
   \prescript{\refl}{}{Y}_\ell^m(\Omega)
   \equiv \mathcal{N}_m\, \sBrk[2]{Y_\ell^m(\Omega) - \refl\, {(-1)}^m\, Y_\ell^{(-m)}(\Omega)}.
 \end{equation}
-Note that with
+Note that with\footnote{See Eq.~(1) in Sec.~5.4 of
+\refCite{Varshalovich:1988krb}.}
 \begin{equation}
   \label{eq:spherical_harm_sym}
   Y_\ell^{m *}(\Omega)
   = {(-1)}^m\, Y_\ell^{(-m)}(\Omega)
 \end{equation}
-(see Eq.~(1) in Sec.~5.4 of \refCite{Varshalovich:1988krb}) and the
-definition of the spherical harmonics (see Eq.~(1) in Sec.~5.2 of
-\refCite{Varshalovich:1988krb}),
+and the definition of the spherical harmonics,\footnote{See Eq.~(1) in
+Sec.~5.2 of \refCite{Varshalovich:1988krb}.}
 \begin{equation}
   \label{eq:sspherical_harm_def}
   Y_\ell^m(\Omega)
@@ -170,11 +173,11 @@ from \cref{eq:diffraction_spherical_harm_refl} that
 \ie $\prescript{(+)}{}{Y}_\ell^m(\Omega)$ is purely imaginary and
 $\prescript{(-)}{}{Y}_\ell^m(\Omega)$ purely real.
 
-For convenience, we introduce
+For convenience, we introduce the real-valued function
 \begin{equation}
   \label{eq:small_y_def}
-  Y_\ell^m(\theta, 0)
-  \equiv y_\ell^m(\theta)
+  y_\ell^m(\theta)
+  \equiv Y_\ell^m(\theta, 0)
   \quad\text{so that}\quad
   Y_\ell^m(\theta, \phi)
   = y_\ell^m(\theta)\, e^{\imag\, m\, \phi}.
@@ -219,7 +222,7 @@ In order to relate the partial-wave
 amplitudes~$\prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}$ and the
 moments~$H(L, M)$ we insert \cref{eq:diffraction_spherical_harm_refl}
 into \cref{eq:diffraction_intensity_refl_spin-dens} and use the
-relation (see Eq.~(A.15) in \refCite{Chung:1971ri})
+relation\footnote{See Eq.~(A.15) in \refCite{Chung:1971ri}.}
 \begin{equation}
   Y_{\ell'}^{m' *}(\Omega)\, Y_{\ell}^m(\Omega)
   = \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}\, Y_L^M(\Omega).
@@ -227,14 +230,15 @@ relation (see Eq.~(A.15) in \refCite{Chung:1971ri})
 Here, \clebsch{j_1}{m_1}{j_2}{m_2}{J}{M} are the Clebsch-Gordan
 coefficients for the coupling of the spin states $\ket{j_1\; m_1}$
 and~$\ket{j_2\; m_2}$ to $\ket{J\; M}$.  Note that the Clebsch-Gordan
-coefficient \clebsch{\ell'}{0}{L}{0}{\ell}{0} requires that
+coefficient \clebsch{\ell'}{0}{L}{0}{\ell}{0} requires
+that\footnote{See Eq.~(32) in Sec.~8.5.2 of
+\refCite{Varshalovich:1988krb}.}
 \begin{equation}
   \label{eq:ang_mom_sum}
   \ell' + L + \ell
-  = \text{even}
+  = \text{even}.
 \end{equation}
-(see Eq.~(32) in Sec.~8.5.2 of \refCite{Varshalovich:1988krb}).  Using
-the above, we obtain
+Using the above, we obtain
 \begin{align}
   \mathcal{I}(\Omega)
   ={}&
@@ -254,8 +258,8 @@ the above, we obtain
   \end{multlined}
 \end{align}
 We rewrite the last Clebsch-Gordan coefficient in the square bracket
-using the symmetry relation (see Eq.~(11) in Sec.~8.4.3 of
-\refCite{Varshalovich:1988krb})
+using the symmetry relation\footnote{See Eq.~(11) in Sec.~8.4.3 of
+\refCite{Varshalovich:1988krb}.}
 \begin{equation}
   \clebsch{\ell'}{-m'}{L}{M}{\ell}{-m}
   = \cdUnderbrace{{(-1)}^{\ell' + L - \ell}}{= \dUnderbrace{{(-1)}^{\ell' + L + \ell}}{= 1}\, \dUnderbrace{{(-1)}^{-2 \ell}}{= 1} = 1}\, \clebsch{\ell'}{m'}{L}{-M}{\ell}{m},
@@ -314,15 +318,15 @@ separate these contributions.
 
 We can derive \cref{eq:diffraction_moments_pw} also by inserting
 \cref{eq:diffraction_intensity_refl} into
-\cref{eq:diffraction_moments} and using
+\cref{eq:diffraction_moments} and using\footnote{This is the complex
+conjugate of Eq.~(4) in Sec.~5.9.1 of \refCite{Varshalovich:1988krb}.}
 \begin{equation}
   \label{eq:spherical_harm_clebsch}
   \int_{4 \pi}\!\!\! \dif{\Omega}\,
   Y_{\ell'}^{m' *}(\Omega)\, Y_L^{M *}(\Omega)\, Y_{\ell}^m(\Omega)
-  = \sqrt{\frac{2 \ell' + 1}{4 \pi}}\, \sqrt{\frac{2 L + 1}{2 \ell + 1}}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
+  = \sqrt{\frac{2 \ell' + 1}{4 \pi}}\, \sqrt{\frac{2 L + 1}{2 \ell + 1}}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}.
 \end{equation}
-(complex conjugate of Eq.~(4) in Sec.~5.9.1 of
-\refCite{Varshalovich:1988krb}).  Doing so, we obtain
+Doing so, we obtain
 \begin{multline}
   \label{eq:diffraction_moments_pw_refl}
   H(L, M)
@@ -369,8 +373,10 @@ we get
   \label{eq:diffraction_moment_00_pw}
   ={}& \frac{1}{\sqrt{4 \pi}} \sum_{\refl = \pm 1} \sum_\ell^\infty \sum_{m = 0}^\ell \prescript{\refl}{}{\varrho}^{\ell\, \ell}_{m\, m},
 \end{align}
-where we have used \cref{eq:refl_norm} and $m, m' \geq 0$.  According
-to the above, $H(0, 0)$ is the sum of all partial-wave
+where we have inserted the normalization factor from
+\cref{eq:refl_norm}, which ensures that the multiplicity of the
+reflectivity states is $2 \ell + 1$ by requiring $m, m' \geq 0$.
+According to the above, $H(0, 0)$ is the sum of all partial-wave
 intensities, except for a factor $1 / \sqrt{4 \pi}$.
 
 In order to make $H(0, 0)$ identical to the sum of all partial-wave
@@ -394,10 +400,13 @@ and
   = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega).
 \end{equation}
 Using the relation between the spherical harmonics and the Wigner
-$D$-functions~\cite{wikipedia:wignerD}:
+$D$-functions~\cite{wikipedia:wignerD}, \ie
 \begin{equation}
   \sqrt{\frac{2 L + 1}{4 \pi}}\, D^{L *}_{M 0}(\phi, \theta, 0)
-  = Y_L^M(\Omega),
+  = Y_L^M(\Omega)
+  \quad\text{and in particular}\quad
+  \sqrt{\frac{2 L + 1}{4 \pi}}\, d^L_{M 0}(\theta)
+  = y_L^M(\theta),
 \end{equation}
 \cref{eq:diffraction_intensity_moments_norm,eq:diffraction_moments_norm}
 become identical to Eqs.~(6) and~(9) in \refCite{Chung:1997qd}
@@ -433,14 +442,16 @@ spin-density matrix is Hermitian, \ie
   \rBrk{\prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}}^*
   = \prescript{\refl}{}{\varrho}^{\ell'\, \ell}_{m'\, m}.
 \end{equation}
-Using this together with \cref{eq:diffraction_moments_pw_norm} and
+Using this together with \cref{eq:diffraction_moments_pw_norm}
+and\footnote{See Eq.~(10) in Sec.~8.4.3 of
+\refCite{Varshalovich:1988krb}.}
 \begin{equation}
   \label{eq:clebsch_sym}
   \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
   = \cdUnderbrace{{(-1)}^{\ell' + L - \ell}}{= 1~\text{because of \cref{eq:ang_mom_sum}}}\, \clebsch{L}{M}{\ell'}{m'}{\ell}{m}
-  = {(-1)}^{L - M}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'}
+  = {(-1)}^{L - M}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'},
 \end{equation}
-(see Eq.~(10) in Sec.~8.4.3 of \refCite{Varshalovich:1988krb}), we get
+we get
 \begin{align}
   H^*(L, M)
   ={}& \begin{multlined}[t][0.8\textwidth]
@@ -1144,12 +1155,12 @@ Note that we have used a slightly different normalization here, which
 was chosen such that for perfect acceptance, \ie $\eta(\Omega) = 1$,
 the only non-zero acceptance moment is $H_\text{acc}(0, 0) = 1$.%
 \footnote{%
-  This follows from
+  This follows from (see Eq.~(10) in Sec.~8.4.3 of
+  \refCite{Varshalovich:1988krb})
   \begin{equation}
     \int_{4 \pi}\!\!\! \dif{\Omega}\, Y_L^M(\Omega)
-    = \sqrt{4 \pi}\, \delta_{L 0}\, \delta_{M 0}
+    = \sqrt{4 \pi}\, \delta_{L 0}\, \delta_{M 0}.
   \end{equation}
-  (see Eq.~(1) in Sec.~5.9.1 of \refCite{Varshalovich:1988krb}).
 }
 
 Inserting \cref{eq:diffraction_acc_moment_decomp} into the acceptance
