@@ -21,11 +21,12 @@ equations.\todo{Add figure with scattering process}
 
 The analysis is based on the measured intensity distribution, \ie the
 number density of events, which is decomposed into partial-wave
-amplitudes:\footnote{This corresponds to Eq.~(A3) in
-\refCite{Mathieu:2019fts} with the phase-space factor~$\kappa$
-absorbed into the partial-wave amplitudes, \ie with the redefinition
-$\mathcal{T} \to \mathcal{T} / \sqrt{\kappa}$ (see also footnote~6 in
-\refCite{Mathieu:2019fts}), and with Eq.~(A5) inserted.}
+amplitudes:\footnote{\label{fn:photoprod_ampl_redef}This corresponds
+to Eq.~(A3) in \refCite{Mathieu:2019fts} with the phase-space
+factor~$\kappa$ absorbed into the partial-wave amplitudes, \ie with
+the redefinition $\mathcal{T} \to \mathcal{T} / \sqrt{\kappa}$ (see
+also footnote~6 in \refCite{Mathieu:2019fts}), and with Eq.~(A5)
+inserted.}
 \begin{equation}
   \label{eq:photoprod_intensity}
   \mathcal{I}(\Omega, \Phi; w, t)
@@ -94,44 +95,60 @@ terms:\footnote{See Eq.~(B4) in \refCite{Mathieu:2019fts}.}
   - \mathcal{I}_1(\Omega; w, t)\, P_\gamma\, \cos 2 \Phi
   - \mathcal{I}_2(\Omega; w, t)\, P_\gamma\, \sin 2 \Phi
 \end{equation}
-with
+with the intensity components
 \begin{equation}
+  \label{eq:photoprod_intensity_components}
   \mathcal{I}_i(\Omega; w, t)
   = \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   Y_\ell^m(\Omega)\,
   \prescript{i}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)\,
   Y_{\ell'}^{m' *}(\Omega)
 \end{equation}
-and\footnote{See Eq.~(11) in \refCite{Mathieu:2019fts}.}
+and the spin-density matrix components\footnote{See Eq.~(11) in
+\refCite{Mathieu:2019fts}.}
 \begin{align}
+  \label{eq:photoprod_rho_0}
   \prescript{0}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)
   ={}& \frac{1}{2}\quad \sum_{\substack{\lambda = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
   \mathcal{T}^\ell_{\!m\, \lambda; \lambda_1\, \lambda_2}(w, t)\,
   \mathcal{T}^{\ell' *}_{\!m'\, \lambda; \lambda_1\, \lambda_2}(w, t)
   \\
+  \label{eq:photoprod_rho_1}
   \prescript{1}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)
   ={}& \frac{1}{2}\quad \sum_{\substack{\lambda = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
   \mathcal{T}^\ell_{\!m\, {-\lambda}; \lambda_1\, \lambda_2}(w, t)\,
   \mathcal{T}^{\ell' *}_{\!m'\, \lambda; \lambda_1\, \lambda_2}(w, t)
   \\
+  \label{eq:photoprod_rho_2}
   \prescript{2}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)
   ={}& \frac{\imag}{2}\quad \sum_{\substack{\lambda = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
   \lambda\,
   \mathcal{T}^\ell_{\!m\, {-\lambda}; \lambda_1\, \lambda_2}(w, t)\,
   \mathcal{T}^{\ell' *}_{\!m'\, \lambda; \lambda_1\, \lambda_2}(w, t).
 \end{align}
+Note that neither the $\mathcal{I}_i$ nor the
+$\prescript{i}{}{\varrho}^{\ell\, \ell'}_{m\, m'}$ depend on~$\Phi$.
+Furthermore, the spin-density matrix elements of~$X$ are given by
+\begin{equation}
+  \label{eq:photoprod_spin_dens_sum}
+  \varrho^{\ell\, \ell'}_{m\, m'}(w, t, \Phi)
+  = \prescript{0}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)
+  - \prescript{1}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)\, P_\gamma\, \cos 2 \Phi
+  - \prescript{2}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)\, P_\gamma\, \sin 2 \Phi.
+\end{equation}
 
-In \cref{eq:photoprod_intensity_sum}, the three intensity terms
-$\mathcal{I}_i(\Omega; w, t)$ are modulated by different
-$\Phi$~dependences.  $\mathcal{I}_0(\Omega; w, t)$ is the unpolarized
-intensity and hence constant in~$\Phi$.  It is equivalent to the
-intensity for the diffractive case in
-\cref{eq:diffraction_intensity_refl_spin-dens}.  The other two terms
-$\mathcal{I}_{1, 2}(\Omega; w, t)$ depend on the photon polarization
-and are hence modulated by different $\Phi$~dependences.  Note that
-the functions $\cBrk[1]{f_0(\Phi), f_1(\Phi), f_2(\Phi)} = \cBrk[1]{1,
-\cos 2 \Phi, \sin 2 \Phi}$ that modulate the intensity terms
-constitute an orthogonal set of functions, \ie
+In \cref{eq:photoprod_intensity_sum}, the three intensity components
+$\mathcal{I}_i(\Omega; w, t)$ (as well as the three spin-density
+matrix components in \cref{eq:photoprod_spin_dens_sum}) are modulated
+by different $\Phi$~dependences.  $\mathcal{I}_0(\Omega; w, t)$ is the
+unpolarized intensity and hence constant in~$\Phi$.  It is equivalent
+to the intensity for the diffractive case in
+\cref{eq:diffraction_intensity_refl_spin-dens}.  The other two
+components $\mathcal{I}_{1, 2}(\Omega; w, t)$ depend on the photon
+polarization and are hence modulated by different $\Phi$~dependences.
+Note that the functions $\cBrk[1]{f_0(\Phi), f_1(\Phi), f_2(\Phi)} =
+\cBrk[1]{1, \cos 2 \Phi, \sin 2 \Phi}$ that modulate the intensity
+components constitute an orthogonal set of functions, \ie
 \begin{equation}
   \label{eq:photoprod_orthogonality_phi}
   \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\, f_i(\Phi)\, f_j(\Phi)
@@ -149,8 +166,8 @@ We decompose the intensity in \cref{eq:photoprod_intensity_sum} into
 spherical harmonics to obtain the moments, analogously to the
 diffractive case in \cref{eq:diffraction_intensity_moments}.  Due to
 the orthogonality of the $\mathcal{I}_i$ terms in $\Phi$~space, we can
-decompose each term separately:\footnote{See Eq.~(A8) in
-\refCite{Mathieu:2019fts}.}
+decompose each intensity component separately:\footnote{See Eq.~(A8)
+in \refCite{Mathieu:2019fts}.}
 \begin{align}
   \label{eq:photoprod_intensity_moments_norm_unpol}
   \mathcal{I}_0(\Omega)
@@ -165,8 +182,8 @@ Here, we have used the same normalization as in
 \Cref{eq:photoprod_intensity_moments_norm_unpol} is equivalent to
 \cref{eq:diffraction_intensity_moments_norm}.  The minus sign in
 \cref{eq:photoprod_intensity_moments_norm_pol} is introduced in order
-to compensate that the corresponding terms contribute negatively to
-the intensity distribution in
+to compensate that the corresponding intensity components contribute
+negatively to the intensity distribution in
 \cref{eq:photoprod_intensity_sum}.\footnote{Equivalently, the minus
 sign ensures that $H_1(0, 0) \geq 0$ for positive reflectivity waves
 (see Appendix~D in \refCite{Mathieu:2019fts}).}
@@ -192,9 +209,104 @@ intensity distribution is independent of~$\Phi$.  The two polarized
 moments $H_{1, 2}(L, M)$ represent orthogonal angular distributions
 in~$\Phi$ (see \cref{eq:photoprod_orthogonality_phi}).
 
-As in the diffractive case, the moments are linear combinations of the
-spin-density matrix elements of~$X$, \ie\footnote{See Eq.~(A9) in
+
+\subsection{Reflectivity basis}%
+\label{sec:photoprod:reflectivity}
+
+In Appendix~D of \refCite{Mathieu:2019fts}, the reflectivity basis is
+introduced by defining the partial-wave amplitudes\footnote{See
+Eq.~(D1) in \refCite{Mathieu:2019fts}.}\footnote{Alternative
+approaches to apply the reflectivity basis are discussed in
+\refCite{Salgado:2020}.}
+\begin{equation}
+  \label{eq:photoprod_amplitude_refl}
+  \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; \lambda_1\, \lambda_2}
+  \equiv \frac{1}{2}\, \sBrk{\mathcal{T}^\ell_{\!m\, {+1}; \lambda_1\, \lambda_2}
+  - \refl\, (-1)^m\, \mathcal{T}^\ell_{\!{-m}\, {-1}; \lambda_1\, \lambda_2}(w, t)}.
+\end{equation}
+The partial-wave amplitudes in the reflectivity basis are hence linear
+combinations of the partial-wave amplitudes with opposite photon
+helicities and opposite $X$~spin projection quantum numbers.  In
+\cref{eq:photoprod_amplitude_refl} the reflectivity quantum number
+$\refl = \pm 1$ effectively replaces the photon helicity $\lambda =
+\pm 1$.
+
+Formulating the intensity model in the reflectivity basis has the
+advantage that in the high-energy limit at leading order the
+reflectivity defined in \cref{eq:photoprod_amplitude_refl} corresponds
+to the naturality of the particle exchanged in the scattering process
+(see Appendices~C and~D in \refCite{Mathieu:2019fts}).  Another
+advantage of the reflectivity basis is that parity directlys relates
+the partial-wave amplitudes with opposite helicities of the target and
+the recoil proton, \ie\footnote{See Eq.~(D3) in
 \refCite{Mathieu:2019fts}.}
+\begin{equation}
+  \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; {-\lambda_1}\, {-\lambda_2}}
+  = \refl\, (-1)^{\lambda_1 - \lambda_2}\, \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; \lambda_1\, \lambda_2}.
+\end{equation}
+This means for given~\refl, $\ell$, and~$m$, only two of the four
+possible partial-wave amplitudes are independent, namely the proton
+spin-flip amplitude\footnote{See Eq.~(D4) in
+\refCite{Mathieu:2019fts}.}
+\begin{align}
+  \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; {+1}\, {-1}}
+  \equiv{}& \sBrk{\ell}^{(\refl)}_{m; 0}
+  \intertext{and the proton spin-non-flip amplitude}
+  \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; {+1}\, {+1}}
+  \equiv{}& \sBrk{\ell}^{(\refl)}_{m; 1}.
+\end{align}
+Furthermore, since parity is conserved the spin-flip and spin-non-flip
+amplitudes do not interfere.  Introducing these parity constraints in
+\crefrange{eq:photoprod_intensity_components}{eq:photoprod_rho_2}
+would be more difficult because in the conventional basis, parity
+relates amplitudes that in addition have opposite~$m$ and~$\lambda$
+quantum numbers.  However, in the reflectivity basis\footnote{See
+Eq.~(D7) in \refCite{Mathieu:2019fts}.}
+\begin{equation}
+  \label{eq:photoprod_rho_refl}
+  \prescript{i}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
+  = \prescript{i}{}{\varrho}^{(+)\, \ell\, \ell'}_{m\, m'} + \prescript{i}{}{\varrho}^{(-)\, \ell\, \ell'}_{m\, m'}
+\end{equation}
+with\footnote{See Eq.~(D8) in \refCite{Mathieu:2019fts} and
+\cref{fn:photoprod_ampl_redef}.}
+\begin{align}
+  \label{eq:photoprod_rho_0_refl}
+  \prescript{0}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}
+  ={}& \sum_{k = 0, 1} \rBrk[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
+  + (-1)^{m - m'}\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{{-m'}; k}}
+  \\
+  \label{eq:photoprod_rho_1_refl}
+  \prescript{1}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}
+  ={}& -\refl \sum_{k = 0, 1} \rBrk[2]{(1)^m\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
+  + (-1)^{m'}\, \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell'}^{(\refl) *}_{{-m'}; k}}
+  \\
+  \label{eq:photoprod_rho_2_refl}
+  \prescript{2}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}
+  ={}& -\imag\, \refl \sum_{k = 0, 1} \rBrk[2]{(1)^m\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
+  - (-1)^{m'}\, \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell'}^{(\refl) *}_{{-m'}; k}}.
+\end{align}
+In \cref{eq:photoprod_rho_refl}, we have used the fact that
+partial-wave amplitudes with opposite~\refl do not
+interfere.\footnote{See Eq.~(D5) in \refCite{Mathieu:2019fts}.}
+
+
+
+Since the spin of the target and the
+recoil proton is not measured, the two
+
+
+
+
+
+\subsection{Relation between moments and partial-wave amplitudes}%
+\label{sec:photoprod:moments_pw}
+
+As in the diffractive case, we see that the moments are linear
+combinations of the corresponding components of the spin-density
+matrix of~$X$ by inserting \cref{eq:spherical_harm_prod} into
+\cref{eq:photoprod_intensity_components} and comparing with
+\cref{eq:photoprod_intensity_moments_norm_unpol,eq:photoprod_intensity_moments_norm_pol},
+\ie\footnote{See Eq.~(A9) in \refCite{Mathieu:2019fts}.}
 \begin{align}
   H_0(L, M)
   ={}& \sum_{\substack{\ell m \\ \ell' m'}}^\infty \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}
@@ -210,5 +322,5 @@ Here, the Clebsch-Gordan coefficients restrict the sum to those
 quantum numbers, for which $\ell' + L + \ell = \text{even}$ (see
 \cref{eq:ang_mom_sum}), $\abs{\ell' - L} \leq \ell \leq \ell' + L$,
 and $m = m' + M$.  Conversely, this means that a partial-wave
-amplitude with orbital angular momentum~$\ell$ contributes to moments
-from $L = 0$ up to $L = 2 \ell$.
+amplitude with orbital angular momentum~$\ell$ contributes to all
+moments~$H_i$ with~$L$ from~0 up to $2 \ell$.
