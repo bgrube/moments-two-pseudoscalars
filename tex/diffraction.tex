@@ -264,7 +264,8 @@ and
   = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega).
 \end{equation}
 Using the relation between the spherical harmonics and the Wigner
-$D$-functions~\cite{wikipedia:wignerD}, \ie
+$D$-functions~\cite{wikipedia:wignerD}, \ie\todo{Move definition of
+$y_L^M(\theta)$.}
 \begin{equation}
   \sqrt{\frac{2 L + 1}{4 \pi}}\, D^{L *}_{M 0}(\phi, \theta, 0)
   = Y_L^M(\Omega)
@@ -299,7 +300,7 @@ For the remainder of this section we will use the moments defined in
 \label{sec:diffraction:moments_sym}
 
 Since the moments are defined by the spherical harmonics (see
-\cref{eq:diffraction_moments}), they inherit the symmetry properties
+\cref{eq:diffraction_moments_norm}), they inherit the symmetry properties
 of the spherical harmonics.  From\footnote{See Eq.~(1) in Sec.~5.4 of
 \refCite{Varshalovich:1988krb}.}
 \begin{equation}
@@ -311,18 +312,18 @@ it follows that
 \begin{equation}
   \label{eq:diffraction_moment_sym_1}
   H^*(L, M)
-  = \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^M(\Omega)
-  = (-1)^M \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{(-M) *}(\Omega)
+  = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^M(\Omega)
+  = (-1)^M \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{(-M) *}(\Omega)
   = (-1)^M\, H(L, -M).
 \end{equation}
 
 Alternatively, we can derive \cref{eq:diffraction_moment_sym_1} by
-using \cref{eq:diffraction_moments_pw} plus the fact that the
+using \cref{eq:diffraction_moments_pw_norm} plus the fact that the
 spin-density matrix is Hermitian,
 \ie
 \begin{equation}
-  \rBrk{\prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}}^*
-  = \prescript{\refl}{}{\varrho}^{\ell'\, \ell}_{m'\, m},
+  \rBrk[1]{\varrho^{\ell\, \ell'}_{m\, m'}}^*
+  = \varrho^{\ell'\, \ell}_{m'\, m},
 \end{equation}
 and that the Clebsch-Gordan coefficients have the symmetry
 property\footnote{See Eq.~(10) in Sec.~8.4.3 of
@@ -337,42 +338,42 @@ property\footnote{See Eq.~(10) in Sec.~8.4.3 of
 Doing so, we get
 \begin{align}
   H^*(L, M)
-  ={}& \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  ={}& \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
-    (-1)^{L - 0}\, \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\, \clebsch{\ell}{0}{L}{0}{\ell'}{0}
-    (-1)^{L - M}\, \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'}
+    (-1)^{L - 0}\, \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\, \clebsch{\ell}{0}{L}{0}{\ell'}{0}\,
+    (-1)^{L - M}\, \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'}\,
     \varrho^{\ell'\, \ell}_{m'\, m} \notag
   \\
-  ={}& \dUnderbrace{(-1)^{2 L - M}}{= (-1)^M}\, \sqrt{\frac{2 L + 1}{4 \pi}}
+  ={}& \dUnderbrace{(-1)^{2 L - M}}{= (-1)^M}
   \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\,
-  \clebsch{\ell}{0}{L}{0}{\ell'}{0}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'}
+  \clebsch{\ell}{0}{L}{0}{\ell'}{0}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'}\,
   \varrho^{\ell'\, \ell}_{m'\, m}
   \\
   \equalUsing{$\mathclap{\substack{\displaystyle{\ell \leftrightarrow \ell'} \\ \displaystyle{m \leftrightarrow m'}}}$}{}& \quad
   (-1)^M\, H(L, -M),
 \end{align}
 where in the last step we rearranged the terms in the sum and compared
-to \cref{eq:diffraction_moments_pw}.
+to \cref{eq:diffraction_moments_pw_norm}.
 
 The symmetry relation in \cref{eq:diffraction_moment_sym_1} ensures
-that the intensity function in \cref{eq:diffraction_intensity_moments}
-is real-valued:
-\begin{align}
+that the intensity function in
+\cref{eq:diffraction_intensity_moments_norm} is real-valued:
+\begin{flalign}
   \mathcal{I}(\Omega)
-  ={}& \sum_{L = 0}^\infty \sum_{M = -L}^{+L} H(L, M)\, Y_L^M(\Omega) \notag
+  ={}& \sum_{L = 0}^\infty \sum_{M = -L}^{+L} \sqrt{\frac{2 L + 1}{4 \pi}}\, H(L, M)\, Y_L^M(\Omega) && \notag
   \\
-  ={}& \sum_{L = 0}^\infty \sBrk[4]{\rdUnderbrace{\sum_{M = -L}^{-1} H(L, M)\, Y_L^M(\Omega)}%
+  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sBrk[4]{\rdUnderbrace{\sum_{M = -L}^{-1} H(L, M)\, Y_L^M(\Omega)}%
     {= \sum_{M = +1}^{+L} H(L, -M)\, Y_L^{(-M)}(\Omega)
     \equalUsingTwo{\cref{eq:spherical_harm_sym}}{\cref{eq:diffraction_moment_sym_1}} (-1)^M\, H^*(L, M)\, (-1)^M\, Y_L^{M *}(\Omega)}
-    + H(L, 0)\, Y_L^0(\Omega) + \sum_{M = +1}^{+L} H(L, M)\, Y_L^M(\Omega)} \notag
+    + H(L, 0)\, Y_L^0(\Omega) + \sum_{M = +1}^{+L} H(L, M)\, Y_L^M(\Omega)} && \notag
   \\
-  ={}& \sum_{L = 0}^\infty \sBrk[4]{H(L, 0)\, Y_L^0(\Omega) + \sum_{M = +1}^{+L}
-  \rdUnderbrace{\cBrk{H(L, M)\,Y_L^M(\Omega) + H^*(L, M)\,Y_L^{M *}(\Omega)}}{= 2 \Re{H(L, M)\, Y_L^M(\Omega)}}} \notag
+  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sBrk[4]{H(L, 0)\, Y_L^0(\Omega) + \sum_{M = +1}^{+L}
+  \rdUnderbrace{\cBrk{H(L, M)\,Y_L^M(\Omega) + H^*(L, M)\,Y_L^{M *}(\Omega)}}{= 2 \Re{H(L, M)\, Y_L^M(\Omega)}}} && \notag
   \\
   \label{eq:diffraction_intensity_moments_general}
-  ={}& \sum_{L = 0}^\infty \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H(L, M)\, Y_L^M(\Omega)}.
-\end{align}
+  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H(L, M)\, Y_L^M(\Omega)}. &&
+\end{flalign}
 For the last step, we have used that $Y_L^0(\Omega)$ and hence also
 $H(L, 0)$ are real-valued by construction.  Due to the above, we only
 have to calculate the moments with $M \geq 0$.
@@ -397,7 +398,7 @@ symmetry property\footnote{See Eq.~(11) in Sec.~8.4.3 of
 of the Clebsch-Gordan coefficients, we get
 \begin{align}
   H(L, -M)
-  ={}& \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  ={}& \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
   \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{-m}\,
   (-1)^{m - m'}\, \varrho^{\ell\, \ell'}_{{-m}\, {-m}'} \notag
@@ -408,31 +409,31 @@ of the Clebsch-Gordan coefficients, we get
 \end{align}
 where in the last step, we used that the second Clebsch-Gordan
 coefficient enforces $m - m' = -M$, rearranged the terms in the sum,
-and compared to \cref{eq:diffraction_moments_pw}.
+and compared to \cref{eq:diffraction_moments_pw_norm}.
 
 From \cref{eq:diffraction_moment_sym_1,eq:diffraction_moment_sym_2} follows that
 \begin{equation}
   H^*(L, M) = H(L, M),
 \end{equation}
 \ie all moments must be real-valued.  Inserting
-\cref{eq:diffraction_moments} on both sides, we obtain
+\cref{eq:diffraction_moments_norm} on both sides, we obtain
 \begin{align}
-  \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega)
+  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega)
   \mustBeEq{}&
-  \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^M(\Omega) \\
-  \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta) \sBrk{\cos(M \phi) + \imag \sin(M \phi)}
+  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^M(\Omega) \\
+  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta) \sBrk{\cos(M \phi) + \imag \sin(M \phi)}
   \mustBeEq{}&
-  \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta) \sBrk{\cos(M \phi) - \imag \sin(M \phi)}.
+  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta) \sBrk{\cos(M \phi) - \imag \sin(M \phi)}.
 \end{align}
 Consequently,
 \begin{align}
   \label{eq:diffraction_moments_imag}
   0
-  ={}& \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta)\, \sin(M\, \phi) \\
+  ={}& \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta)\, \sin(M\, \phi) \\
   \intertext{and}
   \label{eq:diffraction_moments_real}
   H(L, M)
-  ={}& \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta)\, \cos(M\, \phi).
+  ={}& \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta)\, \cos(M\, \phi).
 \end{align}
 
 We can also rewrite \cref{eq:diffraction_intensity_moments_general}:
