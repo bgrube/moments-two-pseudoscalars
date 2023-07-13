@@ -40,7 +40,7 @@ partial wave amplitudes are fully coherent.}
   \label{eq:diffraction_intensity}
   \mathcal{I}(\Omega; w, t)
   = \frac{\dif{N}}{\dif{w}\, \dif{t}\, \dif{\Omega}}
-  = \Abs[3]{\sum_{\ell m}^\infty \mathcal{T}_{\!\ell\, m}(w, t)\, Y_\ell^m(\Omega)}^2
+  = \Abs[3]{\sum_{\ell m}^\infty \mathcal{T}_{\ell\, m}(w, t)\, Y_\ell^m(\Omega)}^2
   = \sum_{\substack{\ell m \\ \ell' m'}}^\infty Y_\ell^m(\Omega)\, \varrho^{\ell\, \ell'}_{m\, m'}(w, t)\, Y_{\ell'}^{m' *}(\Omega).
 \end{equation}
 Here, $N$~is the (acceptance-corrected) number of measured events,
@@ -48,26 +48,27 @@ $w$~is the invariant mass of the two-(pseudo)scalar system, $t$~is the
 squared four-momentum transferred from the beam to the target
 particle, and $\Omega = (\theta, \phi)$ is the direction of one of the
 two (pseudo)scalar mesons the~$X$ decays into, measured in the
-Gottfried-Jackson rest frame of~$X$.  The $\mathcal{T}_{\!\ell\, m}(w,
+Gottfried-Jackson rest frame of~$X$.  The $\mathcal{T}_{\ell\, m}(w,
 t)$ are the partial-wave amplitudes that correspond to an intermediate
 state with a spin given by the relative orbital angular
 momentum~$\ell$ between the two-(pseudo)scalar mesons and a spin
 projection~$m$ \wrt the beam axis.  The partial-wave amplitudes form
 the spin-density matrix of~$X$:
 \begin{equation}
+  \label{eq:diffraction_spin_dens_def}
   \varrho^{\ell\, \ell'}_{m\, m'}(w, t)
-  = \mathcal{T}_{\!\ell\, m}(w, t)\, \mathcal{T}_{\!\ell'\, m'}^*(w, t),
+  = \mathcal{T}_{\ell\, m}(w, t)\, \mathcal{T}_{\ell'\, m'}^*(w, t),
 \end{equation}
 which by definition is Hermitian.  The angular distribution of the
 $X$~decay products is given by the spherical harmonics
 $Y_\ell^m(\Omega)$~\cite{wikipedia:sphericalHarm}.
 
 In a partial-wave analysis, the partial-wave amplitudes
-$\mathcal{T}_{\!\ell\, m}$, which contain the information about the
+$\mathcal{T}_{\ell\, m}$, which contain the information about the
 produced resonances~$X$, are determined by fitting the intensity model
 in \cref{eq:diffraction_intensity} to the measured
 $\Omega$~distribution in narrow $(w, t)$ cells.  Within each kinematic
-cell, $\mathcal{T}_{\!\ell\, m}$ is treated as constant.  To simplify
+cell, $\mathcal{T}_{\ell\, m}$ is treated as constant.  To simplify
 notation, we hence will omit the~$w$ and $t$~dependencies in all
 formulas below.
 
@@ -97,15 +98,17 @@ Throughout the text, we use
 \end{equation}
 and instead decompose the \emph{intensity} into spherical harmonics.
 
-Using \cref{eq:gen_fourier_series,eq:expansion_coefficient} we obtain:
+Using \cref{eq:gen_fourier_series,eq:expansion_coefficient} we
+obtain:\footnote{The expansion into a series of spherical harmonics is
+also referred to as Laplace series~\cite{MathWorld:LaplaceSeries}.}
 \begin{equation}
   \label{eq:diffraction_intensity_moments}
   \mathcal{I}(\Omega)
   = \sum_{L M}^\infty H(L, M)\, Y_L^M(\Omega),
 \end{equation}
-with the moments\footnote{The expansion into a series of spherical
-harmonics is also referred to as Laplace
-series~\cite{MathWorld:LaplaceSeries}.}
+with the moments\footnote{\label{fn:moment_norm}Note that in
+\cref{sec:diffraction:moments_norm}, we will introduce a different
+normalization for $H(L, M)$ (see \cref{foo}).\todoInl{Fix}}
 \begin{equation}
   \label{eq:diffraction_moments}
   H(L, M)
@@ -131,30 +134,13 @@ they are only indirectly related to the partial-wave amplitudes.  This
 will be discussed in more detail in \cref{sec:diffraction:moments_pw}.
 
 
-\subsection{Symmetry properties of moments}%
-\label{sec:diffraction:moments_sym}
+\subsection{Relation between moments and partial-wave amplitudes}%
+\label{sec:diffraction:moments_pw}
 
-Since the moments are defined by the spherical harmonics (see
-\cref{eq:diffraction_moments}), they inherit the symmetry properties
-of the spherical harmonics.  From\footnote{See Eq.~(1) in Sec.~5.4 of
-\refCite{Varshalovich:1988krb}.}
-\begin{equation}
-  \label{eq:spherical_harm_sym}
-  Y_L^{M *}(\Omega)
-  = (-1)^M\, Y_L^{(-M)}(\Omega)
-\end{equation}
-it follows that
-\begin{equation}
-  \label{eq:diffraction_moment_sym_1}
-  H^*(L, M)
-  = \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^M(\Omega)
-  = (-1)^M \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{(-M) *}(\Omega)
-  = (-1)^M\, H(L, -M).
-\end{equation}
-
-Alternatively, we can derive \cref{eq:diffraction_moment_sym_1} by
-expressing the moments in terms of spin-density elements using the
-relation\footnote{See Eq.~(A.15) in \refCite{Chung:1971ri}.}
+In order to relate the partial-wave amplitudes~$\mathcal{T}_{\ell\,
+m}$ and the moments~$H(L, M)$ we express the moments in terms of
+spin-density elements using the relation\footnote{See Eq.~(A.15) in
+\refCite{Chung:1971ri}.}
 \begin{equation}
   \label{eq:spherical_harm_prod}
   Y_{\ell'}^{m' *}(\Omega)\, Y_{\ell}^m(\Omega)
@@ -180,8 +166,7 @@ Inserting \cref{eq:spherical_harm_prod} into
   \varrho^{\ell\, \ell'}_{m\, m'}\, Y_L^M(\Omega).
 \end{equation}
 Comparing with \cref{eq:diffraction_intensity_moments}, we see
-that\footnote{Note that in \cref{sec:diffraction:moments_norm} we will
-choose a different formalization for $H(L, M)$.}
+that\footnote{See \cref{fn:moment_norm}.}
 \begin{equation}
   \label{eq:diffraction_moments_pw}
   H(L, M)
@@ -190,7 +175,76 @@ choose a different formalization for $H(L, M)$.}
   \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}\,
   \varrho^{\ell\, \ell'}_{m\, m'}.
 \end{equation}
-Using this plus the fact that the spin-density matrix is Hermitian,
+
+It is important to note that we can always calculate all moments from
+a given set of partial-wave amplitudes using
+\cref{eq:diffraction_moments_pw}.  However, in general the converse is
+not true because there are unphysical sets of moments that do not
+correspond to a partial-wave decomposition and even for a physical set
+of moments we need to solve a system of quadratic equations in the
+partial-wave amplitudes given by
+\cref{eq:diffraction_moments_pw,eq:diffraction_spin_dens_def}, which
+may contain ambiguities.
+
+From \cref{eq:diffraction_moments_pw} it is clear that the moments are
+linear combinations of spin-density matrix elements, \ie of
+intensities and interference terms of the partial-wave amplitudes
+$\mathcal{T}_{\ell\, m}$.  The equation also shows that~$L$ and~$M$
+are only indirectly linked to the physical angular momentum quantum
+numbers of the two-body system.  For given~$L$, the Clebsch-Gordan
+coefficients limit the sum to those partial waves, for which $\ell' +
+L + \ell = \text{even}$ (see \cref{eq:ang_mom_sum}), $\abs{\ell' - L}
+\leq \ell \leq \ell' + L$, and $m = m' + M$.  Conversely, this means
+that a partial-wave amplitude with orbital angular momentum~$\ell$
+contributes to moments from $L = 0$ up to $L = 2 \ell$.
+
+Alternatively, we can derive \cref{eq:diffraction_moments_pw} by
+inserting \cref{eq:diffraction_intensity} into
+\cref{eq:diffraction_moments} and using\footnote{This is the complex
+conjugate of Eq.~(4) in Sec.~5.9.1 of \refCite{Varshalovich:1988krb}.}
+\begin{equation}
+  \label{eq:spherical_harm_clebsch}
+  \int_{4 \pi}\!\!\! \dif{\Omega}\,
+  Y_{\ell'}^{m' *}(\Omega)\, Y_L^{M *}(\Omega)\, Y_{\ell}^m(\Omega)
+  = \sqrt{\frac{2 \ell' + 1}{4 \pi}}\, \sqrt{\frac{2 L + 1}{2 \ell + 1}}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}.
+\end{equation}
+Doing so, we obtain
+\begin{equation}
+  H(L, M)
+  = \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  \varrho^{\ell\, \ell'}_{m\, m'}\,
+  \int_{4 \pi}\!\!\! \dif{\Omega}\,
+  Y_\ell^m(\Omega)\,
+  Y_{\ell'}^{m' *}(\Omega)\,
+  Y_L^{M *}(\Omega),
+\end{equation}
+which is equivalent to \cref{eq:diffraction_moments_pw}.
+
+
+\subsection{Symmetry properties of moments}%
+\label{sec:diffraction:moments_sym}
+
+Since the moments are defined by the spherical harmonics (see
+\cref{eq:diffraction_moments}), they inherit the symmetry properties
+of the spherical harmonics.  From\footnote{See Eq.~(1) in Sec.~5.4 of
+\refCite{Varshalovich:1988krb}.}
+\begin{equation}
+  \label{eq:spherical_harm_sym}
+  Y_L^{M *}(\Omega)
+  = (-1)^M\, Y_L^{(-M)}(\Omega)
+\end{equation}
+it follows that
+\begin{equation}
+  \label{eq:diffraction_moment_sym_1}
+  H^*(L, M)
+  = \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^M(\Omega)
+  = (-1)^M \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{(-M) *}(\Omega)
+  = (-1)^M\, H(L, -M).
+\end{equation}
+
+Alternatively, we can derive \cref{eq:diffraction_moment_sym_1} by
+using \cref{eq:diffraction_moments_pw} plus the fact that the
+spin-density matrix is Hermitian,
 \ie
 \begin{equation}
   \rBrk{\prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}}^*
@@ -204,9 +258,9 @@ property\footnote{See Eq.~(10) in Sec.~8.4.3 of
   \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
   = \cdUnderbrace{(-1)^{\ell' + L - \ell}}{\equalUsing{$\mathclap{\text{\cref{eq:ang_mom_sum}}}$}\quad 1}\,
   \clebsch{L}{M}{\ell'}{m'}{\ell}{m}
-  = (-1)^{L - M}\, \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'},
+  = (-1)^{L - M}\, \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'}.
 \end{equation}
-we get
+Doing so, we get
 \begin{align}
   H^*(L, M)
   ={}& \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
@@ -392,7 +446,7 @@ amplitudes with opposite reflectivities do not interfere, we obtain
 \begin{equation}
   \label{eq:diffraction_intensity_refl}
   \mathcal{I}(\Omega)
-  = \sum_{\refl = \pm} \Abs[3]{\sum_{\ell m}^\infty \prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}\, \prescript{\refl}{}{Y}_\ell^m(\Omega)}^2.
+  = \sum_{\refl = \pm} \Abs[3]{\sum_{\ell m}^\infty \prescript{\refl}{}{\mathcal{T}}_{\!\ell\, m}\, \prescript{\refl}{}{Y}_\ell^m(\Omega)}^2.
 \end{equation}
 
 Expanding the absolute-value-squared term in
@@ -401,8 +455,8 @@ Expanding the absolute-value-squared term in
   \mathcal{I}(\Omega)
   ={}& \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \prescript{\refl}{}{Y}_\ell^m(\Omega)\,
-  \prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}\,
-  \prescript{\refl}{}{\mathcal{T\!}}_{\ell'\, m'}^*\,
+  \prescript{\refl}{}{\mathcal{T}}_{\!\ell\, m}\,
+  \prescript{\refl}{}{\mathcal{T}}_{\!\ell'\, m'}^*\,
   \prescript{\refl}{}{Y}_{\ell'}^{m' *}(\Omega)
   \\
   \label{eq:diffraction_intensity_refl_spin-dens}
@@ -413,15 +467,15 @@ where we have introduced the spin-density matrix of~$X$,
 \begin{equation}
   \label{eq:diffraction_refl_spin-dens}
   \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
-  = \prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}\, \prescript{\refl}{}{\mathcal{T\!}}_{\ell'\, m'}^*.
+  = \prescript{\refl}{}{\mathcal{T}}_{\!\ell\, m}\, \prescript{\refl}{}{\mathcal{T}}_{\!\ell'\, m'}^*.
 \end{equation}
 
 
-\subsection{Relation between moments and partial-wave amplitudes}%
-\label{sec:diffraction:moments_pw}
+\subsection{!!!Relation between moments and partial-wave amplitudes}%
+\todoInl{fix this section}
 
 In order to relate the partial-wave
-amplitudes~$\prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}$ and the
+amplitudes~$\prescript{\refl}{}{\mathcal{T}}_{\!\ell\, m}$ and the
 moments~$H(L, M)$ we insert \cref{eq:diffraction_spherical_harm_refl}
 into \cref{eq:diffraction_intensity_refl_spin-dens} and use \cref{eq:spherical_harm_prod}:
 \begin{align}
@@ -481,51 +535,9 @@ turn into \cref{eq:diffraction_moments_pw_refl_norm}.}
       - \refl\, (-1)^m\, \clebsch{\ell'}{m'}{L}{M}{\ell}{-m} \Big].
 \end{multline}
 
-It is important to note that we can always calculate all moments from
-a given set of partial-wave amplitudes using
-\cref{eq:diffraction_moments_pw_refl}.  However, in general the converse is
-not true because there are unphysical sets of moments that do not
-correspond to a partial-wave decomposition and even for a physical set
-of moments we need to solve a system of quadratic equations in the
-partial-wave amplitudes given by \cref{eq:diffraction_moments_pw_refl,},
-which may contain ambiguities.
-
-The moments are linear combinations of the spin-density matrix
-elements, \ie of intensities and interference terms of the
-partial-wave amplitudes $\prescript{\refl}{}{\mathcal{T\!}}_{\ell\,
-m}$.  \Cref{eq:diffraction_moments_pw_refl} also shows that~$L$ and~$M$ are
-only indirectly linked to the physical angular momentum quantum
-numbers of the two-body system.  For given~$L$, the Clebsch-Gordan
-coefficients limit the sum to those partial waves, for which $\ell' +
-L + \ell$ is even and $\abs{\ell' - L} \leq \ell \leq \ell' + L$.
-Conversely, this means that a partial-wave amplitude with orbital
-angular momentum~$\ell$ contributes to moments from $L = 0$ up to $L =
-2 \ell$.  It is important to note that each moment is an incoherent
+It is important to note that each moment is an incoherent
 sum of contributions from both reflectivities, \ie the moments do not
 separate these contributions.
-
-We can derive \cref{eq:diffraction_moments_pw_refl} also by inserting
-\cref{eq:diffraction_intensity_refl} into
-\cref{eq:diffraction_moments} and using\footnote{This is the complex
-conjugate of Eq.~(4) in Sec.~5.9.1 of \refCite{Varshalovich:1988krb}.}
-\begin{equation}
-  \label{eq:spherical_harm_clebsch}
-  \int_{4 \pi}\!\!\! \dif{\Omega}\,
-  Y_{\ell'}^{m' *}(\Omega)\, Y_L^{M *}(\Omega)\, Y_{\ell}^m(\Omega)
-  = \sqrt{\frac{2 \ell' + 1}{4 \pi}}\, \sqrt{\frac{2 L + 1}{2 \ell + 1}}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}.
-\end{equation}
-Doing so, we obtain
-\begin{multline}
-  H(L, M)
-  = \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-  \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
-  \mathcal{N}_m\, \mathcal{N}_{m'} \\
-  \times \int_{4 \pi}\!\!\! \dif{\Omega}\,
-  \sBrk[2]{Y_\ell^m(\Omega) - \refl\, (-1)^m\, Y_\ell^{(-m)}(\Omega)}
-  \sBrk[2]{Y_{\ell'}^{m' *}(\Omega) - \refl\, (-1)^{m'}\, Y_{\ell'}^{(-m') *}(\Omega)}\,
-  Y_L^{M *}(\Omega),
-\end{multline}
-which is equivalent to \cref{eq:diffraction_moments_pw_refl}.
 
 
 \subsection{Normalization of moments}%
