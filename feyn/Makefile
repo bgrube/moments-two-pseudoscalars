@@ -7,9 +7,9 @@ EPSTOPDF:=epstopdf
 feynman.ps: feynman.tex
 	rm -f feyn.*
 	rm -f compile-stamp
-	$(LATEX) feynman
+	$(LATEX) -shell-escape feynman
 	$(METAPOST) feyn
-	$(LATEX) feynman
+	$(LATEX) -shell-escape feynman
 	num=1;for i in `cat feynman.lst`;do \
 		$(DVIPS) -E -pp $$num -o $$i.eps feynman; \
 		$(EPSTOPDF) $$i.eps;let num++; \
@@ -23,3 +23,4 @@ clean:
 	rm -fv ./feyn.*
 	rm -fv ./compile-stamp
 	rm -fv ./*~
+	rm -rfv ./_minted-feynman
