@@ -450,31 +450,47 @@ defined in
 \subsection{Symmetry properties of moments}%
 \label{sec:diffraction:moments_sym}
 
-Since the moments are linear combinations of spin-density matrix
-elements, the moments inherit their symmetry properties.  By
-definition (\confer \cref{eq:diffraction_refl_spin-dens}), the
-spin-density matrix is Hermitian, \ie
+Since the moments are defined by the spherical harmonics (see
+\cref{eq:diffraction_moments_norm}) they inherit the symmetry
+properties of the spherical harmonics.  Using
+\cref{eq:spherical_harm_sym}, it follows that
+\begin{align}
+  H^*(L, M)
+  ={}& \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^M(\Omega)
+  = (-1)^M \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{(-M) *}(\Omega) \notag
+  \\
+  \label{eq:diffraction_moment_sym_1}
+  ={}& (-1)^M\, H(L, -M).
+\end{align}
+
+Alternatively, we can express the moments in terms of spin-density
+elements via \cref{eq:diffraction_moments_pw_norm} and derive
+\cref{eq:diffraction_moment_sym_1} using the fact that the
+spin-density matrix is Hermitian, \ie\footnote{This follows directly
+from the definition in \cref{eq:diffraction_refl_spin-dens}.}
 \begin{equation}
   \rBrk{\prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}}^*
-  = \prescript{\refl}{}{\varrho}^{\ell'\, \ell}_{m'\, m}.
+  = \prescript{\refl}{}{\varrho}^{\ell'\, \ell}_{m'\, m},
 \end{equation}
-Using this together with \cref{eq:diffraction_moments_pw_norm}
-and\footnote{See Eq.~(10) in Sec.~8.4.3 of
+and the symmetry property of the Clebsch-Gordan coefficients\, \ie
+\footnote{See Eq.~(10) in Sec.~8.4.3 of
 \refCite{Varshalovich:1988krb}.}
 \begin{equation}
   \label{eq:clebsch_sym}
   \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
   = \cdUnderbrace{{(-1)}^{\ell' + L - \ell}}{= 1~\text{because of \cref{eq:ang_mom_sum}}}\, \clebsch{L}{M}{\ell'}{m'}{\ell}{m}
-  = {(-1)}^{L - M}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'},
+  = {(-1)}^{L - M}\, \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'}.
 \end{equation}
-we get
+With the above we get
 \begin{align}
   H^*(L, M)
   ={}& \begin{multlined}[t][0.8\textwidth]
     \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
-    \prescript{\refl}{}{\varrho}^{\ell'\, \ell}_{m'\, m}\, {(-1)}^L\, \clebsch{\ell}{0}{L}{0}{\ell'}{0} \\
-    \shoveleft{\times \mathcal{N}_m\, \mathcal{N}_{m'}\, {(-1)}^L\, \Big[
+    \prescript{\refl}{}{\varrho}^{\ell'\, \ell}_{m'\, m}\,
+    {(-1)}^L\, \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\, \clebsch{\ell}{0}{L}{0}{\ell'}{0} \\
+    \shoveleft{\times \mathcal{N}_m\, \mathcal{N}_{m'}\,
+    {(-1)}^L\, \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\, \Big[
       {(-1)}^{-M}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'}
       + {(-1)}^{2M}\, \clebsch{\ell}{m}{L}{M}{\ell'}{m'}} \\
       - \refl\, {(-1)}^{-M}\, {(-1)}^{m'}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{-m'}
@@ -483,7 +499,7 @@ we get
   \\
   ={}& \begin{multlined}[t][0.8\textwidth]
     \dUnderbrace{{(-1)}^{2 L - M}}{= {(-1)}^M}\, \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-    \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
+    \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\,
     \prescript{\refl}{}{\varrho}^{\ell'\, \ell}_{m'\, m}\, \clebsch{\ell}{0}{L}{0}{\ell'}{0} \\
     \shoveleft{\times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[
       \clebsch{\ell}{m}{L}{-M}{\ell'}{m'}
@@ -492,22 +508,14 @@ we get
       - \refl\, {(-1)}^m\, \clebsch{\ell}{-m}{L}{-M}{\ell'}{m'} \Big]
   \end{multlined} \notag
   \\
-  \label{eq:diffraction_moment_sym_1}
-  ={}& (-1)^M\, H(L, -M),
+  \equalUsing{$\substack{\displaystyle{\ell \leftrightarrow \ell'} \\ \displaystyle{m \leftrightarrow m'}}$}&
+  (-1)^M\, H(L, -M),
 \end{align}
-where in the last step we first made the replacements $\ell
-\leftrightarrow \ell'$ and $m \leftrightarrow m'$ and then compared to
-\cref{eq:diffraction_moments_pw_norm}.\footnote{%
-  Alternatively, we can derive \cref{eq:diffraction_moment_sym_1} from
-  the definition of the moments in \cref{eq:diffraction_moments} and
-  using \cref{eq:spherical_harm_sym}:
-  \begin{equation}
-    H^*(L, M)
-    = \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^M(\Omega)
-    = (-1)^M \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{(-M) *}(\Omega)
-    = (-1)^M\, H(L, -M).
-  \end{equation}\todoInl{move this into main text}
-}  The above relation ensures that the intensity function in
+where in the last step we compared to
+\cref{eq:diffraction_moments_pw_norm}.
+
+The symmetry relation in \cref{eq:diffraction_moment_sym_1} ensures
+that the intensity function in
 \cref{eq:diffraction_intensity_moments_norm} is real-valued:
 \begin{align}
   \mathcal{I}(\Omega)
