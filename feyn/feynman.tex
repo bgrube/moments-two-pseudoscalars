@@ -91,6 +91,46 @@
 \end{rkfeyn}
 
 
+\begin{rkfeyn}{photoproduction_x_etaprimepi_p}(100,55)
+  % pion lines
+  \fmfforce{2w/14,9h/11}{vi1}
+  \fmfforce{5w/14,8h/11}{v1}
+  \fmf{photon}{vi1,v1}
+  \fmfv{l=$\gamma$,l.a=180}{vi1}
+
+  % Nucleon lines
+  \fmfforce{2w/14,2h/11}{vi2}
+  \fmfforce{5w/14,3h/11}{v2}
+  \fmfforce{12w/14,2h/11}{vo2}
+  \fmf{fermion}{vi2,v2,vo2}
+  \fmfv{l=$p$,l.a=180}{vi2}
+  \fmfv{l=$p$,l.a=0}{vo2}
+
+  % Regge or Pomeron exchange
+  \fmfdot{v1,v2}
+  \fmf{double,label=\Preg,,\Ppom,label.side=left}{v2,v1}
+  \fmf{phantom,label={\color{b} $\downarrow t$},label.side=right}{v2,v1}
+
+  % meson decay
+  \fmfforce{9w/14,8h/11}{vm}
+  \fmffreeze\fmfdraw
+  \fmfpen{2.5pt}
+  \fmf{fermion,label={\color{r} $X^{0}$},l.s=left,fore=(0.75,,0,,0)}{v1,vm}
+  \fmfdot{vm}
+  \fmffreeze\fmfdraw
+  \fmfpen{thin}
+  \fmfforce{12w/14,9h/11}{vp1}
+  \fmf{fermion}{vm,vp1}
+  \fmfforce{12w/14,7h/11}{vp2}
+  \fmf{fermion}{vm,vp2}
+
+  % beautification
+  \fmffreeze\fmfdraw
+  \fmfv{l=\etaOrPr,l.a=0,l.d=0.25w/16}{vp1}
+  \fmfv{l=$\pi^-$,l.a=0,l.d=0.25w/16}{vp2}
+\end{rkfeyn}
+
+
 \end{fmffile}
 
 
