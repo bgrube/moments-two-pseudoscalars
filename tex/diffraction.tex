@@ -221,6 +221,80 @@ Doing so, we obtain
 which is equivalent to \cref{eq:diffraction_moments_pw}.
 
 
+\subsection{Normalization of moments}%
+\label{sec:diffraction:moments_norm}
+
+In order to derive a more practical normalization of the moments, it
+is instructive to look at the lowest moment $H(0, 0)$, which is a
+special case.  With
+\cref{eq:diffraction_moments,eq:diffraction_moments_pw},
+$Y_0^0(\Omega) = 1 / \sqrt{4 \pi}$, and
+\begin{equation}
+  \clebsch{\ell'}{m'}{0}{0}{\ell}{m}
+  = \delta_{\ell \ell'}\, \delta_{m m'}
+\end{equation}
+we get
+\begin{equation}
+  H(0, 0)
+  = \frac{1}{\sqrt{4 \pi}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)
+  = \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{\substack{\ell m \\ \ell' m'}}^\infty \varrho^{\ell\, \ell}_{m\, m}.
+\end{equation}
+This means, up to a factor of $1 / \sqrt{4 \pi}$, $H(0, 0)$ is the
+integral of the intensity over the phase space, which is identical to
+the sum of all partial-wave intensities.
+
+In order to make $H(0, 0)$ identical to the intensity integral and the
+sum of all partial-wave intensities, it is customary to change the
+normalization of the moments using the replacement
+\begin{equation}
+  H(L, M)
+  \to \sqrt{\frac{4 \pi}{2 L + 1}}\, H(L, M).
+\end{equation}
+Applying the above,
+\cref{eq:diffraction_intensity_moments,eq:diffraction_moments} become
+\begin{equation}
+  \label{eq:diffraction_intensity_moments_norm}
+  \mathcal{I}(\Omega)
+  = \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}\, H(L, M)\, Y_L^M(\Omega),
+\end{equation}
+and
+\begin{equation}
+  \label{eq:diffraction_moments_norm}
+  H(L, M)
+  = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega).
+\end{equation}
+Using the relation between the spherical harmonics and the Wigner
+$D$-functions~\cite{wikipedia:wignerD}, \ie
+\begin{equation}
+  \sqrt{\frac{2 L + 1}{4 \pi}}\, D^{L *}_{M 0}(\phi, \theta, 0)
+  = Y_L^M(\Omega)
+  \quad\text{and in particular}\quad
+  \sqrt{\frac{2 L + 1}{4 \pi}}\, d^L_{M 0}(\theta)
+  = y_L^M(\theta),
+\end{equation}
+\cref{eq:diffraction_intensity_moments_norm,eq:diffraction_moments_norm}
+become identical to Eqs.~(6) and~(9) in \refCite{Chung:1997qd}.
+
+Similarly, \cref{eq:diffraction_moments_pw} becomes
+\begin{equation}
+  \label{eq:diffraction_moments_pw_norm}
+  H(L, M)
+  = \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
+  \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}\,
+  \varrho^{\ell\, \ell'}_{m\, m'}.
+\end{equation}
+
+For the remainder of this section we will use the moments defined in
+\cref{eq:diffraction_intensity_moments_norm,eq:diffraction_moments_norm,eq:diffraction_moments_pw_norm}, for which in particular
+\begin{equation}
+  \label{eq:diffraction_moment_00_pw}
+  H(0, 0)
+  = \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)
+  = \sum_{\substack{\ell m \\ \ell' m'}}^\infty \varrho^{\ell\, \ell}_{m\, m}.
+\end{equation}
+
+
 \subsection{Symmetry properties of moments}%
 \label{sec:diffraction:moments_sym}
 
@@ -540,17 +614,9 @@ sum of contributions from both reflectivities, \ie the moments do not
 separate these contributions.
 
 
-\subsection{Normalization of moments}%
-\label{sec:diffraction:moments_norm}
+\subsection{!!!Normalization of moments}%
 
-In order to derive a more practical normalization, it is instructive
-to look at the lowest moment $H(0, 0)$, which is a special case.  With
-\cref{eq:diffraction_moments_pw_refl} and
-\begin{equation}
-  \clebsch{\ell'}{m'}{0}{0}{\ell}{m}
-  = \delta_{\ell \ell'}\, \delta_{m m'}
-\end{equation}
-we get
+\todoInl{fix}
 \begin{align}
   H(0, 0)
   ={}& \begin{multlined}[t]
@@ -569,46 +635,14 @@ we get
         \end{cases*}}
   \end{multlined} \notag
   \\
-  \label{eq:diffraction_moment_00_pw}
   ={}& \frac{1}{\sqrt{4 \pi}} \sum_{\refl = \pm} \sum_\ell^\infty \sum_{m = 0}^\ell \prescript{\refl}{}{\varrho}^{\ell\, \ell}_{m\, m},
 \end{align}
 where we have inserted the normalization factor from
 \cref{eq:refl_norm}, which ensures that the multiplicity of the
 reflectivity states is $2 \ell + 1$ by requiring $m, m' \geq 0$.
 According to the above, $H(0, 0)$ is the sum of all partial-wave
-intensities, except for a factor $1 / \sqrt{4 \pi}$.
+intensities.
 
-In order to make $H(0, 0)$ identical to the sum of all partial-wave
-intensities, it is customary to change the normalization of the
-moments using the replacement
-\begin{equation}
-  H(L, M)
-  \to \sqrt{\frac{4 \pi}{2 L + 1}}\, H(L, M).
-\end{equation}
-Applying the above,
-\cref{eq:diffraction_intensity_moments,eq:diffraction_moments} become
-\begin{equation}
-  \label{eq:diffraction_intensity_moments_norm}
-  \mathcal{I}(\Omega)
-  = \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}\, H(L, M)\, Y_L^M(\Omega),
-\end{equation}
-and
-\begin{equation}
-  \label{eq:diffraction_moments_norm}
-  H(L, M)
-  = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega).
-\end{equation}
-Using the relation between the spherical harmonics and the Wigner
-$D$-functions~\cite{wikipedia:wignerD}, \ie
-\begin{equation}
-  \sqrt{\frac{2 L + 1}{4 \pi}}\, D^{L *}_{M 0}(\phi, \theta, 0)
-  = Y_L^M(\Omega)
-  \quad\text{and in particular}\quad
-  \sqrt{\frac{2 L + 1}{4 \pi}}\, d^L_{M 0}(\theta)
-  = y_L^M(\theta),
-\end{equation}
-\cref{eq:diffraction_intensity_moments_norm,eq:diffraction_moments_norm}
-become identical to Eqs.~(6) and~(9) in \refCite{Chung:1997qd}
 
 Similarly, \cref{eq:diffraction_moments_pw_refl} becomes
 \begin{multline}
@@ -624,10 +658,6 @@ Similarly, \cref{eq:diffraction_moments_pw_refl} becomes
       - \refl\, (-1)^m\, \clebsch{\ell'}{m'}{L}{M}{\ell}{-m} \Big],
 \end{multline}
 which is equivalent to Eqs.~(29) and~(31) in \refCite{Chung:1997qd}.
-
-For the remainder of this section we will use the unnormalized moments
-defined in
-\cref{eq:diffraction_intensity_moments_norm,eq:diffraction_moments_norm,eq:diffraction_moments_pw_refl_norm}.
 
 
 \subsection{Calculation of moments from data}%
