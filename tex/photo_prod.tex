@@ -32,12 +32,14 @@ references here and will derive some equations.
 
 The analysis is based on the measured intensity distribution, \ie the
 number density of events, which is decomposed into partial-wave
-amplitudes:\footnote{\label{fn:photoprod_ampl_redef}This corresponds
-to Eq.~(A3) in \refCite{Mathieu:2019fts} with the phase-space
-factor~$\kappa$ absorbed into the partial-wave amplitudes, \ie with
-the redefinition $\mathcal{T} \to \mathcal{T} / \sqrt{\kappa}$ (see
-also footnote~6 in \refCite{Mathieu:2019fts}), and with Eq.~(A5)
-inserted.}\todo{Can we express this as $\abs{\text{amplitude}}^2$?}
+amplitudes analogous to the diffractive case in
+\cref{eq:diffraction_intensity}:\footnote{\label{fn:photoprod_ampl_redef}This
+corresponds to Eq.~(A3) in \refCite{Mathieu:2019fts} with the
+phase-space factor~$\kappa$ absorbed into the partial-wave amplitudes,
+\ie with the redefinition $\mathcal{T} \to \mathcal{T} /
+\sqrt{\kappa}$ (see also footnote~6 in \refCite{Mathieu:2019fts}), and
+with Eq.~(A5) inserted.}\todo{Can we express this as
+$\abs{\text{amplitude}}^2$?}
 \begin{equation}
   \label{eq:photoprod_intensity}
   \mathcal{I}(\Omega, \Phi; w, t)
@@ -226,6 +228,99 @@ moments $H_{1, 2}(L, M)$ represent orthogonal angular distributions
 in~$\Phi$ (see \cref{eq:photoprod_orthogonality_phi}).
 
 
+\subsection{Relation between moments and partial-wave amplitudes}%
+\label{sec:photoprod:moments_pw}
+
+As in the diffractive case, we see that the moments are linear
+combinations of the corresponding components of the spin-density
+matrix of~$X$ by inserting \cref{eq:spherical_harm_prod} into
+\cref{eq:photoprod_intensity_components} and comparing with
+\cref{eq:photoprod_intensity_moments_norm_unpol,eq:photoprod_intensity_moments_norm_pol},
+\ie\footnote{See Eq.~(A9) in \refCite{Mathieu:2019fts}.}
+\begin{align}
+  \label{eq:photoprod_moment_unpol_pw}
+  H_0(L, M)
+  ={}& \sum_{\substack{\ell m \\ \ell' m'}}^\infty \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}
+  \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}\,
+  \prescript{0}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
+  \\
+  \label{eq:photoprod_moment_pol_pw}
+  H_{1, 2}(L, M)
+  ={}& -\sum_{\substack{\ell m \\ \ell' m'}}^\infty \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}
+  \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}\,
+  \prescript{1, 2}{}{\varrho}^{\ell\, \ell'}_{m\, m'},
+\end{align}
+where the $\prescript{i}{}{\varrho}^{\ell\, \ell'}_{m\, m'}$ are given
+by \crefrange{eq:photoprod_rho_0}{eq:photoprod_rho_2}.  For given~$(L,
+M)$, the Clebsch-Gordan coefficients restrict the sums to those
+quantum-number combinations, for which $\ell' + L + \ell =
+\text{even}$ (see \cref{eq:ang_mom_sum}), $\abs{\ell' - L} \leq \ell
+\leq \ell' + L$, and $m = m' + M$.  Conversely, this means that a
+partial-wave amplitude with orbital angular momentum~$\ell$
+contributes to all moments~$H_i$ with~$L$ from~0 up to $2 \ell$.
+
+
+\subsection{Symmetry properties of moments}%
+\label{sec:photo_prod:moments_sym}
+
+We use the same arguments as in \cref{sec:diffraction:moments_sym} to
+derive the symmetry relations for the photoproduction moments.
+
+Using the definition of the moments in
+\cref{eq:photoprod_moments_norm_unpol,eq:photoprod_moments_norm_pol}
+together with the symmetry property of the spherical harmonics in
+\cref{eq:spherical_harm_sym}, we see that
+\begin{align}
+  H_0^*(L, M)
+  ={}& (-1)^M\, \frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
+  \mathcal{I}(\Omega, \Phi)\, Y_L^{(-M) *}(\Omega) \notag
+  \\
+  \label{eq:photoprod_moment_unpol_sym_1}
+  ={}& (-1)^M\, H_0(L, {-M})
+  \\
+  \label{eq:photoprod_moment_pol_sym_1}
+  H_{1, 2}^*(L, M)
+  ={}& (-1)^M\, \frac{1}{P_\gamma}\, \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
+  \mathcal{I}(\Omega, \Phi)\, Y_L^{(-M) *}(\Omega) \times \begin{cases*}
+    \cos 2 \Phi & for $i = 1$, \\
+    \sin 2 \Phi & for $i = 2$
+  \end{cases*}
+  \notag
+  \\
+  ={}& (-1)^M\, H_{1,2}(L, {-M}),
+\end{align}
+which is analogous to \cref{eq:diffraction_moment_sym_1}.
+
+Since the formulas for the intensity components in
+\cref{eq:photoprod_intensity_moments_norm_unpol,eq:photoprod_intensity_moments_norm_pol}
+have---up to overall signs---the same form as
+\cref{eq:diffraction_intensity_moments_norm}, we can use exactly the
+same arguments as in \cref{eq:diffraction_intensity_moments_general}
+to see that all intensity components are real-valued and that only the
+moments with $M \geq 0$ are required, \ie
+\begin{align}
+  \label{eq:photoprod_intensity_moments_unpol_general}
+  \mathcal{I}_0(\Omega)
+  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_0(L, M)\, Y_L^M(\Omega)}
+  \\
+  \label{eq:photoprod_intensity_moments_pol_general}
+  \mathcal{I}_{1, 2}(\Omega)
+  ={}& -\sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_{1, 2}(L, M)\, Y_L^M(\Omega)}.
+\end{align}
+
+We use the relation of the moments to the partial-wave amplitudes in
+\cref{eq:photoprod_moment_unpol_pw,eq:photoprod_moment_pol_pw}
+together with the symmetry properties of the Clebsch-Gordan
+coefficients in \cref{eq:clebsch_sym} to show that
+\begin{align}
+  H(L, -M)
+  = \sum_{\substack{\ell m \\ \ell' m'}}^\infty \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}
+  \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, (-1)^{L - M}\, \clebsch{\ell}{m}{L}{M}{\ell'}{m'}\,
+  \prescript{0}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
+  = (-1)^{L - M}\,  H(L, M)
+\end{align}
+
+
 \subsection{Reflectivity basis}%
 \label{sec:photoprod:reflectivity}
 
@@ -329,37 +424,9 @@ coherent and the spin-density matrices in
 rank~1.
 
 
-\subsection{Relation between moments and partial-wave amplitudes}%
-\label{sec:photoprod:moments_pw}
+\subsection{!!!Relation between moments and partial-wave amplitudes}%
 
-As in the diffractive case, we see that the moments are linear
-combinations of the corresponding components of the spin-density
-matrix of~$X$ by inserting \cref{eq:spherical_harm_prod} into
-\cref{eq:photoprod_intensity_components} and comparing with
-\cref{eq:photoprod_intensity_moments_norm_unpol,eq:photoprod_intensity_moments_norm_pol},
-\ie\footnote{See Eq.~(A9) in \refCite{Mathieu:2019fts}.}
-\begin{align}
-  \label{eq:photoprod_moment_unpol_pw}
-  H_0(L, M)
-  ={}& \sum_{\substack{\ell m \\ \ell' m'}}^\infty \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}
-  \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}\,
-  \prescript{0}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
-  \\
-  \label{eq:photoprod_moment_pol_pw}
-  H_{1, 2}(L, M)
-  ={}& -\sum_{\substack{\ell m \\ \ell' m'}}^\infty \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}
-  \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}\,
-  \prescript{1, 2}{}{\varrho}^{\ell\, \ell'}_{m\, m'},
-\end{align}
-where the $\prescript{i}{}{\varrho}^{\ell\, \ell'}_{m\, m'}$ are given
-by \crefrange{eq:photoprod_rho_0}{eq:photoprod_rho_2}.  For given~$(L,
-M)$, the Clebsch-Gordan coefficients restrict the sums to those
-quantum-number combinations, for which $\ell' + L + \ell =
-\text{even}$ (see \cref{eq:ang_mom_sum}), $\abs{\ell' - L} \leq \ell
-\leq \ell' + L$, and $m = m' + M$.  Conversely, this means that a
-partial-wave amplitude with orbital angular momentum~$\ell$
-contributes to all moments~$H_i$ with~$L$ from~0 up to $2 \ell$.
-
+\todoInl{fix}
 Inserting
 \crefrange{eq:photoprod_rho_0_refl}{eq:photoprod_rho_2_refl}, we
 obtain the relation between the moments and the partial-wave
@@ -434,65 +501,4 @@ they enter with opposite sign.
   \\
   ={}& 2 \sum_{\ell m}^\infty \sum_{k = 0, 1}
   (-1)^m \Im[2]{\sBrk{\ell}^{(+)}_{m; k}\, \sBrk{\ell}^{(+) *}_{{-m}; k} - \sBrk{\ell}^{(-)}_{m; k}\, \sBrk{\ell}^{(-) *}_{{-m}; k}}
-\end{align}
-
-
-\subsection{Symmetry properties of moments}%
-\label{sec:photo_prod:moments_sym}
-
-We can use the same arguments as in \cref{sec:diffraction:moments_sym}
-to derive the symmetry relations for the photoproduction moments.
-
-Using the definition of the moments in
-\cref{eq:photoprod_moments_norm_unpol,eq:photoprod_moments_norm_pol}
-together with the symmetry property of the spherical harmonics in
-\cref{eq:spherical_harm_sym}, we see that
-\begin{align}
-  H_0^*(L, M)
-  ={}& (-1)^M\, \frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)\, Y_L^{(-M) *}(\Omega) \notag
-  \\
-  \label{eq:photoprod_moment_unpol_sym_1}
-  ={}& (-1)^M\, H_0(L, {-M})
-  \\
-  \label{eq:photoprod_moment_pol_sym_1}
-  H_{1, 2}^*(L, M)
-  ={}& (-1)^M\, \frac{1}{P_\gamma}\, \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)\, Y_L^{(-M) *}(\Omega) \times \begin{cases*}
-    \cos 2 \Phi & for $i = 1$, \\
-    \sin 2 \Phi & for $i = 2$
-  \end{cases*}
-  \notag
-  \\
-  ={}& (-1)^M\, H_{1,2}(L, {-M}),
-\end{align}
-which is analogous to \cref{eq:diffraction_moment_sym_1}.
-
-Since the formulas for the intensity components in
-\cref{eq:photoprod_intensity_moments_norm_unpol,eq:photoprod_intensity_moments_norm_pol}
-have---up to overall signs---the same form as
-\cref{eq:diffraction_intensity_moments_norm}, we can use exactly the
-same arguments as in \cref{eq:diffraction_intensity_moments_general}
-to see that all intensity components are real-valued and that only the
-moments with $M \geq 0$ are required, \ie
-\begin{align}
-  \label{eq:photoprod_intensity_moments_unpol_general}
-  \mathcal{I}_0(\Omega)
-  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_0(L, M)\, Y_L^M(\Omega)}
-  \\
-  \label{eq:photoprod_intensity_moments_pol_general}
-  \mathcal{I}_{1, 2}(\Omega)
-  ={}& -\sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_{1, 2}(L, M)\, Y_L^M(\Omega)}.
-\end{align}
-
-We use the relation of the moments to the partial-wave amplitudes in
-\cref{eq:photoprod_moment_unpol_pw,eq:photoprod_moment_pol_pw}
-together with the symmetry properties of the Clebsch-Gordan
-coefficients in \cref{eq:clebsch_sym} to show that
-\begin{align}
-  H(L, -M)
-  = \sum_{\substack{\ell m \\ \ell' m'}}^\infty \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}
-  \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, (-1)^{L - M}\, \clebsch{\ell}{m}{L}{M}{\ell'}{m'}\,
-  \prescript{0}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
-  = (-1)^{L - M}\,  H(L, M)
 \end{align}
