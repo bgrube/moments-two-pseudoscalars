@@ -123,10 +123,9 @@ the reflectivity basis
 where the spin states $\ket{\refl, \ell, m}$ of~$X$ are eigenstates of
 the reflection operator through the production plane that is spanned
 by the beam particle and~$X$.  The corresponding eigenvalues~$\refl =
-\pm 1$, the \emph{reflectivities}, are chosen such that they
-correspond to the naturality of the exchange particle in the
-scattering process.\todo{sign chosen for pion beam}  The normalization
-factor
+\pm$, the \emph{reflectivities}, are chosen such that they correspond
+to the naturality of the exchange particle in the scattering
+process.\todo{sign chosen for pion beam}  The normalization factor
 \begin{equation}
   \label{eq:refl_norm}
   \mathcal{N}_m
@@ -190,21 +189,21 @@ amplitudes with opposite reflectivities do not interfere, we obtain
 \begin{equation}
   \label{eq:diffraction_intensity_refl}
   \mathcal{I}(\Omega)
-  = \sum_{\refl = \pm 1} \Abs[3]{\sum_{\ell m}^\infty \prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}\, \prescript{\refl}{}{Y}_\ell^m(\Omega)}^2.
+  = \sum_{\refl = \pm} \Abs[3]{\sum_{\ell m}^\infty \prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}\, \prescript{\refl}{}{Y}_\ell^m(\Omega)}^2.
 \end{equation}
 
 Expanding the absolute-value-squared term in
 \cref{eq:diffraction_intensity_refl}, we get
 \begin{align}
   \mathcal{I}(\Omega)
-  ={}& \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  ={}& \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \prescript{\refl}{}{Y}_\ell^m(\Omega)\,
   \prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}\,
   \prescript{\refl}{}{\mathcal{T\!}}_{\ell'\, m'}^*\,
   \prescript{\refl}{}{Y}_{\ell'}^{m' *}(\Omega)
   \\
   \label{eq:diffraction_intensity_refl_spin-dens}
-  ={}& \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  ={}& \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \prescript{\refl}{}{Y}_\ell^m(\Omega)\, \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \prescript{\refl}{}{Y}_{\ell'}^{m' *}(\Omega),
 \end{align}
 where we have introduced the spin-density matrix of~$X$,
@@ -218,12 +217,14 @@ where we have introduced the spin-density matrix of~$X$,
 \subsection{Relation between moments and partial-wave amplitudes}%
 \label{sec:diffraction:moments_pw}
 
+\todoInl{Discuss this after having introced normalization}
 In order to relate the partial-wave
 amplitudes~$\prescript{\refl}{}{\mathcal{T\!}}_{\ell\, m}$ and the
 moments~$H(L, M)$ we insert \cref{eq:diffraction_spherical_harm_refl}
 into \cref{eq:diffraction_intensity_refl_spin-dens} and use the
 relation\footnote{See Eq.~(A.15) in \refCite{Chung:1971ri}.}
 \begin{equation}
+  \label{eq:spherical_harm_prod}
   Y_{\ell'}^{m' *}(\Omega)\, Y_{\ell}^m(\Omega)
   = \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}\, Y_L^M(\Omega).
 \end{equation}
@@ -242,14 +243,14 @@ Using the above, we obtain
 \begin{align}
   \mathcal{I}(\Omega)
   ={}&
-    \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+    \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
     \mathcal{N}_m\, \mathcal{N}_{m'}
     \sBrk[2]{Y_\ell^m(\Omega) - \refl\, {(-1)}^m\, Y_\ell^{(-m)}(\Omega)}
     \sBrk[2]{Y_{\ell'}^{m' *}(\Omega) - \refl\, {(-1)}^{m'}\, Y_{\ell'}^{(-m') *}(\Omega)}
   \\
   ={}& \begin{multlined}[t][0.85\columnwidth]
-    \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+    \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
     \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
     \shoveleft{\times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[ \clebsch{\ell'}{m'}{L}{M}{\ell}{m}                       - \refl\, {(-1)}^{m'}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{m}} \\
@@ -269,7 +270,7 @@ where we have used \cref{eq:ang_mom_sum}.  Furthermore, ${(-1)}^{m + m'}
 coefficient enforces that $m' - M = m$.  With this we arrive at
 \begin{multline}
   \mathcal{I}(\Omega)
-  = \sum_{L M}^\infty \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  = \sum_{L M}^\infty \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 L + 1}{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
     \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
     \times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[
@@ -283,7 +284,7 @@ Comparing with \cref{eq:diffraction_intensity_moments} we see that
 \begin{multline}
   \label{eq:diffraction_moments_pw}
   H(L, M)
-  = \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  = \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 L + 1}{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
     \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
     \times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[
@@ -330,7 +331,7 @@ Doing so, we obtain
 \begin{multline}
   \label{eq:diffraction_moments_pw_refl}
   H(L, M)
-  = \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  = \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
   \mathcal{N}_m\, \mathcal{N}_{m'} \\
   \times \int_{4 \pi}\!\!\! \dif{\Omega}\,
@@ -355,7 +356,7 @@ we get
 \begin{align}
   H(0, 0)
   ={}& \begin{multlined}[t]
-    \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+    \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \frac{1}{\sqrt{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
       \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \delta_{\ell \ell'} \\
       \times \rdUnderbrace{\mathcal{N}_m\, \mathcal{N}_{m'}\, \sBrk[2]{%
@@ -371,7 +372,7 @@ we get
   \end{multlined} \notag
   \\
   \label{eq:diffraction_moment_00_pw}
-  ={}& \frac{1}{\sqrt{4 \pi}} \sum_{\refl = \pm 1} \sum_\ell^\infty \sum_{m = 0}^\ell \prescript{\refl}{}{\varrho}^{\ell\, \ell}_{m\, m},
+  ={}& \frac{1}{\sqrt{4 \pi}} \sum_{\refl = \pm} \sum_\ell^\infty \sum_{m = 0}^\ell \prescript{\refl}{}{\varrho}^{\ell\, \ell}_{m\, m},
 \end{align}
 where we have inserted the normalization factor from
 \cref{eq:refl_norm}, which ensures that the multiplicity of the
@@ -415,7 +416,7 @@ Similarly, \cref{eq:diffraction_moments_pw} becomes
 \begin{multline}
   \label{eq:diffraction_moments_pw_norm}
   H(L, M)
-  = \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  = \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
     \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
     \times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[
@@ -455,7 +456,7 @@ we get
 \begin{align}
   H^*(L, M)
   ={}& \begin{multlined}[t][0.8\textwidth]
-    \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+    \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
     \prescript{\refl}{}{\varrho}^{\ell'\, \ell}_{m'\, m}\, {(-1)}^L\, \clebsch{\ell}{0}{L}{0}{\ell'}{0} \\
     \shoveleft{\times \mathcal{N}_m\, \mathcal{N}_{m'}\, {(-1)}^L\, \Big[
@@ -466,7 +467,7 @@ we get
   \end{multlined} \notag
   \\
   ={}& \begin{multlined}[t][0.8\textwidth]
-    \dUnderbrace{{(-1)}^{2 L - M}}{= {(-1)}^M}\, \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+    \dUnderbrace{{(-1)}^{2 L - M}}{= {(-1)}^M}\, \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
     \prescript{\refl}{}{\varrho}^{\ell'\, \ell}_{m'\, m}\, \clebsch{\ell}{0}{L}{0}{\ell'}{0} \\
     \shoveleft{\times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[
@@ -490,7 +491,7 @@ where in the last step we first made the replacements $\ell
     = \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^M(\Omega)
     = (-1)^M \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{(-M) *}(\Omega)
     = (-1)^M\, H(L, -M).
-  \end{equation}
+  \end{equation}\todoInl{move this into main text}
 }  The above relation ensures that the intensity function in
 \cref{eq:diffraction_intensity_moments_norm} is real-valued:
 \begin{align}
@@ -518,7 +519,7 @@ properties of the Clebsch-Gordan coefficients in
 \begin{align}
   H(L, -M)
   ={}& \begin{multlined}[t][0.8\textwidth]
-    \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+    \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
     \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, {(-1)}^L\, \clebsch{\ell}{0}{L}{0}{\ell'}{0} \\
     \times \mathcal{N}_m\, \mathcal{N}_{m'}\, {(-1)}^L\, \Big[
@@ -529,7 +530,7 @@ properties of the Clebsch-Gordan coefficients in
   \end{multlined} \notag
   \\
   ={}& \begin{multlined}[t][0.8\textwidth]
-    \dUnderbrace{{(-1)}^{2 L - M}}{= {(-1)}^M}\, \sum_{\refl = \pm 1} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+    \dUnderbrace{{(-1)}^{2 L - M}}{= {(-1)}^M}\, \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
     \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell}{0}{L}{0}{\ell'}{0} \\
     \times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[
