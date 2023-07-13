@@ -61,7 +61,34 @@ the spin-density matrix of~$X$:
 \end{equation}
 which by definition is Hermitian.  The angular distribution of the
 $X$~decay products is given by the spherical harmonics
-$Y_\ell^m(\Omega)$~\cite{wikipedia:sphericalHarm}.
+$Y_\ell^m(\Omega)$~\cite{wikipedia:sphericalHarm}, which are defined
+by\footnote{See Eq.~(1) in Sec.~5.2 of
+\refCite{Varshalovich:1988krb}.}
+\begin{equation}
+  \label{eq:spherical_harm_def}
+  Y_\ell^m(\Omega)
+  = \dUnderbrace{\sqrt{\frac{(2 \ell + 1)}{4 \pi}\, \frac{(\ell -m)!}{(\ell + m)!}}\, P_\ell^m(\cos\theta)}{= Y_\ell^m(\theta, 0)}\, e^{\imag\, m\, \phi},
+\end{equation}
+For convenience, we introduce the real-valued functions
+\begin{equation}
+  \label{eq:small_y_def}
+  y_\ell^m(\theta)
+  \equiv Y_\ell^m(\theta, 0)
+  \quad\text{so that}\quad
+  Y_\ell^m(\theta, \phi)
+  = y_\ell^m(\theta)\, e^{\imag\, m\, \phi}.
+\end{equation}
+The spherical harmonics are special cases of the
+$D$-functions~\cite{wikipedia:wignerD}, \ie\footnote{See Eq.~(37) in
+Sec.~5.2.7 of \refCite{Varshalovich:1988krb}.}
+\begin{equation}
+  \label{eq:spherical_harm_wigner_d}
+  Y_\ell^m(\Omega)
+  = \sqrt{\frac{2 \ell + 1}{4 \pi}}\, D^{\ell *}_{m 0}(\phi, \theta, 0)
+  \quad\text{and in particular}\quad
+  y_\ell^m(\theta)
+  = \sqrt{\frac{2 \ell + 1}{4 \pi}}\, d^\ell_{m 0}(\theta).
+\end{equation}
 
 In a partial-wave analysis, the partial-wave amplitudes
 $\mathcal{T}_{\ell\, m}$, which contain the information about the
@@ -264,15 +291,7 @@ and
   = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega).
 \end{equation}
 Using the relation between the spherical harmonics and the Wigner
-$D$-functions~\cite{wikipedia:wignerD}, \ie\todo{Move definition of
-$y_L^M(\theta)$.}
-\begin{equation}
-  \sqrt{\frac{2 L + 1}{4 \pi}}\, D^{L *}_{M 0}(\phi, \theta, 0)
-  = Y_L^M(\Omega)
-  \quad\text{and in particular}\quad
-  \sqrt{\frac{2 L + 1}{4 \pi}}\, d^L_{M 0}(\theta)
-  = y_L^M(\theta),
-\end{equation}
+$D$-functions in \cref{eq:spherical_harm_wigner_d},
 \cref{eq:diffraction_intensity_moments_norm,eq:diffraction_moments_norm}
 become identical to Eqs.~(6) and~(9) in \refCite{Chung:1997qd}.
 
@@ -450,20 +469,22 @@ This is identical to Eq.~(13) in \refCite{Chung:1997qd}.
 \subsection{Reflectivity basis}%
 \label{sec:diffraction:reflectivity}
 
-It is often advantageous to express \cref{eq:diffraction_intensity} in
-the reflectivity basis
+It is often advantageous to express the intensity distribution in
+\cref{eq:diffraction_intensity} in the reflectivity basis, \ie using
+the reflectivity states of~$X$
 \begin{equation}
   \label{eq:diffraction_refl_def}
   \ket{\refl, \ell, m}
   \equiv \mathcal{N}_m \sBrk[2]{\ket{\ell, m} - \refl\, (-1)^m\, \ket{\ell, {-m}}},
 \end{equation}
-where the spin states $\ket{\refl, \ell, m}$ of~$X$ are eigenstates of
-the reflection operator~$\Pi_y$ through the production plane that is
-spanned by the beam particle and~$X$.  The relative sign of the terms
-in \cref{eq:diffraction_refl_def} has been chosen such that for a
+which are eigenstates of the reflection operator~$\Pi_y$ through the
+production plane that is spanned by the momenta of the beam particle
+and~$X$.  The relative sign of the terms in
+\cref{eq:diffraction_refl_def} has been chosen such that for a
 pseudoscalar beam particle the eigenvalues~$\refl = \pm$ of~$\Pi_y$,
-\ie the \emph{reflectivities}, correspond to the naturality of the
-exchange particle in the scattering process.  The normalization factor
+\ie the \emph{reflectivities}, correspond to the \emph{naturality} of
+the exchange particle in the scattering process.  The normalization
+factor
 \begin{equation}
   \label{eq:refl_norm}
   \mathcal{N}_m
@@ -481,39 +502,21 @@ positive-reflectivity states with $m = 0$.
 The reflectivity basis is implemented by introducing the functions
 \begin{equation}
   \label{eq:diffraction_spherical_harm_refl}
-  \prescript{\refl}{}{Y}_\ell^m(\Omega)
+  \prescript{(\refl)}{}{Y}_\ell^m(\Omega)
   \equiv \mathcal{N}_m \sBrk[2]{Y_\ell^m(\Omega) - \refl\, (-1)^m\, Y_\ell^{(-m)}(\Omega)}.
 \end{equation}
 Note that with \cref{eq:spherical_harm_sym} and the definition of the
-spherical harmonics,\footnote{See Eq.~(1) in Sec.~5.2 of
-\refCite{Varshalovich:1988krb}.}
-\begin{equation}
-  \label{eq:sspherical_harm_def}
-  Y_\ell^m(\Omega)
-  = \dUnderbrace{\sqrt{\frac{(2 \ell + 1)}{4 \pi}\, \frac{(\ell -m)!}{(\ell + m)!}}\, P_\ell^m(\cos\theta)}{= Y_\ell^m(\theta, 0)}\, e^{\imag\, m\, \phi},
-\end{equation}
-it follows
-from \cref{eq:diffraction_spherical_harm_refl} that
+spherical harmonics in \cref{eq:spherical_harm_def,eq:small_y_def}, it
+follows from \cref{eq:diffraction_spherical_harm_refl} that
 \begin{equation}
   \prescript{(+)}{}{Y}_\ell^m(\Omega)
-  = 2 \imag\, \mathcal{N}_m\, Y_\ell^m(\theta, 0)\, \sin(m\, \phi)
+  = 2 \imag\, \mathcal{N}_m\, y_\ell^m(\theta)\, \sin(m\, \phi)
   \quad\text{and}\quad
   \prescript{(-)}{}{Y}_\ell^m(\Omega)
-  = 2 \mathcal{N}_m\, Y_\ell^m(\theta, 0)\, \cos(m\, \phi),
+  = 2 \mathcal{N}_m\, y_\ell^m(\theta)\, \cos(m\, \phi),
 \end{equation}
 \ie $\prescript{(+)}{}{Y}_\ell^m(\Omega)$ is purely imaginary and
 $\prescript{(-)}{}{Y}_\ell^m(\Omega)$ purely real.
-
-For convenience, we introduce the real-valued function
-\begin{equation}
-  \label{eq:small_y_def}
-  y_\ell^m(\theta)
-  \equiv Y_\ell^m(\theta, 0)
-  \quad\text{so that}\quad
-  Y_\ell^m(\theta, \phi)
-  = y_\ell^m(\theta)\, e^{\imag\, m\, \phi}.
-\end{equation}
-Note that $y_\ell^m(\theta)$ is real-valued.
 
 Replacing $Y_\ell^m(\Omega)$ in \cref{eq:diffraction_intensity} by
 \cref{eq:diffraction_spherical_harm_refl} and using the fact that
@@ -521,7 +524,7 @@ amplitudes with opposite reflectivities do not interfere, we obtain
 \begin{equation}
   \label{eq:diffraction_intensity_refl}
   \mathcal{I}(\Omega)
-  = \sum_{\refl = \pm} \Abs[3]{\sum_{\ell m}^\infty \prescript{\refl}{}{\mathcal{T}}_{\!\ell\, m}\, \prescript{\refl}{}{Y}_\ell^m(\Omega)}^2.
+  = \sum_{\refl = \pm} \Abs[3]{\sum_{\ell m}^\infty \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}\, \prescript{(\refl)}{}{Y}_\ell^m(\Omega)}^2.
 \end{equation}
 
 Expanding the absolute-value-squared term in
@@ -529,20 +532,20 @@ Expanding the absolute-value-squared term in
 \begin{align}
   \mathcal{I}(\Omega)
   ={}& \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-  \prescript{\refl}{}{Y}_\ell^m(\Omega)\,
-  \prescript{\refl}{}{\mathcal{T}}_{\!\ell\, m}\,
-  \prescript{\refl}{}{\mathcal{T}}_{\!\ell'\, m'}^*\,
-  \prescript{\refl}{}{Y}_{\ell'}^{m' *}(\Omega)
+  \prescript{(\refl)}{}{Y}_\ell^m(\Omega)\,
+  \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}\,
+  \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell'\, m'}^*\,
+  \prescript{(\refl)}{}{Y}_{\ell'}^{m' *}(\Omega)
   \\
   \label{eq:diffraction_intensity_refl_spin-dens}
   ={}& \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-  \prescript{\refl}{}{Y}_\ell^m(\Omega)\, \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \prescript{\refl}{}{Y}_{\ell'}^{m' *}(\Omega),
+  \prescript{(\refl)}{}{Y}_\ell^m(\Omega)\, \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \prescript{(\refl)}{}{Y}_{\ell'}^{m' *}(\Omega),
 \end{align}
 where we have introduced the spin-density matrix of~$X$,
 \begin{equation}
   \label{eq:diffraction_refl_spin-dens}
-  \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
-  = \prescript{\refl}{}{\mathcal{T}}_{\!\ell\, m}\, \prescript{\refl}{}{\mathcal{T}}_{\!\ell'\, m'}^*.
+  \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
+  = \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}\, \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell'\, m'}^*.
 \end{equation}
 
 
@@ -550,21 +553,21 @@ where we have introduced the spin-density matrix of~$X$,
 \todoInl{fix this section}
 
 In order to relate the partial-wave
-amplitudes~$\prescript{\refl}{}{\mathcal{T}}_{\!\ell\, m}$ and the
+amplitudes~$\prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}$ and the
 moments~$H(L, M)$ we insert \cref{eq:diffraction_spherical_harm_refl}
 into \cref{eq:diffraction_intensity_refl_spin-dens} and use \cref{eq:spherical_harm_prod}:
 \begin{align}
   \mathcal{I}(\Omega)
   ={}&
     \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-    \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
+    \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
     \mathcal{N}_m\, \mathcal{N}_{m'}
     \sBrk[2]{Y_\ell^m(\Omega) - \refl\, (-1)^m\, Y_\ell^{(-m)}(\Omega)}
     \sBrk[2]{Y_{\ell'}^{m' *}(\Omega) - \refl\, (-1)^{m'}\, Y_{\ell'}^{(-m') *}(\Omega)}
   \\
   ={}& \begin{multlined}[t][0.85\columnwidth]
     \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-    \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
+    \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
     \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
     \shoveleft{\times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[ \clebsch{\ell'}{m'}{L}{M}{\ell}{m}                       - \refl\, (-1)^{m'}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{m}} \\
       - \refl\, (-1)^m\, \clebsch{\ell'}{m'}{L}{M}{\ell}{-m} + (-1)^{m + m'}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{-m} \Big]\,
@@ -585,7 +588,7 @@ coefficient enforces that $m' - M = m$.  With this we arrive at
   \mathcal{I}(\Omega)
   = \sum_{L M}^\infty \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 L + 1}{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
-    \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
+    \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
     \times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[
       \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
       + (-1)^M\, \clebsch{\ell'}{m'}{L}{-M}{\ell}{m} \\
@@ -602,7 +605,7 @@ turn into \cref{eq:diffraction_moments_pw_refl_norm}.}
   H(L, M)
   = \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 L + 1}{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
-    \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
+    \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
     \times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[
       \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
       + (-1)^M\, \clebsch{\ell'}{m'}{L}{-M}{\ell}{m} \\
@@ -623,7 +626,7 @@ separate these contributions.
   ={}& \begin{multlined}[t]
     \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \frac{1}{\sqrt{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
-      \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \delta_{\ell \ell'} \\
+      \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \delta_{\ell \ell'} \\
       \times \rdUnderbrace{\mathcal{N}_m\, \mathcal{N}_{m'} \sBrk[2]{%
         \delta_{\ell \ell'}\, \delta_{m m'}
         + \delta_{\ell \ell'}\, \delta_{m m'}
@@ -636,7 +639,7 @@ separate these contributions.
         \end{cases*}}
   \end{multlined} \notag
   \\
-  ={}& \frac{1}{\sqrt{4 \pi}} \sum_{\refl = \pm} \sum_\ell^\infty \sum_{m = 0}^\ell \prescript{\refl}{}{\varrho}^{\ell\, \ell}_{m\, m},
+  ={}& \frac{1}{\sqrt{4 \pi}} \sum_{\refl = \pm} \sum_\ell^\infty \sum_{m = 0}^\ell \prescript{(\refl)}{}{\varrho}^{\ell\, \ell}_{m\, m},
 \end{align}
 where we have inserted the normalization factor from
 \cref{eq:refl_norm}, which ensures that the multiplicity of the
@@ -651,7 +654,7 @@ Similarly, \cref{eq:diffraction_moments_pw_refl} becomes
   H(L, M)
   = \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
-    \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
+    \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
     \times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[
       \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
       + (-1)^M\, \clebsch{\ell'}{m'}{L}{-M}{\ell}{m} \\
@@ -904,7 +907,7 @@ because of the orthonormality of the spherical harmonics (see
     = 2 \pi\, \delta_{M M'}.
   \end{equation}
   Using this and the definition of the spherical harmonics in
-  \cref{eq:sspherical_harm_def}, we get
+  \cref{eq:spherical_harm_def}, we get
   \begin{equation}
     I^\text{acc}_{L M\, L' M'}
     = \sqrt{\frac{2 L' + 1}{2 L + 1}}\, 2 \pi\, \delta_{M M'}\,
