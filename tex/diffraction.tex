@@ -133,9 +133,9 @@ also referred to as Laplace series~\cite{MathWorld:LaplaceSeries}.}
   \mathcal{I}(\Omega)
   = \sum_{L M}^\infty H(L, M)\, Y_L^M(\Omega),
 \end{equation}
-with the moments\footnote{\label{fn:moment_norm}Note that in
+with the moments\footnote{Note that in
 \cref{sec:diffraction:moments_norm}, we will introduce a different
-normalization for $H(L, M)$ (see \cref{foo}).\todoInl{Fix}}
+normalization for $H(L, M)$ (see \cref{eq:diffraction_moments_norm}).}
 \begin{equation}
   \label{eq:diffraction_moments}
   H(L, M)
@@ -193,7 +193,9 @@ Inserting \cref{eq:spherical_harm_prod} into
   \varrho^{\ell\, \ell'}_{m\, m'}\, Y_L^M(\Omega).
 \end{equation}
 Comparing with \cref{eq:diffraction_intensity_moments}, we see
-that\footnote{See \cref{fn:moment_norm}.}
+that\footnote{Note that in \cref{sec:diffraction:moments_norm}, we
+will introduce a different normalization for $H(L, M)$ (see
+\cref{eq:diffraction_moments_pw_norm}).}
 \begin{equation}
   \label{eq:diffraction_moments_pw}
   H(L, M)
@@ -350,7 +352,7 @@ property\footnote{See Eq.~(10) in Sec.~8.4.3 of
 \begin{equation}
   \label{eq:clebsch_sym}
   \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
-  = \cdUnderbrace{(-1)^{\ell' + L - \ell}}{\equalUsing{$\mathclap{\text{\cref{eq:ang_mom_sum}}}$}\quad 1}\,
+  = \rdUnderbrace{(-1)^{\ell' + L - \ell}}{\equalUsing{$\mathclap{\text{\cref{eq:ang_mom_sum}}}$}\quad 1}\,
   \clebsch{L}{M}{\ell'}{m'}{\ell}{m}
   = (-1)^{L - M}\, \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'}.
 \end{equation}
@@ -427,8 +429,9 @@ of the Clebsch-Gordan coefficients, we get
   (-1)^M\, H(L, M),
 \end{align}
 where in the last step, we used that the second Clebsch-Gordan
-coefficient enforces $m - m' = -M$, rearranged the terms in the sum,
-and compared to \cref{eq:diffraction_moments_pw_norm}.
+coefficient enforces $m' - M = m$,\footnote{Therefore, $(-1)^{m - m'}
+= (-1)^{m' - m} = (-1)^M$.} rearranged the terms in the sum, and
+compared to \cref{eq:diffraction_moments_pw_norm}.
 
 From \cref{eq:diffraction_moment_sym_1,eq:diffraction_moment_sym_2} follows that
 \begin{equation}
@@ -524,38 +527,24 @@ amplitudes with opposite reflectivities do not interfere, we obtain
 \begin{equation}
   \label{eq:diffraction_intensity_refl}
   \mathcal{I}(\Omega)
-  = \sum_{\refl = \pm} \Abs[3]{\sum_{\ell m}^\infty \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}\, \prescript{(\refl)}{}{Y}_\ell^m(\Omega)}^2.
-\end{equation}
-
-Expanding the absolute-value-squared term in
-\cref{eq:diffraction_intensity_refl}, we get
-\begin{align}
-  \mathcal{I}(\Omega)
-  ={}& \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-  \prescript{(\refl)}{}{Y}_\ell^m(\Omega)\,
-  \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}\,
-  \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell'\, m'}^*\,
-  \prescript{(\refl)}{}{Y}_{\ell'}^{m' *}(\Omega)
-  \\
-  \label{eq:diffraction_intensity_refl_spin-dens}
-  ={}& \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  = \sum_{\refl = \pm} \Abs[3]{\sum_{\ell m}^\infty \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}\, \prescript{(\refl)}{}{Y}_\ell^m(\Omega)}^2
+  = \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \prescript{(\refl)}{}{Y}_\ell^m(\Omega)\, \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \prescript{(\refl)}{}{Y}_{\ell'}^{m' *}(\Omega),
-\end{align}
+\end{equation}
 where we have introduced the spin-density matrix of~$X$,
 \begin{equation}
   \label{eq:diffraction_refl_spin-dens}
   \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
-  = \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}\, \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell'\, m'}^*.
+  = \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}\, \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell'\, m'}^*,
 \end{equation}
-
-
-\subsection{!!!Relation between moments and partial-wave amplitudes}%
-\todoInl{fix this section}
+in the reflectivity basis analogous to
+\cref{eq:diffraction_spin_dens_def}.
 
 In order to relate the partial-wave
 amplitudes~$\prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}$ and the
 moments~$H(L, M)$ we insert \cref{eq:diffraction_spherical_harm_refl}
-into \cref{eq:diffraction_intensity_refl_spin-dens} and use \cref{eq:spherical_harm_prod}:
+into \cref{eq:diffraction_intensity_refl} and use
+\cref{eq:spherical_harm_prod}:
 \begin{align}
   \mathcal{I}(\Omega)
   ={}&
@@ -575,93 +564,77 @@ into \cref{eq:diffraction_intensity_refl_spin-dens} and use \cref{eq:spherical_h
   \end{multlined}
 \end{align}
 We rewrite the last Clebsch-Gordan coefficient in the square bracket
-using the symmetry relation\footnote{See Eq.~(11) in Sec.~8.4.3 of
-\refCite{Varshalovich:1988krb}.}
-\begin{equation}
-  \clebsch{\ell'}{-m'}{L}{M}{\ell}{-m}
-  = \cdUnderbrace{(-1)^{\ell' + L - \ell}}{= \dUnderbrace{(-1)^{\ell' + L + \ell}}{= 1}\, \dUnderbrace{(-1)^{-2 \ell}}{= 1} = 1}\, \clebsch{\ell'}{m'}{L}{-M}{\ell}{m},
-\end{equation}
-where we have used \cref{eq:ang_mom_sum}.  Furthermore, $(-1)^{m + m'}
-= (-1)^{2m}\, (-1)^{m' - m} = (-1)^M$ because the Clebsch-Gordan
-coefficient enforces that $m' - M = m$.  With this we arrive at
+using the symmetry relation in \cref{eq:clebsch_sym2} and the fact
+that $(-1)^{m + m'} = (-1)^{2m}\, (-1)^{m' - m} = (-1)^M$ because this
+Clebsch-Gordan coefficient enforces that $m' - M = m$.  With this we
+arrive at
 \begin{multline}
   \mathcal{I}(\Omega)
-  = \sum_{L M}^\infty \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-    \sqrt{\frac{2 L + 1}{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
-    \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
-    \times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[
-      \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
-      + (-1)^M\, \clebsch{\ell'}{m'}{L}{-M}{\ell}{m} \\
-      - \refl\, (-1)^{m'}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{m}
-      - \refl\, (-1)^m\, \clebsch{\ell'}{m'}{L}{M}{\ell}{-m} \Big]\,
-    Y_L^M(\Omega).
-\end{multline}
-Comparing with \cref{eq:diffraction_intensity_moments} we see
-that\footnote{Note that in \cref{sec:diffraction:moments_norm} we will
-adjust the normalization and \cref{eq:diffraction_moments_pw_refl} will
-turn into \cref{eq:diffraction_moments_pw_refl_norm}.}
-\begin{multline}
-  \label{eq:diffraction_moments_pw_refl}
-  H(L, M)
-  = \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-    \sqrt{\frac{2 L + 1}{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
-    \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
-    \times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[
-      \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
-      + (-1)^M\, \clebsch{\ell'}{m'}{L}{-M}{\ell}{m} \\
-      - \refl\, (-1)^{m'}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{m}
-      - \refl\, (-1)^m\, \clebsch{\ell'}{m'}{L}{M}{\ell}{-m} \Big].
-\end{multline}
-
-It is important to note that each moment is an incoherent
-sum of contributions from both reflectivities, \ie the moments do not
-separate these contributions.
-
-
-\subsection{!!!Normalization of moments}%
-
-\todoInl{fix}
-\begin{align}
-  H(0, 0)
-  ={}& \begin{multlined}[t]
-    \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-    \frac{1}{\sqrt{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
-      \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \delta_{\ell \ell'} \\
-      \times \rdUnderbrace{\mathcal{N}_m\, \mathcal{N}_{m'} \sBrk[2]{%
-        \delta_{\ell \ell'}\, \delta_{m m'}
-        + \delta_{\ell \ell'}\, \delta_{m m'}
-        - \refl\, (-1)^{m'}\, \delta_{\ell \ell'}\, \delta_{m (-m')}
-        - \refl\, (-1)^m\, \delta_{\ell \ell'}\, \delta_{(-m) m'}}}%
-        {= \delta_{\ell \ell'}\, \delta_{m m'} \times
-        \begin{cases*}
-          \frac{1}{2}\, (1 + 1)                 & for $m > 0$, \\
-          \frac{1}{4}\, (1 + 1 - \refl - \refl) & for $m = 0$
-        \end{cases*}}
-  \end{multlined} \notag
+  = \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}
+  \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  \mathcal{N}_m\, \mathcal{N}_{m'}\,
+  \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
+  \clebsch{\ell'}{0}{L}{0}{\ell}{0}
   \\
-  ={}& \frac{1}{\sqrt{4 \pi}} \sum_{\refl = \pm} \sum_\ell^\infty \sum_{m = 0}^\ell \prescript{(\refl)}{}{\varrho}^{\ell\, \ell}_{m\, m},
-\end{align}
-where we have inserted the normalization factor from
-\cref{eq:refl_norm}, which ensures that the multiplicity of the
-reflectivity states is $2 \ell + 1$ by requiring $m, m' \geq 0$.
-According to the above, $H(0, 0)$ is the sum of all partial-wave
-intensities.
-
-
-Similarly, \cref{eq:diffraction_moments_pw_refl} becomes
+  \times \Big[
+    \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
+    + (-1)^M\, \clebsch{\ell'}{m'}{L}{-M}{\ell}{m} \\
+    - \refl\, (-1)^{m'}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{m}
+    - \refl\, (-1)^m\, \clebsch{\ell'}{m'}{L}{M}{\ell}{-m} \Big]
+  \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
+  Y_L^M(\Omega).
+\end{multline}
+Comparing with \cref{eq:diffraction_intensity_moments_norm} we see
+that
 \begin{multline}
   \label{eq:diffraction_moments_pw_refl_norm}
   H(L, M)
   = \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-    \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
-    \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
-    \times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[
-      \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
-      + (-1)^M\, \clebsch{\ell'}{m'}{L}{-M}{\ell}{m} \\
-      - \refl\, (-1)^{m'}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{m}
-      - \refl\, (-1)^m\, \clebsch{\ell'}{m'}{L}{M}{\ell}{-m} \Big],
+  \mathcal{N}_m\, \mathcal{N}_{m'}\,
+  \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
+  \clebsch{\ell'}{0}{L}{0}{\ell}{0} \\
+  \times \Big[
+    \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
+    + (-1)^M\, \clebsch{\ell'}{m'}{L}{-M}{\ell}{m} \\
+    - \refl\, (-1)^{m'}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{m}
+    - \refl\, (-1)^m\, \clebsch{\ell'}{m'}{L}{M}{\ell}{-m} \Big]
+  \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'},
 \end{multline}
-which is equivalent to Eqs.~(29) and~(31) in \refCite{Chung:1997qd}.
+which is identical to Eqs.~(29) and~(31) in \refCite{Chung:1997qd}.
+It is important to note that each moment is an incoherent sum of
+contributions from both reflectivities, \ie the moments do not
+separate these contributions.
+\Cref{eq:diffraction_moments_pw_refl_norm} is the equivalent of
+\cref{eq:diffraction_moments_pw_norm} in the reflectivity basis.
+
+Using the above, we can calculate the lowest moment in the
+reflectivity basis:
+\begin{align}
+  H(0, 0)
+  ={}& \begin{multlined}[t]
+    \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+    \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
+    \delta_{\ell \ell'}
+    \\
+    \times \rdUnderbrace{\mathcal{N}_m\, \mathcal{N}_{m'} \sBrk[2]{%
+      \delta_{\ell \ell'}\, \delta_{m m'}
+      + \delta_{\ell \ell'}\, \delta_{m m'}
+      - \refl\, (-1)^{m'}\, \delta_{\ell \ell'}\, \delta_{m (-m')}
+      - \refl\, (-1)^m\, \delta_{\ell \ell'}\, \delta_{(-m) m'}}}%
+      {= \delta_{\ell \ell'}\, \delta_{m m'} \times
+      \begin{cases*}
+        \frac{1}{2}\, (1 + 1)                 & for $m > 0$, \\
+        \frac{1}{4}\, (1 + 1 - \refl - \refl) & for $m = 0$
+      \end{cases*}}
+    \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
+  \end{multlined} \notag
+  \\
+  ={}& \sum_{\refl = \pm} \sum_\ell^\infty \sum_{m = 0}^\ell \prescript{(\refl)}{}{\varrho}^{\ell\, \ell}_{m\, m},
+\end{align}
+where we have inserted the normalization factor from
+\cref{eq:refl_norm}, which removes all terms with $m < 0$ or $m' < 0$.
+As expected, $H(0, 0)$ is the sum of all partial-wave intensities,
+equivalent to \cref{eq:diffraction_moment_00_pw}.
 
 
 \subsection{Calculation of moments from data}%
