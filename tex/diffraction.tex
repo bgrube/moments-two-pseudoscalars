@@ -400,15 +400,33 @@ $H(L, 0)$ are real-valued by construction.  Due to the above, we only
 have to calculate the moments with $M \geq 0$.
 
 In addition to the symmetry properties of the spherical harmonics, we
-can also exploit the symmetry properties of the spin-density matrix.
-Since the scattering process is invariant under parity, we have
+can also exploit the symmetry properties of the $X$~spin-density
+matrix.  Since the scattering process is invariant under parity, we
+have\footnote{See Eq.~2.7 in \refCite{Chung:1974fq}.}
+\begin{equation}
+  \label{eq:diffraction_spin_dens_parity_general}
+  \varrho^{\ell\, \ell'}_{m\, m'}
+  = P\, P'\, (-1)^{\ell - \ell'}\, (-1)^{m - m'}\, \varrho^{\ell'\, \ell}_{{-m}\, {-m'}}.
+\end{equation}
+Here $\ell^P$ and $(\ell')^{P'}$ are two spin-parity states of~$X$.
+For the two-body decay $X \to 1 + 2$, the intrinsic parity of~$X$ is
+given by
+\begin{equation}
+  P
+  = P_1\, P_2\, (-1)^\ell.
+\end{equation}
+Assuming that $X$~decays into two daughter particles of equal parity,
+\eg two pseudoscalars such as $\etaOrPr \pi$,
+\cref{eq:diffraction_spin_dens_parity_general} simplifies to
 \begin{equation}
   \label{eq:diffraction_spin_dens_parity}
   \varrho^{\ell\, \ell'}_{m\, m'}
   = (-1)^{m - m'}\, \varrho^{\ell'\, \ell}_{{-m}\, {-m'}}.
 \end{equation}
-Using this together with \cref{eq:diffraction_moments_pw} and the
-symmetry property\footnote{See Eq.~(11) in Sec.~8.4.3 of
+
+Using this together with
+\cref{eq:diffraction_moments_pw} and the symmetry
+property\footnote{See Eq.~(11) in Sec.~8.4.3 of
 \refCite{Varshalovich:1988krb}.}
 \begin{equation}
   \label{eq:clebsch_sym2}
