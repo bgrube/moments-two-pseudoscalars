@@ -291,8 +291,8 @@ we get
   \intertext{\ie}
   \label{eq:photoprod_moment_sym_1}
   H_i^*(L, M)
-  ={}& (-1)^M\, H_i(L, {-M})
-  \quad\text{for $i = 0, 1, 2$},
+  ={}& (-1)^M\, H_i(L, {-M});
+  \quad i = 0, 1, 2,
 \end{align}
 which is analogous to \cref{eq:diffraction_moment_sym_1}.
 
@@ -446,26 +446,25 @@ in \cref{eq:photoprod_intensity_2_moment_imag} does not include $M =
 \label{sec:photoprod:reflectivity}
 
 In Appendix~D of \refCite{Mathieu:2019fts}, the reflectivity basis is
-introduced by defining the partial-wave amplitudes in the reflectivity
-basis\footnote{See Eq.~(D1) in
-\refCite{Mathieu:2019fts}.}\footnote{Alternative approaches to apply
-the reflectivity basis are discussed in \refCite{Salgado:2020}.}
+introduced by defining the partial-wave amplitudes\footnote{See
+Eq.~(D1) in \refCite{Mathieu:2019fts}.}\footnote{Alternative
+approaches to apply the reflectivity basis are discussed in
+\refCite{Salgado:2020}.}
 \begin{equation}
   \label{eq:photoprod_amplitude_refl}
   \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; \lambda_1\, \lambda_2}
   \equiv \frac{1}{2}\, \sBrk{\mathcal{T}^\ell_{\!m\, {+1}; \lambda_1\, \lambda_2}
   - \refl\, (-1)^m\, \mathcal{T}^\ell_{\!{-m}\, {-1}; \lambda_1\, \lambda_2}},
 \end{equation}
-which are linear combinations of the partial-wave amplitudes with
-opposite photon helicities~$\lambda$ and opposite $X$~spin projection
-quantum numbers~$m$, where $m = -\ell, \ldots, +\ell$.  Hence, the
+which are linear combinations of partial-wave amplitudes with opposite
+photon helicities~$\lambda$ and opposite $X$~spin projection quantum
+numbers~$m$, where $m = -\ell, \ldots, +\ell$.  Hence, the
 reflectivity quantum number $\refl = \pm$ effectively replaces the
 photon helicity $\lambda = \pm 1$ such that the total number of
 amplitudes for given~$\ell$ and~$m$ remains unchanged.
 
 Formulating the intensity model in the reflectivity basis has the
-advantage that in the high-energy limit at leading order~\refl
-corresponds to the naturality of the spin-parity exchanged in the
+advantage that in the high-energy limit at leading order, \refl~corresponds to the naturality of the spin-parity exchanged in the
 scattering process (see Appendices~C and~D in
 \refCite{Mathieu:2019fts}).  Another advantage of the reflectivity
 basis is that due to parity conservation partial-wave amplitudes with
@@ -474,6 +473,7 @@ opposite~\refl do not interfere.\footnote{See Eq.~(D5) in
 amplitudes with opposite helicities of the target and the recoil
 proton, \ie\footnote{See Eq.~(D3) in \refCite{Mathieu:2019fts}.}
 \begin{equation}
+  \label{eq:photoprod_amplitude_parity_refl}
   \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; {-\lambda_1}\, {-\lambda_2}}
   = \refl\, (-1)^{\lambda_1 - \lambda_2}\, \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; \lambda_1\, \lambda_2}.
 \end{equation}
@@ -491,14 +491,15 @@ amplitude\footnote{See Eq.~(D4) in \refCite{Mathieu:2019fts}.}
   \equiv{}& \sBrk{\ell}^{(\refl)}_{m; 1}.
 \end{align}
 Furthermore, since parity is conserved the spin-flip and spin-non-flip
-amplitudes do not interfere. In the conventional basis, incorporating
-these parity constraints into
-\crefrange{eq:photoprod_intensity_components}{eq:photoprod_rho_2} is
-difficult because parity relates amplitudes that in addition to
-opposite~$\lambda_1$ and~$\lambda_2$ quantum numbers also have
-opposite~$m$ and~$\lambda$.\footnote{See Eq.~(A14) in
-\refCite{Mathieu:2019fts}.}  However, in the reflectivity basis we can
-simply write\footnote{See Eq.~(D7) in \refCite{Mathieu:2019fts}.}
+amplitudes do not interfere. In the conventional basis, it would be
+difficult to incorporate these parity constraints into
+\crefrange{eq:photoprod_intensity_components}{eq:photoprod_rho_2}
+because parity relates those $\mathcal{T}^\ell_{\!m\, \lambda;
+\lambda_1\, \lambda_2}$ that in addition to opposite~$\lambda_1$
+and~$\lambda_2$ quantum numbers also have opposite~$m$
+and~$\lambda$.\footnote{See Eq.~(A14) in \refCite{Mathieu:2019fts}.}
+However, in the reflectivity basis we can simply write\footnote{See
+Eq.~(D7) in \refCite{Mathieu:2019fts}.}
 \begin{equation}
   \label{eq:photoprod_rho_refl}
   \prescript{i}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
@@ -515,12 +516,14 @@ with\footnote{See Eq.~(D8) in \refCite{Mathieu:2019fts} and
   \\
   \label{eq:photoprod_rho_1_refl}
   \prescript{1}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}
-  ={}& -\refl \sum_{k = 0, 1} \rBrk[2]{(-1)^m\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
+  ={}& -\refl \sum_{k = 0, 1}
+  \rBrk[2]{(-1)^m\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
   + (-1)^{m'}\, \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell'}^{(\refl) *}_{{-m'}; k}}
   \\
   \label{eq:photoprod_rho_2_refl}
   \prescript{2}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}
-  ={}& -\imag\, \refl \sum_{k = 0, 1} \rBrk[2]{(-1)^m\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
+  ={}& -\imag\, \refl \sum_{k = 0, 1}
+  \rBrk[2]{(-1)^m\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
   - (-1)^{m'}\, \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell'}^{(\refl) *}_{{-m'}; k}}.
 \end{align}
 In \cref{eq:photoprod_rho_refl}, we sum incoherently over~$\refl =
@@ -531,28 +534,24 @@ $\prescript{i}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}$ is in
 general~2.
 
 Note that usually neither the spin of the target proton nor the one of
-the recoil proton is measured.  In this case, we cannot distinguish
-experimentally between proton spin-flip and proton spin-non-flip
-amplitudes.  Still, the intensity distribution obtained by inserting
+the recoil proton is measured.  Still, the intensity distribution
+obtained by inserting
 \crefrange{eq:photoprod_rho_refl}{eq:photoprod_rho_2_refl} into
 \cref{eq:photoprod_intensity_components} has two incoherent sectors
-indexed by~$k = 0, 1$ as required by parity conservation, but $k$~has
-no direct physical interpretation.  In practice, one often assumes
-that either the spin-non-flip or the spin-flip amplitudes dominate and
-sets $k = 0$.  This means the partial-wave amplitudes are all fully
-coherent and the spin-density matrices in
+indexed by~$k = 0, 1$ as required by parity conservation.  However, in
+this case $k$~has no direct physical interpretation anymore, \ie we
+cannot distinguish experimentally which value of~$k$ belongs to proton
+spin-flip and which to proton spin-non-flip.  In practice, one often
+assumes that either the spin-non-flip or the spin-flip amplitudes
+dominate and sets $k = 0$.  This means the partial-wave amplitudes are
+all fully coherent and the spin-density matrix components in
 \crefrange{eq:photoprod_rho_0_refl}{eq:photoprod_rho_2_refl} have
 rank~1.
 
-
-\subsection{!!!Relation between moments and partial-wave amplitudes}%
-
-\todoInl{fix}
-Inserting
-\crefrange{eq:photoprod_rho_0_refl}{eq:photoprod_rho_2_refl}, we
-obtain the relation between the moments and the partial-wave
-amplitudes in the reflectivity basis defined in
-\cref{sec:photoprod:reflectivity}:
+We can relate the moments to the partial-wave amplitudes in the
+reflectivity basis by inserting
+\crefrange{eq:photoprod_rho_0_refl}{eq:photoprod_rho_2_refl} into
+\cref{eq:photoprod_moment_unpol_pw,eq:photoprod_moment_pol_pw}
 \begin{align}
   \label{eq:photoprod_moment_0_pw_refl}
   H_0(L, M)
@@ -593,15 +592,22 @@ separate these contributions.  Also note that in
 \cref{eq:photoprod_moment_0_pw_refl} the contributions from the two
 reflectivities enter with the same sign, whereas in
 \cref{eq:photoprod_moment_1_pw_refl,eq:photoprod_moment_2_pw_refl}
-they enter with opposite sign.
+they enter with opposite sign.  Similarly, each moment is an
+incoherent sum over~$k$, \ie the moments do not separate spin-flip and
+spin-non-flip amplitudes.
 
-\todoInl{add text}
+From
+\cref{eq:photoprod_moment_0_real,eq:photoprod_moment_0_pw_refl,eq:photoprod_moment_1_pw_refl,eq:photoprod_moment_2_pw_refl}
+it follows that in particular
 \begin{align}
   H_0(0, 0)
+  = \frac{1}{2 \pi}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
+  \mathcal{I}(\Omega, \Phi)
   ={}& \sum_{\ell m}^\infty \prescript{0}{}{\varrho}^{\ell\, \ell}_{m\, m}
   = \sum_{\ell m}^\infty \sum_{\refl = \pm} \sum_{k = 0, 1}
   \rBrk[2]{\Abs[1]{\sBrk{\ell}^{(\refl)}_{m; k}}^2 + \Abs[1]{\sBrk{\ell}^{(\refl)}_{{-m}; k}}^2} \notag
   \\
+  \label{eq:photoprod_monent_00_refl}
   ={}& 2 \sum_{\ell m}^\infty \sum_{k = 0, 1}
   \rBrk[2]{\Abs[1]{\sBrk{\ell}^{(+)}_{m; k}}^2 + \Abs[1]{\sBrk{\ell}^{(-)}_{m; k}}^2}
   \\
@@ -609,19 +615,70 @@ they enter with opposite sign.
   ={}& -\sum_{\ell m}^\infty \prescript{1}{}{\varrho}^{\ell\, \ell}_{m\, m}
   = \sum_{\ell m}^\infty \sum_{\refl = \pm} \refl \sum_{k = 0, 1}
   (-1)^m \rBrk[2]{\sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell}^{(\refl) *}_{m; k}
-  + \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}} \notag
-  \\
-  ={}& 2 \sum_{\ell m}^\infty \sum_{k = 0, 1}
-  (-1)^m \Re[2]{\sBrk{\ell}^{(+)}_{m; k}\, \sBrk{\ell}^{(+) *}_{{-m}; k} - \sBrk{\ell}^{(-)}_{m; k}\, \sBrk{\ell}^{(-) *}_{{-m}; k}}
+  + \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}
   \\
   H_2(0, 0)
   ={}& -\sum_{\ell m}^\infty \prescript{2}{}{\varrho}^{\ell\, \ell}_{m\, m}
   = \imag \sum_{\ell m}^\infty \sum_{\refl = \pm} \refl \sum_{k = 0, 1}
   (-1)^m \rBrk[2]{\sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell}^{(\refl) *}_{m; k}
-  - \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}} \notag
-  \\
-  ={}& 2 \sum_{\ell m}^\infty \sum_{k = 0, 1}
-  (-1)^m \Im[2]{\sBrk{\ell}^{(+)}_{m; k}\, \sBrk{\ell}^{(+) *}_{{-m}; k} - \sBrk{\ell}^{(-)}_{m; k}\, \sBrk{\ell}^{(-) *}_{{-m}; k}}
+  - \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}
 \end{align}
-\todoInl{Parity relates $\sBrk{\ell}^{(-)}_{m; k}$ and
-$\sBrk{\ell}^{(-)}_{{-m}; k}$.}
+Like in the diffractive case (\confer\
+\cref{eq:diffraction_moment_00_pw,eq:diffraction_moment_00_pw_refl}),
+the lowest unpolarized moment $H_0(0, 0)$ is identical to the
+intensity integral and the sum of all partial-wave
+intensities.\footnote{The factor~2 in the right-hand side of
+\cref{eq:photoprod_monent_00_refl} appears because due to
+\cref{eq:photoprod_amplitude_parity_refl} we replaced four amplitudes
+for the different proton helicities by two amplitudes for spin-flip
+and spin-non-flip.}
+
+We can simplify the equations for $H_1(0, 0)$ and $H_2(0, 0)$ further
+by using
+\begin{align}
+  \sum_{m = -\ell}^{m = +\ell}
+  (-1)^m \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}
+  ={}& \sum_{m = -\ell}^{m = -1}
+  (-1)^m \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}
+  + \sBrk{\ell}^{(\refl)}_{0; k}\, \sBrk{\ell}^{(\refl) *}_{0; k}
+  + \sum_{m = +1}^{m = +\ell}
+  (-1)^m \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k} \notag
+  \\
+  ={}& \Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  + \sum_{m = +1}^{m = +\ell}
+  (-1)^m \rBrk[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k} + \sBrk{\ell}^{(\refl) *}_{m; k}\, \sBrk{\ell}^{(\refl)}_{{-m}; k}} \notag
+  \\
+  ={}& \Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  + 2 \sum_{m = +1}^{m = +\ell}
+  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}
+  \in \mathbb{R}.
+\end{align}
+Using the above, we see that
+\begin{align}
+  H_1(0, 0)
+  ={}& \sum_{\refl = \pm} \refl \sum_{k = 0, 1} \sum_{\ell}^\infty
+  \rBrk[3]{\Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  + 2 \sum_{m = +1}^{m = +\ell}
+  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell}^{(\refl) *}_{m; k}}
+  + \Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  + 2 \sum_{m = +1}^{m = +\ell}
+  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}} \notag
+  \\
+  ={}& 2 \sum_{\refl = \pm} \refl \sum_{k = 0, 1} \sum_{\ell}^\infty
+  \rBrk[3]{\Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  + 2 \sum_{m = +1}^{m = +\ell}
+  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell}^{(\refl) *}_{m; k}}}
+  \\
+  H_2(0, 0)
+  ={}& \imag \sum_{\refl = \pm} \refl \sum_{k = 0, 1} \sum_{\ell}^\infty
+  \rBrk[3]{\Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  + 2 \sum_{m = +1}^{m = +\ell}
+  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell}^{(\refl) *}_{m; k}}
+  - \Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  - 2 \sum_{m = +1}^{m = +\ell}
+  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}} \notag
+  \\
+  ={}& 0.
+\end{align}
+As expected from \cref{eq:photoprod_moment_2_M0}, $H_2(0, 0)$
+vanishes.
