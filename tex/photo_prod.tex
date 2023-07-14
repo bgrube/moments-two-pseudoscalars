@@ -57,7 +57,7 @@ $w$~is the invariant mass of the two-(pseudo)scalar system, $t$~is the
 squared four-momentum transferred from the beam to the target
 particle, $\Omega = (\theta, \phi)$ is the direction of one of the two
 (pseudo)scalar mesons the~$X$ decays into, measured in the
-Gottfried-Jackson or helicity rest frame of~$X$, and $\Phi$ is the
+Gottfried-Jackson or helicity rest frame of~$X$, and~$\Phi$ is the
 azimuthal\todo{Correct?} angle between the polarization vector of the
 linearly polarized photon and the reaction plane in the $X$~rest
 frame.  The $\mathcal{T}^\ell_{\!m\, \lambda; \lambda_1\,
@@ -95,7 +95,7 @@ in \refCite{Schilling:1969um}.}
   \vec{P}_\gamma(\Phi)
   = \begin{cases*}
     P_\gamma\, (0, 0, \lambda)^T                & for circularly polarized photons with $\lambda = \pm 1$, \\
-    -P_\gamma\, (\cos 2 \Phi, \sin 2 \Phi, 0)^T & for linearly polarized photons with polarization angle~$\Phi$.
+    -P_\gamma\, (\cos(2 \Phi), \sin(2 \Phi), 0)^T & for linearly polarized photons with polarization angle~$\Phi$.
   \end{cases*}
 \end{equation}
 Hence, for linearly polarized photons, the intensity distribution in
@@ -105,8 +105,8 @@ terms:\footnote{See Eq.~(B4) in \refCite{Mathieu:2019fts}.}
   \label{eq:photoprod_intensity_sum}
   \mathcal{I}(\Omega, \Phi; w, t)
   = \mathcal{I}_0(\Omega; w, t)
-  - \mathcal{I}_1(\Omega; w, t)\, P_\gamma\, \cos 2 \Phi
-  - \mathcal{I}_2(\Omega; w, t)\, P_\gamma\, \sin 2 \Phi
+  - \mathcal{I}_1(\Omega; w, t)\, P_\gamma\, \cos(2 \Phi)
+  - \mathcal{I}_2(\Omega; w, t)\, P_\gamma\, \sin(2 \Phi)
 \end{equation}
 with the intensity components
 \begin{equation}
@@ -148,8 +148,8 @@ Furthermore, the spin-density matrix elements of~$X$ in
   \label{eq:photoprod_spin_dens_sum}
   \varrho^{\ell\, \ell'}_{m\, m'}(w, t, \Phi)
   = \prescript{0}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)
-  - \prescript{1}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)\, P_\gamma\, \cos 2 \Phi
-  - \prescript{2}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)\, P_\gamma\, \sin 2 \Phi.
+  - \prescript{1}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)\, P_\gamma\, \cos(2 \Phi)
+  - \prescript{2}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)\, P_\gamma\, \sin(2 \Phi).
 \end{equation}
 
 In \cref{eq:photoprod_intensity_sum}, the three intensity components
@@ -162,7 +162,7 @@ to the intensity for the diffractive case in
 components $\mathcal{I}_{1, 2}(\Omega; w, t)$ depend on the photon
 polarization and are hence modulated by different $\Phi$~dependences.
 Note that the functions $\cBrk[1]{f_0(\Phi), f_1(\Phi), f_2(\Phi)} =
-\cBrk[1]{1, \cos 2 \Phi, \sin 2 \Phi}$ that modulate the intensity
+\cBrk[1]{1, \cos(2 \Phi), \sin(2 \Phi)}$ that modulate the intensity
 components constitute an orthogonal set of functions, \ie
 \begin{equation}
   \label{eq:photoprod_orthogonality_phi}
@@ -217,24 +217,26 @@ The corresponding moments are
   H_{1, 2}(L, M)
   ={}& \frac{1}{P_\gamma}\, \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
   \mathcal{I}(\Omega, \Phi)\, Y_L^{M *}(\Omega) \times \begin{cases*}
-    \cos 2 \Phi & for $i = 1$, \\
-    \sin 2 \Phi & for $i = 2$.
+    \cos(2 \Phi) & for $i = 1$, \\
+    \sin(2 \Phi) & for $i = 2$.
   \end{cases*}
 \end{align}
 Here, $H_0(L, M)$ becomes identical to
 \cref{eq:diffraction_moments_norm} for the diffractive case if the
-intensity distribution is independent of~$\Phi$.  The two polarized
-moments $H_{1, 2}(L, M)$ represent orthogonal angular distributions
-in~$\Phi$ (see \cref{eq:photoprod_orthogonality_phi}).
+intensity distribution is independent of~$\Phi$.\todo{Make statement
+stronger: $H_0$ behaves identical to diffractive case.}  The two
+polarized moments $H_{1, 2}(L, M)$ represent orthogonal angular
+distributions in~$\Phi$ (see \cref{eq:photoprod_orthogonality_phi}).
 
 
 \subsection{Relation between moments and partial-wave amplitudes}%
 \label{sec:photoprod:moments_pw}
 
-As in the diffractive case, we see that the moments are linear
+As in the diffractive case (\confer\
+\cref{eq:diffraction_moments_pw_norm}), the moments are linear
 combinations of the corresponding components of the spin-density
-matrix of~$X$ by inserting \cref{eq:spherical_harm_prod} into
-\cref{eq:photoprod_intensity_components} and comparing with
+matrix of~$X$.  We see this by inserting \cref{eq:spherical_harm_prod}
+into \cref{eq:photoprod_intensity_components} and comparing with
 \cref{eq:photoprod_intensity_moments_norm_unpol,eq:photoprod_intensity_moments_norm_pol},
 \ie\footnote{See Eq.~(A9) in \refCite{Mathieu:2019fts}.}
 \begin{align}
@@ -257,46 +259,49 @@ quantum-number combinations, for which $\ell' + L + \ell =
 \text{even}$ (see \cref{eq:ang_mom_sum}), $\abs{\ell' - L} \leq \ell
 \leq \ell' + L$, and $m = m' + M$.  Conversely, this means that a
 partial-wave amplitude with orbital angular momentum~$\ell$
-contributes to all moments~$H_i$ with~$L$ from~0 up to $2 \ell$.
+contributes to the moments~$H_i(L, M)$ with~$L$ from~0 up to $2 \ell$.
 
 
 \subsection{Symmetry properties of moments}%
 \label{sec:photo_prod:moments_sym}
 
-We use the same arguments as in \cref{sec:diffraction:moments_sym} to
-derive the symmetry relations for the photoproduction moments.
+To derive the symmetry relations for the photoproduction moments we
+use the same approach as in \cref{sec:diffraction:moments_sym}.
 
-Using the definition of the moments in
-\cref{eq:photoprod_moments_norm_unpol,eq:photoprod_moments_norm_pol}
-together with the symmetry property of the spherical harmonics in
-\cref{eq:spherical_harm_sym}, we see that
+From the symmetry property of the spherical harmonics in
+\cref{eq:spherical_harm_sym} and the definition of the moments in
+\cref{eq:photoprod_moments_norm_unpol,eq:photoprod_moments_norm_pol},
+we get
 \begin{align}
   H_0^*(L, M)
   ={}& (-1)^M\, \frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
   \mathcal{I}(\Omega, \Phi)\, Y_L^{(-M) *}(\Omega) \notag
   \\
-  \label{eq:photoprod_moment_unpol_sym_1}
   ={}& (-1)^M\, H_0(L, {-M})
   \\
-  \label{eq:photoprod_moment_pol_sym_1}
   H_{1, 2}^*(L, M)
   ={}& (-1)^M\, \frac{1}{P_\gamma}\, \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
   \mathcal{I}(\Omega, \Phi)\, Y_L^{(-M) *}(\Omega) \times \begin{cases*}
-    \cos 2 \Phi & for $i = 1$, \\
-    \sin 2 \Phi & for $i = 2$
+    \cos(2 \Phi) & for $i = 1$, \\
+    \sin(2 \Phi) & for $i = 2$
   \end{cases*}
   \notag
   \\
   ={}& (-1)^M\, H_{1,2}(L, {-M}),
+  \intertext{\ie}
+  \label{eq:photoprod_moment_sym_1}
+  H_i^*(L, M)
+  ={}& (-1)^M\, H_i(L, {-M})
+  \quad\text{for $i = 0, 1, 2$},
 \end{align}
 which is analogous to \cref{eq:diffraction_moment_sym_1}.
 
 Since the formulas for the intensity components in
 \cref{eq:photoprod_intensity_moments_norm_unpol,eq:photoprod_intensity_moments_norm_pol}
 have---up to overall signs---the same form as
-\cref{eq:diffraction_intensity_moments_norm}, we can use exactly the
-same arguments as in \cref{eq:diffraction_intensity_moments_general}
-to see that all intensity components are real-valued and that only the
+\cref{eq:diffraction_intensity_moments_norm}, we can use the same
+arguments as in \cref{eq:diffraction_intensity_moments_general} to see
+that all intensity components are real-valued and that only the
 moments with $M \geq 0$ are required, \ie
 \begin{align}
   \label{eq:photoprod_intensity_moments_unpol_general}
@@ -308,17 +313,133 @@ moments with $M \geq 0$ are required, \ie
   ={}& -\sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_{1, 2}(L, M)\, Y_L^M(\Omega)}.
 \end{align}
 
-We use the relation of the moments to the partial-wave amplitudes in
-\cref{eq:photoprod_moment_unpol_pw,eq:photoprod_moment_pol_pw}
-together with the symmetry properties of the Clebsch-Gordan
-coefficients in \cref{eq:clebsch_sym} to show that
+Parity conservation and assuming that $X$~decays into two daughter
+particles with identical parity lead to the following relations for
+the spin-density matrix components in
+\crefrange{eq:photoprod_rho_0}{eq:photoprod_rho_2}, which are
+analogous to \cref{eq:diffraction_spin_dens_parity}:\footnote{See
+Eq.~(A15) in \refCite{Mathieu:2019fts}.}
+\begin{equation}
+  \label{eq:photoprod_spin_dens_parity}
+  \prescript{0, 1}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
+  = (-1)^{m - m'}\, \varrho^{\ell'\, \ell}_{{-m}\, {-m'}}
+  \quad\text{and}\quad
+  \prescript{2}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
+  = -(-1)^{m - m'}\, \varrho^{\ell'\, \ell}_{{-m}\, {-m'}}.
+\end{equation}
+
+Using this together with
+\cref{eq:photoprod_moment_unpol_pw,eq:photoprod_moment_pol_pw} and the
+symmetry property of the Clebsch-Gordan coefficients in
+\cref{eq:clebsch_sym2}, we get\footnote{See Eq.~(A16) in
+\refCite{Mathieu:2019fts}.}
 \begin{align}
-  H(L, -M)
-  = \sum_{\substack{\ell m \\ \ell' m'}}^\infty \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}
-  \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, (-1)^{L - M}\, \clebsch{\ell}{m}{L}{M}{\ell'}{m'}\,
-  \prescript{0}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
-  = (-1)^{L - M}\,  H(L, M)
+  H_{0, 1}(L, -M)
+  ={}& \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
+  \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{-m}\,
+  (-1)^{m - m'}\, \prescript{0, 1}{}{\varrho}^{\ell\, \ell'}_{{-m}\, {-m}'} \notag
+  \\
+  \label{eq:photoprod_moment_01_sym_2}
+  \equalUsing{$\mathclap{\substack{\displaystyle{m \to -m} \\ \displaystyle{m' \to -m'}}}$}{}& \quad
+  (-1)^M\, H_{0, 1}(L, M)
+  \\
+  H_2(L, -M)
+  ={}& -\sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
+  \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{-m}\,
+  (-1)^{m - m'}\, \prescript{2}{}{\varrho}^{\ell\, \ell'}_{{-m}\, {-m}'} \notag
+  \\
+  \label{eq:photoprod_moment_2_sym_2}
+  \equalUsing{$\mathclap{\substack{\displaystyle{m \to -m} \\ \displaystyle{m' \to -m'}}}$}{}& \quad
+  -(-1)^M\, H_2(L, M),
 \end{align}
+where in the last steps of each equation, we used that the second Clebsch-Gordan
+coefficient enforces $m' - M = m$,\footnote{Therefore, $(-1)^{m - m'}
+= (-1)^{m' - m} = (-1)^M$.} rearranged the terms in the sum, and
+compared to \cref{eq:photoprod_moment_unpol_pw,eq:photoprod_moment_pol_pw}.
+
+From
+\cref{eq:photoprod_moment_sym_1,eq:photoprod_moment_01_sym_2,eq:photoprod_moment_2_sym_2}
+it follows that
+\begin{equation}
+  \label{eq:photoprodP_moments_real_imag}
+  H_{0, 1}^*(L, M) = H_{0, 1}(L, M)
+  \quad\text{and}\quad
+  H_2^*(L, M) = -H_2(L, M).
+\end{equation}
+Hence, all $H_{0, 1}(L, M)$ must be real-valued and all $H_2(L, M)$
+must be purely imaginary.  Consequently, from
+\cref{eq:photoprod_moments_norm_unpol,eq:photoprod_moments_norm_pol},
+we get analogous to
+\cref{eq:diffraction_moments_real,eq:diffraction_moments_imag}\footnote{See
+Eq.~(B6) in \refCite{Mathieu:2019fts}.}
+\begin{align}
+  \label{eq:photoprod_moment_0_real}
+  H(L, M)
+  ={}& \frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
+  \mathcal{I}(\Omega, \Phi)\, y_L^M(\theta)\, \cos(M\, \phi)
+  \\
+  \label{eq:photoprod_moment_0_imag}
+  0
+  ={}& \frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
+  \mathcal{I}(\Omega, \Phi)\, y_L^M(\theta)\, \sin(M\, \phi)
+  \\
+  \label{eq:photoprod_moment_1_real}
+  H_1(L, M)
+  ={}& \frac{1}{P_\gamma}\, \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
+  \mathcal{I}(\Omega, \Phi)\, y_L^M(\theta)\, \cos(M\, \phi)\, \cos(2 \Phi)
+  \\
+  \label{eq:photoprod_moment_1_imag}
+  0
+  ={}& \frac{1}{P_\gamma}\, \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
+  \mathcal{I}(\Omega, \Phi)\, y_L^M(\theta)\, \sin(M\, \phi)\, \cos(2 \Phi)
+  \\
+  \label{eq:photoprod_moment_2_real}
+  0
+  ={}& \frac{1}{P_\gamma}\, \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
+  \mathcal{I}(\Omega, \Phi)\, y_L^M(\theta)\, \cos(M\, \phi)\, \sin(2 \Phi)
+  \\
+  \label{eq:photoprod_moment_2_imag}
+  H_2(L, M)
+  ={}& -\imag \frac{1}{P_\gamma}\, \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \int_{-\pi}^{+\pi}\!\!\! \dif{\Phi}\,
+  \mathcal{I}(\Omega, \Phi)\, y_L^M(\theta)\, \sin(M\, \phi)\, \sin(2 \Phi)
+\end{align}
+Note that since $\sin(M\, \phi) = 0$ for $M = 0$,
+\begin{equation}
+  \label{eq:photoprod_moment_2_M0}
+  H_2(L, 0) = 0
+  \quad\forall L.
+\end{equation}
+
+Analogous to \cref{eq:diffraction_intensity_moments_real}, we can
+rewrite
+\cref{,eq:photoprod_intensity_moments_unpol_general,eq:photoprod_intensity_moments_pol_general}
+taking into account
+\cref{eq:photoprodP_moments_real_imag}:\footnote{See Eq.~(A17) in
+\refCite{Mathieu:2019fts}.}
+\begin{align}
+  \mathcal{I}_0(\Omega)
+  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H_0(L, M)\, \Re{Y_L^M(\Omega)} \notag
+  \\
+  \label{eq:photoprod_intensity_0_moment_real}
+  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H_0(L, M)\, y_L^M(\theta)\, \cos(M\, \phi)
+  \\
+  \mathcal{I}_1(\Omega)
+  ={}& -\sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H_1(L, M)\, \Re{Y_L^M(\Omega)} \notag
+  \\
+  \label{eq:photoprod_intensity_1_moment_real}
+  ={}& -\sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H_1(L, M)\, y_L^M(\theta)\, \cos(M\, \phi)
+  \\
+  \mathcal{I}_2(\Omega)
+  ={}& 2 \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 1}^{L} \Im{H_2(L, M)}\, \Im{Y_L^M(\Omega)} \notag
+  \\
+  \label{eq:photoprod_intensity_2_moment_imag}
+  ={}& 2 \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 1}^{L} \Im{H_2(L, M)}\, y_L^M(\theta)\, \sin(M\, \phi).
+\end{align}
+Note that because of \cref{eq:photoprod_moment_2_M0}, the sum over $M$
+in \cref{eq:photoprod_intensity_2_moment_imag} does not include $M =
+0$.
 
 
 \subsection{Reflectivity basis}%
@@ -502,3 +623,5 @@ they enter with opposite sign.
   ={}& 2 \sum_{\ell m}^\infty \sum_{k = 0, 1}
   (-1)^m \Im[2]{\sBrk{\ell}^{(+)}_{m; k}\, \sBrk{\ell}^{(+) *}_{{-m}; k} - \sBrk{\ell}^{(-)}_{m; k}\, \sBrk{\ell}^{(-) *}_{{-m}; k}}
 \end{align}
+\todoInl{Parity relates $\sBrk{\ell}^{(-)}_{m; k}$ and
+$\sBrk{\ell}^{(-)}_{{-m}; k}$.}
