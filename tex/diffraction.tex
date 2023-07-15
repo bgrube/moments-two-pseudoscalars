@@ -811,6 +811,7 @@ Decomposing the measured intensity distribution into spherical
 harmonics analogous to \cref{eq:diffraction_intensity_moments_general}
 we obtain
 \begin{equation}
+  \label{eq:diffraction_intensity_moments_meas}
   \mathcal{I}_\text{meas}(\Omega)
   = \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_\text{meas}(L, M)\, Y_L^M(\Omega)}
 \end{equation}
@@ -818,19 +819,19 @@ with the measured
 moments\footnote{\label{fn:complex_moment_decomp}Note that we cannot
 use \cref{eq:diffraction_moments_real} here because this equation was
 derived using the symmetry property of the physical moments in
-\cref{eq:diffraction_moment_sym_2}, which we derived from the symmetry
-properties of the Clebsch-Gordan coefficients.  However, since
-$\eta(\Omega)$ can be an arbitrary function, the measured moments do
-in general not have this symmetry property.  Note that
-\cref{eq:diffraction_moment_sym_1} still holds, because it is related
-to the symmetry properties of the spherical harmonics in
-\cref{eq:spherical_harm_sym}.  This means that also for the measured
-moments we have to calculate only those with $M \geq 0$.
+\cref{eq:diffraction_moment_sym_2}, which we derived from parity
+conservation and the symmetry properties of the Clebsch-Gordan
+coefficients.  However, since $\eta(\Omega)$ can be an arbitrary
+function, the measured moments do in general not have this symmetry
+property.  Note that \cref{eq:diffraction_moment_sym_1} still holds,
+because it is related to the symmetry properties of the spherical
+harmonics in \cref{eq:spherical_harm_sym}.  This means that also for
+the measured moments we have to calculate only those with $M \geq 0$.
 Alternatively, one can use the real-valued spherical harmonics $Y_{L
 M}$ (note the different position of the $M$ index) as defined, for
 example, in \refsCite{wikipedia:sphericalHarm,Jones:2023} with $-L
-\leq M \leq +L$.} (\confer \cref{eq:diffraction_moments_norm};
-equivalent to Eq.~(B2) in \refCite{E852:1999xev})
+\leq M \leq +L$.}\footnote{\Confer \cref{eq:diffraction_moments_norm};
+equivalent to Eq.~(B2) in \refCite{E852:1999xev}.}
 \begin{equation}
   \label{eq:diffraction_moments_meas}
   H_\text{meas}(L, M)
