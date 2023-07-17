@@ -940,15 +940,15 @@ normalized acceptance integral matrix
 \end{equation}
 If the angular distributions for two moments become indistinguishable
 in the accepted phase space, the corresponding off-diagonal elements
-of $\tilde{\mat{I}}^\text{acc}$ will approach~1.
+of~$\tilde{\mat{I}}^\text{acc}$ will approach~1.
 
-$\mat{I}^\text{acc}$ can be calculated using Monte Carlo
+$\mat{I}^\text{acc}$~can be approximated using Monte Carlo
 integration.  To this end, we first generate $N_\text{gen}$~events
 that are uniformly distributed in the two-body phase
 space\footnote{This means the events are uniformly distributed in the
 $(\cos\theta, \phi)$ plane.} and then pass these events through the
 detector simulation, event reconstruction, and event selection chains.
-From the remaining $N_\text{acc}$ accepted events we calculate the
+From the remaining $N_\text{acc}$~accepted events we calculate the
 elements of the acceptance integral matrix using
 \begin{equation}
   \label{eq:diffraction_integral_matrix}
@@ -960,15 +960,15 @@ elements of the acceptance integral matrix using
 Expect for the factor $4 \pi$ that represents the integration volume,
 this is identical to Eq.~(B6) in \refCite{E852:1999xev}.
 
-If the integral matrix $\mat{I}^\text{acc}$ is invertible, we can
+If the integral matrix~$\mat{I}^\text{acc}$ is invertible, we can
 calculate the physical moments from the measured ones using
 \begin{equation}
   \label{eq:diffraction_phys_moments}
   \vect{H}
-  = \rBrk[1]{\mat{I}^\text{acc}}^{-1}\, \vect{H}_\text{meas}.
+  = \rBrk[0]{\mat{I}^\text{acc}}^{-1}\, \vect{H}_\text{meas}.
 \end{equation}
 In case the detection efficiency is close to zero over wide ranges of
-the phase space, $\mat{I}^\text{acc}$ may become (nearly) singular.
+the phase space, $\mat{I}^\text{acc}$~may become (nearly) singular.
 In this case, certain moments may become immeasurable and one has to
 revert to the support-vector moments developed by
 R.~Jones~\cite{Jones:2023}.
@@ -977,7 +977,7 @@ R.~Jones~\cite{Jones:2023}.
 \subsubsection{Estimation of measured moments and uncertainty propagation}%
 \label{sec:diffraction:estimation_uncert}
 
-To obtain an estimate for $\vect{H}_\text{meas}$ from
+To obtain an estimate for~$\vect{H}_\text{meas}$ from
 \cref{eq:diffraction_moments_meas} we use the same approach as in
 \cref{eq:diffraction_moments_estimate}, \ie
 \begin{equation}
@@ -997,7 +997,7 @@ We also have to propagate the uncertainty
 from~$\hat{\vect{H}}_\text{meas}$ to~$\hat{\vect{H}}$.  This is
 complicated by the fact that in general the measured moments
 $\hat{\vect{H}}_\text{meas}$~as well as the inverse of the
-acceptance matrix $\rBrk[1]{\mat{I}^\text{acc}}^{-1}$ in
+acceptance matrix $\rBrk[0]{\mat{I}^\text{acc}}^{-1}$ in
 \cref{eq:diffraction_phys_moments} are complex-valued.  The most
 convenient way to formulate uncertainty propagation for complex-valued
 quantities is to use Wirtinger calculus\footnote{Sometimes this is
@@ -1105,14 +1105,14 @@ the pseudo-covariance matrix
 $\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$~in NumPy we
 have to use \pyinline{N_meas * numpy.cov(f, numpy.conjugate(f))[:n, n:]}.}
 \begin{align}
-  (\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{meas}})_{L M, L' M'}
+  \rBrk[1]{\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{meas}}}_{L M, L' M'}
   ={}& \cov[2]{\hat{H}_\text{meas}(L, M), \hat{H}_\text{meas}(L', M')} \notag
   \\
   \label{eq:diffraction_sample_cov_hermit_meas}
   ={}& \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{i = 1}^{N_\text{meas}}
-  \sBrk[2]{f_{L M}(\Omega_i) - \mean{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \mean{f_{L' M'}(\Omega)}}^*.
+  \sBrk[2]{f_{L M}(\Omega_i) - \mean{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \mean{f_{L' M'}(\Omega)}}^*
   \\
-  (\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}})_{L M, L' M'}
+  \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{L M, L' M'}
   ={}& \cov[2]{\hat{H}_\text{meas}(L, M), \hat{H}_\text{meas}^*(L', M')} \notag
   \\
   \label{eq:diffraction_sample_cov_pseudo_meas}
@@ -1175,7 +1175,7 @@ variables, ~$\vect{H}$ and~$\vect{H}^*$.  Hence,
 \begin{equation}
   \mat{J}
   = \pd{\vect{H}}{\vect{H}_\text{meas}}
-  = \mat{A}
+  = \rBrk[0]{\mat{I}^\text{acc}}^{-1}
   \quad\text{and}\quad
   \tilde{\mat{J}}
   = \pd{\vect{H}}{{\vect{H}_\text{meas}^*}}
@@ -1186,8 +1186,8 @@ where we have applied the rules from matrix calculus (see \eg\
 \begin{equation}
   \underaccent{\bar}{\mat{J}}
   = \begin{pmatrix*}[l]
-    \mat{A} & \mat{0} \\
-    \mat{0} & \mat{A}^*
+    \rBrk[0]{\mat{I}^\text{acc}}^{-1} & \mat{0} \\
+    \mat{0}                           & \rBrk[1]{\rBrk[0]{\mat{I}^\text{acc}}^{-1}}^*
   \end{pmatrix*}.
 \end{equation}
 With~$\underaccent{\bar}{\mat{J}}$ and
@@ -1271,4 +1271,4 @@ M'')$, for which $L', L'' \leq 2 L$.  This means that under the
 simplifying assumptions expressed in \cref{eq:diffraction_int_meas} we
 need to know only a finite set of moments of the acceptance function.
 
-\todoInl{discuss acceptance correction using moment decomposition of $\eta^{-1}(\Omega)$}
+\todoInl{Discuss acceptance correction using moment decomposition of $\eta^{-1}(\Omega)$}
