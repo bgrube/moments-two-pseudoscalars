@@ -691,7 +691,7 @@ normalization is not absolute and hence these moments depend on the
 number of events.} and with the chosen normalization (see
 \cref{sec:diffraction:moments_norm}) it leads to
 \begin{equation}
-  \label{eq:diffraction_weight_00}
+  \label{eq:diffraction_norm_00}
   H(0, 0)
   = N
   \quad\text{because}\quad
@@ -722,9 +722,9 @@ according to $\mathcal{I}(\Omega)$.\footnote{%
     = \sum_i^N \cov[1]{x_i, y_i}
     \equalUsing{\text{iid}} N\, \cov[1]{x, y},
   \end{equation}
-  where we used the fact that the samples are independent and
-  identically distributed (iid) random variables.
-}  Therefore, the variance is given by
+  where in the last step we used the fact that the samples are
+  independent and identically distributed (iid) random variables.}
+  Therefore, the variance is given by
 \begin{equation}
   \label{eq:diffraction_moments_var}
   \var[1]{\hat{H}(L, M)}
@@ -752,7 +752,7 @@ Hence,
 \end{equation}
 This is analogous to Monte Carlo integration (see \eg\
 \refCite{wikipedia:MonteCarloIntegration}).  Note that with
-\cref{eq:diffraction_weight_00} we get
+\cref{eq:diffraction_norm_00} we get
 \begin{equation}
   \hat{\sigma}_{\hat{H}(0, 0)}
   = 0.
@@ -923,9 +923,9 @@ In this case, $\vect{H}_\text{meas} = \vect{H}$, as expected.
 
 For a realistic detector, $\eta(\Omega) \neq 1$ will break the
 orthogonality of the spherical harmonics.  In this case, the diagonal
-elements of $\mat{I}^\text{acc}$ represent the acceptance for the
+elements of~$\mat{I}^\text{acc}$ represent the acceptance for the
 intensity distribution that corresponds to the respective $(L M)$
-quantum numbers.  The off-diagonal elements of $\mat{I}^\text{acc}$
+quantum numbers.  The off-diagonal elements of~$\mat{I}^\text{acc}$
 are in general non-zero and are related to the indistinguishability of
 moments with $(L M)$ from those with $(L' M')$ quantum numbers due to
 the limited detection efficiency.  This indistinguishability between
@@ -954,7 +954,7 @@ elements of the acceptance integral matrix using
   \label{eq:diffraction_integral_matrix}
   \rBrk{\mat{I}^\text{acc}}_{L M\, L' M'}
   = I^\text{acc}_{L M\, L' M'}
-  = \sqrt{\frac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})\,
+  \approx \sqrt{\frac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})\,
   \frac{4 \pi}{N_\text{gen}} \sum_{i = 1}^{N_\text{acc}} y_{L'}^{M'}(\theta_i)\, \cos(M'\, \phi_i)\, Y_L^{M *}(\Omega_i).
 \end{equation}
 Expect for the factor $4 \pi$ that represents the integration volume,
@@ -1123,7 +1123,8 @@ Here, $f_{L M}(\Omega)$ is defined in
 \cref{eq:diffraction_moments_meas_estimate}.  From these two matrices,
 we construct the augmented covariance
 matrix~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$
-using \cref{eq:cov_augmented}.\footnote{In NumPy, we can
+using \cref{eq:cov_augmented}.\footnote{\label{fn:cov_aug_numpy}In
+NumPy, we can
 calculate~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$
 directly by calling \pyinline{N_meas * numpy.cov(f, numpy.conjugate(f))}.
 Alternatively, one can construct the augmented vector \pyinline{f_aug
@@ -1272,3 +1273,4 @@ simplifying assumptions expressed in \cref{eq:diffraction_int_meas} we
 need to know only a finite set of moments of the acceptance function.
 
 \todoInl{Discuss acceptance correction using moment decomposition of $\eta^{-1}(\Omega)$}
+\todoInl{Add reference to code repo}
