@@ -176,12 +176,12 @@
 %\RequirePackage[low-sup]{subdepth}  % avoid different height of subscript in cases like $A_a$ and $A_a^a$
 \RequirePackage{cancel}             % indicate canceling terms
 \RequirePackage{accents}            % miscellaneous tools for mathematical accents
-\RequirePackage{upgreek}            % macros for upright greek letters; e.g. for vector/matrix notation
 
 
 % ------------------------------------------------------------------------------
 % math fonts
-\RequirePackage{isomath}   % italic capital Greek letters, sets up bold italic and sans-serif bold italic math alphabets
+\RequirePackage[reuseMathAlphabets]{isomath}  % italic capital Greek letters, sets up bold italic and sans-serif bold italic math alphabets
+\RequirePackage{upgreek}   % macros for upright greek letters; e.g. for vector/matrix notation
 \RequirePackage{bbm}       % roman, sans-serif, and type-writer double-stroke font
 \RequirePackage{amsbsy}    % macros for bold math
 \RequirePackage{bm}        % macros for bold math
