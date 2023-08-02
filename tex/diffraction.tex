@@ -878,24 +878,28 @@ becomes a unit matrix in quantum-number space, \ie
 \end{equation}
 because of the orthonormality of the spherical harmonics (see
 \cref{eq:spherical_harm_orthonorm}).\footnote{%
-  For $\eta(\Omega) = 1$, the overlap integrals are
+  \label{fn:diffraction_integral_matrix_perfect_det}%
+  For $\eta(\Omega) = 1$, the elements of the acceptance integral
+  matrix are
   \begin{equation}
     I^\text{acc}_{L M\, L' M'}
     = \sqrt{\frac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})
     \int_{-1}^{+1}\!\!\! \dif{\cos\theta}\, y_{L'}^{M'}(\theta)\, y_L^M(\theta)
     \int_{-\pi}^{+\pi}\!\!\! \dif{\phi}\, \cos(M'\, \phi) \sBrk[2]{\cos(M\, \phi) + \imag\, \sin(M\, \phi)}.
   \end{equation}
-  The $\sin$ and $\cos$ functions are orthogonal, \ie
+  The $\sin \phi$ and $\cos \phi$ functions are orthogonal, \ie
   \begin{equation}
+    \label{eq:sin_cos_orthogonality}
     \int_{-\pi}^{+\pi}\!\!\! \dif{\phi}\, \cos(M'\, \phi)\, \sin(M\, \phi)
     = 0
     \quad\text{and}\quad
     \int_{-\pi}^{+\pi}\!\!\! \dif{\phi}\, \cos(M'\, \phi)\, \cos(M\, \phi)
-    = \begin{cases*}
-      0    & for $M \neq M'$ \\
-      \pi  & for $M = M' \neq 0$ \\
-      2\pi & for $M = M' = 0$.
-    \end{cases*}
+    = \begin{Bmatrix*}[l]
+      0    & \text{for $M \neq M'$} \\
+      \pi  & \text{for $M = M' \neq 0$} \\
+      2\pi & \text{for $M = M' = 0$}
+    \end{Bmatrix*}
+    = (1 + \delta_{M 0}) \pi\, \delta_{M M'}.
   \end{equation}
   This means that
   \begin{equation}
@@ -903,22 +907,21 @@ because of the orthonormality of the spherical harmonics (see
     \int_{-\pi}^{+\pi}\!\!\! \dif{\phi}\, \cos(M'\, \phi) \sBrk[2]{\cos(M\, \phi) + \imag\, \sin(M\, \phi)}
     = 2 \pi\, \delta_{M M'}.
   \end{equation}
-  Using this and the definition of the spherical harmonics in
-  \cref{eq:spherical_harm_def}, we get
+  Also the $y_L^M(\theta)$ are orthogonal, \ie
+  \begin{equation}
+    \label{eq:small_y_orthogonality}
+    \int_{-1}^{+1}\!\!\! \dif{\cos\theta}\, y_{L'}^{M}(\theta)\, y_L^M(\theta)
+    = \frac{1}{2 \pi}\, \delta_{L L'}.
+  \end{equation}
+  Using the above, we get
   \begin{equation}
     I^\text{acc}_{L M\, L' M'}
-    = \sqrt{\frac{2 L' + 1}{2 L + 1}}\, 2 \pi\, \delta_{M M'}\,
-    \sqrt{\frac{2 L' + 1}{4 \pi}\, \frac{(L' - M)!}{(L' + M)!}}\,
-    \sqrt{\frac{2 L + 1}{4 \pi}\, \frac{(L - M)!}{(L + M)!}}\,
-    \int_{-1}^{+1}\!\!\! \dif{\cos\theta}\, P_{L'}^M(\cos\theta)\, P_L^M(\cos\theta)
+    = \sqrt{\frac{2 L' + 1}{2 L + 1}}\,
+    \frac{1}{2 \pi}\, \delta_{L L'}\,
+    2 \pi\, \delta_{M M'}
+    = \delta_{L L'}\, \delta_{M M'},
   \end{equation}
-  Inserting the orthogonality of the associated Legendre polynomials
-  (see \eg\ \refCite{wikipedia:accocLegendrePol}), \ie
-  \begin{equation}
-    \int_{-1}^{+1}\!\!\! \dif{\cos\theta}\, P_{L'}^M(\cos\theta)\, P_L^M(\cos\theta)
-    = \frac{2}{2 L + 1}\, \frac{(L + M)!}{(L - M)!}\, \delta_{L L'},
-  \end{equation}
-  we obtain \cref{eq:diffraction_integral_matrix_ideal}.
+  which is identical to \cref{eq:diffraction_integral_matrix_ideal}.
 }
 In this case, $\vect{H}_\text{meas} = \vect{H}$, as expected.
 
