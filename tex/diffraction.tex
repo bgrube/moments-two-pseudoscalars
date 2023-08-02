@@ -453,6 +453,7 @@ compared to \cref{eq:diffraction_moments_pw_norm}.
 
 From \cref{eq:diffraction_moment_sym_1,eq:diffraction_moment_sym_2} follows that
 \begin{equation}
+  \label{eq:diffraction_moment_real}
   H(L, M)
   = H^*(L, M),
 \end{equation}
@@ -1271,6 +1272,149 @@ moments $H(L', M')$ and those acceptance moments $H_\text{acc}(L'',
 M'')$, for which $L', L'' \leq 2 L$.  This means that under the
 simplifying assumptions expressed in \cref{eq:diffraction_int_meas} we
 need to know only a finite set of moments of the acceptance function.
+
+
+\subsubsection{Example}%
+\label{sec:diffraction:example}
+
+To verify the approach described in
+\cref{sec:diffraction:estimation_uncert} we perform a Monte Carlo
+input-output study.  In this study, we use
+\cref{eq:diffraction_intensity_refl} to calculate
+$\mathcal{I}(\Omega)$ from a set of partial waves that consists of the
+7~lowest waves up to $\ell = 2$ and $\abs{m} = 1$ in the reflectivity
+basis.  The used amplitude values are given in
+\cref{tab:diffraction_study_waveset}.  The resulting intensity
+distribution is shown in \cref{fig:diffraction_study_intensity}.
+
+\begin{table}[tbp]
+  \centering%
+  \renewcommand{\arraystretch}{1.2}%
+  \caption{Partial-wave amplitude values used to generate pseudodata.
+  The wave notation is $\ell_m^\refl$.}%
+  \label{tab:diffraction_study_waveset}%
+  \begin{tabular}{ll}
+    \toprule
+    \textbf{Partial wave} &
+    \textbf{Amplitude value} \\
+    \midrule
+    $S_0^-$    & $\hphantom{-}1.0$ \\
+    $P_{-1}^-$ & $-0.4 + 0.1 \imag$ \\
+    $P_0^-$    & $\hphantom{-}0.3 - 0.8 \imag$ \\
+    $D_{-1}^-$ & $\hphantom{-}0.2 - 0.5 \imag$ \\
+    $D_0^-$    & $-0.1 - 0.2 \imag$ \\
+    \midrule
+    $P_{+1}^+$ & $\hphantom{-}0.5$ \\
+    $D_{+1}^+$ & $-0.1 + 0.3 \imag$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+We weight the intensity distribution with the hypothetical detection
+efficiency
+\begin{equation}
+  \label{eq:diffraction_study_acc1}
+  \eta(\Omega)
+  = 2 - \cos^2 \theta,
+\end{equation}
+which is shown in \cref{fig:diffraction_study_efficiency}.  From this
+weighted intensity distribution (see
+\cref{fig:diffraction_study_intensity_acc}), we randomly draw a sample
+of \num{1000}~events (see \cref{fig:diffraction_study_data}).  This
+sample is used to calculate the values of the measured
+moments~$\hat{\vect{H}}_\text{meas}$ using
+\cref{eq:diffraction_moments_meas_estimate} as well as their augmented
+covariance matrix as described in \cref{fn:cov_aug_numpy}.
+
+\begin{figure}[tbp]
+  \centering%
+  \subfloat[][]{%
+    \label{fig:diffraction_study_intensity}%
+    \includegraphics[width=\twoPlotWidth]{intensity}%
+  }%
+  \hfill%
+  \subfloat[][]{%
+    \label{fig:diffraction_study_efficiency}%
+    \includegraphics[width=\twoPlotWidth]{acc_1/acceptance}%
+  }%
+  \\
+  \subfloat[][]{%
+    \label{fig:diffraction_study_intensity_acc}%
+    \includegraphics[width=\twoPlotWidth]{acc_1/intensity}%
+  }%
+  \hfill%
+  \subfloat[][]{%
+    \label{fig:diffraction_study_data}%
+    \includegraphics[width=\twoPlotWidth]{acc_1/hData}%
+  }%
+  \caption{Input used to generate Monte Carlo data:
+  \subfloatLabel{fig:diffraction_study_intensity}~Intensity
+  distribution $\mathcal{I}(\Omega)$ calculated from the partial-wave
+  amplitudes listed in \cref{tab:diffraction_study_waveset}.
+  \subfloatLabel{fig:diffraction_study_efficiency}~Hypothetical
+  detection efficiency as given by \cref{eq:diffraction_study_acc1}.
+  \subfloatLabel{fig:diffraction_study_intensity_acc}~Intensity
+  distribution weighted by the detection efficiency, \ie
+  $\eta(\Omega)\, \mathcal{I}(\Omega)$.
+  \subfloatLabel{fig:diffraction_study_data}~Data sample of
+  \num{1000}~events randomly drawn from the distribution
+  in~\subfloatLabel{fig:diffraction_study_intensity_acc}.}
+  \label{fig:diffraction_study_input}
+\end{figure}
+
+The acceptance integral matrix~$\mat{I}^\text{acc}$ is calculated
+using \cref{eq:diffraction_integral_matrix} and \num{e7}~events
+sampled randomly from the detection efficiency $\eta(\Omega)$ in
+\cref{eq:diffraction_study_acc1}.  Using this matrix, the physical
+moments are calculated from the measured moments using
+\cref{eq:diffraction_phys_moments,eq:complex_uncert_prop}.
+\Cref{fig:diffraction_study_comparison_re} shows the physical moments
+extracted from the Monte Carlo data and compares them to the expected
+values calculated from the partial-wave amplitudes in
+\cref{tab:diffraction_study_waveset} using
+\cref{eq:diffraction_moments_pw_refl_norm}.  As expected, the two sets
+of values  agree within statistical uncertainties (see
+\cref{fig:diffraction_study_residual_re}).  Since the physical moments
+are expected to be real-valued (see
+\cref{eq:diffraction_moment_real}), we also verify that their
+imaginary parts are consistent with zero, which is indeed the case
+(see
+\cref{fig:diffraction_study_comparison_im,fig:diffraction_study_residual_im}).
+
+\begin{figure}[tbp]
+  \centering%
+  \subfloat[][]{%
+    \label{fig:diffraction_study_comparison_re}%
+    \includegraphics[width=\twoPlotWidth]{acc_1/hCompareRe}%
+  }%
+  \hfill%
+  \subfloat[][]{%
+    \label{fig:diffraction_study_comparison_im}%
+    \includegraphics[width=\twoPlotWidth]{acc_1/hCompareIm}%
+  }%
+  \\
+  \subfloat[][]{%
+    \label{fig:diffraction_study_residual_re}%
+    \includegraphics[width=\twoPlotWidth]{acc_1/hResidualsRe}%
+  }%
+  \hfill%
+  \subfloat[][]{%
+    \label{fig:diffraction_study_residual_im}%
+    \includegraphics[width=\twoPlotWidth]{acc_1/hResidualsIm}%
+  }%
+  \caption{Upper row: Comparison of the physical moments (red points
+  with uncertainties) extracted from the Monte Carlo data, which are
+  generated using the partial-wave amplitudes in
+  \cref{tab:diffraction_study_waveset} and the detection efficiency in
+  \cref{eq:diffraction_study_acc1}, with the expected values (blue
+  lines).  \subfloatLabel{fig:diffraction_study_comparison_re}~shows
+  the real part,
+  \subfloatLabel{fig:diffraction_study_comparison_im}~the imaginary
+  part.  Note that moments with $M > 2$ and/or $L > 4$ are expected to
+  be zero due to the chosen wave set.  Lower row: corresponding
+  residuals.\todoInl{Fix/discuss $H(0, 0)$.}}
+  \label{fig:diffraction_study_output}
+\end{figure}
 
 \todoInl{Discuss acceptance correction using moment decomposition of $\eta^{-1}(\Omega)$}
 \todoInl{Add reference to code repo}
