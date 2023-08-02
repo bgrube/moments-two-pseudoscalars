@@ -58,8 +58,8 @@ squared four-momentum transferred from the beam to the target
 particle, $\Omega = (\theta, \phi)$ is the direction of one of the two
 (pseudo)scalar mesons the~$X$ decays into, measured in the
 Gottfried-Jackson or helicity rest frame of~$X$, and~$\Phi$ is the
-angle between the polarization vector of the linearly polarized photon
-and the reaction plane in the $X$~rest frame.  The
+azimuthal angle between the polarization vector of the linearly
+polarized photon and the reaction plane in the $X$~rest frame.  The
 $\mathcal{T}^\ell_{\!m\, \lambda; \lambda_1\, \lambda_2}(w, t)$ are
 the partial-wave amplitudes that correspond to an intermediate state
 with a spin, which is given by the relative orbital angular
@@ -170,8 +170,8 @@ constitute an orthogonal set of functions, \ie
 \begin{equation}
   \label{eq:photoprod_orthogonality_phi}
   \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, f_i(\Phi)\, f_j(\Phi)
-  = (1 + \delta_{i 0}) \pi\, \delta_{i j};
-  \quad i, j = 0 ,1, 2.
+  = \pi\, (1 + \delta_{i 0})\, \delta_{i j};
+  \quad i, j = 0 ,1, 2. 
 \end{equation}
 
 Like for the diffractive case, the partial-wave analysis as well as
@@ -369,9 +369,11 @@ From
 it follows that
 \begin{equation}
   \label{eq:photoprodP_moments_real_imag}
-  H_{0, 1}^*(L, M) = H_{0, 1}(L, M)
+  H_{0, 1}^*(L, M)
+  = H_{0, 1}(L, M)
   \quad\text{and}\quad
-  H_2^*(L, M) = -H_2(L, M).
+  H_2^*(L, M)
+  = -H_2(L, M).
 \end{equation}
 Hence, all $H_{0, 1}(L, M)$ must be real-valued and all $H_2(L, M)$
 must be purely imaginary.  Consequently, from
@@ -544,11 +546,22 @@ In \cref{eq:photoprod_rho_refl}, we sum incoherently over~$\refl =
 \crefrange{eq:photoprod_rho_0_refl}{eq:photoprod_rho_2_refl}, we sum
 incoherently over~$k = 0, 1$, \ie the rank of the
 $\prescript{i}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}$ is in
-general~2.
+general~2.  By inserting \cref{eq:photoprod_rho_refl} into
+\cref{eq:photoprod_intensity_components}, we obtain the intensity
+components in the reflectivity basis:
+\begin{equation}
+  \label{eq:photoprod_intensity_components_refl}
+  \mathcal{I}_i(\Omega)
+  = \sum_{\substack{\ell m \\ \ell' m'}}^\infty
+  Y_\ell^m(\Omega)
+  \sBrk[3]{\, \sum_{\refl = \pm} \prescript{i}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}}
+  Y_{\ell'}^{m' *}(\Omega);
+  \quad i = 0, 1, 2
+\end{equation}
 
-Note that usually neither the spin of the target proton nor the one of
-the recoil proton is measured.  Still, the intensity distribution
-obtained by inserting
+Note that usually neither the spin of the target proton
+nor the one of the recoil proton is measured.  Still, the intensity
+distribution obtained by inserting
 \crefrange{eq:photoprod_rho_refl}{eq:photoprod_rho_2_refl} into
 \cref{eq:photoprod_intensity_components} has two incoherent sectors
 indexed by~$k = 0, 1$ as required by parity conservation.  However, in
@@ -810,7 +823,7 @@ into
   {\equiv I^\text{acc}_{0 1\, L M\, L' M'}} \notag
   \\
   & + H_2(L', M')\,
-  \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.4em} \dif{\Phi}\,
+  \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
   \eta(\Omega, \Phi)\,
   \rdOverbrace{\imag\, P_\gamma\, \sqrt{\frac{2 L' + 1}{4 \pi}}\, (2 - \delta_{M' 0})\, y_{L'}^{M'}(\theta)\, \sin(M'\, \phi)\, \sin(2 \Phi)}{\equiv f_{2, L' M'}^\text{phys}(\Omega, \Phi)}\,
   f_{0, L M}^\text{meas}(\Omega, \Phi)}%
@@ -930,22 +943,22 @@ function, \ie
 \begin{align}
   \rBrk[0]{\vect{f}^\text{phys}}_{L M}(\Omega, \Phi)
   ={}& \begin{pmatrix}
-    f^\text{phys}_0(L M)(\Omega, \Phi) \\
-    f^\text{phys}_1(L M)(\Omega, \Phi) \\
-    f^\text{phys}_2(L M)(\Omega, \Phi)
+    f^\text{phys}_{0, L M}(\Omega, \Phi) \\
+    f^\text{phys}_{1, L M}(\Omega, \Phi) \\
+    f^\text{phys}_{2, L M}(\Omega, \Phi)
   \end{pmatrix}
-  = \sqrt{\frac{2 L' + 1}{4 \pi}}\, (2 - \delta_{M' 0})\, y_{L'}^{M'}(\theta)
+  = \sqrt{\frac{2 L + 1}{4 \pi}}\, (2 - \delta_{M 0})\, y_L^M(\theta)
   \begin{pmatrix}
-    \cos(M'\, \phi) \\
-    P_\gamma\, \cos(M'\, \phi)\, \cos(2 \Phi) \\
-    \imag\, P_\gamma\, \sin(M'\, \phi)\, \sin(2 \Phi)
+    \cos(M\, \phi) \\
+    P_\gamma\, \cos(M\, \phi)\, \cos(2 \Phi) \\
+    \imag\, P_\gamma\, \sin(M\, \phi)\, \sin(2 \Phi)
   \end{pmatrix}
   \intertext{and}
   \rBrk[0]{\vect{f}^\text{meas}}_{L M}(\Omega, \Phi)
   ={}& \begin{pmatrix}
-    f^\text{meas}_0(L M)(\Omega, \Phi) \\
-    f^\text{meas}_1(L M)(\Omega, \Phi) \\
-    f^\text{meas}_2(L M)(\Omega, \Phi)
+    f^\text{meas}_{0, L M}(\Omega, \Phi) \\
+    f^\text{meas}_{1, L M}(\Omega, \Phi) \\
+    f^\text{meas}_{2, L M}(\Omega, \Phi)
   \end{pmatrix}
   = \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega)
   \begin{pmatrix}
@@ -966,9 +979,10 @@ Consequently, the acceptance integral matrix in
   f_{i, L M}^\text{meas}(\Omega, \Phi)\,
   f_{j, L' M'}^\text{phys}(\Omega, \Phi).
 \end{equation}
-
-\todoInl{Discuss what happens for $\eta = 1$. Is $\mat{I}^\text{acc}$
-a unit matrix?}
+Using similar arguments as in
+\cref{fn:diffraction_integral_matrix_perfect_det} one can show that
+for a perfect detector with $\eta(\Omega, \Phi) = 1$,
+$\mat{I}^\text{acc}$ becomes a unit matrix.
 
 As in the diffractive case, $\mat{I}^\text{acc}$~can be approximated
 using a Monte Carlo data sample with $N_\text{gen}$~events that are
@@ -981,11 +995,20 @@ acceptance integral matrix is calculated according to
 \begin{equation}
   \label{eq:photoporod_integral_matrix}
   \rBrk[0]{\mat{I}^\text{acc}}_{i j, L M\, L' M'}
-  = \frac{8 \pi^2}{N_\text{gen}} \sum_{k = 1}^{N_\text{acc}}
+  \approx \frac{8 \pi^2}{N_\text{gen}} \sum_{k = 1}^{N_\text{acc}}
   f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)\,
   f_{j, L' M'}^\text{phys}(\Omega_k, \Phi_k).
 \end{equation}
-This is equivalent to \cref{eq:diffraction_integral_matrix}.
+This is equivalent to \cref{eq:diffraction_integral_matrix}.  Note
+that $f^\text{phys}_{2, L 0}(\Omega, \Phi) = 0$, which is equivalent
+to \cref{eq:photoprod_moment_2_M0}.  Hence,
+$\rBrk[0]{\mat{I}^\text{acc}}_{i j, L M\, L' M'}$ is singular.  To
+restore the invertibility of the acceptance integral matrix the rows
+and columns that correspond to $f^\text{phys}_{2, L 0}$ and
+$f^\text{meas}_{2, L 0}$ need to be removed from $\mat{I}^\text{acc}$.
+Likewise, the elements $\rBrk[0]{\hat{\vect{H}}}_{2, L 0}$ and
+$\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{2, L 0}$ should be removed from
+$\hat{\vect{H}}$ and $\hat{\vect{H}}_\text{meas}$, respectively.
 
 The measured moments are estimated from the data using the same
 approach as in \cref{sec:diffraction:estimation_uncert}, \ie by
@@ -995,8 +1018,19 @@ sums over measured events:
 \begin{equation}
   \label{eq:photoprod_moments_meas_estimate}
   \rBrk[0]{\hat{\vect{H}}_\text{meas}}_{i, L M}
-  = \sum_{k = 1}^{N_\text{meas}} f_{i, L M}^\text{meas}(\Omega_k, \Phi_k).
+  = 2 \pi \sum_{k = 1}^{N_\text{meas}} f_{i, L M}^\text{meas}(\Omega_k, \Phi_k).
 \end{equation}
+Here, we have chosen the factor $2 \pi$ such that
+\begin{equation}
+  \label{eq:photoprod_norm_00}
+  H_0(0, 0)
+  = N
+  \quad\text{because}\quad
+  f_{0, 0 0}^\text{meas}(\Omega, \Phi)
+  = \frac{1}{2 \pi}
+  = \text{const}.
+\end{equation}
+This is equivalent to \cref{eq:diffraction_norm_00}.
 
 With the above definitions, we can use the same formalism described in
 \cref{sec:diffraction:estimation_uncert} to calculate the
@@ -1014,7 +1048,7 @@ measured moments using the sample covariance analogous to
   ={}& \cov[2]{\hat{H}_i^\text{meas}(L, M), \hat{H}_j^\text{meas}(L', M')} \notag
   \\
   \label{eq:photoprod_sample_cov_hermit_meas}
-  ={}& \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{k = 1}^{N_\text{meas}}
+  ={}& \frac{4 \pi^2\, N_\text{meas}}{N_\text{meas} - 1} \sum_{k = 1}^{N_\text{meas}}
   \sBrk[2]{f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)   - \Mean{f_{i, L M}^\text{meas}(\Omega, \Phi)}}
   \sBrk[2]{f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \Mean{f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}^*
   \\
@@ -1022,7 +1056,9 @@ measured moments using the sample covariance analogous to
   ={}& \cov[2]{\hat{H}_i^\text{meas}(L, M), \hat{H}_j^{\text{meas}\, *}(L', M')} \notag
   \\
   \label{eq:photoprod_sample_cov_pseudo_meas}
-  ={}& \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{k = 1}^{N_\text{meas}}
+  ={}& \frac{4 \pi^2\, N_\text{meas}}{N_\text{meas} - 1} \sum_{k = 1}^{N_\text{meas}}
   \sBrk[2]{f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)   - \Mean{f_{i, L M}^\text{meas}(\Omega, \Phi)}}
   \sBrk[2]{f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \Mean{f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}.
 \end{align}
+
+\todoInl{Add example}
