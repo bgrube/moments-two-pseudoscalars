@@ -26,7 +26,7 @@ references here and will derive some equations.
   Reggeon exchange.  In this photoproduction process, an intermediate
   state~$X^0$ with well-defined quantum numbers is produced, which in
   the example given here decays into the \etaOrPrPim channel.
-  (\Confer~\cref{fig:diffractive_etaprimepi}.)}%
+  (\Confer~\cref{fig:diffraction_etaprimepi}.)}%
   \label{fig:photoprod_etaprimepi}%
 \end{figure}
 
@@ -980,9 +980,10 @@ Consequently, the acceptance integral matrix in
   f_{j, L' M'}^\text{phys}(\Omega, \Phi).
 \end{equation}
 Using similar arguments as in
-\cref{fn:diffraction_integral_matrix_perfect_det} one can show that
+\cref{fn:diffraction_integral_matrix_perfect_det}, one can show that
 for a perfect detector with $\eta(\Omega, \Phi) = 1$,
-$\mat{I}^\text{acc}$ becomes a unit matrix.
+$\mat{I}^\text{acc}$ becomes a unit matrix.\todo{Can one show that
+$\mat{I}^\text{acc}$ must be real-valued?}
 
 As in the diffractive case, $\mat{I}^\text{acc}$~can be approximated
 using a Monte Carlo data sample with $N_\text{gen}$~events that are
@@ -993,7 +994,7 @@ simulation, event reconstruction, and event selection chains,
 $N_\text{acc}$~accepted events remain.  From these events, the
 acceptance integral matrix is calculated according to
 \begin{equation}
-  \label{eq:photoporod_integral_matrix}
+  \label{eq:photoprod_integral_matrix_mc}
   \rBrk[0]{\mat{I}^\text{acc}}_{i j, L M\, L' M'}
   \approx \frac{8 \pi^2}{N_\text{gen}} \sum_{k = 1}^{N_\text{acc}}
   f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)\,
@@ -1061,4 +1062,218 @@ measured moments using the sample covariance analogous to
   \sBrk[2]{f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \Mean{f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}.
 \end{align}
 
-\todoInl{Add example}
+
+\subsection{Example}%
+\label{sec:photoprod:example}
+
+To verify the approach described in \cref{sec:photoprod:moments_data}
+we perform a Monte Carlo input-output study.  In this study, we use
+\cref{eq:photoprod_intensity_sum,eq:photoprod_intensity_components_refl,eq:photoprod_rho_0_refl,eq:photoprod_rho_1_refl,eq:photoprod_rho_2_refl}
+to calculate $\mathcal{I}(\Omega, \Phi)$ from a set of partial waves
+that consists of all allowed waves up to $\ell = 2$ in the
+reflectivity basis assuming a polarization of the beam photons of
+$P_\gamma = 1$.  The used amplitude values are given in
+\cref{tab:photoprod_study_waveset}.  The resulting intensity
+distribution is shown in \cref{fig:photoprod_study_intensity}.
+
+\begin{table}[tbp]
+  \centering%
+  \renewcommand{\arraystretch}{1.2}%
+  \caption{Partial-wave amplitude values used to generate pseudodata.
+  The wave notation is $\ell_m^{(\refl)}$.}%
+  \label{tab:photoprod_study_waveset}%
+  \vspace*{1ex}%
+  \hfill%
+  \begin{tabular}{ll}
+    \toprule
+    \textbf{Partial wave} &
+    \textbf{Amplitude value} \\
+    \midrule
+    % negative-reflectivity waves
+    $S_0^{(-)}$    & $\hphantom{-}1.0$ \\
+    $P_{-1}^{(-)}$ & $-0.4 + 0.1 \imag$ \\
+    $P_0^{(-)}$    & $\hphantom{-}0.3 - 0.8 \imag$ \\
+    $P_{+1}^{(-)}$ & $-0.8 + 0.7 \imag$ \\
+    $D_{-2}^{(-)}$ & $\hphantom{-}0.1 - 0.4 \imag$ \\
+    $D_{-1}^{(-)}$ & $\hphantom{-}0.5 + 0.2 \imag$ \\
+    $D_0^{(-)}$    & $-0.1 - 0.2 \imag$ \\
+    $D_{+1}^{(-)}$ & $\hphantom{-}0.2 - 0.1 \imag$ \\
+    $D_{+2}^{(-)}$ & $-0.2 + 0.3 \imag$ \\
+    \bottomrule
+  \end{tabular}
+  \hfill%
+  \begin{tabular}{ll}
+    \toprule
+    \textbf{Partial wave} &
+    \textbf{Amplitude value} \\
+    \midrule
+    % positive-reflectivity waves
+    $S_0^{(+)}$    & $\hphantom{-}0.5$ \\
+    $P_{-1}^{(+)}$ & $\hphantom{-}0.5 - 0.1 \imag$ \\
+    $P_0^{(+)}$    & $-0.8 - 0.3 \imag$ \\
+    $P_{+1}^{(+)}$ & $\hphantom{-}0.6 + 0.3 \imag$ \\
+    $D_{-2}^{(+)}$ & $\hphantom{-}0.2 + 0.1 \imag$ \\
+    $D_{-1}^{(+)}$ & $\hphantom{-}0.2 - 0.3 \imag$ \\
+    $D_0^{(+)}$    & $\hphantom{-}0.1 - 0.2 \imag$ \\
+    $D_{+1}^{(+)}$ & $\hphantom{-}0.2 + 0.5 \imag$ \\
+    $D_{+2}^{(+)}$ & $-0.3 - 0.1 \imag$ \\
+    \bottomrule
+  \end{tabular}
+  \hfill\null%
+\end{table}
+
+We weight the intensity distribution with the hypothetical detection
+efficiency
+\begin{equation}
+  \label{eq:photoprod_study_acc1}
+  \eta(\Omega, \Phi)
+  = \rBrk[1]{1.5 - \cos^2 \theta} \rBrk[3]{1.5 - \frac{\phi^2}{\pi^2}} \rBrk[3]{1.5 - \frac{\Phi^2}{\pi^2}},
+\end{equation}
+which is shown in \cref{fig:photoprod_study_efficiency}.  From this
+weighted intensity distribution (see
+\cref{fig:photoprod_study_intensity_acc}), we randomly draw a sample
+of \num{1000}~events (see \cref{fig:photoprod_study_data}).  This
+sample is used to calculate the values of the measured
+moments~$\hat{\vect{H}}_\text{meas}$ using
+\cref{eq:photoprod_moments_meas_estimate} as well as their augmented
+covariance matrix as described in \cref{fn:cov_aug_numpy}.
+
+\begin{figure}[tbp]
+  \centering%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_intensity}%
+    \includegraphics[width=0.5\textwidth]{photoprod/hIntensity}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_efficiency}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hEfficiency}%
+  }%
+  \\%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_intensity_acc}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hIntensity}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_data}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hData}%
+  }%
+  \caption{Input used to generate Monte Carlo data:
+  \subfloatLabel{fig:photoprod_study_intensity}~Intensity distribution
+  $\mathcal{I}(\Omega, \Phi)$ calculated from the partial-wave
+  amplitudes listed in \cref{tab:photoprod_study_waveset}.
+  \subfloatLabel{fig:photoprod_study_efficiency}~Hypothetical
+  detection efficiency $\eta(\Omega, \Phi)$ as given by
+  \cref{eq:photoprod_study_acc1}.
+  \subfloatLabel{fig:photoprod_study_intensity_acc}~Intensity
+  distribution weighted by the detection efficiency, \ie $\eta(\Omega,
+  \Phi)\, \mathcal{I}(\Omega, \Phi)$.
+  \subfloatLabel{fig:photoprod_study_data}~Monte Carlo data sample of
+  \num{1000}~events randomly drawn from the distribution
+  in~\subfloatLabel{fig:photoprod_study_intensity_acc}.}%
+  \label{fig:photoprod_study_input}%
+\end{figure}
+
+The acceptance integral matrix~$\mat{I}^\text{acc}$ is calculated
+using \cref{eq:photoprod_integral_matrix_mc} with \num{e7}~events that
+are sampled randomly from the detection efficiency $\eta(\Omega,
+\Phi)$ in \cref{eq:photoprod_study_acc1}.  Using this matrix, the
+physical moments are calculated from the measured moments using
+\cref{eq:diffraction_phys_moments,eq:complex_uncert_prop}.
+\Crefrange{fig:photoprod_study_output_H0}{fig:photoprod_study_output_H2}
+show the physical moments extracted from the Monte Carlo data in
+\cref{fig:photoprod_study_data} and compare them to the expected
+moment values calculated from the partial-wave amplitudes in
+\cref{tab:photoprod_study_waveset} using
+\crefrange{eq:photoprod_moment_0_pw_refl}{eq:photoprod_moment_2_pw_refl}.
+As expected, the two sets of values  agree within statistical
+uncertainties (see
+\cref{fig:photoprod_study_residual_H0_re,fig:photoprod_study_residual_H1_re,fig:photoprod_study_residual_H2_im}).
+Since the $H_0(L, M)$ and $H_1(L, M)$ are expected to be real-valued
+and $H_2(L, M)$ to be purely imaginary (see
+\cref{eq:photoprodP_moments_real_imag}), we also verify that the
+imaginary parts of $H_{0, 1}(L, M)$ and the real parts of $H_2(L, M)$
+are consistent with zero, which is indeed the case (see
+\cref{fig:photoprod_study_comparison_H0_im,fig:photoprod_study_residual_H0_im,fig:photoprod_study_comparison_H1_im,fig:photoprod_study_residual_H1_im,fig:photoprod_study_comparison_H2_re,fig:photoprod_study_residual_H2_re}).
+
+\begin{figure}[tbp]
+  \centering%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_comparison_H0_re}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hCompare_H0_Re}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_comparison_H0_im}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hCompare_H0_Im}%
+  }%
+  \\%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_residual_H0_re}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hResiduals_H0_Re}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_residual_H0_im}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hResiduals_H0_Im}%
+  }%
+  \caption{Upper row: Comparison of the physical moments $H_0(L, M)$
+  (red points with uncertainties) extracted from the Monte Carlo data,
+  which are generated using the partial-wave amplitudes in
+  \cref{tab:photoprod_study_waveset} and the detection efficiency in
+  \cref{eq:photoprod_study_acc1}, with the expected values (blue
+  lines).  Both sets of values are normalized to the value of $H_0(0,
+  0)$ in the set.
+  \subfloatLabel{fig:photoprod_study_comparison_H0_re}~shows the real
+  part of $H_0(L, M)$,
+  \subfloatLabel{fig:photoprod_study_comparison_H0_im}~the imaginary
+  part.  Note that moments with $L > 4$ are expected to be zero due to
+  the chosen wave set.  Lower row: corresponding residuals.}%
+  \label{fig:photoprod_study_output_H0}%
+\end{figure}
+
+\begin{figure}[tbp]
+  \centering%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_comparison_H1_re}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hCompare_H1_Re}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_comparison_H1_im}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hCompare_H1_Im}%
+  }%
+  \\%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_residual_H1_re}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hResiduals_H1_Re}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_residual_H1_im}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hResiduals_H1_Im}%
+  }%
+  \caption{Same as \cref{fig:photoprod_study_output_H0} but for
+  $H_1(L, M)$.}%
+  \label{fig:photoprod_study_output_H1}%
+\end{figure}
+
+\begin{figure}[tbp]
+  \centering%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_comparison_H2_re}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hCompare_H2_Re}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_comparison_H2_im}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hCompare_H2_Im}%
+  }%
+  \\%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_residual_H2_re}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hResiduals_H2_Re}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_residual_H2_im}%
+    \includegraphics[width=0.5\textwidth]{photoprod/acc_1/hResiduals_H2_Im}%
+  }%
+  \caption{Same as \cref{fig:photoprod_study_output_H0} but for
+  $H_2(L, M)$.}%
+  \label{fig:photoprod_study_output_H2}%
+\end{figure}
+
