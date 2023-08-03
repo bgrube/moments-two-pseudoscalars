@@ -15,7 +15,7 @@ the reaction
 \begin{equation}
   \pi^-\, p \to X^-\, p \to \etaOrPrPim\, p,
 \end{equation}
-which is shown in \cref{fig:diffractive_etaprimepi}.  How to analyze
+which is shown in \cref{fig:diffraction_etaprimepi}.  How to analyze
 these reactions was studied in detail by S.U.~Chung in
 \refCite{Chung:1997qd}.  We will follow this reference here and will
 derive some equations.
@@ -28,7 +28,7 @@ derive some equations.
   intermediate state~$X^-$ with well-defined quantum numbers is
   produced, which in the example given here decays into the
   \etaOrPrPim channel.}%
-  \label{fig:diffractive_etaprimepi}%
+  \label{fig:diffraction_etaprimepi}%
 \end{figure}
 
 The analysis is based on the measured intensity distribution, \ie the
@@ -1136,8 +1136,8 @@ Alternatively, one can construct the augmented vector \pyinline{f_aug
 \pyinline{N_meas * numpy.cov(f_aug)}.}
 
 In \cref{eq:complex_uncert_prop}, $\underaccent{\bar}{\mat{J}}$ is the
-augmented Jacobian matrix of \cref{eq:diffraction_phys_moments}, which
-has a similar block structure as the augmented covariance matrix in
+augmented Jacobian matrix for \cref{eq:diffraction_phys_moments}, which
+has a similar block structure as the augmented covariance matrix inx
 \cref{eq:cov_augmented}:
 \begin{equation}
   \label{eq:J_augmented}
@@ -1296,6 +1296,7 @@ distribution is shown in \cref{fig:diffraction_study_intensity}.
   \caption{Partial-wave amplitude values used to generate pseudodata.
   The wave notation is $\ell_m^\refl$.}%
   \label{tab:diffraction_study_waveset}%
+  \vspace*{1ex}%
   \begin{tabular}{ll}
     \toprule
     \textbf{Partial wave} &
@@ -1333,47 +1334,47 @@ covariance matrix as described in \cref{fn:cov_aug_numpy}.
   \centering%
   \subfloat[][]{%
     \label{fig:diffraction_study_intensity}%
-    \includegraphics[width=\twoPlotWidth]{intensity}%
+    \includegraphics[width=0.5\textwidth]{diffractive/intensity}%
   }%
-  \hfill%
   \subfloat[][]{%
     \label{fig:diffraction_study_efficiency}%
-    \includegraphics[width=\twoPlotWidth]{acc_1/acceptance}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/acceptance}%
   }%
-  \\
+  \\%
   \subfloat[][]{%
     \label{fig:diffraction_study_intensity_acc}%
-    \includegraphics[width=\twoPlotWidth]{acc_1/intensity}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/intensity}%
   }%
-  \hfill%
   \subfloat[][]{%
     \label{fig:diffraction_study_data}%
-    \includegraphics[width=\twoPlotWidth]{acc_1/hData}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/hData}%
   }%
   \caption{Input used to generate Monte Carlo data:
   \subfloatLabel{fig:diffraction_study_intensity}~Intensity
   distribution $\mathcal{I}(\Omega)$ calculated from the partial-wave
   amplitudes listed in \cref{tab:diffraction_study_waveset}.
   \subfloatLabel{fig:diffraction_study_efficiency}~Hypothetical
-  detection efficiency as given by \cref{eq:diffraction_study_acc1}.
+  detection efficiency $\eta(\Omega)$ as given by
+  \cref{eq:diffraction_study_acc1}.
   \subfloatLabel{fig:diffraction_study_intensity_acc}~Intensity
   distribution weighted by the detection efficiency, \ie
   $\eta(\Omega)\, \mathcal{I}(\Omega)$.
-  \subfloatLabel{fig:diffraction_study_data}~Data sample of
-  \num{1000}~events randomly drawn from the distribution
-  in~\subfloatLabel{fig:diffraction_study_intensity_acc}.}
-  \label{fig:diffraction_study_input}
+  \subfloatLabel{fig:diffraction_study_data}~Monte Carlo data sample
+  of \num{1000}~events randomly drawn from the distribution
+  in~\subfloatLabel{fig:diffraction_study_intensity_acc}.}%
+  \label{fig:diffraction_study_input}%
 \end{figure}
 
 The acceptance integral matrix~$\mat{I}^\text{acc}$ is calculated
-using \cref{eq:diffraction_integral_matrix} and \num{e7}~events
-sampled randomly from the detection efficiency $\eta(\Omega)$ in
+using \cref{eq:diffraction_integral_matrix} with \num{e7}~events that
+are sampled randomly from the detection efficiency $\eta(\Omega)$ in
 \cref{eq:diffraction_study_acc1}.  Using this matrix, the physical
 moments are calculated from the measured moments using
 \cref{eq:diffraction_phys_moments,eq:complex_uncert_prop}.
 \Cref{fig:diffraction_study_comparison_re} shows the physical moments
-extracted from the Monte Carlo data and compares them to the expected
-values calculated from the partial-wave amplitudes in
+extracted from the Monte Carlo data in
+\cref{fig:diffraction_study_data} and compares them to the expected
+moment values calculated from the partial-wave amplitudes in
 \cref{tab:diffraction_study_waveset} using
 \cref{eq:diffraction_moments_pw_refl_norm}.  As expected, the two sets
 of values  agree within statistical uncertainties (see
@@ -1388,22 +1389,20 @@ imaginary parts are consistent with zero, which is indeed the case
   \centering%
   \subfloat[][]{%
     \label{fig:diffraction_study_comparison_re}%
-    \includegraphics[width=\twoPlotWidth]{acc_1/hCompareRe}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/hCompareRe}%
   }%
-  \hfill%
   \subfloat[][]{%
     \label{fig:diffraction_study_comparison_im}%
-    \includegraphics[width=\twoPlotWidth]{acc_1/hCompareIm}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/hCompareIm}%
   }%
-  \\
+  \\%
   \subfloat[][]{%
     \label{fig:diffraction_study_residual_re}%
-    \includegraphics[width=\twoPlotWidth]{acc_1/hResidualsRe}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/hResidualsRe}%
   }%
-  \hfill%
   \subfloat[][]{%
     \label{fig:diffraction_study_residual_im}%
-    \includegraphics[width=\twoPlotWidth]{acc_1/hResidualsIm}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/hResidualsIm}%
   }%
   \caption{Upper row: Comparison of the physical moments (red points
   with uncertainties) extracted from the Monte Carlo data, which are
@@ -1415,8 +1414,8 @@ imaginary parts are consistent with zero, which is indeed the case
   \subfloatLabel{fig:diffraction_study_comparison_im}~the imaginary
   part.  Note that moments with $M > 2$ and/or $L > 4$ are expected to
   be zero due to the chosen wave set.  Lower row: corresponding
-  residuals.\todoInl{Fix/discuss $H(0, 0)$.}}
-  \label{fig:diffraction_study_output}
+  residuals.\todoInl{Fix/discuss $H(0, 0)$.}}%
+  \label{fig:diffraction_study_output}%
 \end{figure}
 
 \todoInl{Discuss acceptance correction using moment decomposition of $\eta^{-1}(\Omega)$}
