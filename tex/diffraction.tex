@@ -1319,7 +1319,7 @@ efficiency
 \begin{equation}
   \label{eq:diffraction_study_acc1}
   \eta(\Omega)
-  = 2 - \cos^2 \theta,
+  = \frac{1}{4} + \rBrk[1]{1 - \cos^2 \theta} \rBrk[3]{1 - \frac{\phi^2}{\pi^2}},
 \end{equation}
 which is shown in \cref{fig:diffraction_study_efficiency}.  From this
 weighted intensity distribution (see
@@ -1334,20 +1334,20 @@ covariance matrix as described in \cref{fn:cov_aug_numpy}.
   \centering%
   \subfloat[][]{%
     \label{fig:diffraction_study_intensity}%
-    \includegraphics[width=0.5\textwidth]{diffractive/intensity}%
+    \includegraphics[width=0.5\textwidth]{diffractive/hIntensity}%
   }%
   \subfloat[][]{%
     \label{fig:diffraction_study_efficiency}%
-    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/acceptance}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_4/hEfficiency}%
   }%
   \\%
   \subfloat[][]{%
     \label{fig:diffraction_study_intensity_acc}%
-    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/intensity}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_4/hIntensity}%
   }%
   \subfloat[][]{%
     \label{fig:diffraction_study_data}%
-    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/hData}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_4/hData}%
   }%
   \caption{Input used to generate Monte Carlo data:
   \subfloatLabel{fig:diffraction_study_intensity}~Intensity
@@ -1379,44 +1379,44 @@ moment values calculated from the partial-wave amplitudes in
 \cref{eq:diffraction_moments_pw_refl_norm}.  As expected, the two sets
 of values  agree within statistical uncertainties (see
 \cref{fig:diffraction_study_residual_re}).  Since the physical moments
-are expected to be real-valued (see
-\cref{eq:diffraction_moment_real}), we also verify that their
-imaginary parts are consistent with zero, which is indeed the case
-(see
-\cref{fig:diffraction_study_comparison_im,fig:diffraction_study_residual_im}).
+are real-valued (see \cref{eq:diffraction_moment_real}), we expect
+their imaginary parts to be consistent with zero.
+\Cref{fig:diffraction_study_comparison_im,fig:diffraction_study_residual_im}
+show that this is true, although the scatter of the points is larger
+than that of the real parts.
 
 \begin{figure}[tbp]
   \centering%
   \subfloat[][]{%
     \label{fig:diffraction_study_comparison_re}%
-    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/hCompareRe}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_4/hCompare_H_Re}%
   }%
   \subfloat[][]{%
     \label{fig:diffraction_study_comparison_im}%
-    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/hCompareIm}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_4/hCompare_H_Im}%
   }%
   \\%
   \subfloat[][]{%
     \label{fig:diffraction_study_residual_re}%
-    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/hResidualsRe}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_4/hResiduals_H_Re}%
   }%
   \subfloat[][]{%
     \label{fig:diffraction_study_residual_im}%
-    \includegraphics[width=0.5\textwidth]{diffractive/acc_1/hResidualsIm}%
+    \includegraphics[width=0.5\textwidth]{diffractive/acc_4/hResiduals_H_Im}%
   }%
   \caption{Upper row: Comparison of the physical moments (red points
   with uncertainties) extracted from the Monte Carlo data, which are
   generated using the partial-wave amplitudes in
   \cref{tab:diffraction_study_waveset} and the detection efficiency in
   \cref{eq:diffraction_study_acc1}, with the expected values (blue
-  lines).  \subfloatLabel{fig:diffraction_study_comparison_re}~shows
-  the real part,
-  \subfloatLabel{fig:diffraction_study_comparison_im}~the imaginary
-  part.  Note that moments with $M > 2$ and/or $L > 4$ are expected to
-  be zero due to the chosen wave set.  Lower row: corresponding
-  residuals.\todoInl{Fix/discuss $H(0, 0)$.}}%
+  lines).  Both sets of values are normalized to the value of $H_0(0,
+  0)$ in the set.
+  \subfloatLabel{fig:diffraction_study_comparison_re}~shows the real
+  part, \subfloatLabel{fig:diffraction_study_comparison_im}~the
+  imaginary part.  Note that moments with $M > 2$ and/or $L > 4$ are
+  expected to be zero due to the chosen wave set.  Lower row:
+  corresponding residuals.}%
   \label{fig:diffraction_study_output}%
 \end{figure}
 
 \todoInl{Discuss acceptance correction using moment decomposition of $\eta^{-1}(\Omega)$}
-\todoInl{Add reference to code repo}
