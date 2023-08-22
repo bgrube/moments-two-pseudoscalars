@@ -156,17 +156,24 @@ $\prescript{i}{}{\varrho}^{\ell\, \ell'}_{m\, m'}$ depend on~$\Phi$.
 The three intensity components $\mathcal{I}_i(\Omega; w, t)$ (as well
 as the three spin-density matrix components in
 \cref{eq:photoprod_spin_dens_sum}) are modulated by different
-$\Phi$~dependences.  $\mathcal{I}_0(\Omega; w, t)$ is the unpolarized
-intensity and is not modulated in~$\Phi$.  As will be shown in the
-sections below, $\mathcal{I}_0(\Omega; w, t)$ is equivalent to the
-intensity for the diffractive case in \cref{eq:diffraction_intensity}.
-The other two components $\mathcal{I}_{1, 2}(\Omega; w, t)$ represent
-additional information that is accessible in photoproduction with
-linearly polarized beam.  They depend on the photon polarization and
-are hence modulated by different $\Phi$~dependences.  Note that the
-functions $\cBrk[1]{f_0(\Phi), f_1(\Phi), f_2(\Phi)} = \cBrk[1]{1,
-\cos(2 \Phi), \sin(2 \Phi)}$ that modulate the intensity components
-constitute an orthogonal set of functions, \ie
+$\Phi$~dependences.  From \cref{eq:photoprod_intensity_sum} follows
+that
+\begin{equation}
+  \label{eq:photoprod_unpolarized_intensity}
+  \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \mathcal{I}(\Omega, \Phi; w, t)
+  = 2 \pi\, \mathcal{I}_0(\Omega; w, t).
+\end{equation}
+This means that $I_0(\Omega; w, t)$~corresponds---up to a factor of $2
+\pi$---to the unpolarized intensity distribution and is equivalent to
+the intensity for the diffractive case in
+\cref{eq:diffraction_intensity}.  The other two components
+$\mathcal{I}_{1, 2}(\Omega; w, t)$ represent additional information
+that is accessible in photoproduction with linearly polarized beam.
+They depend on the photon polarization and are hence modulated by
+different $\Phi$~dependences.  Note that the functions
+$\cBrk[1]{f_0(\Phi), f_1(\Phi), f_2(\Phi)} = \cBrk[1]{1, \cos(2 \Phi),
+\sin(2 \Phi)}$ that modulate the intensity components constitute an
+orthogonal set of functions, \ie
 \begin{equation}
   \label{eq:photoprod_orthogonality_phi}
   \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, f_i(\Phi)\, f_j(\Phi)
@@ -225,9 +232,10 @@ The corresponding moments are
   \end{cases*}
 \end{align}
 Here, $H_0(L, M)$ is equivalent to \cref{eq:diffraction_moments_norm}
-for the diffractive case.  The two polarized moments $H_{1, 2}(L, M)$
-represent orthogonal angular distributions in~$\Phi$ (see
-\cref{eq:photoprod_orthogonality_phi}).
+for the diffractive case.\footnote{The $1 / (2 \pi)$ factor comes from
+\cref{eq:photoprod_unpolarized_intensity}.}  The two polarized moments
+$H_{1, 2}(L, M)$ represent orthogonal angular distributions in~$\Phi$
+(see \cref{eq:photoprod_orthogonality_phi}).
 
 
 \subsection{Relation between moments and partial-wave amplitudes}%
@@ -446,12 +454,21 @@ taking into account
 \end{align}
 Note that \cref{eq:photoprod_intensity_2_moments_imag} is identical to
 the corresponding expression in Eq.~(A17) in
-\refCite{Mathieu:2019fts}, if one considers that $H_2(L, 0) = 0$, \ie
-including the terms with $M = 0$ leaves the sum unchanged, and that
-$\Im{H_2(L, M)} = -\imag H_2(L, M)$ because $H_2(L, M)$ is purely
-imaginary (see \cref{eq:photoprod_moment_2_imag}).  Compared to
+\refCite{Mathieu:2019fts}, if one considers that $H_2(L, 0) = 0$
+(including the corresponding $M = 0$ terms into the sum hence leaves
+its value unchanged) and that $\Im{H_2(L, M)} = -\imag H_2(L, M)$
+because $H_2(L, M)$ is purely imaginary (see
+\cref{eq:photoprod_moment_2_imag}).  Compared to
 \refCite{Mathieu:2019fts}, our formulation is more symmetrical \wrt
 \cref{eq:photoprod_intensity_0_moments_real,eq:photoprod_intensity_1_moments_real}.
+
+Since $H_{0, 1}(L, M)$ is real-valued and $H_2(L, M)$ purely
+imaginary, it is clear from
+\crefrange{eq:photoprod_intensity_0_moments_real}{eq:photoprod_intensity_2_moments_imag}
+that the $\mathcal{I}_i(\Omega)$ are all real-valued, as expected.
+Also note that $\mathcal{I}_{0, 1}(\Omega)$ are even functions
+in~$\phi$, whereas $\mathcal{I}_2(\Omega)$ is an odd function
+in~$\phi$.
 
 
 \subsection{Reflectivity basis}%
@@ -1127,7 +1144,7 @@ efficiency
 \begin{equation}
   \label{eq:photoprod_study_acc1}
   \eta(\Omega, \Phi)
-  = \rBrk[3]{\frac{3}{2} - \cos^2 \theta} \rBrk[3]{\frac{3}{2} - \frac{\phi^2}{\pi^2}} \rBrk[3]{\frac{3}{2} - \frac{\Phi^2}{\pi^2}},
+  = \rBrk[3]{\frac{3}{2} - \cos^2 \theta} \rBrk[3]{\frac{3}{2} - \frac{\phi^2}{\pi^2}} \rBrk[3]{\frac{3}{2} - \frac{\Phi^2}{\pi^2}} \rBrk[3]{\frac{2}{3}}^{\!3},
 \end{equation}
 which is shown in \cref{fig:photoprod_study_efficiency}.  From this
 weighted intensity distribution (see
@@ -1277,3 +1294,43 @@ are consistent with zero, which is indeed the case (see
   \label{fig:photoprod_study_output_H2}%
 \end{figure}
 
+
+\subsection{Combining data samples and taking into account time dependence}%
+\label{sec:photoprod:comb_data}
+
+Up to now, we assumed that the experimental data used to
+estimate~$\vect{H}_\text{meas}$ were taken using the same experimental
+conditions.  However, in practice one often has several data samples
+that were taken with different experimental conditions, which one
+wants to combine.  This means that in general the photon-beam
+polarization~$P_\gamma$, the detection efficiency $\eta(\Omega,
+\Phi)$, and consequently also the acceptance integral
+matrix~$\mat{I}^\text{acc}$ are functions of time.
+
+Given $N_\text{sample}$~data samples indexed by~$j$, each of which
+taken using constant experimental conditions represented
+by~$\prescript{(j)}{}{P_\gamma}$ and $\prescript{(j)}{}{\eta}(\Omega,
+\Phi)$, we calculate
+$\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}_\text{meas}$ and
+its covariance matrices for each of these data samples using
+\cref{eq:photoprod_moments_meas_estimate,eq:photoprod_sample_cov_hermit_meas,eq:photoprod_sample_cov_pseudo_meas}.
+For each data sample, we also generate an accepted phase-space Monte
+Carlo data sample using $\prescript{(j)}{}{\eta}(\Omega, \Phi)$.
+Based on these Monte Carlo data we
+calculate~$\prescript{(j)}{}{\mat{I}}^\text{acc}$ using
+\cref{eq:photoprod_integral_matrix_mc}.  Finally, we calculate the
+estimates for the physical moments for each data sample using
+\cref{eq:diffraction_phys_moments}, \ie
+\begin{equation}
+  \prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}
+  = \rBrk[1]{\prescript{(j)}{}{\mat{I}}^\text{acc}}^{-1}\, \prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}_\text{meas}.
+\end{equation}
+Note that since we corrected for the different experimental
+conditions, the set
+$\cBrk[0]{\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}$ of
+estimates for the physical moments from the various data samples
+should be statistically consistent, \ie it should be independent
+of~$j$ (or time).  Consequently, the values of the physical moments
+can be combined using the weighted average.\footnote{The statistical
+consistency of the moment values can be quantified by calculating the
+$P$-value of the $\chi^2$~statistic of the weighted average.}
