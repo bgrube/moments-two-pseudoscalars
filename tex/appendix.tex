@@ -1,0 +1,265 @@
+\section{\Prho spin-density matrix elements}%
+\label{sec:rho_sdme}
+
+In \refCite{GlueX:2023fcq}, GlueX reports on the measurement of the
+spin-density matrix elements of the \Prho produced by a linearly
+polarized photon beam.  Similar to \cref{eq:etaOrPr_pi_photoprod}, the
+measured reaction
+\begin{equation}
+  \label{eq:rho_photoprod}
+  \gamma\, p \to \Prho\, p \to \pi^+ \pi^-\, p
+\end{equation}
+also contains two pseudoscalars in the final state.  Therefore, the
+intensity distribution for the above process is given by
+\cref{eq:photoprod_intensity_sum}, \ie
+\begin{equation}
+  \label{eq:photoprod_intensity_sum2}
+  \mathcal{I}(\Omega, \Phi; w, t)
+  = \mathcal{I}_0(\Omega; w, t)
+  - \mathcal{I}_1(\Omega; w, t)\, P_\gamma\, \cos(2 \Phi)
+  - \mathcal{I}_2(\Omega; w, t)\, P_\gamma\, \sin(2 \Phi).
+\end{equation}
+For a given mass~$w$ of the $\pi^+ \pi^-$ system and a given squared
+four-momentum transfer~$t$, the intensity components are functions of
+the decay angles~$\Omega$ of the \Prho only.  In the helicity rest
+frame of the \Prho, the intensity components are (see Eqs.~(9) to~(12)
+in \refCite{GlueX:2023fcq}):\footnote{\RefCite{GlueX:2023fcq} uses a
+normalized density instead of the number density of events
+$\mathcal{I}(\Omega, \Phi; w, t)$.  The relation between the two is
+given in Appendix~C of \refCite{GlueX:2023fcq}.  For the discussion
+here, we only need the fact that the two quantities are proportional
+to each other.}
+\begin{align}
+  \label{eq:intensity_0_rho_photoprod}
+  \mathcal{I}_0(\Omega)
+  \propto{}& \frac{3}{4 \pi} \cBrk{\frac{1}{2} \rBrk{1 - \varrho^0_{0\, 0}} + \frac{1}{2} \rBrk{3 \varrho^0_{0\, 0} - 1} \cos^2 \theta
+  - \sqrt{2}\, \Re[1]{\varrho^0_{1\, 0}}\, \sin(2 \theta)\, \cos \phi - \varrho^0_{1\, {-1}}\, \sin^2 \theta\, \cos(2 \phi)} \\
+  \label{eq:intensity_1_rho_photoprod}
+  \mathcal{I}_1(\Omega)
+  \propto{}& \frac{3}{4 \pi} \cBrk{\varrho^1_{1\, 1} \sin^2 \theta + \varrho^1_{0\, 0} \cos^2 \theta
+  - \sqrt{2}\, \Re[1]{\varrho^1_{1\, 0}}\, \sin(2 \theta)\, \cos \phi - \varrho^1_{1\, {-1}}\, \sin^2 \theta\, \cos(2 \phi)} \\
+  \label{eq:intensity_2_rho_photoprod}
+  \mathcal{I}_2(\Omega)
+  \propto{}& \frac{3}{4 \pi} \cBrk{\sqrt{2}\, \Im[1]{\varrho^2_{1\, 0}}\, \sin(2 \theta)\, \sin \phi
+  + \Im[1]{\varrho^2_{1\, {-1}}}\, \sin^2 \theta\, \sin(2 \phi)}.
+\end{align}
+Compared to \cref{eq:photoprod_intensity_components}, we use the
+simplified notation $\varrho^i_{m\, m'} \equiv
+\prescript{i}{}{\varrho}^{1\, 1}_{m\, m'}$ for the spin-density matrix
+elements.  The above expressions assume that only $P$-waves contribute
+to the intensity components.
+
+Note that since the~$\varrho^i$ are Hermitian, their diagonal
+elements~$\varrho^i_{m\, m}$ are real-valued.
+\Crefrange{eq:intensity_0_rho_photoprod}{eq:intensity_2_rho_photoprod}
+already take into account parity conservation, which relates some of
+the spin-density matrix elements, \ie
+\begin{equation}
+  \label{eq:parity_rho_photoprod}
+  \varrho^i_{m\, m'} = (-1)^{m - m'}\, \varrho^i_{{-m}\, {-m'}}
+  ~\text{for}~ i = 0, 1
+  \quad\text{and}\quad
+  \varrho^i_{m\, m'} = -(-1)^{m - m'}\, \varrho^i_{{-m}\, {-m'}}
+  ~\text{for}~ i = 2.
+\end{equation}
+Together with the Hermiticity, it follows that $\varrho^0_{1\, {-1}}$ and
+$\varrho^1_{1\, {-1}}$ are also real-valued and $\varrho^2_{1\, {-1}}$ is
+purely imaginary.
+
+The GlueX data show that the \Prho is preferentially produced by
+natural-parity exchange (NPE) and that at small squared four-momentum
+transfers $s$-channel helicity conservation (SCHC) is fullfilled in
+good approximation.  Exact NPE with SCHC would correspond to
+\begin{equation}
+  \label{eq:spin_dens_npe_schc_rho_photoprod}
+  \varrho^0_{1\, 1}
+  = +\frac{1}{2}
+  = \varrho^0_{{-1}\, {-1}},
+  \quad
+  \varrho^1_{1\, {-1}}
+  = +\frac{1}{2}
+  = \varrho^1_{{-1}\, 1},
+  \quad\text{and}\quad
+  \varrho^2_{1\, {-1}}
+  = -\frac{\imag}{2}
+  = -\varrho^2_{{-1}\, 1}.
+\end{equation}
+All other spin-density matrix elements would be zero.  In this case,
+the intensity components simplify to
+\begin{align}
+  \label{eq:intensity_0_npe_schc_rho_photoprod}
+  \mathcal{I}_0(\Omega)
+  \propto{}& \frac{3}{4 \pi} \cBrk{\frac{1}{2}- \frac{1}{2} \cos^2 \theta}
+  = \frac{3}{8 \pi} \sin^2 \theta \\
+  \label{eq:intensity_1_npe_schc_rho_photoprod}
+  \mathcal{I}_1(\Omega)
+  \propto{}& -\frac{3}{8 \pi}\, \sin^2 \theta\, \cos(2 \phi) \\
+  \label{eq:intensity_2_npe_schc_rho_photoprod}
+  \mathcal{I}_2(\Omega)
+  \propto{}& -\frac{3}{8 \pi}\, \sin^2 \theta\, \sin(2 \phi)
+\end{align}
+and with \cref{eq:photoprod_intensity_sum2} the intensity is given by
+\begin{equation}
+  \label{eq:intensity_npe_schc_rho_photoprod}
+  \mathcal{I}(\Omega, \Phi)
+  \propto \frac{3}{8 \pi}\, \sin^2 \theta \sBrk{1
+  + P_\gamma\, \cos(2 \phi)\, \cos(2 \Phi)
+  + P_\gamma\, \sin(2 \phi)\, \sin(2 \Phi)}.
+\end{equation}
+
+The intensity can also be decomposed in terms of partial-wave
+amplitudes in the reflectivity basis (see
+\cref{sec:photoprod:reflectivity}) using Eq.~(D13) from
+\refCite{Mathieu:2019fts}\footnote{See \cref{fn:photoprod_ampl_redef}.
+By mistake, $\sum_{\ell, m}$ is missing in Eq.~(D13)}, \ie
+\begin{equation}
+  \label{eq:zlm_photoprod}
+  \begin{aligned}
+  \mathcal{I}(\Omega, \Phi)
+  = 2 \sum_{k = 0, 1} \bigg\{
+         &(1 - P_\gamma)\, \Abs[2]{\sum_{\ell, m}\, [\ell]_{m, k}^{-}\, \Re[1]{Z_\ell^m(\Omega, \Phi)}}^2
+      +   (1 - P_\gamma)\, \Abs[2]{\sum_{\ell, m}\, [\ell]_{m, k}^{+}\, \Im[1]{Z_\ell^m(\Omega, \Phi)}}^2
+    \\
+    {}+{}&(1 + P_\gamma)\, \Abs[2]{\sum_{\ell, m}\, [\ell]_{m, k}^{+}\, \Re[1]{Z_\ell^m(\Omega, \Phi)}}^2
+      +   (1 + P_\gamma)\, \Abs[2]{\sum_{\ell, m}\, [\ell]_{m, k}^{-}\, \Im[1]{Z_\ell^m(\Omega, \Phi)}}^2
+    \bigg\},
+  \end{aligned}
+\end{equation}
+where
+\begin{equation}
+  Z_\ell^m(\Omega, \Phi)
+  \equiv Y_\ell^m(\Omega)\, e^{-i \Phi}.
+\end{equation}
+
+The NPE with SCHC case discussed above is equivalent to a saturation
+of the data by the $P$-wave amplitude with positive reflectivity and
+spin projection $m = +1$, \ie $P^+_{+1}$.  Neglecting the proton spin,
+\ie the sum over~$k$ in \cref{eq:zlm_photoprod}, and setting in
+\cref{eq:zlm_photoprod} $P^+_{+1}$ to 1 and all other partial-wave
+amplitudes to 0, we obtain
+\begin{equation}
+  \mathcal{I}(\Omega, \Phi)
+  = 2 (1 - P_\gamma)\, \Abs[2]{\Im[1]{Z_1^{+1}(\Omega, \Phi)}}^2
+  + 2 (1 + P_\gamma)\, \Abs[2]{\Re[1]{Z_1^{+1}(\Omega, \Phi)}}^2
+\end{equation}
+With
+\begin{equation}
+  Z_1^{+1}(\Omega, \Phi)
+  = -\frac{1}{2}\, \sqrt{\frac{3}{2 \pi}}\, \sin \theta\, e^{\imag \phi}\, e^{-\imag \Phi},
+\end{equation}
+we get
+\begin{align}
+  \Re[1]{Z_1^{+1}(\Omega, \Phi)}
+  ={}& -\frac{1}{2}\, \sqrt{\frac{3}{2 \pi}}\, \sin \theta \sBrk[1]{\sin \phi\, \sin \Phi + \cos \phi\, \cos \Phi}
+  \\
+  \Im[1]{Z_1^{+1}(\Omega, \Phi)}
+  ={}& -\frac{1}{2}\, \sqrt{\frac{3}{2 \pi}}\, \sin \theta \sBrk[1]{\sin \phi\, \cos \Phi - \cos \phi\, \sin \Phi}.
+\end{align}
+Inserting these expressions into the intensity formula yields\footnote{%
+  We use the trigonometric identities
+  \begin{equation}
+    \sin^2 x
+    = 1 - \cos^2 x,
+    \quad
+    \cos^2 x - \sin^2 x
+    = \cos(2 x),
+    \quad\text{and}\quad
+    \cos^2 x
+    = \frac{1}{2}\cBrk{1 + \cos(2 x)}.
+  \end{equation}
+}
+\begin{align*}
+  \mathcal{I}(\Omega, \Phi)
+  ={}& \begin{aligned}[t] \frac{3}{4 \pi}\, \sin^2 \theta \bigg[
+         &(1 - P_\gamma) \rBrk[2]{\sin^2 \phi\, \cos^2 \Phi + \cos^2 \phi\, \sin^2 \Phi - 2 \sin \phi\, \cos \phi\, \sin \Phi\, \cos \Phi}
+    \\
+    {}+{}&(1 + P_\gamma) \rBrk[2]{\sin^2 \phi\, \sin^2 \Phi + \cos^2 \phi\, \cos^2 \Phi + 2 \sin \phi\, \cos \phi\, \sin \Phi\, \cos \Phi}
+    \bigg]
+  \end{aligned}
+  \\
+  ={}& \begin{aligned}[t] \frac{3}{4 \pi}\, \sin^2 \theta \bigg[
+         &(1 - P_\gamma) \rBrk[2]{\cos^2 \Phi - \cos^2 \phi\, \cBrk[1]{\cos^2 \Phi - \sin^2 \Phi} - \frac{1}{2} \sin(2 \phi)\, \sin(2 \Phi)}
+    \\
+    {}+{}&(1 + P_\gamma) \rBrk[2]{\sin^2 \Phi + \cos^2 \phi\, \cBrk[1]{\cos^2 \Phi - \sin^2 \Phi} + \frac{1}{2} \sin(2 \phi)\, \sin(2 \Phi)}
+    \bigg]
+  \end{aligned}
+  \\
+  ={}& \begin{aligned}[t] \frac{3}{4 \pi}\, \sin^2 \theta \bigg[
+         &(1 - P_\gamma) \rBrk[2]{\frac{1}{2} \cBrk[1]{1 + \cancel{\cos(2 \Phi)}} - \frac{1}{2} \cBrk[1]{\cancel{1} + \cos(2 \phi)}\, \cos(2 \Phi) - \frac{1}{2} \sin(2 \phi)\, \sin(2 \Phi)}
+    \\
+    {}+{}&(1 + P_\gamma) \rBrk[2]{\frac{1}{2} \cBrk[1]{1 - \cancel{\cos(2 \Phi)}} + \frac{1}{2} \cBrk[1]{\cancel{1} + \cos(2 \phi)}\, \cos(2 \Phi) + \frac{1}{2} \sin(2 \phi)\, \sin(2 \Phi)}
+    \bigg]
+  \end{aligned}
+  \\
+  ={}& \begin{aligned}[t] \frac{3}{8 \pi}\, \sin^2 \theta \bigg[
+         &(1 - P_\gamma) \rBrk[2]{1 - \cos(2 \phi)\, \cos(2 \Phi) - \sin(2 \phi)\, \sin(2 \Phi)}
+    \\
+    {}+{}&(1 + P_\gamma) \rBrk[2]{1 + \cos(2 \phi)\, \cos(2 \Phi) + \sin(2 \phi)\, \sin(2 \Phi)}
+    \bigg]
+  \end{aligned}
+  \\
+  ={}& \frac{3}{4 \pi}\, \sin^2 \theta \sBrk{1
+  + P_\gamma\, \cos(2 \phi)\, \cos(2 \Phi)
+  + P_\gamma\, \sin(2 \phi)\, \sin(2 \Phi)}.
+\end{align*}
+As expected, we obtain the same angular distribution as in
+\cref{eq:intensity_npe_schc_rho_photoprod}, up to a factor~$1 / 2$,
+which comes from the different normalizations used in
+\refsCite{GlueX:2023fcq,Mathieu:2019fts} and is given by Eq.~(25) in
+\refCite{GlueX:2023fcq}.
+
+Inserting the same NPE with SCHC assumptions as above, \ie $P^+_{+1}$
+is 1 and all other partial-wave amplitudes are 0, into
+\crefrange{eq:photoprod_rho_0_refl}{eq:photoprod_rho_2_refl}, we obtain
+the spin-density matrix elements in the reflectivity basis
+\begin{equation}
+  \varrho^{0\, (+)}_{1\, 1}
+  = +1
+  = \varrho^{0\, (+)}_{{-1}\, {-1}},
+  \quad
+  \varrho^{1\, (+)}_{1\, {-1}}
+  = +1
+  = \varrho^{1\, (+)}_{{-1}\, 1},
+  \quad\text{and}\quad
+  \varrho^{2\, (+)}_{1\, {-1}}
+  = -\imag
+  = -\varrho^{2\, (+)}_{{-1}\, 1}.
+\end{equation}
+All other spin-density matrix elements are zero.  With
+\cref{eq:photoprod_rho_refl} we obtain
+\cref{eq:spin_dens_npe_schc_rho_photoprod} up to the factor~$1 / 2$
+due to the different normalizations.
+
+If we insert the above spin-density matrix elements into
+\cref{eq:photoprod_intensity_components}, we get\footnote{%
+  We use
+  \begin{equation}
+    Y_1^{-1}(\Omega)
+    = +\frac{1}{2} \sqrt{\frac{3}{2 \pi}}\, \sin \theta\, e^{-\imag \phi}
+    \quad\text{and}\quad
+    Y_1^{+1}(\Omega)
+    = -\frac{1}{2} \sqrt{\frac{3}{2 \pi}}\, \sin \theta\, e^{+\imag \phi}.
+  \end{equation}
+}
+\begin{align*}
+  \mathcal{I}_0(\Omega)
+  ={}& Y_1^{-1}(\Omega)\, Y_1^{-1 *}(\Omega) + Y_1^{+1}(\Omega)\, Y_1^{+1 *}(\Omega)
+  = \frac{3}{4 \pi}\, \sin^2 \theta
+  \\
+  \mathcal{I}_1(\Omega)
+  ={}& Y_1^{-1}(\Omega)\, Y_1^{+1 *}(\Omega) + Y_1^{+1}(\Omega)\, Y_1^{-1 *}(\Omega)
+  = -\frac{3}{8 \pi}\, \sin^2 \theta \sBrk[1]{e^{-2 \imag \phi} + e^{+2 \imag \phi}}
+  = -\frac{3}{4 \pi}\, \sin^2 \theta\, \cos(2 \phi)
+  \\
+  \mathcal{I}_2(\Omega)
+  ={}& \imag\, Y_1^{-1}(\Omega)\, Y_1^{+1 *}(\Omega) - \imag\, Y_1^{+1}(\Omega)\, Y_1^{-1 *}(\Omega)
+  = \frac{3}{8 \pi}\, \sin^2 \theta\, \imag \sBrk[1]{-e^{-2 \imag \phi} + e^{+2 \imag \phi}}
+  = -\frac{3}{4 \pi}\, \sin^2 \theta\, \sin(2 \phi).
+\end{align*}
+As expected, inserting these intensity components into
+\cref{eq:photoprod_intensity_sum2}, we get
+\cref{eq:intensity_npe_schc_rho_photoprod}, again up to the factor~$1
+/ 2$ due to the different normalizations.
+
+We have thus shown that the various ways to express the intensity are
+indeed all equivalent, as they should be.
