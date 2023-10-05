@@ -802,11 +802,13 @@ detection efficiency depends on additional kinematic variables.  In
 variables.  In order to perform this marginalization we need a
 realistic model of the reaction that reproduces the kinematic
 distributions in the variables we marginalize over sufficiently well.}
-and $\mathcal{I}(\Omega)$ is the physical intensity distribution.  In case
-resolution effects in~$\Omega$ are non-negligible for the channel
-under study one has to apply the support-vector moment approach
-developed by R.~Jones~\cite{Jones:2023}, which allows to unfold the
-detector resolution.
+and $\mathcal{I}(\Omega)$ is the physical intensity distribution.  To
+correct for the detection efficiency we use the approach described in
+\refsCite{Jones:2023,JonesCode:2023,OmegaPhoton:1983vde,Grayer:1974cr}.
+In case resolution effects in~$\Omega$ are non-negligible for the
+channel under study one has to apply an extended approach that is
+described in \refsCite{Jones:2023,JonesCode:2023,OmegaPhoton:1983vde}
+and allows to unfold the detector resolution.
 
 Decomposing the measured intensity distribution into spherical
 harmonics analogous to \cref{eq:diffraction_intensity_moments_general}
@@ -829,10 +831,11 @@ because it is related to the symmetry properties of the spherical
 harmonics in \cref{eq:spherical_harm_sym}.  This means that also for
 the measured moments we have to calculate only those with $M \geq 0$.
 Alternatively, one can use the real-valued spherical harmonics $Y_{L
-M}$ (note the different position of the $M$ index) as defined, for
-example, in \refsCite{wikipedia:sphericalHarm,Jones:2023} with $-L
-\leq M \leq +L$.}\footnote{\Confer \cref{eq:diffraction_moments_norm};
-equivalent to Eq.~(B2) in \refCite{E852:1999xev}.}
+M}$\footnote{By convention, the real-valued spherical harmonics are
+written with $M$~as a subscript.} as defined, for example, in
+\refsCite{wikipedia:sphericalHarm,Jones:2023} with $-L \leq M \leq
++L$.}\footnote{\Confer \cref{eq:diffraction_moments_norm}; equivalent
+to Eq.~(B2) in \refCite{E852:1999xev}.}
 \begin{equation}
   \label{eq:diffraction_moments_meas}
   H_\text{meas}(L, M)
@@ -998,10 +1001,24 @@ estimates~$\hat{\vect{H}}$ of the physical moments using
 \cref{eq:diffraction_phys_moments}.
 
 We also have to propagate the uncertainty
-from~$\hat{\vect{H}}_\text{meas}$ to~$\hat{\vect{H}}$.  This is
-complicated by the fact that in general the measured moments
-$\hat{\vect{H}}_\text{meas}$~as well as the inverse of the
-acceptance matrix $\rBrk[0]{\mat{I}^\text{acc}}^{-1}$ in
+from~$\hat{\vect{H}}_\text{meas}$ to~$\hat{\vect{H}}$.\footnote{%
+Here, we assume that the statistical uncertainties of $\mat{I}^\text{acc}$
+from the Monte Carlo integration in
+\cref{eq:diffraction_integral_matrix} are negligible compared to the
+statistical uncertainties of $\hat{\vect{H}}_\text{meas}$.  In
+principle, the covariance matrix of the elements of
+$\mat{I}^\text{acc}$ could be calculated similarly to the
+covariance matrix of $\hat{\vect{H}}_\text{meas}$ in
+\cref{eq:diffraction_sample_cov_hermit_meas,eq:diffraction_sample_cov_pseudo_meas}
+below.  However, the uncertainty propagation will become more
+complicated because the Jacobian in \cref{eq:complex_uncert_prop} will
+become a third-order
+tensor~\cite{Laue:2018,Laue:2020,matrixcalculus,Sourya:2019,maxtrixcookbook:2012,wikipedia:MatrixCalculus}.
+Since in most applications the size of the Monte Carlo sample is not a
+limiting factor, we will not follow this route.}  This is complicated
+by the fact that in general the measured moments
+$\hat{\vect{H}}_\text{meas}$~as well as the inverse of the acceptance
+matrix $\rBrk[0]{\mat{I}^\text{acc}}^{-1}$ in
 \cref{eq:diffraction_phys_moments} are complex-valued.  The most
 convenient way to formulate uncertainty propagation for complex-valued
 quantities is to use Wirtinger calculus\footnote{Sometimes this is
