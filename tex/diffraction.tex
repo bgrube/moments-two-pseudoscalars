@@ -38,9 +38,9 @@ assume that the effect of the target spin is negligible and that all
 partial wave amplitudes are fully coherent.}
 \begin{equation}
   \label{eq:diffraction_intensity}
-  \mathcal{I}(\Omega; w, t)
+  \intensity(\Omega; w, t)
   = \frac{\dif{N}}{\dif{w}\, \dif{t}\, \dif{\Omega}}
-  = \Abs[3]{\sum_{\ell m}^\infty \mathcal{T}_{\ell\, m}(w, t)\, Y_\ell^m(\Omega)}^2
+  = \Abs[3]{\sum_{\ell m}^\infty \prodAmp_{\ell\, m}(w, t)\, Y_\ell^m(\Omega)}^2
   = \sum_{\substack{\ell m \\ \ell' m'}}^\infty Y_\ell^m(\Omega)\, \varrho^{\ell\, \ell'}_{m\, m'}(w, t)\, Y_{\ell'}^{m' *}(\Omega).
 \end{equation}
 Here, $N$~is the (acceptance-corrected) number of measured events,
@@ -48,7 +48,7 @@ $w$~is the invariant mass of the two-(pseudo)scalar system, $t$~is the
 squared four-momentum transferred from the beam to the target
 particle, and $\Omega = (\theta, \phi)$ is the direction of one of the
 two (pseudo)scalar mesons the~$X$ decays into, measured in the
-Gottfried-Jackson rest frame of~$X$.  The $\mathcal{T}_{\ell\, m}(w,
+Gottfried-Jackson rest frame of~$X$.  The $\prodAmp_{\ell\, m}(w,
 t)$ are the partial-wave amplitudes that correspond to an intermediate
 state with a spin given by the relative orbital angular
 momentum~$\ell$ between the two-(pseudo)scalar mesons and a spin
@@ -57,7 +57,7 @@ the spin-density matrix of~$X$:
 \begin{equation}
   \label{eq:diffraction_spin_dens_def}
   \varrho^{\ell\, \ell'}_{m\, m'}(w, t)
-  = \mathcal{T}_{\ell\, m}(w, t)\, \mathcal{T}_{\ell'\, m'}^*(w, t),
+  = \prodAmp_{\ell\, m}(w, t)\, \prodAmp_{\ell'\, m'}^*(w, t),
 \end{equation}
 which by definition is Hermitian.  The angular distribution of the
 $X$~decay products is given by the spherical harmonics
@@ -91,11 +91,11 @@ Sec.~5.2.7 of \refCite{Varshalovich:1988krb}.}
 \end{equation}
 
 In a partial-wave analysis, the partial-wave amplitudes
-$\mathcal{T}_{\ell\, m}$, which contain the information about the
+$\prodAmp_{\ell\, m}$, which contain the information about the
 produced resonances~$X$, are determined by fitting the intensity model
 in \cref{eq:diffraction_intensity} to the measured
 $\Omega$~distribution in narrow $(w, t)$ cells.  Within each kinematic
-cell, $\mathcal{T}_{\ell\, m}$ is treated as constant.  To simplify
+cell, $\prodAmp_{\ell\, m}$ is treated as constant.  To simplify
 notation, we hence will omit the~$w$ and $t$~dependencies in all
 formulas below.
 
@@ -130,7 +130,7 @@ obtain:\footnote{The expansion into a series of spherical harmonics is
 also referred to as Laplace series~\cite{MathWorld:LaplaceSeries}.}
 \begin{equation}
   \label{eq:diffraction_intensity_moments}
-  \mathcal{I}(\Omega)
+  \intensity(\Omega)
   = \sum_{L M}^\infty H(L, M)\, Y_L^M(\Omega),
 \end{equation}
 with the moments\footnote{Note that in
@@ -139,7 +139,7 @@ normalization for $H(L, M)$ (see \cref{eq:diffraction_moments_norm}).}
 \begin{equation}
   \label{eq:diffraction_moments}
   H(L, M)
-  = \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega).
+  = \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, Y_L^{M *}(\Omega).
 \end{equation}
 It is important to note that although
 \cref{eq:diffraction_intensity_moments} and
@@ -164,7 +164,7 @@ will be discussed in more detail in \cref{sec:diffraction:moments_pw}.
 \subsection{Relation between moments and partial-wave amplitudes}%
 \label{sec:diffraction:moments_pw}
 
-In order to relate the partial-wave amplitudes~$\mathcal{T}_{\ell\,
+In order to relate the partial-wave amplitudes~$\prodAmp_{\ell\,
 m}$ and the moments~$H(L, M)$ we express the moments in terms of
 spin-density elements using the relation\footnote{See Eq.~(A.15) in
 \refCite{Chung:1971ri}.}
@@ -187,7 +187,7 @@ that\footnote{See Eq.~(32) in Sec.~8.5.2 of
 Inserting \cref{eq:spherical_harm_prod} into
 \cref{eq:diffraction_intensity}, yields
 \begin{equation}
-  \mathcal{I}(\Omega)
+  \intensity(\Omega)
   = \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}\,
   \varrho^{\ell\, \ell'}_{m\, m'}\, Y_L^M(\Omega).
@@ -218,7 +218,7 @@ may contain ambiguities.
 From \cref{eq:diffraction_moments_pw} it is clear that the moments are
 linear combinations of spin-density matrix elements, \ie of
 intensities and interference terms of the partial-wave amplitudes
-$\mathcal{T}_{\ell\, m}$.  The equation also shows that~$L$ and~$M$
+$\prodAmp_{\ell\, m}$.  The equation also shows that~$L$ and~$M$
 are only indirectly linked to the physical angular momentum quantum
 numbers of the two-body system.  For given~$L$, the Clebsch-Gordan
 coefficients limit the sum to those partial waves, for which $\ell' +
@@ -265,7 +265,7 @@ $Y_0^0(\Omega) = 1 / \sqrt{4 \pi}$, and
 we get
 \begin{equation}
   H(0, 0)
-  = \frac{1}{\sqrt{4 \pi}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)
+  = \frac{1}{\sqrt{4 \pi}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)
   = \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{\substack{\ell m \\ \ell' m'}}^\infty \varrho^{\ell\, \ell}_{m\, m}.
 \end{equation}
 This means, up to a factor of $1 / \sqrt{4 \pi}$, $H(0, 0)$ is the
@@ -283,14 +283,14 @@ Applying the above,
 \cref{eq:diffraction_intensity_moments,eq:diffraction_moments} become
 \begin{equation}
   \label{eq:diffraction_intensity_moments_norm}
-  \mathcal{I}(\Omega)
+  \intensity(\Omega)
   = \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}\, H(L, M)\, Y_L^M(\Omega),
 \end{equation}
 and
 \begin{equation}
   \label{eq:diffraction_moments_norm}
   H(L, M)
-  = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega).
+  = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, Y_L^{M *}(\Omega).
 \end{equation}
 Using the relation between the spherical harmonics and the Wigner
 $D$-functions in \cref{eq:spherical_harm_wigner_d},
@@ -312,7 +312,7 @@ For the remainder of this section we will use the moments defined in
 \begin{equation}
   \label{eq:diffraction_moment_00_pw}
   H(0, 0)
-  = \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)
+  = \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)
   = \sum_{\substack{\ell m \\ \ell' m'}}^\infty \varrho^{\ell\, \ell}_{m\, m}.
 \end{equation}
 
@@ -333,8 +333,8 @@ it follows that
 \begin{equation}
   \label{eq:diffraction_moment_sym_1}
   H^*(L, M)
-  = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^M(\Omega)
-  = (-1)^M \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{(-M) *}(\Omega)
+  = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, Y_L^M(\Omega)
+  = (-1)^M \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, Y_L^{(-M) *}(\Omega)
   = (-1)^M\, H(L, -M).
 \end{equation}
 
@@ -363,7 +363,7 @@ Doing so, we get
     \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
     (-1)^{L - 0}\, \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\, \clebsch{\ell}{0}{L}{0}{\ell'}{0}\,
     (-1)^{L - M}\, \sqrt{\frac{2 \ell + 1}{2 \ell' + 1}}\, \clebsch{\ell}{m}{L}{-M}{\ell'}{m'}\,
-    \varrho^{\ell'\, \ell}_{m'\, m} \notag
+    \varrho^{\ell'\, \ell}_{m'\, m} \nonumber
   \\
   ={}& \dUnderbrace{(-1)^{2 L - M}}{= (-1)^M}
   \sum_{\substack{\ell m \\ \ell' m'}}^\infty
@@ -381,16 +381,16 @@ The symmetry relation in \cref{eq:diffraction_moment_sym_1} ensures
 that the intensity function in
 \cref{eq:diffraction_intensity_moments_norm} is real-valued:
 \begin{flalign}
-  \mathcal{I}(\Omega)
-  ={}& \sum_{L = 0}^\infty \sum_{M = -L}^{+L} \sqrt{\frac{2 L + 1}{4 \pi}}\, H(L, M)\, Y_L^M(\Omega) && \notag
+  \intensity(\Omega)
+  ={}& \sum_{L = 0}^\infty \sum_{M = -L}^{+L} \sqrt{\frac{2 L + 1}{4 \pi}}\, H(L, M)\, Y_L^M(\Omega) && \nonumber
   \\
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sBrk[4]{\rdUnderbrace{\sum_{M = -L}^{-1} H(L, M)\, Y_L^M(\Omega)}%
     {= \sum_{M = +1}^{+L} H(L, -M)\, Y_L^{(-M)}(\Omega)
     \equalUsingTwo{\cref{eq:spherical_harm_sym}}{\cref{eq:diffraction_moment_sym_1}} (-1)^M\, H^*(L, M)\, (-1)^M\, Y_L^{M *}(\Omega)}
-    + H(L, 0)\, Y_L^0(\Omega) + \sum_{M = +1}^{+L} H(L, M)\, Y_L^M(\Omega)} && \notag
+    + H(L, 0)\, Y_L^0(\Omega) + \sum_{M = +1}^{+L} H(L, M)\, Y_L^M(\Omega)} && \nonumber
   \\
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sBrk[4]{H(L, 0)\, Y_L^0(\Omega) + \sum_{M = +1}^{+L}
-  \rdUnderbrace{\cBrk{H(L, M)\,Y_L^M(\Omega) + H^*(L, M)\,Y_L^{M *}(\Omega)}}{= 2 \Re{H(L, M)\, Y_L^M(\Omega)}}} && \notag
+  \rdUnderbrace{\cBrk{H(L, M)\,Y_L^M(\Omega) + H^*(L, M)\,Y_L^{M *}(\Omega)}}{= 2 \Re{H(L, M)\, Y_L^M(\Omega)}}} && \nonumber
   \\
   \label{eq:diffraction_intensity_moments_general}
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H(L, M)\, Y_L^M(\Omega)}. &&
@@ -440,7 +440,7 @@ of the Clebsch-Gordan coefficients, we get
   ={}& \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
   \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{-m}\,
-  (-1)^{m - m'}\, \varrho^{\ell\, \ell'}_{{-m}\, {-m}'} \notag
+  (-1)^{m - m'}\, \varrho^{\ell\, \ell'}_{{-m}\, {-m}'} \nonumber
   \\
   \label{eq:diffraction_moment_sym_2}
   \equalUsing{$\mathclap{\substack{\displaystyle{m \to -m} \\ \displaystyle{m' \to -m'}}}$}{}& \quad
@@ -461,28 +461,28 @@ From \cref{eq:diffraction_moment_sym_1,eq:diffraction_moment_sym_2} follows that
 \cref{eq:small_y_def,eq:diffraction_moments_norm} on both sides, we
 obtain
 \begin{align}
-  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega)
+  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, Y_L^{M *}(\Omega)
   \mustBeEq{}&
-  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, Y_L^M(\Omega) \\
-  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta) \sBrk{\cos(M \phi) - \imag \sin(M \phi)}
+  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, Y_L^M(\Omega) \\
+  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, y_L^M(\theta) \sBrk{\cos(M \phi) - \imag \sin(M \phi)}
   \mustBeEq{}&
-  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta) \sBrk{\cos(M \phi) + \imag \sin(M \phi)}.
+  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, y_L^M(\theta) \sBrk{\cos(M \phi) + \imag \sin(M \phi)}.
 \end{align}
 Consequently,
 \begin{align}
   \label{eq:diffraction_moments_real}
   H(L, M)
-  ={}& \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta)\, \cos(M\, \phi)
+  ={}& \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, y_L^M(\theta)\, \cos(M\, \phi)
   \intertext{and}
   \label{eq:diffraction_moments_imag}
   0
-  ={}& \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}(\Omega)\, y_L^M(\theta)\, \sin(M\, \phi).
+  ={}& \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, y_L^M(\theta)\, \sin(M\, \phi).
 \end{align}
 
 We can also rewrite \cref{eq:diffraction_intensity_moments_general}:
 \begin{align}
-  \mathcal{I}(\Omega)
-  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H(L, M)\, \Re{Y_L^M(\Omega)} \notag
+  \intensity(\Omega)
+  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H(L, M)\, \Re{Y_L^M(\Omega)} \nonumber
   \\
   \label{eq:diffraction_intensity_moments_real}
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H(L, M)\, y_L^M(\theta)\, \cos(M\, \phi).
@@ -547,8 +547,8 @@ Replacing $Y_\ell^m(\Omega)$ in \cref{eq:diffraction_intensity} by
 amplitudes with opposite reflectivities do not interfere, we obtain
 \begin{equation}
   \label{eq:diffraction_intensity_refl}
-  \mathcal{I}(\Omega)
-  = \sum_{\refl = \pm} \Abs[3]{\sum_{\ell m}^\infty \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}\, \prescript{(\refl)}{}{Y}_\ell^m(\Omega)}^2
+  \intensity(\Omega)
+  = \sum_{\refl = \pm} \Abs[3]{\sum_{\ell m}^\infty \prescript{(\refl)}{}{\prodAmp}_{\!\ell\, m}\, \prescript{(\refl)}{}{Y}_\ell^m(\Omega)}^2
   = \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \prescript{(\refl)}{}{Y}_\ell^m(\Omega)\, \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \prescript{(\refl)}{}{Y}_{\ell'}^{m' *}(\Omega),
 \end{equation}
@@ -556,18 +556,18 @@ where we have introduced the spin-density matrix of~$X$,
 \begin{equation}
   \label{eq:diffraction_refl_spin-dens}
   \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
-  = \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}\, \prescript{(\refl)}{}{\mathcal{T}}_{\!\ell'\, m'}^*,
+  = \prescript{(\refl)}{}{\prodAmp}_{\!\ell\, m}\, \prescript{(\refl)}{}{\prodAmp}_{\!\ell'\, m'}^*,
 \end{equation}
 in the reflectivity basis analogous to
 \cref{eq:diffraction_spin_dens_def}.
 
 In order to relate the partial-wave
-amplitudes~$\prescript{(\refl)}{}{\mathcal{T}}_{\!\ell\, m}$ and the
+amplitudes~$\prescript{(\refl)}{}{\prodAmp}_{\!\ell\, m}$ and the
 moments~$H(L, M)$ we insert \cref{eq:diffraction_spherical_harm_refl}
 into \cref{eq:diffraction_intensity_refl} and use
 \cref{eq:spherical_harm_prod}:
 \begin{align}
-  \mathcal{I}(\Omega)
+  \intensity(\Omega)
   ={}&
     \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
     \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
@@ -590,7 +590,7 @@ that $(-1)^{m + m'} = (-1)^{2m}\, (-1)^{m' - m} = (-1)^M$ because this
 Clebsch-Gordan coefficient enforces that $m' - M = m$.  With this we
 arrive at
 \begin{multline}
-  \mathcal{I}(\Omega)
+  \intensity(\Omega)
   = \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}
   \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \mathcal{N}_m\, \mathcal{N}_{m'}\,
@@ -648,7 +648,7 @@ reflectivity basis:
         \frac{1}{4}\, (1 + 1 - \refl - \refl) & for $m = 0$
       \end{cases*}}
     \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
-  \end{multlined} \notag
+  \end{multlined} \nonumber
   \\
   \label{eq:diffraction_moment_00_pw_refl}
   ={}& \sum_{\refl = \pm} \sum_\ell^\infty \sum_{m = 0}^\ell \prescript{(\refl)}{}{\varrho}^{\ell\, \ell}_{m\, m},
@@ -666,14 +666,14 @@ equivalent to \cref{eq:diffraction_moment_00_pw}.
 \label{sec:diffraction:moments_data_no_acc}
 
 Using \cref{eq:diffraction_moments_real}, we can calculate the
-real-valued moments $H(L, M)$ with $M \geq 0$ for a given intensity
-distribution~$\mathcal{I}(\Omega)$.  The moments with $M < 0$ are
-linearly dependent and are given by
+real-valued moments $H(L, M)$ with $M \geq 0$ from an intensity
+distribution~$\intensity(\Omega)$.  The moments with $M < 0$ can be
+calculated from the moments with $M \geq 0$ using
 \cref{eq:diffraction_moment_sym_2}.  Assuming an ideal detector with
 perfect acceptance, the measured events will follow the distribution
-$\mathcal{I}(\Omega)$.  For a data sample with $N$~events, the best
+$\intensity(\Omega)$.  For a data sample with $N$~events, the best
 estimates $\hat{H}(L, M)$ for the moments are hence given by replacing
-the integral over $\mathcal{I}(\Omega)$ in
+the integral over $\intensity(\Omega)$ in
 \cref{eq:diffraction_moments_real} by a sum over the measured events,
 \ie
 \begin{equation}
@@ -704,74 +704,137 @@ number of events.} and with the chosen normalization (see
 interference effect? integral of interference terms always 0?}This
 means that unnormalized moments are expressed in units of events.
 
-To estimate the uncertainty of $\hat{H}(L, M)$, we exploit that the
-events are statistically independent and identically distributed
-according to $\mathcal{I}(\Omega)$.\footnote{%
-  For a data sample $\cBrk{(x_1, y_1), \ldots, (x_N, y_N)}$ of the
-  random variables~$x$ and~$y$ with $N$~events, the covariance of the
-  sums of these samples is
-  \begin{equation}
-    \cov[4]{\sum_{i = 1}^N x_i, \sum_{i = 1}^N y_i}
-    = \exptVal[4]{\sum_{i j}^N x_i\, y_j} - \exptVal[4]{\sum_i^N x_i}\, \exptVal[4]{\sum_i^N y_i}
-    = \sum_{i j}^N \rBrk[2]{\exptVal[1]{x_i\, y_j} - \exptVal[1]{x_i}\, \exptVal[1]{y_i}}
-    = \sum_{i j}^N \cov[1]{x_i, y_j}.
-  \end{equation}
-  If the $N$~events are statistically independent then $\cov[1]{x_i,
-  y_j} = 0$ for $i \neq j$.  Hence,
-  \begin{equation}
-    \cov[4]{\sum_{i = 1}^N x_i, \sum_{i = 1}^N y_i}
-    = \sum_i^N \cov[1]{x_i, y_i}
-    \equalUsing{\text{iid}} N\, \cov[1]{x, y},
-  \end{equation}
-  where in the last step we used the fact that the samples are
-  independent and identically distributed (iid) random variables.}
-  Therefore, the variance is given by
+In practice, events are often weighted to statistically subtract
+backgrounds.  To take these weights into account, we extend
+\cref{eq:diffraction_moments_estimate}:
 \begin{equation}
-  \label{eq:diffraction_moments_var}
-  \var[1]{\hat{H}(L, M)}
-  = \sigma_{\hat{H}(L, M)}^2
-  = \var[4]{\sum_{i = 1}^N f_{L M}(\Omega_i)}
-  = \sum_{i = 1}^N \var[2]{f_{L M}(\Omega)}
-  = N\, \var[1]{f_{L M}(\Omega)}.
+  \label{eq:diffraction_moments_estimate_weighted}
+  \hat{H}(L, M)
+  = \sum_{i = 1}^N w_i\, f_{L M}(\Omega_i).
 \end{equation}
-An unbiased estimate of the variance of $f_{L M}(\Omega)$ is the
-sample variance, \ie
+Here, we assume that the event weights~$w_i$ are normalized such that
 \begin{equation}
-  \hat{V}\!\sBrk[1]{f_{L M}(\Omega)}
-  = \frac{1}{N - 1} \sum_{i = 1}^N \sBrk[2]{f_{L M}(\Omega_i) - \mean{f_{L M}(\Omega)}}^2
+  \label{eq:event_weights_norm}
+  \sum_{i = 1}^N w_i
+  = N_\text{sub}
+  = H(0, 0)
+\end{equation}
+with $N_\text{sub}$~being the number of events after the background
+subtraction.  Note that for unweighted events $w_i = 1~ \forall i$.
+
+To estimate the covariances of the $\hat{H}(L, M)$, we assume that the
+event weights are constants and exploit that the events are
+statistically independent and identically distributed according to
+$\intensity(\Omega)$.  The covariance of two moments is therefore
+\begin{align}
+  \cov[1]{\hat{H}(L, M), \hat{H}(L', M')}
+  ={}& \cov[4]{\sum_{i = 1}^N w_i\, f_{L M}(\Omega_i), \sum_{j = 1}^N w_j\, f_{L' M'}(\Omega_j)} \nonumber
+  \\
+  ={}& \exptVal[4]{\sum_{i, j = 1}^N w_i\, w_j\, f_{L M}(\Omega_i)\, f_{L' M'}(\Omega_j)}
+     - \exptVal[4]{\sum_{i = 1}^N w_i\, f_{L M}(\Omega_i)}\, \exptVal[4]{\sum_{j = 1}^N w_j\, f_{L' M'}(\Omega_j)} \nonumber
+  \\
+  ={}& \sum_{i, j = 1}^N w_i\, w_j \rBrk[2]{\exptVal[1]{f_{L M}(\Omega_i)\, f_{L' M'}(\Omega_j)}
+                                       - \exptVal[1]{f_{L M}(\Omega_i)}\, \exptVal[1]{f_{L' M'}(\Omega_j)}} \nonumber
+  \\
+  ={}& \sum_{i, j = 1}^N w_i\, w_j\, \cov[1]{f_{L M}(\Omega_i), f_{L' M'}(\Omega_j)}.
+\end{align}
+Here, we have used that the expectation value is a linear operator.
+Since the events are statistically independent,
+\begin{equation}
+  \cov[1]{f_{L M}(\Omega_i), f_{L' M'}(\Omega_j)}
+  = 0
+  \quad\text{for $i \neq j$}
+\end{equation}
+and hence,
+\begin{equation}
+  \label{eq:diffraction_moments_cov}
+  \cov[1]{\hat{H}(L, M), \hat{H}(L', M')}
+  = \sum_{i = 1}^N w_i^2\, \cov[1]{f_{L M}(\Omega_i), f_{L' M'}(\Omega_i)}
+  \equalUsing{\text{iid}} \cov[1]{f_{L M}(\Omega), f_{L' M'}(\Omega)} \sum_{i = 1}^N w_i^2.
+\end{equation}
+In the last step, we used that the samples are independent and
+identically distributed (iid) random variables.  Note that for
+unweighted events, $\sum_{i = 1}^N w_i^2 = N$.
+
+To estimate the covariance of the $f_{L M}(\Omega)$ in
+\cref{eq:diffraction_moments_cov} we use the weighted sample
+covariance with frequency weights\footnote{The prefactor in
+\cref{eq:diffraction_base_fcn_cov} is the equivalent of Bessel's bias
+correction factor $1 / (N - 1)$ in the sample (co)variance.  For
+weighted events, the bias correction factor depends on the nature of
+the weights.  In the literature, usually three types of weights are
+distinguished: \one~frequency weights (also called case or repeat
+weights), which describe the number of times each event was observed;
+\two~analytic weights (also called reliability or precision weights),
+which describe a non-random relative importance of the events; and
+\three~probability weights (also called sampling weights), which
+represent the inverse of the sampling probability for each event and
+are used to correct under- or over-sampling of certain event
+populations.  The bias correction factors for the three cases are
+\begin{align}
+  \frac{1}{\sum_{i = 1}^N w_i - 1} & \quad\text{for frequency weights},
+  \\
+  \frac{1}{\sum_{i = 1}^N w_i - \rBrk[1]{\sum_{i = 1}^N w_i^2} / \rBrk[1]{\sum_{i = 1}^N w_i}} & \quad\text{for analytic weights},
+  \\
+  \frac{n}{(n - 1) \sum_{i = 1}^N w_i} & \quad\text{for probability weights}.
+\end{align}
+Here, $n$~is the number of non-zero weights.  All three factors reduce
+to $1 / (N - 1)$ in the unweighted case.  For the estimation of the
+covariance matrix, the bias often becomes negligibly small already for
+moderate sample sizes of order of \num{1000} background-subtracted
+events.  Hence, the particular choice of the bias correction factor is
+irrelevant in practice.}~\cite{wikipedia:WeightedArithmeticMean},
+\ie
+\begin{equation}
+  \label{eq:diffraction_base_fcn_cov}
+  \covEst[1]{f_{L M}(\Omega), f_{L' M'}(\Omega)}
+  = \frac{1}{\sum_{i = 1}^N w_i - 1} \sum_{i = 1}^N w_i
+  \sBrk[2]{f_{L M}(\Omega_i) - \meanWeighted{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \meanWeighted{f_{L' M'}(\Omega)}}
+\end{equation}
+with the weighted mean
+\begin{equation}
+  \meanWeighted{f_{L M}(\Omega)}
+  = \frac{1}{\sum_{i = 1}^N w_i} \sum_{i = 1}^N w_i\, f_{L M}(\Omega_i).
+\end{equation}
+
+Inserting \cref{eq:diffraction_base_fcn_cov} into
+\cref{eq:diffraction_moments_cov}, we obtain an estimate for the
+covariance matrix~$\covMatEstSym_{\!\hat{\vect{H}}}$ for a given set
+of moment estimates:
+\begin{align}
+  (\covMatEstSym_{\!\hat{\vect{H}}})_{L M, L' M'}
+  ={}& \covEst[1]{\hat{H}(L, M), \hat{H}(L', M')} \nonumber
+  \\
+  \label{eq:diffraction_sample_cov}
+  ={}& \frac{\sum_{i = 1}^N w_i^2}{\sum_{i = 1}^N w_i - 1} \sum_{i = 1}^N w_i
+  \sBrk[2]{f_{L M}(\Omega_i) - \meanWeighted{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \meanWeighted{f_{L' M'}(\Omega)}}.
+\end{align}
+Note that because of \cref{eq:diffraction_norm_00}
+\begin{equation}
+  (\covMatEstSym_{\!\hat{\vect{H}}})_{L M, 0 0}
+  = (\covMatEstSym_{\!\hat{\vect{H}}})_{0 0, L' M'}
+  = 0
+  \quad\text{and in particular}\quad
+  (\covMatEstSym_{\!\hat{\vect{H}}})_{0 0, 0 0}
+  = \hat{\sigma}^2_{\hat{H}(0, 0)}
+  = 0.
+\end{equation}
+
+For unweighted events, \cref{eq:diffraction_sample_cov} reduces to
+\begin{equation}
+  (\covMatEstSym_{\!\hat{\vect{H}}})_{L M, L' M'}
+  = \frac{N}{N - 1} \sum_{i = 1}^N \sBrk[2]{f_{L M}(\Omega_i) - \mean{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \mean{f_{L' M'}(\Omega)}}
 \end{equation}
 with the sample mean
 \begin{equation}
   \mean{f_{L M}(\Omega)}
   = \frac{1}{N} \sum_{i = 1}^N f_{L M}(\Omega_i).
 \end{equation}
-Hence,
-\begin{equation}
-  \label{eq:diffraction_moments_stdDev}
-  \hat{\sigma}_{\hat{H}(L, M)}^2
-  = \frac{N}{N - 1} \sum_{i = 1}^N \sBrk[2]{f_{L M}(\Omega_i) - \mean{f_{L M}(\Omega)}}^2.
-\end{equation}
 This is analogous to Monte Carlo integration (see \eg\
-\refCite{wikipedia:MonteCarloIntegration}).  Note that with
-\cref{eq:diffraction_norm_00} we get
-\begin{equation}
-  \hat{\sigma}_{\hat{H}(0, 0)}
-  = 0.
-\end{equation}
+\refCite{wikipedia:MonteCarloIntegration}).
 
-Similarly, we can estimate the covariance
-matrix~$\hat{\covMatSym}_{\!\hat{\vect{H}}}$ for a given set of moment
-estimates using the sample covariance:
-\begin{align}
-  (\hat{\covMatSym}_{\!\hat{\vect{H}}})_{L M, L' M'}
-  ={}& \cov[2]{\hat{H}(L, M), \hat{H}(L', M')}
-  = N\, \cov[2]{f_{L M}(\Omega), f_{L' M'}(\Omega)} \notag
-  \\
-  \label{eq:diffraction_sample_cov}
-  ={}& \frac{N}{N - 1} \sum_{i = 1}^N \sBrk[2]{f_{L M}(\Omega_i) - \mean{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \mean{f_{L' M'}(\Omega)}}.
-\end{align}
-Note that from a numerical standpoint the above form is not the most
-advantageous way to compute the covariance.  See
+Note that from a numerical standpoint \cref{eq:diffraction_sample_cov}
+is not the most advantageous way to compute the covariance.  See
 \refCite{wikipedia:CovarianceAlgorithm} for more suitable numerical
 algorithms.
 
@@ -788,8 +851,8 @@ resolution effects.  Hence, the measured intensity distribution is
 given by
 \begin{equation}
   \label{eq:diffraction_int_meas}
-  \mathcal{I}_\text{meas}(\Omega)
-  = \eta(\Omega)\, \mathcal{I}(\Omega),
+  \intensity_\text{meas}(\Omega)
+  = \eta(\Omega)\, \intensity(\Omega),
 \end{equation}
 where $\eta(\Omega)$ is the detection efficiency for the reaction
 under study\footnote{The detection efficiency includes all effects
@@ -802,7 +865,7 @@ detection efficiency depends on additional kinematic variables.  In
 variables.  In order to perform this marginalization we need a
 realistic model of the reaction that reproduces the kinematic
 distributions in the variables we marginalize over sufficiently well.}
-and $\mathcal{I}(\Omega)$ is the physical intensity distribution.  To
+and $\intensity(\Omega)$ is the physical intensity distribution.  To
 correct for the detection efficiency we use the approach described in
 \refsCite{Jones:2023,JonesCode:2023,OmegaPhoton:1983vde,Grayer:1974cr}.
 In case resolution effects in~$\Omega$ are non-negligible for the
@@ -815,7 +878,7 @@ harmonics analogous to \cref{eq:diffraction_intensity_moments_general}
 we obtain
 \begin{equation}
   \label{eq:diffraction_intensity_moments_meas}
-  \mathcal{I}_\text{meas}(\Omega)
+  \intensity_\text{meas}(\Omega)
   = \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_\text{meas}(L, M)\, Y_L^M(\Omega)}
 \end{equation}
 with the measured
@@ -831,16 +894,17 @@ because it is related to the symmetry properties of the spherical
 harmonics in \cref{eq:spherical_harm_sym}.  This means that also for
 the measured moments we have to calculate only those with $M \geq 0$.
 Alternatively, one can use the real-valued spherical harmonics $Y_{L
-M}$\footnote{By convention, the real-valued spherical harmonics are
-written with $M$~as a subscript.} as defined, for example, in
+M}$\footnotemark\ as defined, for example, in
 \refsCite{wikipedia:sphericalHarm,Jones:2023} with $-L \leq M \leq
-+L$.}\footnote{\Confer \cref{eq:diffraction_moments_norm}; equivalent
-to Eq.~(B2) in \refCite{E852:1999xev}.}
++L$.}\footnotetext{By convention, the real-valued spherical harmonics
+$Y_{L M}$ are written with $M$~as a subscript.}\footnote{\Confer
+\cref{eq:diffraction_moments_norm}; equivalent to Eq.~(B2) in
+\refCite{E852:1999xev}.}
 \begin{equation}
   \label{eq:diffraction_moments_meas}
   H_\text{meas}(L, M)
-  = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \mathcal{I}_\text{meas}(\Omega)\, Y_L^{M *}(\Omega)
-  = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \eta(\Omega)\, \mathcal{I}(\Omega)\, Y_L^{M *}(\Omega).
+  = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity_\text{meas}(\Omega)\, Y_L^{M *}(\Omega)
+  = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \eta(\Omega)\, \intensity(\Omega)\, Y_L^{M *}(\Omega).
 \end{equation}
 
 Inserting the moment decomposition for the physical intensity distribution
@@ -850,7 +914,7 @@ from \cref{eq:diffraction_intensity_moments_real} into
   H_\text{meas}(L, M)
   ={}& \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \eta(\Omega)\,
   \sum_{L' = 0}^\infty \sqrt{\frac{2 L' + 1}{4 \pi}} \sum_{M' = 0}^{L'} H(L', M')\, (2 - \delta_{M' 0})\, y_{L'}^{M'}(\theta)\, \cos(M'\, \phi)\,
-  Y_L^{M *}(\Omega) \notag \\
+  Y_L^{M *}(\Omega) \nonumber \\
   \label{eq:diffraction_moments_meas2}
   ={}& \sum_{L' = 0}^\infty \sum_{M' = 0}^{L'} H(L', M')
   \dUnderbrace{\sqrt{\frac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0}) \int_{4 \pi}\!\!\! \dif{\Omega}\, \eta(\Omega)\,
@@ -964,7 +1028,7 @@ elements of the acceptance integral matrix using
   \approx \sqrt{\frac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})\,
   \frac{4 \pi}{N_\text{gen}} \sum_{i = 1}^{N_\text{acc}} y_{L'}^{M'}(\theta_i)\, \cos(M'\, \phi_i)\, Y_L^{M *}(\Omega_i).
 \end{equation}
-Expect for the factor $4 \pi$ that represents the integration volume,
+Except for the factor $4 \pi$ that represents the integration volume,
 this is identical to Eq.~(B6) in \refCite{E852:1999xev}.
 
 If the integral matrix~$\mat{I}^\text{acc}$ is invertible, we can
@@ -986,21 +1050,19 @@ R.~Jones~\cite{Jones:2023}.
 
 To obtain an estimate for~$\vect{H}_\text{meas}$ from
 \cref{eq:diffraction_moments_meas} we use the same approach as in
-\cref{eq:diffraction_moments_estimate}, \ie
+\cref{eq:diffraction_moments_estimate_weighted}, \ie
 \begin{equation}
-  \label{eq:diffraction_moments_meas_estimate}
+  \label{eq:diffraction_moments_meas_estimate_weighted}
   \rBrk[1]{\hat{\vect{H}}_\text{meas}}_{L, M}
   = \hat{H}_\text{meas}(L, M)
-  = \sum_{i = 1}^{N_\text{meas}} \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega_i)
-  \equiv \sum_{i = 1}^{N_\text{meas}} f_{L M}(\Omega_i).
+  = \sum_{i = 1}^{N_\text{meas}} w_i\, \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega_i)
+  \equiv \sum_{i = 1}^{N_\text{meas}} w_i\, f_{L M}(\Omega_i).
 \end{equation}
-This means, the measured moments are given by the
-spherical-harmonics-weighted sum of the $N_\text{meas}$~measured
-events.  From the estimates of the measured moments we calculate the
-estimates~$\hat{\vect{H}}$ of the physical moments using
-\cref{eq:diffraction_phys_moments}.
+From the estimates~$\hat{\vect{H}}_\text{meas}$ of the measured
+moments we calculate the estimates~$\hat{\vect{H}}$ of the physical
+moments using \cref{eq:diffraction_phys_moments}.
 
-We also have to propagate the uncertainty
+In order to do so, we also have to propagate the uncertainty
 from~$\hat{\vect{H}}_\text{meas}$ to~$\hat{\vect{H}}$.\footnote{%
 Here, we assume that the statistical uncertainties of $\mat{I}^\text{acc}$
 from the Monte Carlo integration in
@@ -1015,8 +1077,8 @@ complicated because the Jacobian in \cref{eq:complex_uncert_prop} will
 become a third-order
 tensor~\cite{Laue:2018,Laue:2020,matrixcalculus,Sourya:2019,maxtrixcookbook:2012,wikipedia:MatrixCalculus}.
 Since in most applications the size of the Monte Carlo sample is not a
-limiting factor, we will not follow this route.}  This is complicated
-by the fact that in general the measured moments
+limiting factor, we will not follow this route Here.}  This is
+complicated by the fact that in general the measured moments
 $\hat{\vect{H}}_\text{meas}$~as well as the inverse of the acceptance
 matrix $\rBrk[0]{\mat{I}^\text{acc}}^{-1}$ in
 \cref{eq:diffraction_phys_moments} are complex-valued.  The most
@@ -1033,7 +1095,7 @@ form\footnote{We use~$\dagger$ to indicate the Hermitian conjugate.}
   = \underaccent{\bar}{\mat{J}}\, \underaccent{\bar}{\covMatSym}_{\!\vect{H}_\text{meas}}\, \underaccent{\bar}{\mat{J}}^\dagger.
 \end{equation}
 Here, the matrices are expressed in the so-called augmented
-representation (see \eg Sec.~2.3 in \refsCite{Grube:2023}), which is
+representation (see \eg Sec.~2.3 in \refCite{Grube:2023}), which is
 indicated by the underbars.  This representation is obtained by
 stacking the moment vector~$\vect{H}$ on top of its
 complex-conjugate vector~$\vect{H}^*$, \ie the augmented moment
@@ -1116,45 +1178,52 @@ And conversely,
 
 Analogous to \cref{eq:diffraction_sample_cov} we can estimate the
 Hermitian and the pseudo-covariance matrix for the measured moments
-using the sample covariance:\footnote{In NumPy,
-$\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{meas}}$~can be calculated
-directly by calling \pyinline{N_meas * numpy.cov(f)}, where
-\pyinline{f} is an array of $N_\text{meas}$ vectors with the values of
-$f_{L M}(\Omega_i)$ as defined in
-\cref{eq:diffraction_moments_meas_estimate}.  However, to calculate
-the pseudo-covariance matrix
-$\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$~in NumPy we
-have to use \pyinline{N_meas * numpy.cov(f, numpy.conjugate(f))[:n, n:]}.}
+using the weighted sample covariance with frequency
+weights:\footnote{For unweighted events,
+$\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}$~can be calculated using
+NumPy by calling \pyinline{N_meas * numpy.cov(f)}, where \pyinline{f}
+is an array of $N_\text{meas}$ vectors with the values of $f_{L
+M}(\Omega_i)$ as defined in
+\cref{eq:diffraction_moments_meas_estimate_weighted}.  However, to
+calculate the pseudo-covariance matrix
+$\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$~in NumPy, we
+have to use \pyinline{N_meas * numpy.cov(f, numpy.conjugate(f))[:n,
+n:]}.\footnotemark}\footnotetext{\label{fn:diffraction_python_cov_weights}Unfortunately,
+\pyinline{numpy.cov(fweights = w)} cannot be used for sideband
+subtraction with weights~\pyinline{w} because the function rejects
+negative weights.}
 \begin{align}
-  \rBrk[1]{\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{meas}}}_{L M, L' M'}
-  ={}& \cov[2]{\hat{H}_\text{meas}(L, M), \hat{H}_\text{meas}(L', M')} \notag
+  \rBrk[1]{\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}}_{L M, L' M'}
+  ={}& \covEst[1]{\hat{H}_\text{meas}(L, M), \hat{H}_\text{meas}(L', M')} \nonumber
   \\
   \label{eq:diffraction_sample_cov_hermit_meas}
-  ={}& \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{i = 1}^{N_\text{meas}}
-  \sBrk[2]{f_{L M}(\Omega_i) - \mean{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \mean{f_{L' M'}(\Omega)}}^*
+  ={}& \frac{\sum_{i = 1}^{N_\text{meas}} w_i^2}{\sum_{i = 1}^{N_\text{meas}} w_i - 1} \sum_{i = 1}^{N_\text{meas}} w_i
+  \sBrk[2]{f_{L M}(\Omega_i) - \meanWeighted{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \meanWeighted{f_{L' M'}(\Omega)}}^*
   \\
   \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{L M, L' M'}
-  ={}& \cov[2]{\hat{H}_\text{meas}(L, M), \hat{H}_\text{meas}^*(L', M')} \notag
+  ={}& \covEst[1]{\hat{H}_\text{meas}(L, M), \hat{H}_\text{meas}^*(L', M')} \nonumber
   \\
   \label{eq:diffraction_sample_cov_pseudo_meas}
-  ={}& \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{i = 1}^{N_\text{meas}}
-  \sBrk[2]{f_{L M}(\Omega_i) - \mean{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \mean{f_{L' M'}(\Omega)}}.
+  ={}& \frac{\sum_{i = 1}^{N_\text{meas}} w_i^2}{\sum_{i = 1}^{N_\text{meas}} w_i - 1} \sum_{i = 1}^{N_\text{meas}} w_i
+  \sBrk[2]{f_{L M}(\Omega_i) - \meanWeighted{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \meanWeighted{f_{L' M'}(\Omega)}}.
 \end{align}
+
 Here, $f_{L M}(\Omega)$ is defined in
-\cref{eq:diffraction_moments_meas_estimate}.  From these two matrices,
-we construct the augmented covariance
+\cref{eq:diffraction_moments_meas_estimate_weighted}.  From these two
+matrices, we construct the augmented covariance
 matrix~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$
-using \cref{eq:cov_augmented}.\footnote{\label{fn:cov_aug_numpy}In
-NumPy, we can
+using \cref{eq:cov_augmented}.\footnote{\label{fn:cov_aug_numpy} For
+unweighted events, we can
 calculate~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$
-directly by calling \pyinline{N_meas * numpy.cov(f, numpy.conjugate(f))}.
-Alternatively, one can construct the augmented vector \pyinline{f_aug
-= numpy.block([[f], [numpy.conjugate(f)]])} and call
-\pyinline{N_meas * numpy.cov(f_aug)}.}
+using NumPy by calling \pyinline{N_meas * numpy.cov(f,
+numpy.conjugate(f))}.  Alternatively, one can construct the augmented
+vector \pyinline{f_aug = numpy.block([[f], [numpy.conjugate(f)]])} and
+call \pyinline{N_meas * numpy.cov(f_aug)}.  See also
+\cref{fn:diffraction_python_cov_weights}.}
 
 In \cref{eq:complex_uncert_prop}, $\underaccent{\bar}{\mat{J}}$ is the
 augmented Jacobian matrix for \cref{eq:diffraction_phys_moments}, which
-has a similar block structure as the augmented covariance matrix inx
+has a similar block structure as the augmented covariance matrix in
 \cref{eq:cov_augmented}:
 \begin{equation}
   \label{eq:J_augmented}
@@ -1218,15 +1287,14 @@ by
 \cref{eq:diffraction_sample_cov_hermit_meas,eq:diffraction_sample_cov_pseudo_meas,eq:cov_augmented},
 we can calculate the augmented covariance
 matrix~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}}$ of
-the physical moments using \cref{eq:complex_uncert_prop} and using
-\cref{eq:cov_ReRe,eq:cov_ImIm,eq:cov_ReIm} the corresponding
-covariance matrices of the real and imaginary parts
-of~$\hat{\vect{H}}$.
+the physical moments using \cref{eq:complex_uncert_prop} and the
+corresponding covariance matrices of the real and imaginary parts
+of~$\hat{\vect{H}}$ using \cref{eq:cov_ReRe,eq:cov_ImIm,eq:cov_ReIm}.
 
 Finally, we can verify that the acceptance correction works correctly
 by checking that the physical moments~$\hat{\vect{H}}$ fulfill
 \cref{eq:diffraction_moments_imag}, \ie that they are real-valued
-within the uncertainty.
+within uncertainties.
 
 In the context of a partial-wave analysis it is often helpful to
 compare the moments that were directly obtained from data (as
@@ -1263,35 +1331,35 @@ Note that we have used a slightly different normalization here, which
 was chosen such that for perfect acceptance, \ie $\eta(\Omega) = 1$,
 the only non-zero acceptance moment is $H_\text{acc}(0, 0) = 1$.%
 \footnote{%
-  This follows from (see Eq.~(10) in Sec.~8.4.3 of
-  \refCite{Varshalovich:1988krb})
+  This follows from
   \begin{equation}
     \int_{4 \pi}\!\!\! \dif{\Omega}\, Y_L^M(\Omega)
-    = \sqrt{4 \pi}\, \delta_{L 0}\, \delta_{M 0}.
+    = \sqrt{4 \pi}\, \delta_{L 0}\, \delta_{M 0}
   \end{equation}
-}
+  (see Eq.~(10) in Sec.~8.4.3 of \refCite{Varshalovich:1988krb}).}
 
 Inserting \cref{eq:diffraction_acc_moment_decomp} into the acceptance
 integral matrix defined in \cref{eq:diffraction_moments_meas2}, we get
 \begin{align}
   I^\text{acc}_{L M\, L' M'}
   ={}& \sqrt{\frac{2 L' + 1}{2 L + 1}} \sum_{L''\, M''}^\infty \sqrt{4 \pi}\, \sqrt{2 L'' + 1}\, H_\text{acc}(L'', M'')
-  \int_{4 \pi}\!\!\! \dif{\Omega}\, Y_{L''}^{M''}(\Omega)\, Y_{L'}^{M'}(\Omega)\, Y_L^{M *}(\Omega) \notag
+  \int_{4 \pi}\!\!\! \dif{\Omega}\, Y_{L''}^{M''}(\Omega)\, Y_{L'}^{M'}(\Omega)\, Y_L^{M *}(\Omega) \nonumber
   \\
   \label{eq:diffraction_acc_int_moment_decomp}
   ={}& \frac{2 L' + 1}{2 L + 1} \sum_{L''\, M''}^\infty (2 L'' + 1)\,
   \clebsch{L''}{0}{L'}{0}{L}{0}\, \clebsch{L''}{M''}{L'}{M'}{L}{M}\, H_\text{acc}(L'', M'').
 \end{align}
 Here, we have switched back to using the complex-valued spherical
-harmonics and including the negative $M$~values into the sums and we
-have applied \cref{eq:spherical_harm_clebsch}.\todo{Why does Eq.~(B9)
-in \refCite{E852:1999xev} contains $H_\text{acc}^*$?}  From the above
-equation, it is clear that in \cref{eq:diffraction_moments_meas2} a
-measured moment with given $(L, M)$ depends only on those physical
-moments $H(L', M')$ and those acceptance moments $H_\text{acc}(L'',
-M'')$, for which $L', L'' \leq 2 L$.  This means that under the
-simplifying assumptions expressed in \cref{eq:diffraction_int_meas} we
-need to know only a finite set of moments of the acceptance function.
+harmonics and including the negative $M$~values into the sums.  In
+addition, we have applied \cref{eq:spherical_harm_clebsch}.\todo{Why
+does Eq.~(B9) in \refCite{E852:1999xev} contains $H_\text{acc}^*$?}
+From the above equation, it is clear that in
+\cref{eq:diffraction_moments_meas2} a measured moment with given $(L,
+M)$ depends only on those physical moments $H(L', M')$ and those
+acceptance moments $H_\text{acc}(L'', M'')$, for which $L', L'' \leq 2
+L$.  This means that under the simplifying assumptions expressed in
+\cref{eq:diffraction_int_meas} we need to know only a finite set of
+moments of the acceptance function.
 
 
 \subsubsection{Example}%
@@ -1301,7 +1369,7 @@ To verify the approach described in
 \cref{sec:diffraction:estimation_uncert} we perform a Monte Carlo
 input-output study.  In this study, we use
 \cref{eq:diffraction_intensity_refl} to calculate
-$\mathcal{I}(\Omega)$ from a set of partial waves that consists of the
+$\intensity(\Omega)$ from a set of partial waves that consists of the
 7~lowest waves up to $\ell = 2$ and $\abs{m} = 1$ in the reflectivity
 basis.  The used amplitude values are given in
 \cref{tab:diffraction_study_waveset}.  The resulting intensity
@@ -1341,10 +1409,10 @@ efficiency
 which is shown in \cref{fig:diffraction_study_efficiency}.  From this
 weighted intensity distribution (see
 \cref{fig:diffraction_study_intensity_acc}), we randomly draw a sample
-of \num{1000}~events (see \cref{fig:diffraction_study_data}).  This
+of \num{1000}~unweighted events (see \cref{fig:diffraction_study_data}).  This
 sample is used to calculate the values of the measured
 moments~$\hat{\vect{H}}_\text{meas}$ using
-\cref{eq:diffraction_moments_meas_estimate} as well as their augmented
+\cref{eq:diffraction_moments_meas_estimate_weighted} as well as their augmented
 covariance matrix as described in \cref{fn:cov_aug_numpy}.
 
 \begin{figure}[tbp]
@@ -1368,14 +1436,14 @@ covariance matrix as described in \cref{fn:cov_aug_numpy}.
   }%
   \caption{Input used to generate Monte Carlo data:
   \subfloatLabel{fig:diffraction_study_intensity}~Intensity
-  distribution $\mathcal{I}(\Omega)$ calculated from the partial-wave
+  distribution $\intensity(\Omega)$ calculated from the partial-wave
   amplitudes listed in \cref{tab:diffraction_study_waveset}.
   \subfloatLabel{fig:diffraction_study_efficiency}~Hypothetical
   detection efficiency $\eta(\Omega)$ as given by
   \cref{eq:diffraction_study_acc1}.
   \subfloatLabel{fig:diffraction_study_intensity_acc}~Intensity
   distribution weighted by the detection efficiency, \ie
-  $\eta(\Omega)\, \mathcal{I}(\Omega)$.
+  $\eta(\Omega)\, \intensity(\Omega)$.
   \subfloatLabel{fig:diffraction_study_data}~Monte Carlo data sample
   of \num{1000}~events randomly drawn from the distribution
   in~\subfloatLabel{fig:diffraction_study_intensity_acc}.}%
@@ -1383,9 +1451,9 @@ covariance matrix as described in \cref{fn:cov_aug_numpy}.
 \end{figure}
 
 The acceptance integral matrix~$\mat{I}^\text{acc}$ is calculated
-using \cref{eq:diffraction_integral_matrix} with \num{e7}~events that
-are sampled randomly from the detection efficiency $\eta(\Omega)$ in
-\cref{eq:diffraction_study_acc1}.  Using this matrix, the physical
+using \cref{eq:diffraction_integral_matrix} based on \num{e7}~events
+that are sampled randomly from the detection efficiency $\eta(\Omega)$
+in \cref{eq:diffraction_study_acc1}.  Using this matrix, the physical
 moments are calculated from the measured moments using
 \cref{eq:diffraction_phys_moments,eq:complex_uncert_prop}.
 \Cref{fig:diffraction_study_comparison_re} shows the physical moments
@@ -1399,8 +1467,8 @@ of values  agree within statistical uncertainties (see
 are real-valued (see \cref{eq:diffraction_moment_real}), we expect
 their imaginary parts to be consistent with zero.
 \Cref{fig:diffraction_study_comparison_im,fig:diffraction_study_residual_im}
-show that this is true, although the scatter of the points is larger
-than that of the real parts.
+show that this is true, although the scatter of the points is somewhat
+larger than that of the real parts.
 
 \begin{figure}[tbp]
   \centering%
