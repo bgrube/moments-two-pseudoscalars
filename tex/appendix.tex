@@ -14,10 +14,10 @@ intensity distribution for the above process is given by
 \cref{eq:photoprod_intensity_sum}, \ie
 \begin{equation}
   \label{eq:photoprod_intensity_sum2}
-  \mathcal{I}(\Omega, \Phi; w, t)
-  = \mathcal{I}_0(\Omega; w, t)
-  - \mathcal{I}_1(\Omega; w, t)\, P_\gamma\, \cos(2 \Phi)
-  - \mathcal{I}_2(\Omega; w, t)\, P_\gamma\, \sin(2 \Phi).
+  \intensity(\Omega, \Phi; w, t)
+  = \intensity_0(\Omega; w, t)
+  - \intensity_1(\Omega; w, t)\, P_\gamma\, \cos(2 \Phi)
+  - \intensity_2(\Omega; w, t)\, P_\gamma\, \sin(2 \Phi).
 \end{equation}
 For a given mass~$w$ of the $\pi^+ \pi^-$ system and a given squared
 four-momentum transfer~$t$, the intensity components are functions of
@@ -25,21 +25,21 @@ the decay angles~$\Omega$ of the \Prho only.  In the helicity rest
 frame of the \Prho, the intensity components are (see Eqs.~(9) to~(12)
 in \refCite{GlueX:2023fcq}):\footnote{\RefCite{GlueX:2023fcq} uses a
 normalized density instead of the number density of events
-$\mathcal{I}(\Omega, \Phi; w, t)$.  The relation between the two is
+$\intensity(\Omega, \Phi; w, t)$.  The relation between the two is
 given in Appendix~C of \refCite{GlueX:2023fcq}.  For the discussion
 here, we only need the fact that the two quantities are proportional
 to each other.}
 \begin{align}
   \label{eq:intensity_0_rho_photoprod}
-  \mathcal{I}_0(\Omega)
+  \intensity_0(\Omega)
   \propto{}& \frac{3}{4 \pi} \cBrk{\frac{1}{2} \rBrk{1 - \varrho^0_{0\, 0}} + \frac{1}{2} \rBrk{3 \varrho^0_{0\, 0} - 1} \cos^2 \theta
   - \sqrt{2}\, \Re[1]{\varrho^0_{1\, 0}}\, \sin(2 \theta)\, \cos \phi - \varrho^0_{1\, {-1}}\, \sin^2 \theta\, \cos(2 \phi)} \\
   \label{eq:intensity_1_rho_photoprod}
-  \mathcal{I}_1(\Omega)
+  \intensity_1(\Omega)
   \propto{}& \frac{3}{4 \pi} \cBrk{\varrho^1_{1\, 1} \sin^2 \theta + \varrho^1_{0\, 0} \cos^2 \theta
   - \sqrt{2}\, \Re[1]{\varrho^1_{1\, 0}}\, \sin(2 \theta)\, \cos \phi - \varrho^1_{1\, {-1}}\, \sin^2 \theta\, \cos(2 \phi)} \\
   \label{eq:intensity_2_rho_photoprod}
-  \mathcal{I}_2(\Omega)
+  \intensity_2(\Omega)
   \propto{}& \frac{3}{4 \pi} \cBrk{\sqrt{2}\, \Im[1]{\varrho^2_{1\, 0}}\, \sin(2 \theta)\, \sin \phi
   + \Im[1]{\varrho^2_{1\, {-1}}}\, \sin^2 \theta\, \sin(2 \phi)}.
 \end{align}
@@ -88,20 +88,20 @@ All other spin-density matrix elements would be zero.  In this case,
 the intensity components simplify to
 \begin{align}
   \label{eq:intensity_0_npe_schc_rho_photoprod}
-  \mathcal{I}_0(\Omega)
+  \intensity_0(\Omega)
   \propto{}& \frac{3}{4 \pi} \cBrk{\frac{1}{2}- \frac{1}{2} \cos^2 \theta}
   = \frac{3}{8 \pi} \sin^2 \theta \\
   \label{eq:intensity_1_npe_schc_rho_photoprod}
-  \mathcal{I}_1(\Omega)
+  \intensity_1(\Omega)
   \propto{}& -\frac{3}{8 \pi}\, \sin^2 \theta\, \cos(2 \phi) \\
   \label{eq:intensity_2_npe_schc_rho_photoprod}
-  \mathcal{I}_2(\Omega)
+  \intensity_2(\Omega)
   \propto{}& -\frac{3}{8 \pi}\, \sin^2 \theta\, \sin(2 \phi)
 \end{align}
 and with \cref{eq:photoprod_intensity_sum2} the intensity is given by
 \begin{equation}
   \label{eq:intensity_npe_schc_rho_photoprod}
-  \mathcal{I}(\Omega, \Phi)
+  \intensity(\Omega, \Phi)
   \propto \frac{3}{8 \pi}\, \sin^2 \theta \sBrk{1
   + P_\gamma\, \cos(2 \phi)\, \cos(2 \Phi)
   + P_\gamma\, \sin(2 \phi)\, \sin(2 \Phi)}.
@@ -115,7 +115,7 @@ By mistake, $\sum_{\ell, m}$ is missing in Eq.~(D13)}, \ie
 \begin{equation}
   \label{eq:zlm_photoprod}
   \begin{aligned}
-  \mathcal{I}(\Omega, \Phi)
+  \intensity(\Omega, \Phi)
   = 2 \sum_{k = 0, 1} \bigg\{
          &(1 - P_\gamma)\, \Abs[2]{\sum_{\ell, m}\, [\ell]_{m, k}^{-}\, \Re[1]{Z_\ell^m(\Omega, \Phi)}}^2
       +   (1 - P_\gamma)\, \Abs[2]{\sum_{\ell, m}\, [\ell]_{m, k}^{+}\, \Im[1]{Z_\ell^m(\Omega, \Phi)}}^2
@@ -138,7 +138,7 @@ spin projection $m = +1$, \ie $P^+_{+1}$.  Neglecting the proton spin,
 \cref{eq:zlm_photoprod} $P^+_{+1}$ to 1 and all other partial-wave
 amplitudes to 0, we obtain
 \begin{equation}
-  \mathcal{I}(\Omega, \Phi)
+  \intensity(\Omega, \Phi)
   = 2 (1 - P_\gamma)\, \Abs[2]{\Im[1]{Z_1^{+1}(\Omega, \Phi)}}^2
   + 2 (1 + P_\gamma)\, \Abs[2]{\Re[1]{Z_1^{+1}(\Omega, \Phi)}}^2
 \end{equation}
@@ -169,7 +169,7 @@ Inserting these expressions into the intensity formula yields\footnote{%
   \end{equation}
 }
 \begin{align*}
-  \mathcal{I}(\Omega, \Phi)
+  \intensity(\Omega, \Phi)
   ={}& \begin{aligned}[t] \frac{3}{4 \pi}\, \sin^2 \theta \bigg[
          &(1 - P_\gamma) \rBrk[2]{\sin^2 \phi\, \cos^2 \Phi + \cos^2 \phi\, \sin^2 \Phi - 2 \sin \phi\, \cos \phi\, \sin \Phi\, \cos \Phi}
     \\
@@ -242,16 +242,16 @@ If we insert the above spin-density matrix elements into
   \end{equation}
 }
 \begin{align*}
-  \mathcal{I}_0(\Omega)
+  \intensity_0(\Omega)
   ={}& Y_1^{-1}(\Omega)\, Y_1^{-1 *}(\Omega) + Y_1^{+1}(\Omega)\, Y_1^{+1 *}(\Omega)
   = \frac{3}{4 \pi}\, \sin^2 \theta
   \\
-  \mathcal{I}_1(\Omega)
+  \intensity_1(\Omega)
   ={}& Y_1^{-1}(\Omega)\, Y_1^{+1 *}(\Omega) + Y_1^{+1}(\Omega)\, Y_1^{-1 *}(\Omega)
   = -\frac{3}{8 \pi}\, \sin^2 \theta \sBrk[1]{e^{-2 \imag \phi} + e^{+2 \imag \phi}}
   = -\frac{3}{4 \pi}\, \sin^2 \theta\, \cos(2 \phi)
   \\
-  \mathcal{I}_2(\Omega)
+  \intensity_2(\Omega)
   ={}& \imag\, Y_1^{-1}(\Omega)\, Y_1^{+1 *}(\Omega) - \imag\, Y_1^{+1}(\Omega)\, Y_1^{-1 *}(\Omega)
   = \frac{3}{8 \pi}\, \sin^2 \theta\, \imag \sBrk[1]{-e^{-2 \imag \phi} + e^{+2 \imag \phi}}
   = -\frac{3}{4 \pi}\, \sin^2 \theta\, \sin(2 \phi).
