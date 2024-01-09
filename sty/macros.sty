@@ -149,14 +149,22 @@
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator*{\argmax}{arg\,max}
 % \newcommand*{\tr}{\trace\!}  % trace
-\DeclareMathOperator{\exptValSym}{E}    % expectation value
+\DeclareMathOperator{\exptValSym}{E}             % expectation value
 \newcommand*{\exptVal}[2][]{\exptValSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
-\DeclareMathOperator{\varSym}{V}        % variance
+\DeclareMathOperator{\exptValEstSym}{E}          % estimate for expectation value
+\newcommand*{\exptValEst}[2][]{\exptValEstSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
+\DeclareMathOperator{\varSym}{V}                 % variance
 \newcommand*{\var}[2][]{\varSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
-\DeclareMathOperator{\covSym}{cov}      % covariance
+\DeclareMathOperator{\varEstSym}{\hat{V}}        % estimate for variance
+\newcommand*{\varEst}[2][]{\varEstSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
+\DeclareMathOperator{\covSym}{cov}               % covariance
 \newcommand*{\cov}[2][]{\covSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
-\newcommand*{\covMatSym}{\mat{V}}       % covariance matrix
+\DeclareMathOperator{\covEstSym}{\widehat{cov}}  % estimate for covariance
+\newcommand*{\covEst}[2][]{\covEstSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
+\newcommand*{\covMatSym}{\mat{V}}                % covariance matrix
 \newcommand*{\covMat}[2][]{\covMatSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
+\newcommand*{\covMatEstSym}{\hat{\mat{V}}}       % estimate for covariance matrix
+\newcommand*{\covMatEst}[2][]{\covMatEstSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
 \DeclareMathOperator{\grad}{grad}       % gradient
 \newcommand*{\gradient}{\vec{\nabla}}
 \DeclareMathOperator{\divergence}{div}  % divergence
@@ -233,16 +241,9 @@
 \newcommand*{\wave}[8]{\ensuremath{{#1}^{{#2}}\,\allowbreak{#3}^{#4}\,\allowbreak{#5}\,{[#6]}\,{#7}\,{[#8]}}\xspace}
 % pi pi omega partial-wave definition \wave{J}{PC}{M}{refl}{isobar}{L, S}{bachelor}{L_xi}
 
-%\newcommand*{\free}{\ensuremath{\left[\Ppi\Ppi\right]}\xspace}
 \newcommand*{\intensity}{\ensuremath{\mathcal{I}}\xspace}
 \newcommand*{\prodAmp}{\ensuremath{\mathcal{T}}\xspace}
-\newcommand*{\binnedZeroMode}{\ensuremath{\tilde{\Delta}}\xspace}
-\newcommand*{\zeroModeCoefficient}{\ensuremath{\mathfrak{C}}\xspace}
-\newcommand*{\comaCoefficient}{\ensuremath{\mathfrak{L}}\xspace}
 \newcommand*{\decayAmp}{\ensuremath{\Psi}\xspace}
-\newcommand*{\angularPart}{\ensuremath{\mathcal{K}}\xspace}
-\newcommand*{\dynamicPart}{\ensuremath{\mu}\xspace}
-\newcommand*{\coma}{\ensuremath{\mathbf{V}}\xspace}
 
 
 % ------------------------------------------------------------------------------
@@ -263,6 +264,8 @@
 % other brackets
 \newcommand*{\mean}[1]{\ensuremath{\langle{#1}\rangle}\xspace}
 \newcommand*{\Mean}[1]{\ensuremath{\left\langle{#1}\right\rangle}\xspace}  % commath has no macro for angle brackets
+\newcommand*{\meanWeighted}[1]{\ensuremath{\langle{#1}\rangle_{w}}\xspace}
+\newcommand*{\MeanWeighted}[1]{\ensuremath{\left\langle{#1}\right\rangle_{\!w}}\xspace}  % commath has no macro for angle brackets
 \renewcommand*{\abs}[1]{\ensuremath{\vert{#1}\vert}\xspace}
 \newcommand*{\Abs}[2][-1]{\ensuremath{\envert[#1]{#2}}\xspace}
 \renewcommand*{\norm}[1]{\ensuremath{\|{#1}\|}\xspace}
