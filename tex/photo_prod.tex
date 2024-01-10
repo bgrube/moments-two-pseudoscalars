@@ -32,25 +32,24 @@ references here and will derive some equations.
 \end{figure}
 
 The analysis is based on the measured intensity distribution, \ie the
-number density of events, which is decomposed into partial-wave
-amplitudes analogous to the diffractive case in
+number density distribution of events, which is decomposed into
+partial-wave amplitudes analogous to the diffractive case in
 \cref{eq:diffraction_intensity}:\footnote{\label{fn:photoprod_ampl_redef}This
 corresponds to Eq.~(A3) in \refCite{Mathieu:2019fts} with the
 phase-space factor~$\kappa$ absorbed into the partial-wave amplitudes,
-\ie with the redefinition $\mathcal{T} \to \mathcal{T} /
-\sqrt{\kappa}$ (see also footnote~6 in \refCite{Mathieu:2019fts}), and
-with Eq.~(A5) inserted.}\todo{Can we express this as
-$\abs{\text{amplitude}}^2$?}
+\ie with the redefinition $\prodAmp \to \prodAmp / \sqrt{\kappa}$ (see
+also footnote~6 in \refCite{Mathieu:2019fts}), and with Eq.~(A5)
+inserted.}\todo{Can we express this as $\abs{\text{amplitude}}^2$?}
 \begin{equation}
   \label{eq:photoprod_intensity}
-  \mathcal{I}(\Omega, \Phi; w, t)
+  \intensity(\Omega, \Phi; w, t)
   = \frac{\dif{N}}{\dif{w}\, \dif{t}\, \dif{\Omega}\, \dif{\Phi}}
   = \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   Y_\ell^m(\Omega)~
   \dUnderbrace{\sum_{\substack{\lambda = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
-  \mathcal{T}^\ell_{\!m\, \lambda; \lambda_1\, \lambda_2}(w, t)\,
+  \prodAmp^\ell_{\!m\, \lambda; \lambda_1\, \lambda_2}(w, t)\,
   \varrho^\gamma_{\lambda\, \lambda'}(\Phi)\,
-  \mathcal{T}^{\ell' *}_{\!m'\, \lambda'; \lambda_1\, \lambda_2}(w, t)}{\equiv \varrho^{\ell\, \ell'}_{m\, m'}(w, t, \Phi)}~
+  \prodAmp^{\ell' *}_{\!m'\, \lambda'; \lambda_1\, \lambda_2}(w, t)}{\equiv \varrho^{\ell\, \ell'}_{m\, m'}(w, t, \Phi)}~
   Y_{\ell'}^{m' *}(\Omega).
 \end{equation}
 Here, $N$~is the (acceptance-corrected) number of measured events,
@@ -61,7 +60,7 @@ particle, $\Omega = (\theta, \phi)$ is the direction of one of the two
 Gottfried-Jackson or helicity rest frame of~$X$, and~$\Phi$ is the
 azimuthal angle between the polarization vector of the linearly
 polarized photon and the reaction plane in the $X$~rest frame.  The
-$\mathcal{T}^\ell_{\!m\, \lambda; \lambda_1\, \lambda_2}(w, t)$ are
+$\prodAmp^\ell_{\!m\, \lambda; \lambda_1\, \lambda_2}(w, t)$ are
 the partial-wave amplitudes that correspond to an intermediate state
 with a spin, which is given by the relative orbital angular
 momentum~$\ell$ between the two-(pseudo)scalar mesons, and a spin
@@ -104,15 +103,15 @@ Hence, for linearly polarized photons, the intensity distribution in
 terms:\footnote{See Eq.~(B4) in \refCite{Mathieu:2019fts}.}
 \begin{equation}
   \label{eq:photoprod_intensity_sum}
-  \mathcal{I}(\Omega, \Phi; w, t)
-  = \mathcal{I}_0(\Omega; w, t)
-  - \mathcal{I}_1(\Omega; w, t)\, P_\gamma\, \cos(2 \Phi)
-  - \mathcal{I}_2(\Omega; w, t)\, P_\gamma\, \sin(2 \Phi)
+  \intensity(\Omega, \Phi; w, t)
+  = \intensity_0(\Omega; w, t)
+  - \intensity_1(\Omega; w, t)\, P_\gamma\, \cos(2 \Phi)
+  - \intensity_2(\Omega; w, t)\, P_\gamma\, \sin(2 \Phi)
 \end{equation}
 with the intensity components
 \begin{equation}
   \label{eq:photoprod_intensity_components}
-  \mathcal{I}_i(\Omega; w, t)
+  \intensity_i(\Omega; w, t)
   = \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   Y_\ell^m(\Omega)\,
   \prescript{i}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)\,
@@ -125,21 +124,21 @@ and the spin-density matrix components\footnote{See Eq.~(11) in
   \label{eq:photoprod_rho_0}
   \prescript{0}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)
   ={}& \frac{1}{2}\quad \sum_{\substack{\lambda = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
-  \mathcal{T}^\ell_{\!m\, \lambda; \lambda_1\, \lambda_2}(w, t)\,
-  \mathcal{T}^{\ell' *}_{\!m'\, \lambda; \lambda_1\, \lambda_2}(w, t)
+  \prodAmp^\ell_{\!m\, \lambda; \lambda_1\, \lambda_2}(w, t)\,
+  \prodAmp^{\ell' *}_{\!m'\, \lambda; \lambda_1\, \lambda_2}(w, t)
   \\
   \label{eq:photoprod_rho_1}
   \prescript{1}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)
   ={}& \frac{1}{2}\quad \sum_{\substack{\lambda = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
-  \mathcal{T}^\ell_{\!m\, {-\lambda}; \lambda_1\, \lambda_2}(w, t)\,
-  \mathcal{T}^{\ell' *}_{\!m'\, \lambda; \lambda_1\, \lambda_2}(w, t)
+  \prodAmp^\ell_{\!m\, {-\lambda}; \lambda_1\, \lambda_2}(w, t)\,
+  \prodAmp^{\ell' *}_{\!m'\, \lambda; \lambda_1\, \lambda_2}(w, t)
   \\
   \label{eq:photoprod_rho_2}
   \prescript{2}{}{\varrho}^{\ell\, \ell'}_{m\, m'}(w, t)
   ={}& \frac{\imag}{2}\quad \sum_{\substack{\lambda = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
   \lambda\,
-  \mathcal{T}^\ell_{\!m\, {-\lambda}; \lambda_1\, \lambda_2}(w, t)\,
-  \mathcal{T}^{\ell' *}_{\!m'\, \lambda; \lambda_1\, \lambda_2}(w, t).
+  \prodAmp^\ell_{\!m\, {-\lambda}; \lambda_1\, \lambda_2}(w, t)\,
+  \prodAmp^{\ell' *}_{\!m'\, \lambda; \lambda_1\, \lambda_2}(w, t).
 \end{align}
 Using the above, the spin-density matrix elements of~$X$ in
 \cref{eq:photoprod_intensity} are given by
@@ -152,23 +151,23 @@ Using the above, the spin-density matrix elements of~$X$ in
 \end{equation}
 
 Note that in \cref{eq:photoprod_intensity_sum}, the $\Phi$~dependence
-is separated, \ie neither the $\mathcal{I}_i$ nor the
+is separated, \ie neither the $\intensity_i$ nor the
 $\prescript{i}{}{\varrho}^{\ell\, \ell'}_{m\, m'}$ depend on~$\Phi$.
-The three intensity components $\mathcal{I}_i(\Omega; w, t)$ (as well
+The three intensity components $\intensity_i(\Omega; w, t)$ (as well
 as the three spin-density matrix components in
 \cref{eq:photoprod_spin_dens_sum}) are modulated by different
 $\Phi$~dependences.  From \cref{eq:photoprod_intensity_sum} follows
 that
 \begin{equation}
   \label{eq:photoprod_unpolarized_intensity}
-  \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \mathcal{I}(\Omega, \Phi; w, t)
-  = 2 \pi\, \mathcal{I}_0(\Omega; w, t).
+  \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \intensity(\Omega, \Phi; w, t)
+  = 2 \pi\, \intensity_0(\Omega; w, t).
 \end{equation}
 This means that $I_0(\Omega; w, t)$~corresponds---up to a factor of $2
 \pi$---to the unpolarized intensity distribution and is equivalent to
 the intensity for the diffractive case in
 \cref{eq:diffraction_intensity}.  The other two components
-$\mathcal{I}_{1, 2}(\Omega; w, t)$ represent additional information
+$\intensity_{1, 2}(\Omega; w, t)$ represent additional information
 that is accessible in photoproduction with linearly polarized beam.
 They depend on the photon polarization and are hence modulated by
 different $\Phi$~dependences.  Note that the functions
@@ -192,16 +191,16 @@ below, \ie the given formulas are valid in a $(w, t)$ cell.
 Analogously to the diffractive case in
 \cref{eq:diffraction_intensity_moments}, we decompose the intensity in
 \cref{eq:photoprod_intensity_sum} into spherical harmonics to obtain
-the moments.  Due to the orthogonality of the $\mathcal{I}_i$ terms in
+the moments.  Due to the orthogonality of the $\intensity_i$ terms in
 $\Phi$~space, we can decompose each intensity component
 separately:\footnote{See Eq.~(A8) in \refCite{Mathieu:2019fts}.}
 \begin{align}
   \label{eq:photoprod_intensity_moments_norm_unpol}
-  \mathcal{I}_0(\Omega)
+  \intensity_0(\Omega)
   ={}& \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}\, H_0(L, M)\, Y_L^M(\Omega)
   \\
   \label{eq:photoprod_intensity_moments_norm_pol}
-  \mathcal{I}_{1, 2}(\Omega)
+  \intensity_{1, 2}(\Omega)
   ={}& -\sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}\, H_{1, 2}(L, M)\, Y_L^M(\Omega).
 \end{align}
 Here, we have used the same normalization as in
@@ -222,12 +221,12 @@ The corresponding moments are
   \label{eq:photoprod_moment_norm_unpol}
   H_0(L, M)
   ={}& \frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)\, Y_L^{M *}(\Omega)
+  \intensity(\Omega, \Phi)\, Y_L^{M *}(\Omega)
   \\
   \label{eq:photoprod_moments_norm_pol}
   H_{1, 2}(L, M)
   ={}& \frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)\, Y_L^{M *}(\Omega) \times \begin{cases*}
+  \intensity(\Omega, \Phi)\, Y_L^{M *}(\Omega) \times \begin{cases*}
     \cos(2 \Phi) & for $i = 1$, \\
     \sin(2 \Phi) & for $i = 2$.
   \end{cases*}
@@ -286,17 +285,17 @@ we get
 \begin{align}
   H_0^*(L, M)
   ={}& (-1)^M\, \frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)\, Y_L^{(-M) *}(\Omega) \notag
+  \intensity(\Omega, \Phi)\, Y_L^{(-M) *}(\Omega) \nonumber
   \\
   ={}& (-1)^M\, H_0(L, {-M})
   \\
   H_{1, 2}^*(L, M)
   ={}& (-1)^M\, \frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)\, Y_L^{(-M) *}(\Omega) \times \begin{cases*}
+  \intensity(\Omega, \Phi)\, Y_L^{(-M) *}(\Omega) \times \begin{cases*}
     \cos(2 \Phi) & for $i = 1$, \\
     \sin(2 \Phi) & for $i = 2$
   \end{cases*}
-  \notag
+  \nonumber
   \\
   ={}& (-1)^M\, H_{1,2}(L, {-M}),
   \intertext{\ie}
@@ -317,11 +316,11 @@ components are real-valued and only moments with $M \geq 0$ are
 required to calculate them, \ie
 \begin{align}
   \label{eq:photoprod_intensity_moments_unpol_general}
-  \mathcal{I}_0(\Omega)
+  \intensity_0(\Omega)
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_0(L, M)\, Y_L^M(\Omega)}
   \\
   \label{eq:photoprod_intensity_moments_pol_general}
-  \mathcal{I}_{1, 2}(\Omega)
+  \intensity_{1, 2}(\Omega)
   ={}& -\sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_{1, 2}(L, M)\, Y_L^M(\Omega)}.
 \end{align}
 
@@ -351,7 +350,7 @@ symmetry property of the Clebsch-Gordan coefficients in
   ={}& \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
   \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{-m}\,
-  (-1)^{m - m'}\, \prescript{0, 1}{}{\varrho}^{\ell\, \ell'}_{{-m}\, {-m}'} \notag
+  (-1)^{m - m'}\, \prescript{0, 1}{}{\varrho}^{\ell\, \ell'}_{{-m}\, {-m}'} \nonumber
   \\
   \label{eq:photoprod_moments_01_sym_2}
   \equalUsing{$\mathclap{\substack{\displaystyle{m \to -m} \\ \displaystyle{m' \to -m'}}}$}{}& \quad
@@ -361,7 +360,7 @@ symmetry property of the Clebsch-Gordan coefficients in
   ={}& -\sum_{\substack{\ell m \\ \ell' m'}}^\infty
   \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\,
   \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{-m}\,
-  (-1)^{m - m'}\, \prescript{2}{}{\varrho}^{\ell\, \ell'}_{{-m}\, {-m}'} \notag
+  (-1)^{m - m'}\, \prescript{2}{}{\varrho}^{\ell\, \ell'}_{{-m}\, {-m}'} \nonumber
   \\
   \label{eq:photoprod_moment_2_sym_2}
   \equalUsing{$\mathclap{\substack{\displaystyle{m \to -m} \\ \displaystyle{m' \to -m'}}}$}{}& \quad
@@ -392,32 +391,32 @@ we get\footnote{See Eq.~(B6) in \refCite{Mathieu:2019fts}.}
   \label{eq:photoprod_moment_0_real}
   H(L, M)
   ={}& \frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)\, y_L^M(\theta)\, \cos(M\, \phi)
+  \intensity(\Omega, \Phi)\, y_L^M(\theta)\, \cos(M\, \phi)
   \\
   \label{eq:photoprod_moment_0_imag}
   0
   ={}& \frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)\, y_L^M(\theta)\, \sin(M\, \phi)
+  \intensity(\Omega, \Phi)\, y_L^M(\theta)\, \sin(M\, \phi)
   \\
   \label{eq:photoprod_moment_1_real}
   H_1(L, M)
   ={}& \frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)\, y_L^M(\theta)\, \cos(M\, \phi)\, \cos(2 \Phi)
+  \intensity(\Omega, \Phi)\, y_L^M(\theta)\, \cos(M\, \phi)\, \cos(2 \Phi)
   \\
   \label{eq:photoprod_moment_1_imag}
   0
   ={}& \frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)\, y_L^M(\theta)\, \sin(M\, \phi)\, \cos(2 \Phi)
+  \intensity(\Omega, \Phi)\, y_L^M(\theta)\, \sin(M\, \phi)\, \cos(2 \Phi)
   \\
   \label{eq:photoprod_moment_2_real}
   0
   ={}& \frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)\, y_L^M(\theta)\, \cos(M\, \phi)\, \sin(2 \Phi)
+  \intensity(\Omega, \Phi)\, y_L^M(\theta)\, \cos(M\, \phi)\, \sin(2 \Phi)
   \\
   \label{eq:photoprod_moment_2_imag}
   H_2(L, M)
   ={}& -\imag \frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)\, y_L^M(\theta)\, \sin(M\, \phi)\, \sin(2 \Phi)
+  \intensity(\Omega, \Phi)\, y_L^M(\theta)\, \sin(M\, \phi)\, \sin(2 \Phi)
 \end{align}
 The first two equations are equivalent to
 \cref{eq:diffraction_moments_real,eq:diffraction_moments_imag}.  Note
@@ -435,20 +434,20 @@ taking into account
 \cref{eq:photoprodP_moments_real_imag}:\footnote{See Eq.~(A17) in
 \refCite{Mathieu:2019fts}.}
 \begin{align}
-  \mathcal{I}_0(\Omega)
-  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H_0(L, M)\, \Re{Y_L^M(\Omega)} \notag
+  \intensity_0(\Omega)
+  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H_0(L, M)\, \Re{Y_L^M(\Omega)} \nonumber
   \\
   \label{eq:photoprod_intensity_0_moments_real}
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H_0(L, M)\, y_L^M(\theta)\, \cos(M\, \phi)
   \\
-  \mathcal{I}_1(\Omega)
-  ={}& -\sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H_1(L, M)\, \Re{Y_L^M(\Omega)} \notag
+  \intensity_1(\Omega)
+  ={}& -\sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H_1(L, M)\, \Re{Y_L^M(\Omega)} \nonumber
   \\
   \label{eq:photoprod_intensity_1_moments_real}
   ={}& -\sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H_1(L, M)\, y_L^M(\theta)\, \cos(M\, \phi)
   \\
-  \mathcal{I}_2(\Omega)
-  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Im{H_2(L, M)}\, \Im{Y_L^M(\Omega)} \notag
+  \intensity_2(\Omega)
+  ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Im{H_2(L, M)}\, \Im{Y_L^M(\Omega)} \nonumber
   \\
   \label{eq:photoprod_intensity_2_moments_imag}
   ={}& -\imag \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H_2(L, M)\, y_L^M(\theta)\, \sin(M\, \phi).
@@ -466,9 +465,9 @@ because $H_2(L, M)$ is purely imaginary (see
 Since $H_{0, 1}(L, M)$ is real-valued and $H_2(L, M)$ purely
 imaginary, it is clear from
 \crefrange{eq:photoprod_intensity_0_moments_real}{eq:photoprod_intensity_2_moments_imag}
-that the $\mathcal{I}_i(\Omega)$ are all real-valued, as expected.
-Also note that $\mathcal{I}_{0, 1}(\Omega)$ are even functions
-in~$\phi$, whereas $\mathcal{I}_2(\Omega)$ is an odd function
+that the $\intensity_i(\Omega)$ are all real-valued, as expected.
+Also note that $\intensity_{0, 1}(\Omega)$ are even functions
+in~$\phi$, whereas $\intensity_2(\Omega)$ is an odd function
 in~$\phi$.
 
 
@@ -482,9 +481,9 @@ approaches to apply the reflectivity basis are discussed in
 \refCite{Salgado:2020}.}
 \begin{equation}
   \label{eq:photoprod_amplitude_refl}
-  \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; \lambda_1\, \lambda_2}
-  \equiv \frac{1}{2}\, \sBrk{\mathcal{T}^\ell_{\!m\, {+1}; \lambda_1\, \lambda_2}
-  - \refl\, (-1)^m\, \mathcal{T}^\ell_{\!{-m}\, {-1}; \lambda_1\, \lambda_2}},
+  \prescript{\refl}{}{\prodAmp}^\ell_{\!m; \lambda_1\, \lambda_2}
+  \equiv \frac{1}{2}\, \sBrk{\prodAmp^\ell_{\!m\, {+1}; \lambda_1\, \lambda_2}
+  - \refl\, (-1)^m\, \prodAmp^\ell_{\!{-m}\, {-1}; \lambda_1\, \lambda_2}},
 \end{equation}
 which are linear combinations of partial-wave amplitudes with opposite
 photon helicities~$\lambda$ and opposite $X$~spin projection quantum
@@ -506,8 +505,8 @@ recoil proton, \ie\footnote{See Eq.~(D3) in
 \refCite{Mathieu:2019fts}.}
 \begin{equation}
   \label{eq:photoprod_amplitude_parity_refl}
-  \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; {-\lambda_1}\, {-\lambda_2}}
-  = \refl\, (-1)^{\lambda_1 - \lambda_2}\, \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; \lambda_1\, \lambda_2}.
+  \prescript{\refl}{}{\prodAmp}^\ell_{\!m; {-\lambda_1}\, {-\lambda_2}}
+  = \refl\, (-1)^{\lambda_1 - \lambda_2}\, \prescript{\refl}{}{\prodAmp}^\ell_{\!m; \lambda_1\, \lambda_2}.
 \end{equation}
 Therefore, for given~\refl, $\ell$, and~$m$, only two of the four
 possible partial-wave amplitudes are independent,%
@@ -517,17 +516,17 @@ $\sBrk{\ell}^{(\refl)}_{m; k}$ with $k = 0, \ldots, 2 J_R$.}
 namely the proton spin-flip amplitude\footnote{See Eq.~(D4) in
 \refCite{Mathieu:2019fts}.}
 \begin{align}
-  \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; {+1}\, {-1}}
+  \prescript{\refl}{}{\prodAmp}^\ell_{\!m; {+1}\, {-1}}
   \equiv{}& \sBrk{\ell}^{(\refl)}_{m; 0}
   \intertext{and the proton spin-non-flip amplitude}
-  \prescript{\refl}{}{\mathcal{T}}^\ell_{\!m; {+1}\, {+1}}
+  \prescript{\refl}{}{\prodAmp}^\ell_{\!m; {+1}\, {+1}}
   \equiv{}& \sBrk{\ell}^{(\refl)}_{m; 1}.
 \end{align}
 Furthermore, since parity is conserved the spin-flip and
 spin-non-flip amplitudes do not interfere. In the conventional basis,
 it would be difficult to incorporate these parity constraints into
 \crefrange{eq:photoprod_intensity_components}{eq:photoprod_rho_2}
-because parity relates those $\mathcal{T}^\ell_{\!m\, \lambda;
+because parity relates those $\prodAmp^\ell_{\!m\, \lambda;
 \lambda_1\, \lambda_2}$ that in addition to opposite~$\lambda_1$
 and~$\lambda_2$ quantum numbers also have opposite~$m$
 and~$\lambda$.\footnote{See Eq.~(A14) in \refCite{Mathieu:2019fts}.}
@@ -569,7 +568,7 @@ general~2.  By inserting \cref{eq:photoprod_rho_refl} into
 components in the reflectivity basis:
 \begin{equation}
   \label{eq:photoprod_intensity_components_refl}
-  \mathcal{I}_i(\Omega)
+  \intensity_i(\Omega)
   = \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   Y_\ell^m(\Omega)
   \sBrk[3]{\, \sum_{\refl = \pm} \prescript{i}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}}
@@ -647,10 +646,10 @@ it follows that in particular
 \begin{align}
   H_0(0, 0)
   = \frac{1}{2 \pi} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}(\Omega, \Phi)
+  \intensity(\Omega, \Phi)
   ={}& \sum_{\ell m}^\infty \prescript{0}{}{\varrho}^{\ell\, \ell}_{m\, m}
   = \sum_{\ell m}^\infty \sum_{\refl = \pm} \sum_{k = 0, 1}
-  \rBrk[2]{\Abs[1]{\sBrk{\ell}^{(\refl)}_{m; k}}^2 + \Abs[1]{\sBrk{\ell}^{(\refl)}_{{-m}; k}}^2} \notag
+  \rBrk[2]{\Abs[1]{\sBrk{\ell}^{(\refl)}_{m; k}}^2 + \Abs[1]{\sBrk{\ell}^{(\refl)}_{{-m}; k}}^2} \nonumber
   \\
   \label{eq:photoprod_monent_00_refl}
   ={}& 2 \sum_{\ell m}^\infty \sum_{k = 0, 1}
@@ -687,11 +686,11 @@ by using
   (-1)^m \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}
   + \sBrk{\ell}^{(\refl)}_{0; k}\, \sBrk{\ell}^{(\refl) *}_{0; k}
   + \sum_{m = +1}^{m = +\ell}
-  (-1)^m \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k} \notag
+  (-1)^m \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k} \nonumber
   \\
   ={}& \Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
   + \sum_{m = +1}^{m = +\ell}
-  (-1)^m \rBrk[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k} + \sBrk{\ell}^{(\refl) *}_{m; k}\, \sBrk{\ell}^{(\refl)}_{{-m}; k}} \notag
+  (-1)^m \rBrk[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k} + \sBrk{\ell}^{(\refl) *}_{m; k}\, \sBrk{\ell}^{(\refl)}_{{-m}; k}} \nonumber
   \\
   ={}& \Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
   + 2 \sum_{m = +1}^{m = +\ell}
@@ -707,7 +706,7 @@ Using the above, we see that
   (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell}^{(\refl) *}_{m; k}}
   + \Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
   + 2 \sum_{m = +1}^{m = +\ell}
-  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}} \notag
+  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}} \nonumber
   \\
   ={}& 2 \sum_{\refl = \pm} \refl \sum_{k = 0, 1} \sum_{\ell}^\infty
   \rBrk[3]{\Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
@@ -721,7 +720,7 @@ Using the above, we see that
   (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell}^{(\refl) *}_{m; k}}
   - \Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
   - 2 \sum_{m = +1}^{m = +\ell}
-  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}} \notag
+  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}} \nonumber
   \\
   ={}& 0.
 \end{align}
@@ -743,17 +742,17 @@ negligible, \ie that\footnote{\Confer\
 \cref{eq:diffraction_int_meas}.}
 \begin{equation}
   \label{eq:photoprod_intensity_meas}
-  \mathcal{I}_\text{meas}(\Omega, \Phi)
-  = \eta(\Omega, \Phi)\, \mathcal{I}(\Omega, \Phi)
-  \equalUsing{\cref{eq:photoprod_intensity_sum}} \eta(\Omega, \Phi) \sBrk[2]{\mathcal{I}_0(\Omega)
-  - \mathcal{I}_1(\Omega)\, P_\gamma\, \cos(2 \Phi)
-  - \mathcal{I}_2(\Omega)\, P_\gamma\, \sin(2 \Phi)},
+  \intensity_\text{meas}(\Omega, \Phi)
+  = \eta(\Omega, \Phi)\, \intensity(\Omega, \Phi)
+  \equalUsing{\cref{eq:photoprod_intensity_sum}} \eta(\Omega, \Phi) \sBrk[2]{\intensity_0(\Omega)
+  - \intensity_1(\Omega)\, P_\gamma\, \cos(2 \Phi)
+  - \intensity_2(\Omega)\, P_\gamma\, \sin(2 \Phi)},
 \end{equation}
 where $\eta(\Omega, \Phi)$ describes the detection efficiency.
 
 We obtain the measured moments analogous to
 \cref{eq:diffraction_moments_meas} by decomposing
-$\mathcal{I}_\text{meas}(\Omega, \Phi)$ into the same three sets of
+$\intensity_\text{meas}(\Omega, \Phi)$ into the same three sets of
 orthogonal functions in the $(\Omega, \Phi)$ angular space, \ie
 \begin{equation}
   Y_L^M(\Omega) \times \begin{cases}
@@ -769,12 +768,12 @@ measured moments:
   \label{eq:photoprod_moment_meas_unpol}
   H_0^\text{meas}(L, M)
   ={}& \frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}_\text{meas}(\Omega, \Phi)\, Y_L^{M *}(\Omega)
+  \intensity_\text{meas}(\Omega, \Phi)\, Y_L^{M *}(\Omega)
   \\
   \label{eq:photoprod_moments_meas_pol}
   H_{1, 2}^\text{meas}(L, M)
   ={}& \frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \mathcal{I}_\text{meas}(\Omega, \Phi)\, Y_L^{M *}(\Omega) \times \begin{cases*}
+  \intensity_\text{meas}(\Omega, \Phi)\, Y_L^{M *}(\Omega) \times \begin{cases*}
     \cos(2 \Phi) & for $i = 1$, \\
     \sin(2 \Phi) & for $i = 2$.
   \end{cases*}
@@ -788,19 +787,19 @@ With the above moments, the intensity can be written as a sum of three
 measured intensities, \ie\footnote{We use the same sign convention for
 the intensity components as in \cref{eq:photoprod_intensity_sum}.}
 \begin{equation}
-  \mathcal{I}_\text{meas}(\Omega, \Phi)
-  = \mathcal{I}_0^\text{meas}(\Omega) - \mathcal{I}_1^\text{meas}(\Omega, \Phi) - \mathcal{I}_2^\text{meas}(\Omega, \Phi)
+  \intensity_\text{meas}(\Omega, \Phi)
+  = \intensity_0^\text{meas}(\Omega) - \intensity_1^\text{meas}(\Omega, \Phi) - \intensity_2^\text{meas}(\Omega, \Phi)
 \end{equation}
 with\footnote{We cannot use
 \cref{eq:photoprod_intensity_0_moments_real,eq:photoprod_intensity_1_moments_real,eq:photoprod_intensity_2_moments_imag}
 for the measured intensities because of the arguments in
 \cref{fn:complex_moment_decomp}.}
 \begin{align}
-  \mathcal{I}_0^\text{meas}(\Omega)
+  \intensity_0^\text{meas}(\Omega)
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\,
   \Re{H_0^\text{meas}(L, M)\, Y_L^M(\Omega)}
   \\
-  \mathcal{I}_{1, 2}^\text{meas}(\Omega, \Phi)
+  \intensity_{1, 2}^\text{meas}(\Omega, \Phi)
   ={}& -\sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\,
   \Re{H_{1, 2}^\text{meas}(L, M)\, Y_L^M(\Omega)} \times \begin{cases*}
     \cos(2 \Phi) & for $i = 1$, \\
@@ -809,7 +808,7 @@ for the measured intensities because of the arguments in
 \end{align}
 The first equation is equivalent to
 \cref{eq:diffraction_intensity_moments_meas}.  Note that
-$\mathcal{I}_0^\text{meas}(\Omega)$ is independent of~$\Phi$.
+$\intensity_0^\text{meas}(\Omega)$ is independent of~$\Phi$.
 
 To relate the measured to the physical moments, we insert
 \cref{eq:photoprod_intensity_meas} and the moment decomposition of the
@@ -820,10 +819,10 @@ into
 \begin{align}
   H_0^\text{meas}(L, M)
   ={}& \frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi) \sBrk[2]{\mathcal{I}_0(\Omega)
-  - \mathcal{I}_1(\Omega)\, P_\gamma\, \cos(2 \Phi)
-  - \mathcal{I}_2(\Omega)\, P_\gamma\, \sin(2 \Phi)}
-  Y_L^{M *}(\Omega) \notag
+  \eta(\Omega, \Phi) \sBrk[2]{\intensity_0(\Omega)
+  - \intensity_1(\Omega)\, P_\gamma\, \cos(2 \Phi)
+  - \intensity_2(\Omega)\, P_\gamma\, \sin(2 \Phi)}
+  Y_L^{M *}(\Omega) \nonumber
   \\
   ={}& \sum_{L' = 0}^\infty \sum_{M' = 0}^{L'} \Bigg[
   H_0(L', M')\,
@@ -831,34 +830,34 @@ into
   \eta(\Omega, \Phi)\,
   \rdOverbrace{\sqrt{\frac{2 L' + 1}{4 \pi}}\, (2 - \delta_{M' 0})\, y_{L'}^{M'}(\theta)\, \cos(M'\, \phi)\vphantom{\frac{Y_L^M}{\sqrt{L}}}}{\equiv f_{0, L' M'}^\text{phys}(\Omega, \Phi)}\,
   \rdOverbrace{\frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega)}{\equiv f_{0, L M}^\text{meas}(\Omega, \Phi)}}%
-  {\equiv I^\text{acc}_{0 0, L M\, L' M'}} \notag
+  {\equiv I^\text{acc}_{0 0, L M\, L' M'}} \nonumber
   \\
   & + H_1(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
   \eta(\Omega, \Phi)\,
   \rdOverbrace{P_\gamma\, \sqrt{\frac{2 L' + 1}{4 \pi}}\, (2 - \delta_{M' 0})\, y_{L'}^{M'}(\theta)\, \cos(M'\, \phi)\, \cos(2 \Phi)}{\equiv f_{1, L' M'}^\text{phys}(\Omega, \Phi)}\,
   f_{0, L M}^\text{meas}(\Omega, \Phi)}%
-  {\equiv I^\text{acc}_{0 1\, L M\, L' M'}} \notag
+  {\equiv I^\text{acc}_{0 1\, L M\, L' M'}} \nonumber
   \\
   & + H_2(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
   \eta(\Omega, \Phi)\,
   \rdOverbrace{\imag\, P_\gamma\, \sqrt{\frac{2 L' + 1}{4 \pi}}\, (2 - \delta_{M' 0})\, y_{L'}^{M'}(\theta)\, \sin(M'\, \phi)\, \sin(2 \Phi)}{\equiv f_{2, L' M'}^\text{phys}(\Omega, \Phi)}\,
   f_{0, L M}^\text{meas}(\Omega, \Phi)}%
-  {\equiv I^\text{acc}_{0 2\, L M\, L' M'}}\, \Bigg] \notag
+  {\equiv I^\text{acc}_{0 2\, L M\, L' M'}}\, \Bigg] \nonumber
   \\
   \label{eq:photoprod_moment_0_meas2}
   ={}& \sum_{j = 0}^2 \sum_{L' = 0}^\infty \sum_{M' = 0}^{L'}
   I^\text{acc}_{0 j\, L M\, L' M'}\, H_j(L', M').
 \end{align}
-Similarly,
+This is equivalent to \cref{eq:diffraction_moments_meas2}.  Similarly,
 \begin{align}
   H_1^\text{meas}(L, M)
   ={}& \frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi) \sBrk[2]{\mathcal{I}_0(\Omega)
-  - \mathcal{I}_1(\Omega)\, P_\gamma\, \cos(2 \Phi)
-  - \mathcal{I}_2(\Omega)\, P_\gamma\, \sin(2 \Phi)}\,
-  Y_L^{M *}(\Omega)\, \cos(2 \Phi) \notag
+  \eta(\Omega, \Phi) \sBrk[2]{\intensity_0(\Omega)
+  - \intensity_1(\Omega)\, P_\gamma\, \cos(2 \Phi)
+  - \intensity_2(\Omega)\, P_\gamma\, \sin(2 \Phi)}\,
+  Y_L^{M *}(\Omega)\, \cos(2 \Phi) \nonumber
   \\
   ={}& \sum_{L' = 0}^\infty \sum_{M' = 0}^{L'} \Bigg[
   H_0(L', M')\,
@@ -866,21 +865,21 @@ Similarly,
   \eta(\Omega, \Phi)\,
   f_{0, L' M'}^\text{phys}(\Omega, \Phi)\,
   \rdOverbrace{\frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega)\, \cos(2 \Phi)}{\equiv f_{1, L M}^\text{meas}(\Omega, \Phi)}}%
-  {\equiv I^\text{acc}_{1 0\, L M\, L' M'}} \notag
+  {\equiv I^\text{acc}_{1 0\, L M\, L' M'}} \nonumber
   \\
   & + H_1(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
   \eta(\Omega, \Phi)\,
   f_{1, L' M'}^\text{phys}(\Omega, \Phi)\,
   f_{1, L M}^\text{meas}(\Omega, \Phi)}%
-  {\equiv I^\text{acc}_{1 1\, L M\, L' M'}} \notag
+  {\equiv I^\text{acc}_{1 1\, L M\, L' M'}} \nonumber
   \\
   & + H_2(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
   \eta(\Omega, \Phi)\,
   f_{2, L' M'}^\text{phys}(\Omega, \Phi)\,
   f_{1, L M}^\text{meas}(\Omega, \Phi)}%
-  {\equiv I^\text{acc}_{1 2\, L M\, L' M'}}\, \Bigg] \notag
+  {\equiv I^\text{acc}_{1 2\, L M\, L' M'}}\, \Bigg] \nonumber
   \\
   \label{eq:photoprod_moment_1_meas2}
   ={}& \sum_{j = 0}^2 \sum_{L' = 0}^\infty \sum_{M' = 0}^{L'}
@@ -890,10 +889,10 @@ and
 \begin{align}
   H_2^\text{meas}(L, M)
   ={}& \frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi) \sBrk[2]{\mathcal{I}_0(\Omega)
-  - \mathcal{I}_1(\Omega)\, P_\gamma\, \cos(2 \Phi)
-  - \mathcal{I}_2(\Omega)\, P_\gamma\, \sin(2 \Phi)}\,
-  Y_L^{M *}(\Omega)\, \sin(2 \Phi) \notag
+  \eta(\Omega, \Phi) \sBrk[2]{\intensity_0(\Omega)
+  - \intensity_1(\Omega)\, P_\gamma\, \cos(2 \Phi)
+  - \intensity_2(\Omega)\, P_\gamma\, \sin(2 \Phi)}\,
+  Y_L^{M *}(\Omega)\, \sin(2 \Phi) \nonumber
   \\
   ={}& \sum_{L' = 0}^\infty \sum_{M' = 0}^{L'} \Bigg[
   H_0(L', M')\,
@@ -901,28 +900,26 @@ and
   \eta(\Omega, \Phi)\,
   f_{0, L' M'}^\text{phys}(\Omega, \Phi)\,
   \rdOverbrace{\frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega)\, \sin(2 \Phi)}{\equiv f_{2, L M}^\text{meas}(\Omega, \Phi)}}%
-  {\equiv I^\text{acc}_{2 0\, L M\, L' M'}} \notag
+  {\equiv I^\text{acc}_{2 0\, L M\, L' M'}} \nonumber
   \\
   & + H_1(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
   \eta(\Omega, \Phi)\,
   f_{1, L' M'}^\text{phys}(\Omega, \Phi)\,
   f_{2, L M}^\text{meas}(\Omega, \Phi)}%
-  {\equiv I^\text{acc}_{2 1\, L M\, L' M'}} \notag
+  {\equiv I^\text{acc}_{2 1\, L M\, L' M'}} \nonumber
   \\
   & + H_2(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
   \eta(\Omega, \Phi)\,
   f_{2, L' M'}^\text{phys}(\Omega, \Phi)\,
   f_{2, L M}^\text{meas}(\Omega, \Phi)}%
-  {\equiv I^\text{acc}_{2 2\, L M\, L' M'}}\, \Bigg] \notag
+  {\equiv I^\text{acc}_{2 2\, L M\, L' M'}}\, \Bigg] \nonumber
   \\
   \label{eq:photoprod_moment_2_meas2}
   ={}& \sum_{j = 0}^2 \sum_{L' = 0}^\infty \sum_{M' = 0}^{L'}
   I^\text{acc}_{2 j\, L M\, L' M'}\, H_j(L', M').
 \end{align}
-\Cref{eq:photoprod_moment_0_meas2} is equivalent to
-\cref{eq:diffraction_moments_meas2}.
 
 As expected, the detection
 efficiency $\eta(\Omega, \Phi)$ mixes all physical moments.  However,
@@ -997,11 +994,11 @@ Consequently, the acceptance integral matrix in
   f_{i, L M}^\text{meas}(\Omega, \Phi)\,
   f_{j, L' M'}^\text{phys}(\Omega, \Phi).
 \end{equation}
-Using similar arguments as in
+Note that in general, the elements of~$\mat{I}^\text{acc}$ are
+complex-valued.  Using similar arguments as in
 \cref{fn:diffraction_integral_matrix_perfect_det}, one can show that
 for a perfect detector with $\eta(\Omega, \Phi) = 1$,
-$\mat{I}^\text{acc}$ becomes a unit matrix.\todo{Can one show that
-$\mat{I}^\text{acc}$ must be real-valued?}
+$\mat{I}^\text{acc}$ becomes a unit matrix.
 
 As in the diffractive case, $\mat{I}^\text{acc}$~can be approximated
 using a Monte Carlo data sample with $N_\text{gen}$~events that are
@@ -1026,32 +1023,36 @@ restore the invertibility of the acceptance integral matrix the rows
 and columns that correspond to $f^\text{phys}_{2, L 0}$ and
 $f^\text{meas}_{2, L 0}$ need to be removed from $\mat{I}^\text{acc}$.
 Likewise, the elements $\rBrk[0]{\hat{\vect{H}}}_{2, L 0}$ and
-$\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{2, L 0}$ should be removed from
-$\hat{\vect{H}}$ and $\hat{\vect{H}}_\text{meas}$, respectively.
+$\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{2, L 0}$ need to be removed
+from $\hat{\vect{H}}$ and $\hat{\vect{H}}_\text{meas}$, respectively.
 
 The measured moments are estimated from the data using the same
 approach as in \cref{sec:diffraction:estimation_uncert}, \ie by
 replacing the integrals in
 \cref{eq:photoprod_moment_meas_unpol,eq:photoprod_moments_meas_pol} by
-sums over measured events:
+sums over measured weighted events:
 \begin{equation}
-  \label{eq:photoprod_moments_meas_estimate}
+  \label{eq:photoprod_moments_meas_estimate_weighted}
   \rBrk[0]{\hat{\vect{H}}_\text{meas}}_{i, L M}
-  = 2 \pi \sum_{k = 1}^{N_\text{meas}} f_{i, L M}^\text{meas}(\Omega_k, \Phi_k).
+  = 2 \pi \sum_{k = 1}^{N_\text{meas}} w_k\, f_{i, L M}^\text{meas}(\Omega_k, \Phi_k).
 \end{equation}
 Here, we have chosen the factor $2 \pi$ such that
 \begin{equation}
   \label{eq:photoprod_norm_00}
-  H_0(0, 0)
-  = N
+  \rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0}
+  = \sum_{k = 1}^{N_\text{meas}} w_k
+  = N_\text{sub}
   \quad\text{because}\quad
   f_{0, 0 0}^\text{meas}(\Omega, \Phi)
   = \frac{1}{2 \pi}
-  = \text{const}.
+  = \text{const},
 \end{equation}
-This is equivalent to \cref{eq:diffraction_norm_00}.
+where $N_\text{sub}$~is the number of background-subtracted events.
+This is equivalent to \cref{eq:event_weights_norm}.  Note that for
+unweighted events $w_k = 1~ \forall k$ and hence
+$\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0} = N_\text{meas}$.
 
-With the above definitions, we can use the same formalism described in
+With the above definitions, we can use the same formalism as in
 \cref{sec:diffraction:estimation_uncert} to calculate the
 estimates~$\hat{\vect{H}}$ of the physical moments
 from~$\hat{\vect{H}}_\text{meas}$ using
@@ -1060,37 +1061,93 @@ that $\mat{I}^\text{acc}$~is invertible.} and to propagate the
 uncertainties from~$\hat{\vect{H}}_\text{meas}$ to~$\hat{\vect{H}}$
 using \cref{eq:complex_uncert_prop}.  For the uncertainty propagation,
 we estimate the Hermitian and the pseudo-covariance matrix for the
-measured moments using the sample covariance analogous to
+measured moments using the weighted sample covariance with frequency
+weights analogous to
 \cref{eq:diffraction_sample_cov_hermit_meas,eq:diffraction_sample_cov_pseudo_meas}:
 \begin{align}
-  \rBrk[1]{\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{meas}}}_{i, L M; j, L' M'}
-  ={}& \cov[2]{\hat{H}_i^\text{meas}(L, M), \hat{H}_j^\text{meas}(L', M')} \notag
+  \rBrk[1]{\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}}_{i, L M; j, L' M'}
+  ={}& \covEst[1]{\hat{H}_i^\text{meas}(L, M), \hat{H}_j^\text{meas}(L', M')} \nonumber
   \\
   \label{eq:photoprod_sample_cov_hermit_meas}
-  ={}& \frac{4 \pi^2\, N_\text{meas}}{N_\text{meas} - 1} \sum_{k = 1}^{N_\text{meas}}
-  \sBrk[2]{f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)   - \Mean{f_{i, L M}^\text{meas}(\Omega, \Phi)}}
-  \sBrk[2]{f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \Mean{f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}^*
+  ={}& \begin{multlined}[t][0.7\columnwidth]
+    4 \pi^2\, \frac{\sum_{k = 1}^{N_\text{meas}} w_k^2}{\sum_{k = 1}^{N_\text{meas}} w_k - 1} \sum_{k = 1}^{N_\text{meas}} w_k
+    \sBrk[2]{f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)   - \meanWeighted{f_{i, L M}^\text{meas}(\Omega, \Phi)}}
+    \\
+    {} \times \sBrk[2]{f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \meanWeighted{f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}^*
+  \end{multlined}
   \\
   \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{i, L M; j, L' M'}
-  ={}& \cov[2]{\hat{H}_i^\text{meas}(L, M), \hat{H}_j^{\text{meas}\, *}(L', M')} \notag
+  ={}& \covEst[1]{\hat{H}_i^\text{meas}(L, M), \hat{H}_j^{\text{meas}\, *}(L', M')} \nonumber
   \\
   \label{eq:photoprod_sample_cov_pseudo_meas}
-  ={}& \frac{4 \pi^2\, N_\text{meas}}{N_\text{meas} - 1} \sum_{k = 1}^{N_\text{meas}}
-  \sBrk[2]{f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)   - \Mean{f_{i, L M}^\text{meas}(\Omega, \Phi)}}
-  \sBrk[2]{f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \Mean{f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}.
+  ={}& \begin{multlined}[t][0.7\columnwidth]
+    4 \pi^2\, \frac{\sum_{k = 1}^{N_\text{meas}} w_k^2}{\sum_{k = 1}^{N_\text{meas}} w_k - 1} \sum_{k = 1}^{N_\text{meas}} w_k
+    \sBrk[2]{f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)   - \meanWeighted{f_{i, L M}^\text{meas}(\Omega, \Phi)}}
+    \\
+    {} \times \sBrk[2]{f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \meanWeighted{f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}.
+  \end{multlined}
 \end{align}
 
+Note that because of \cref{eq:photoprod_norm_00}
+\begin{equation}
+  \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{i, L M; 0, 0 0}
+  = \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{0, 0 0; j, L' M'}
+  = 0
+  \quad\text{and in particular}\quad
+  \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{0, 0 0; 0, 0 0}
+  = \hat{\sigma}_{\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0}}
+  = 0.
+\end{equation}
 
-\subsection{Example}%
+For unweighted events,
+\cref{eq:photoprod_sample_cov_hermit_meas,eq:photoprod_sample_cov_pseudo_meas}
+reduce to
+\begin{align}
+  \rBrk[1]{\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}}_{i, L M; j, L' M'}
+  ={}& \begin{multlined}[t][0.7\columnwidth]
+    4 \pi^2\, \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{k = 1}^{N_\text{meas}}
+    \sBrk[2]{f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)   - \mean{f_{i, L M}^\text{meas}(\Omega, \Phi)}}
+    \\
+    {} \times \sBrk[2]{f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \mean{f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}^*
+  \end{multlined}
+  \\
+  \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{i, L M; j, L' M'}
+  ={}& \begin{multlined}[t][0.7\columnwidth]
+    4 \pi^2\, \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{k = 1}^{N_\text{meas}}
+    \sBrk[2]{f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)   - \mean{f_{i, L M}^\text{meas}(\Omega, \Phi)}}
+    \\
+    {} \times \sBrk[2]{f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \mean{f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}.
+  \end{multlined}
+\end{align}
+with the sample mean
+\begin{equation}
+  \mean{f_{i, L M}^\text{meas}(\Omega, \Phi)}
+  = \frac{1}{N_\text{meas}} \sum_{k = 1}^{N_\text{meas}} f_{i, L M}^\text{meas}(\Omega_k, \Phi_k).
+\end{equation}
+This is analogous to Monte Carlo integration (see \eg\
+\refCite{wikipedia:MonteCarloIntegration}).
+
+Note that from a numerical standpoint
+\cref{eq:photoprod_sample_cov_hermit_meas,eq:photoprod_sample_cov_pseudo_meas}
+are not the most advantageous way to compute the covariance.  See
+\refCite{wikipedia:CovarianceAlgorithm} for more suitable numerical
+algorithms.
+
+
+\subsection{Examples}%
 \label{sec:photoprod:example}
 
+\subsubsection{Unweighted events}%
+\label{sec:photoprod:example_unweighted}
+
 To verify the approach described in \cref{sec:photoprod:moments_data}
-we perform a Monte Carlo input-output study.  In this study, we use
+for unweighted events we perform a Monte Carlo input-output study.  In
+this study, we use
 \cref{eq:photoprod_intensity_sum,eq:photoprod_intensity_components_refl,eq:photoprod_rho_0_refl,eq:photoprod_rho_1_refl,eq:photoprod_rho_2_refl}
-to calculate $\mathcal{I}(\Omega, \Phi)$ from a set of partial waves
-that consists of all allowed waves up to $\ell = 2$ in the
-reflectivity basis assuming a polarization of the beam photons of
-$P_\gamma = 1$.  The used amplitude values are given in
+to calculate $\intensity(\Omega, \Phi)$ from a set of partial-wave
+amplitudes that contains all allowed waves up to $\ell = 2$ in the
+reflectivity basis assuming a polarization of $P_\gamma = 1$ of the
+beam photons.  The used amplitude values are given in
 \cref{tab:photoprod_study_waveset}.  The resulting intensity
 distribution is shown in \cref{fig:photoprod_study_intensity}.
 
@@ -1153,7 +1210,7 @@ weighted intensity distribution (see
 of \num{1000}~events (see \cref{fig:photoprod_study_data}).  This
 sample is used to calculate the values of the measured
 moments~$\hat{\vect{H}}_\text{meas}$ using
-\cref{eq:photoprod_moments_meas_estimate} as well as their augmented
+\cref{eq:photoprod_moments_meas_estimate_weighted} as well as their augmented
 covariance matrix using the approach described in
 \cref{fn:cov_aug_numpy}.
 
@@ -1178,14 +1235,14 @@ covariance matrix using the approach described in
   }%
   \caption{Input used to generate Monte Carlo data:
   \subfloatLabel{fig:photoprod_study_intensity}~Intensity distribution
-  $\mathcal{I}(\Omega, \Phi)$ calculated from the partial-wave
+  $\intensity(\Omega, \Phi)$ calculated from the partial-wave
   amplitudes listed in \cref{tab:photoprod_study_waveset}.
   \subfloatLabel{fig:photoprod_study_efficiency}~Hypothetical
   detection efficiency $\eta(\Omega, \Phi)$ as given by
   \cref{eq:photoprod_study_acc1}.
   \subfloatLabel{fig:photoprod_study_intensity_acc}~Intensity
   distribution weighted by the detection efficiency, \ie $\eta(\Omega,
-  \Phi)\, \mathcal{I}(\Omega, \Phi)$.
+  \Phi)\, \intensity(\Omega, \Phi)$.
   \subfloatLabel{fig:photoprod_study_data}~Monte Carlo data sample of
   \num{1000}~events randomly drawn from the distribution
   in~\subfloatLabel{fig:photoprod_study_intensity_acc}.}%
@@ -1193,10 +1250,10 @@ covariance matrix using the approach described in
 \end{figure}
 
 The acceptance integral matrix~$\mat{I}^\text{acc}$ is calculated
-using \cref{eq:photoprod_integral_matrix_mc} with \num{e7}~events that
-are sampled randomly from the detection efficiency $\eta(\Omega,
-\Phi)$ in \cref{eq:photoprod_study_acc1}.  Using this matrix, the
-physical moments are calculated from the measured moments using
+using \cref{eq:photoprod_integral_matrix_mc} based on \num{e7}~events
+that are sampled randomly from the detection efficiency $\eta(\Omega,
+\Phi)$ in \cref{eq:photoprod_study_acc1}.  Using~$\mat{I}^\text{acc}$,
+the physical moments are calculated from the measured moments using
 \cref{eq:diffraction_phys_moments,eq:complex_uncert_prop}.
 \Crefrange{fig:photoprod_study_output_H0}{fig:photoprod_study_output_H2}
 show the physical moments extracted from the Monte Carlo data in
@@ -1297,6 +1354,202 @@ are consistent with zero, which is indeed the case (see
 \end{figure}
 
 
+\clearpage
+\subsubsection{Weighted events}%
+\label{sec:photoprod:example_weighted}
+
+To test the case of weighted events, we perform a Monte Carlo
+input-output study where the physical intensity distribution is given
+by the sum of a signal and a background contribution, which both have
+different angular distributions.  The angular distribution of the
+signal is defined by the same partial-wave amplitudes already used in
+\cref{sec:photoprod:example_unweighted} (see
+\cref{tab:photoprod_study_waveset}).  For the angular distribution of
+the background component, we use the same set of waves, but different
+amplitude values, which are listed in
+\cref{tab:photoprod_study_waveset_bkg}.  In both cases, we again
+assume ideal beam-photon polarization, \ie $P_\gamma = 1$.  The two
+angular distributions of the intensity components are shown in
+\cref{fig:photoprod_study_weighted_intensity_sig,fig:photoprod_study_weighted_intensity_bkg}.
+
+\begin{table}[tbp]
+  \centering%
+  \renewcommand{\arraystretch}{1.2}%
+  \caption{Partial-wave amplitude values used to generate pseudodata
+  for the background component.  The wave notation is
+  $\ell_m^{(\refl)}$.}%
+  \label{tab:photoprod_study_waveset_bkg}%
+  \vspace*{1ex}%
+  \hfill%
+  \begin{tabular}{ll}
+    \toprule
+    \textbf{Partial wave} &
+    \textbf{Amplitude value} \\
+    \midrule
+    % negative-reflectivity waves
+    $S_0^{(-)}$    & $\hphantom{-}1.0$ \\
+    $P_{-1}^{(-)}$ & $-0.9 + 0.7 \imag$ \\
+    $P_0^{(-)}$    & $-0.6 + 0.4 \imag$ \\
+    $P_{+1}^{(-)}$ & $-0.9 - 0.8 \imag$ \\
+    $D_{-2}^{(-)}$ & $-1.0 - 0.7 \imag$ \\
+    $D_{-1}^{(-)}$ & $-0.8 - 0.7 \imag$ \\
+    $D_0^{(-)}$    & $\hphantom{-}0.4 + 0.3 \imag$ \\
+    $D_{+1}^{(-)}$ & $-0.6 - 0.1 \imag$ \\
+    $D_{+2}^{(-)}$ & $-0.1 - 0.9 \imag$ \\
+    \bottomrule
+  \end{tabular}
+  \hfill%
+  \begin{tabular}{ll}
+    \toprule
+    \textbf{Partial wave} &
+    \textbf{Amplitude value} \\
+    \midrule
+    % positive-reflectivity waves
+    $S_0^{(+)}$    & $\hphantom{-}0.5$ \\
+    $P_{-1}^{(+)}$ & $-1.0 + 0.8 \imag$ \\
+    $P_0^{(+)}$    & $-0.2 + 0.2 \imag$ \\
+    $P_{+1}^{(+)}$ & $\hphantom{-}0.0 - 0.3 \imag$ \\
+    $D_{-2}^{(+)}$ & $\hphantom{-}0.7 + 0.9 \imag$ \\
+    $D_{-1}^{(+)}$ & $-0.4 - 0.5 \imag$ \\
+    $D_0^{(+)}$    & $-0.3 + 0.2 \imag$ \\
+    $D_{+1}^{(+)}$ & $-1.0 - 0.4 \imag$ \\
+    $D_{+2}^{(+)}$ & $\hphantom{-}0.5 - 0.2 \imag$ \\
+    \bottomrule
+  \end{tabular}
+  \hfill\null%
+\end{table}
+
+\begin{figure}[tbp]
+  \centering%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_intensity_sig}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/no_acc/intensitySig}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_intensity_bkg}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/no_acc/intensityBkg}%
+  }%
+  \\%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_discr_var_10M}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/no_acc_10M/hDiscrVariableSim}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_data_10M}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/no_acc_10M/data}%
+  }%
+  \caption{\subfloatLabel{fig:photoprod_study_weighted_intensity_sig}~Intensity
+  distribution used to generate the signal component as defined by the
+  partial-wave amplitudes listed in
+  \cref{tab:photoprod_study_waveset}.
+  \subfloatLabel{fig:photoprod_study_weighted_intensity_bkg}~Intensity
+  distribution used to generate the background component as defined by
+  the partial-wave amplitudes listed in
+  \cref{tab:photoprod_study_waveset_bkg}.
+  \subfloatLabel{fig:photoprod_study_weighted_discr_var_10M}~Generated
+  distribution of the discriminatory variable.
+  \subfloatLabel{fig:photoprod_study_weighted_data_10M}~Monte Carlo
+  data sample of \num{2e7}~events randomly drawn from the distributions
+  in~\subfloatLabel{fig:photoprod_study_weighted_intensity_sig}
+  and~\subfloatLabel{fig:photoprod_study_weighted_intensity_bkg}
+  according to
+  \subfloatLabel{fig:photoprod_study_weighted_discr_var_10M}.}%
+  %\label{fig:photoprod_study_weighted}%
+\end{figure}
+
+The angular distributions are disentagled by applying a
+one-dimensional sideband subtraction in a hypothetical discriminating
+variable, which covers the range $[-1, +1]$.\footnote{In practice this
+could be, for example, an invariant mass distribution of one of the
+daughter particles.}  In this variable, the signal is generated
+according to a Gaussian, which is centered at~0 and has a standard
+deviation of~0.1, while the background is generated uniformly.  The
+signal band in the discriminating variable is $[-0.3, +0.3]$.  Events
+in this range, are assigned a weight of $w_i = +1$.  The sidebands are
+$[-1.0, -0.4]$ and $[+0.4, +1.0]$.  Events in these ranges are
+assigned a weight of $w_i = -1/2$.\todo{add bands as well as signal
+and background components to
+\cref{fig:photoprod_study_weighted_discr_var_10M}}
+
+To verify that the sideband subtraction works, we generate a random
+data sample containing \num{e7}~signal events and the same amount of
+background events.  \Cref{fig:photoprod_study_weighted_discr_var_10M}
+shows the resulting distribution of the discriminatory variable and
+\cref{fig:photoprod_study_weighted_data_10M} the angular distribution.
+As expected, we recover the angular distribution of the signal
+component by applying the sideband subtraction (\confer
+\cref{fig:photoprod_study_weighted_data_sb_subtr_10M} with
+\cref{fig:photoprod_study_weighted_intensity_sig}).
+
+\begin{figure}[tbp]
+  \centering%
+  \includegraphics[width=0.5\textwidth]{photoprod_weighted/no_acc_10M/dataSbSubtr}%
+  \caption{Signal sample with $N_\text{sub} = \num{9974322.5}$ events
+  obtained from \cref{fig:photoprod_study_weighted_data_10M} by
+  applying sideband subtraction using the discriminatory variable in
+  \cref{fig:photoprod_study_weighted_discr_var_10M}.  Compare to
+  \cref{fig:photoprod_study_weighted_intensity_sig}.}%
+  \label{fig:photoprod_study_weighted_data_sb_subtr_10M}%
+\end{figure}
+
+For the moment analysis, we weight the intensity distributions of the
+signal and the background component with the hypothetical detection
+efficiency in \cref{eq:photoprod_study_acc1}, which is shown in
+\cref{fig:photoprod_study_efficiency}.  From each of these weighted
+intensity distributions (see
+\cref{fig:photoprod_study_weighted_intensity_sig_acc,fig:photoprod_study_weighted_intensity_bkg_acc}),
+we randomly draw a sample of \num{1000}~events.  The distribution of
+the total sample in the discriminatory variable is shown in
+\cref{fig:photoprod_study_weighted_discr_var}, the corresponding
+angular distribution in \cref{fig:photoprod_study_weighted_data}.  The
+sample is used to calculate the values of the measured
+moments~$\hat{\vect{H}}_\text{meas}$ using
+\cref{eq:photoprod_moments_meas_estimate_weighted} as well as their
+augmented covariance matrix using the approach described in
+\cref{fn:cov_aug_numpy}.\todo{add bands as well as signal and
+background components to
+\cref{fig:photoprod_study_weighted_discr_var}}
+
+\begin{figure}[tbp]
+  \centering%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_intensity_sig_acc}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/intensitySig}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_intensity_bkg_acc}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/intensityBkg}%
+  }%
+  \\%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_discr_var}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hDiscrVariableSim}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_data}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/data}%
+  }%
+  \caption{\subfloatLabel{fig:photoprod_study_weighted_intensity_sig}~Intensity
+  distribution used to generate the signal component as defined by the
+  partial-wave amplitudes listed in
+  \cref{tab:photoprod_study_waveset}.
+  \subfloatLabel{fig:photoprod_study_weighted_intensity_bkg}~Intensity
+  distribution used to generate the background component as defined by
+  the partial-wave amplitudes listed in
+  \cref{tab:photoprod_study_waveset_bkg}.
+  \subfloatLabel{fig:photoprod_study_weighted_discr_var}~Generated
+  distribution of the discriminatory variable.
+  \subfloatLabel{fig:photoprod_study_weighted_data_10M}~Monte Carlo
+  data sample of \num{2e7}~events randomly drawn from the distributions
+  in~\subfloatLabel{fig:photoprod_study_weighted_intensity_sig}
+  and~\subfloatLabel{fig:photoprod_study_weighted_intensity_bkg}
+  according to
+  \subfloatLabel{fig:photoprod_study_weighted_discr_var}.}%
+  %\label{fig:photoprod_study_weighted}%
+\end{figure}
+
+
+\clearpage
 \subsection{Combining data samples and taking into account time dependence}%
 \label{sec:photoprod:comb_data}
 
@@ -1315,7 +1568,7 @@ by~$\prescript{(j)}{}{P_\gamma}$ and $\prescript{(j)}{}{\eta}(\Omega,
 \Phi)$, we calculate
 $\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}_\text{meas}$ and
 its covariance matrices for each of these data samples using
-\cref{eq:photoprod_moments_meas_estimate,eq:photoprod_sample_cov_hermit_meas,eq:photoprod_sample_cov_pseudo_meas}.
+\cref{eq:photoprod_moments_meas_estimate_weighted,eq:photoprod_sample_cov_hermit_meas,eq:photoprod_sample_cov_pseudo_meas}.
 For each data sample, we also generate an accepted phase-space Monte
 Carlo data sample using $\prescript{(j)}{}{\eta}(\Omega, \Phi)$.
 Based on these Monte Carlo data, we
@@ -1367,3 +1620,25 @@ for \cref{eq:photoprod_datasets_weighted_average} is
   \prescript{(j)}{}{\underaccent{\bar}{\mat{W}}}
   \sBrk[2]{\prescript{(j)}{}{\vphantom{\vect{H}}}\underaccent{\bar}{\hat{\vect{H}}} - \mean{\underaccent{\bar}{\hat{\vect{H}}}}}
 \end{equation}
+
+
+\todo{Discuss separation of reflectivities}
+
+\todo{Discuss background contributions}
+% \subsection{Background contributions}%
+% \label{sec:photoprod:background}
+
+% In practice, the data sample will not only contain the signal channel
+% but also background contributions from other channels.  This means in
+% general the measured intensity distribution is the sum of
+% $N_\text{channel}$~components indexed by~$j$, \ie
+% \begin{equation}
+%   \label{eq:photoprod_intensity_background}
+%   \intensity_\text{meas}(\Omega, \Phi)
+%   = \sum_{j = 1}^{N_\text{channel}} \prescript{(j)}{}{\eta}(\Omega, \Phi)\, \prescript{(j)}{}{\intensity}(\Omega, \Phi),
+% \end{equation}
+% where, \wolog, $j = 1$ corresponds to the signal channel.  For $j >
+% 1$, $\prescript{(j)}{}{\eta}(\Omega, \Phi)$ is the efficiency function
+% for background channel~$j$ reconstructed as the signal channel and
+% $\prescript{(j)}{}{\intensity}(\Omega, \Phi)$ is the physical
+% intensity distribution of this background channel.
