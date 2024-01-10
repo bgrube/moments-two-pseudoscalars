@@ -32,10 +32,10 @@ derive some equations.
 \end{figure}
 
 The analysis is based on the measured intensity distribution, \ie the
-number density of events, which is decomposed into partial-wave
-amplitudes:\footnote{This is the simplest possible formula, were we
-assume that the effect of the target spin is negligible and that all
-partial wave amplitudes are fully coherent.}
+number density distribution of events, which is decomposed into
+partial-wave amplitudes:\footnote{This is the simplest possible
+formula, were we assume that the effect of the target spin is
+negligible and that all partial wave amplitudes are fully coherent.}
 \begin{equation}
   \label{eq:diffraction_intensity}
   \intensity(\Omega; w, t)
@@ -266,7 +266,8 @@ we get
 \begin{equation}
   H(0, 0)
   = \frac{1}{\sqrt{4 \pi}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)
-  = \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{\substack{\ell m \\ \ell' m'}}^\infty \varrho^{\ell\, \ell}_{m\, m}.
+  = \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{\substack{\ell m \\ \ell' m'}}^\infty \delta_{\ell \ell'}\, \delta_{m m'}\, \varrho^{\ell\, \ell'}_{m\, m'}
+  = \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{\ell m}^\infty \varrho^{\ell\, \ell}_{m\, m}.
 \end{equation}
 This means, up to a factor of $1 / \sqrt{4 \pi}$, $H(0, 0)$ is the
 integral of the intensity over the phase space, which is identical to
@@ -313,7 +314,8 @@ For the remainder of this section we will use the moments defined in
   \label{eq:diffraction_moment_00_pw}
   H(0, 0)
   = \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)
-  = \sum_{\substack{\ell m \\ \ell' m'}}^\infty \varrho^{\ell\, \ell}_{m\, m}.
+  = \sum_{\substack{\ell m \\ \ell' m'}}^\infty \delta_{\ell \ell'}\, \delta_{m m'}\, \varrho^{\ell\, \ell'}_{m\, m'}
+  = \sum_{\ell m}^\infty \varrho^{\ell\, \ell}_{m\, m}.
 \end{equation}
 
 
@@ -717,10 +719,11 @@ Here, we assume that the event weights~$w_i$ are normalized such that
   \label{eq:event_weights_norm}
   \sum_{i = 1}^N w_i
   = N_\text{sub}
-  = H(0, 0)
+  = \hat{H}(0, 0)
 \end{equation}
 with $N_\text{sub}$~being the number of events after the background
-subtraction.  Note that for unweighted events $w_i = 1~ \forall i$.
+subtraction.  Note that for unweighted events $w_i = 1~ \forall i$ and
+hence $\hat{H}(0, 0) = N$.
 
 To estimate the covariances of the $\hat{H}(L, M)$, we assume that the
 event weights are constants and exploit that the events are
