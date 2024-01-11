@@ -708,20 +708,36 @@ means that unnormalized moments are expressed in units of events.
 
 In practice, events are often weighted to statistically subtract
 backgrounds.  To take these weights into account, we extend
-\cref{eq:diffraction_moments_estimate}:
+\cref{eq:diffraction_moments_estimate}:\footnote{In a
+side-band-subtraction scheme,
+\cref{eq:diffraction_moments_estimate_weighted} can be rewritten as
+\begin{equation}
+  \hat{H}(L, M)
+  = w_\text{center} \sum_{i = 1}^{N_\text{center}} f_{L M}(\Omega_i)
+  + w_\text{side}   \sum_{i = 1}^{N_\text{side}} f_{L M}(\Omega_i)
+  = w_\text{center}\, \hat{H}_\text{center}(L, M)
+  + w_\text{side}\,   \hat{H}_\text{side}(L, M).
+\end{equation}
+This means the background-subtracted moment can be expressed as the
+weighted sum of the moment $\hat{H}_\text{center}(L, M)$ of the
+$N_\text{center}$~events in the signal band, which contains signal and
+background, and the moment $\hat{H}_\text{side}(L, M)$ of the
+$N_\text{side}$~events in the side bands, which contain only
+background.  Here, $w_\text{center}$~and~$w_\text{side}$ are the
+weights of the respective bands.}
 \begin{equation}
   \label{eq:diffraction_moments_estimate_weighted}
   \hat{H}(L, M)
   = \sum_{i = 1}^N w_i\, f_{L M}(\Omega_i).
 \end{equation}
-Here, we assume that the event weights~$w_i$ are normalized such that
+We assume that the event weights~$w_i$ are normalized such that
 \begin{equation}
   \label{eq:event_weights_norm}
   \sum_{i = 1}^N w_i
-  = N_\text{sub}
+  = N_\text{sig}
   = \hat{H}(0, 0)
 \end{equation}
-with $N_\text{sub}$~being the number of events after the background
+with $N_\text{sig}$~being the number of events after the background
 subtraction.  Note that for unweighted events $w_i = 1~ \forall i$ and
 hence $\hat{H}(0, 0) = N$.
 
