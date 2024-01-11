@@ -1296,7 +1296,7 @@ are consistent with zero, which is indeed the case (see
   \cref{tab:photoprod_study_waveset} and the detection efficiency in
   \cref{eq:photoprod_study_acc1}, with the expected values (blue
   lines).  Both sets of values are normalized to the value of $H_0(0,
-  0)$ in the set.
+  0)$ in the respective set.
   \subfloatLabel{fig:photoprod_study_comparison_H0_re}~shows the real
   part of $H_0(L, M)$,
   \subfloatLabel{fig:photoprod_study_comparison_H0_im}~the imaginary
@@ -1431,12 +1431,12 @@ angular distributions of the intensity components are shown in
   }%
   \\%
   \subfloat[][]{%
-    \label{fig:photoprod_study_weighted_discr_var_10M}%
-    \includegraphics[width=0.5\textwidth]{photoprod_weighted/no_acc_10M/hDiscrVariableSim}%
-  }%
-  \subfloat[][]{%
     \label{fig:photoprod_study_weighted_data_10M}%
     \includegraphics[width=0.5\textwidth]{photoprod_weighted/no_acc_10M/data}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_discr_var_10M}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/no_acc_10M/hDiscrVariableSim}%
   }%
   \caption{\subfloatLabel{fig:photoprod_study_weighted_intensity_sig}~Intensity
   distribution used to generate the signal component as defined by the
@@ -1446,38 +1446,40 @@ angular distributions of the intensity components are shown in
   distribution used to generate the background component as defined by
   the partial-wave amplitudes listed in
   \cref{tab:photoprod_study_waveset_bkg}.
-  \subfloatLabel{fig:photoprod_study_weighted_discr_var_10M}~Generated
-  distribution of the discriminatory variable.
-  \subfloatLabel{fig:photoprod_study_weighted_data_10M}~Monte Carlo
-  data sample of \num{2e7}~events randomly drawn from the distributions
+  \subfloatLabel{fig:photoprod_study_weighted_data_10M}~Total Monte
+  Carlo data sample obtained by randomly drawing \num{e7}~events from
+  each of the distributions
   in~\subfloatLabel{fig:photoprod_study_weighted_intensity_sig}
-  and~\subfloatLabel{fig:photoprod_study_weighted_intensity_bkg}
-  according to
-  \subfloatLabel{fig:photoprod_study_weighted_discr_var_10M}.}%
-  %\label{fig:photoprod_study_weighted}%
+  and~\subfloatLabel{fig:photoprod_study_weighted_intensity_bkg}.
+  \subfloatLabel{fig:photoprod_study_weighted_discr_var_10M}~Distribution
+  of the discriminatory variable for the total Monte Carlo data sample
+  in~\subfloatLabel{fig:photoprod_study_weighted_data_10M}.  The
+  shaded regions indicate the signal and side bands.}%
+  \label{fig:photoprod_study_weighted}%
 \end{figure}
 
-The angular distributions are disentagled by applying a
+The angular distributions are disentangled by applying a
 one-dimensional sideband subtraction in a hypothetical discriminating
-variable, which covers the range $[-1, +1]$.\footnote{In practice this
-could be, for example, an invariant mass distribution of one of the
-daughter particles.}  In this variable, the signal is generated
-according to a Gaussian, which is centered at~0 and has a standard
-deviation of~0.1, while the background is generated uniformly.  The
-signal band in the discriminating variable is $[-0.3, +0.3]$.  Events
-in this range, are assigned a weight of $w_i = +1$.  The sidebands are
-$[-1.0, -0.4]$ and $[+0.4, +1.0]$.  Events in these ranges are
-assigned a weight of $w_i = -1/2$.\todo{add bands as well as signal
-and background components to
+variable, which covers the range $[-1, +1]$.\footnote{In practice,
+this could be, for example, the invariant mass distribution of an
+unstable daughter particle.}  In this variable, the signal is
+generated according to a Gaussian, which is centered at~0 and has a
+standard deviation of~0.1, while the background is generated
+uniformly.  The signal band in the discriminating variable is $[-0.3,
++0.3]$.  Events in this range, are assigned a weight of $w_k = +1$.
+The sidebands are $[-1.0, -0.4]$ and $[+0.4, +1.0]$.  Events in these
+ranges are assigned a weight of $w_k = -1/2$.\todo{add bands as well
+as signal and background components to
 \cref{fig:photoprod_study_weighted_discr_var_10M}}
 
 To verify that the sideband subtraction works, we generate a random
 data sample containing \num{e7}~signal events and the same amount of
-background events.  \Cref{fig:photoprod_study_weighted_discr_var_10M}
-shows the resulting distribution of the discriminatory variable and
-\cref{fig:photoprod_study_weighted_data_10M} the angular distribution.
-As expected, we recover the angular distribution of the signal
-component by applying the sideband subtraction (\confer
+background events.  \Cref{fig:photoprod_study_weighted_data_10M} shows
+the resulting angular distribution and
+\cref{fig:photoprod_study_weighted_discr_var_10M}  the distribution of
+the discriminatory variable.  As expected, we recover the angular
+distribution of the signal component by applying the sideband
+subtraction (\confer
 \cref{fig:photoprod_study_weighted_data_sb_subtr_10M} with
 \cref{fig:photoprod_study_weighted_intensity_sig}).
 
@@ -1506,9 +1508,7 @@ sample is used to calculate the values of the measured
 moments~$\hat{\vect{H}}_\text{meas}$ using
 \cref{eq:photoprod_moments_meas_estimate_weighted} as well as their
 augmented covariance matrix using the approach described in
-\cref{fn:cov_aug_numpy}.\todo{add bands as well as signal and
-background components to
-\cref{fig:photoprod_study_weighted_discr_var}}
+\cref{fn:cov_aug_numpy}.
 
 \begin{figure}[tbp]
   \centering%
@@ -1522,12 +1522,12 @@ background components to
   }%
   \\%
   \subfloat[][]{%
-    \label{fig:photoprod_study_weighted_discr_var}%
-    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hDiscrVariableSim}%
-  }%
-  \subfloat[][]{%
     \label{fig:photoprod_study_weighted_data}%
     \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/data}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_discr_var}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hDiscrVariableSim}%
   }%
   \caption{\subfloatLabel{fig:photoprod_study_weighted_intensity_sig}~Intensity
   distribution used to generate the signal component as defined by the
@@ -1537,15 +1537,119 @@ background components to
   distribution used to generate the background component as defined by
   the partial-wave amplitudes listed in
   \cref{tab:photoprod_study_waveset_bkg}.
-  \subfloatLabel{fig:photoprod_study_weighted_discr_var}~Generated
-  distribution of the discriminatory variable.
-  \subfloatLabel{fig:photoprod_study_weighted_data_10M}~Monte Carlo
-  data sample of \num{2e7}~events randomly drawn from the distributions
+  \subfloatLabel{fig:photoprod_study_weighted_data_10M}~Total Monte
+  Carlo data sample obtained by randomly drawing \num{e3}~events from
+  each of the distributions
   in~\subfloatLabel{fig:photoprod_study_weighted_intensity_sig}
-  and~\subfloatLabel{fig:photoprod_study_weighted_intensity_bkg}
-  according to
-  \subfloatLabel{fig:photoprod_study_weighted_discr_var}.}%
-  %\label{fig:photoprod_study_weighted}%
+  and~\subfloatLabel{fig:photoprod_study_weighted_intensity_bkg}.
+  \subfloatLabel{fig:photoprod_study_weighted_discr_var}~Distribution
+  of the discriminatory variable for the total Monte Carlo data sample
+  in~\subfloatLabel{fig:photoprod_study_weighted_data_10M}.  The
+  shaded regions indicate the signal and side bands.}%
+  \label{fig:photoprod_study_weighted_input}%
+\end{figure}
+
+Since the detection efficiency is the same as in the unweighted case,
+we use the same acceptance integral matrix as in
+\cref{sec:photoprod:example_unweighted} to calculate the physical
+moments.
+\Crefrange{fig:photoprod_study_weighted_output_H0}{fig:photoprod_study_weighted_output_H2}
+show the physical moments of the signal component extracted from the
+Monte Carlo data in \cref{fig:photoprod_study_weighted_data} and
+compare them to the expected moment values calculated from the
+partial-wave amplitudes in \cref{tab:photoprod_study_waveset} using
+\crefrange{eq:photoprod_moment_0_pw_refl}{eq:photoprod_moment_2_pw_refl}.
+As expected, the two sets of values  agree within statistical
+uncertainties (see
+\cref{fig:photoprod_study_weighted_residual_H0_re,fig:photoprod_study_weighted_residual_H1_re,fig:photoprod_study_weighted_residual_H2_im}).
+Since the $H_0(L, M)$ and $H_1(L, M)$ are expected to be real-valued
+and $H_2(L, M)$ to be purely imaginary (see
+\cref{eq:photoprodP_moments_real_imag}), we also verify that the
+imaginary parts of $H_{0, 1}(L, M)$ and the real parts of $H_2(L, M)$
+are consistent with zero, which is indeed the case (see
+\cref{fig:photoprod_study_weighted_comparison_H0_im,fig:photoprod_study_weighted_residual_H0_im,fig:photoprod_study_weighted_comparison_H1_im,fig:photoprod_study_weighted_residual_H1_im,fig:photoprod_study_weighted_comparison_H2_re,fig:photoprod_study_weighted_residual_H2_re}).
+
+\begin{figure}[tbp]
+  \centering%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_comparison_H0_re}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hmass_1.50_Compare_H0_Re}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_comparison_H0_im}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hmass_1.50_Compare_H0_Im}%
+  }%
+  \\%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_residual_H0_re}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hmass_1.50_Residuals_H0_Re}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_residual_H0_im}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hmass_1.50_Residuals_H0_Im}%
+  }%
+  \caption{Upper row: Comparison of the physical moments $H_0(L, M)$
+  (red points with uncertainties) extracted from the
+  sideband-subtracted Monte Carlo data, which are generated using the
+  partial-wave amplitudes in
+  \cref{tab:photoprod_study_waveset,tab:photoprod_study_waveset_bkg}
+  and the detection efficiency in \cref{eq:photoprod_study_acc1}, with
+  the expected values (blue lines).  Both sets of values are
+  normalized to the value of $H_0(0, 0)$ in the respective set.
+  \subfloatLabel{fig:photoprod_study_comparison_H0_re}~shows the real
+  part of $H_0(L, M)$,
+  \subfloatLabel{fig:photoprod_study_comparison_H0_im}~the imaginary
+  part.  Note that moments with $L > 4$ are expected to be zero due to
+  the chosen wave set.  Lower row: corresponding residuals.}%
+  \label{fig:photoprod_study_weighted_output_H0}%
+\end{figure}
+
+\begin{figure}[tbp]
+  \centering%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_comparison_H1_re}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hmass_1.50_Compare_H1_Re}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_comparison_H1_im}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hmass_1.50_Compare_H1_Im}%
+  }%
+  \\%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_residual_H1_re}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hmass_1.50_Residuals_H1_Re}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_residual_H1_im}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hmass_1.50_Residuals_H1_Im}%
+  }%
+  \caption{Same as \cref{fig:photoprod_study_weighted_output_H0} but
+  for $H_1(L, M)$.}%
+  \label{fig:photoprod_study_weighted_output_H1}%
+\end{figure}
+
+\begin{figure}[tbp]
+  \centering%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_comparison_H2_re}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hmass_1.50_Compare_H2_Re}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_comparison_H2_im}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hmass_1.50_Compare_H2_Im}%
+  }%
+  \\%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_residual_H2_re}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hmass_1.50_Residuals_H2_Re}%
+  }%
+  \subfloat[][]{%
+    \label{fig:photoprod_study_weighted_residual_H2_im}%
+    \includegraphics[width=0.5\textwidth]{photoprod_weighted/acc_1/hmass_1.50_Residuals_H2_Im}%
+  }%
+  \caption{Same as \cref{fig:photoprod_study_weighted_output_H0} but
+  for $H_2(L, M)$.}%
+  \label{fig:photoprod_study_weighted_output_H2}%
 \end{figure}
 
 
