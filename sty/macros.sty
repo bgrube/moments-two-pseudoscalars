@@ -262,6 +262,7 @@
 \newcommand*{\cbrk}[1]{\ensuremath{\{{#1}\}}\xspace}
 \newcommand*{\cBrk}[2][-1]{\ensuremath{\cbr[#1]{#2}}\xspace}
 % other brackets
+\renewcommand*{\Set}[2][-1]{\ensuremath{\cBrk[#1]{#2}}\xspace}  % commath only defines \set; overwrite definition from braket
 % define macro for angle brackets analogous to commath macros
 % the value for the optional argument ranges from -1 to 4 with higher values resulting in larger delimiters
 \providecommand{\enangle}[2][-1]{
