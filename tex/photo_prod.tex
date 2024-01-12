@@ -1669,9 +1669,10 @@ matrix~$\mat{I}^\text{acc}$ are functions of time.
 Given $N_\text{sample}$~data samples indexed by~$j$, each of which
 taken using constant experimental conditions represented
 by~$\prescript{(j)}{}{P_\gamma}$ and $\prescript{(j)}{}{\eta}(\Omega,
-\Phi)$, we calculate
-$\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}_\text{meas}$ and
-its covariance matrices for each of these data samples using
+\Phi)$, we calculate the
+set~$\Set[1]{\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}_\text{meas}}$
+and the corresponding set of covariance matrices for all data samples
+using
 \cref{eq:photoprod_moments_meas_estimate_weighted,eq:photoprod_sample_cov_hermit_meas,eq:photoprod_sample_cov_pseudo_meas}.
 For each data sample, we also generate an accepted phase-space Monte
 Carlo data sample using $\prescript{(j)}{}{\eta}(\Omega, \Phi)$.
@@ -1686,7 +1687,7 @@ estimates for the physical moments for each data sample using
 \end{equation}
 Note that since the data samples are statistically independent and we
 corrected for the different experimental conditions, the set
-$\cBrk[0]{\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}$ of
+$\Set[1]{\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}$ of
 estimates for the physical moments from the various data samples
 should be statistically consistent.  Consequently, the values of the
 physical moments can be combined using the weighted
@@ -1724,6 +1725,7 @@ for \cref{eq:photoprod_datasets_weighted_average} is
   \prescript{(j)}{}{\underaccent{\bar}{\mat{W}}}
   \sBrk[2]{\prescript{(j)}{}{\vphantom{\vect{H}}}\underaccent{\bar}{\hat{\vect{H}}} - \mean{\underaccent{\bar}{\hat{\vect{H}}}}}
 \end{equation}
+\todo{What is the NDF for weighted events?}
 
 
 \todo{Discuss separation of reflectivities}
