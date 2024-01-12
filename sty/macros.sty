@@ -262,10 +262,33 @@
 \newcommand*{\cbrk}[1]{\ensuremath{\{{#1}\}}\xspace}
 \newcommand*{\cBrk}[2][-1]{\ensuremath{\cbr[#1]{#2}}\xspace}
 % other brackets
-\newcommand*{\mean}[1]{\ensuremath{\langle{#1}\rangle}\xspace}
-\newcommand*{\Mean}[1]{\ensuremath{\left\langle{#1}\right\rangle}\xspace}  % commath has no macro for angle brackets
-\newcommand*{\meanWeighted}[1]{\ensuremath{\langle{#1}\rangle_{w}}\xspace}
-\newcommand*{\MeanWeighted}[1]{\ensuremath{\left\langle{#1}\right\rangle_{\!w}}\xspace}  % commath has no macro for angle brackets
+% define macro for angle brackets analogous to commath macros
+% the value for the optional argument ranges from -1 to 4 with higher values resulting in larger delimiters
+\providecommand{\enangle}[2][-1]{
+  \ensuremath{\mathinner{
+    \ifthenelse{\equal{#1}{-1}}{
+    \!\left\langle#2\right\rangle}{}
+    \ifthenelse{\equal{#1}{0}}{
+    \langle#2\rangle}{}
+    \ifthenelse{\equal{#1}{1}}{
+    \!\bigl\langle#2\bigr\rangle}{}
+    \ifthenelse{\equal{#1}{2}}{
+    \!\Bigl\langle#2\Bigr\rangle}{}
+    \ifthenelse{\equal{#1}{3}}{
+    \!\biggl\langle#2\biggr\rangle}{}
+    \ifthenelse{\equal{#1}{4}}{
+    \!\Biggl\langle#2\Biggr\rangle}{}
+  }}
+}
+% \newcommand*{\Mean}[1]{\ensuremath{\left\langle{#1}\right\rangle}\xspace}
+\newcommand*{\Mean}[2][-1]{\ensuremath{\enangle[#1]{#2}}\xspace}
+% \newcommand*{\mean}[1]{\ensuremath{\langle{#1}\rangle}\xspace}
+\newcommand*{\mean}[1]{\ensuremath{\Mean[0]{#1}}\xspace}
+% \newcommand*{\meanWeighted}[1]{\ensuremath{\langle{#1}\rangle_{w}}\xspace}
+% \newcommand*{\MeanWeighted}[1]{\ensuremath{\left\langle{#1}\right\rangle_{\!w}}\xspace}
+\newcommand*{\MeanWeighted}[2][-1]{\ensuremath{\Mean[#1]{#2}_{\!w}}\xspace}
+% \newcommand*{\meanWeighted}[1]{\ensuremath{\mean{#1}_{w}}\xspace}
+\newcommand*{\meanWeighted}[1]{\ensuremath{\MeanWeighted[0]{#1}}\xspace}
 \renewcommand*{\abs}[1]{\ensuremath{\vert{#1}\vert}\xspace}
 \newcommand*{\Abs}[2][-1]{\ensuremath{\envert[#1]{#2}}\xspace}
 \renewcommand*{\norm}[1]{\ensuremath{\|{#1}\|}\xspace}
