@@ -21,6 +21,7 @@
 \definecolor[named]{kBlue+1}{rgb}{0,0,0.8}
 \definecolor[named]{kRed+1}{rgb}{0.8,0,0}
 \definecolor[named]{kGreen+2}{rgb}{0,0.6,0}
+% darker colors to emphasize text
 \definecolor{r}{HTML}{D45954}
 \definecolor{g}{HTML}{2e9e2e}
 \definecolor{b}{HTML}{5954D9}
@@ -137,6 +138,7 @@
 \newcommand*{\orderOf}[1]{\ensuremath{\mathcal{O}(#1)}\xspace}
 \newcommand*{\imp}{\ensuremath{\Longrightarrow}\xspace}
 \newcommand*{\cVec}[1]{\ensuremath{\begin{pmatrix} #1 \end{pmatrix}}\xspace}  % column vector
+\newcommand*{\rVec}[1]{\ensuremath{\begin{pmatrix} #1 \end{pmatrix}}\xspace}  % row vector
 
 
 % ------------------------------------------------------------------------------
@@ -145,10 +147,12 @@
 % alternatively the "physics" package could be used
 \renewcommand*{\Re}[2][]{\operatorname{Re}\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
 \renewcommand*{\Im}[2][]{\operatorname{Im}\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
-\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\trace}{Tr}
+\newcommand*{\tr}{\trace\!}  % trace
+\DeclareMathOperator{\rank}{rank}
+\newcommand*{\rk}{\rank\!}  % trace
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator*{\argmax}{arg\,max}
-% \newcommand*{\tr}{\trace\!}  % trace
 \DeclareMathOperator{\exptValSym}{E}             % expectation value
 \newcommand*{\exptVal}[2][]{\exptValSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
 \DeclareMathOperator{\exptValEstSym}{E}          % estimate for expectation value
@@ -173,7 +177,77 @@
 \newcommand*{\mustBeEq}{\overset{!}{=}}
 \newcommand*{\equalUsing}[1]{\overset{\text{#1}}{=}}  % equal sign with overset text
 \newcommand*{\equalUsingTwo}[2]{\overset{\text{#1}}{\underset{\text{#2}}{=}}}  % equal sign with over and underset text
+\newcommand{\simproptoimpl}[2]{%
+  \mathrel{%
+    \setbox0=\hbox{$#1\sim$}%
+    \setbox2=\hbox{%
+      \rlap{\hbox{$#1\propto$}}%
+      \lower1.1\ht0\box0%
+    }%
+    \raise0.25\ht2\box2%
+  }%
+}
+\newcommand{\simpropto}{\mathpalette\simproptoimpl\relax}  % approximately proportional; see https://tex.stackexchange.com/a/33555
 \newcommand*{\arrowLimit}[1]{\xrightarrow{#1}}  % arrow with overset limit
+
+
+% ------------------------------------------------------------------------------
+% brackets (see also commath package)
+% macros with capital letter produce automatically sized brackets (no
+% optional argument)
+% the optional argument of these macros can be used to select the
+% bracket size by giving values between 0 and 4
+% round brackets
+\newcommand*{\rbrk}[1]{\ensuremath{({#1})}\xspace}
+\newcommand*{\rBrk}[2][-1]{\ensuremath{\del[#1]{#2}}\xspace}
+% square brackets
+\newcommand*{\sbrk}[1]{\ensuremath{[{#1}]}\xspace}
+\newcommand*{\sBrk}[2][-1]{\ensuremath{\sbr[#1]{#2}}\xspace}
+% curly bracket
+\newcommand*{\cbrk}[1]{\ensuremath{\{{#1}\}}\xspace}
+\newcommand*{\cBrk}[2][-1]{\ensuremath{\cbr[#1]{#2}}\xspace}
+% other brackets
+\renewcommand*{\set}[1]{\ensuremath{\cbrk{#1}}\xspace}          % \set defined in commath has too much spacing
+\renewcommand*{\Set}[2][-1]{\ensuremath{\cBrk[#1]{#2}}\xspace}  % commath only defines \set; overwrite definition from braket
+% define macro for angle brackets analogous to commath macros
+% the value for the optional argument ranges from -1 to 4 with higher values resulting in larger delimiters
+\providecommand{\enangle}[2][-1]{
+  \ensuremath{\mathinner{
+    \ifthenelse{\equal{#1}{-1}}{
+    \!\left\langle#2\right\rangle}{}
+    \ifthenelse{\equal{#1}{0}}{
+    \langle#2\rangle}{}
+    \ifthenelse{\equal{#1}{1}}{
+    \!\bigl\langle#2\bigr\rangle}{}
+    \ifthenelse{\equal{#1}{2}}{
+    \!\Bigl\langle#2\Bigr\rangle}{}
+    \ifthenelse{\equal{#1}{3}}{
+    \!\biggl\langle#2\biggr\rangle}{}
+    \ifthenelse{\equal{#1}{4}}{
+    \!\Biggl\langle#2\Biggr\rangle}{}
+  }}
+}
+% \newcommand*{\Mean}[1]{\ensuremath{\left\langle{#1}\right\rangle}\xspace}
+\newcommand*{\Mean}[2][-1]{\ensuremath{\enangle[#1]{#2}}\xspace}
+% \newcommand*{\mean}[1]{\ensuremath{\langle{#1}\rangle}\xspace}
+\newcommand*{\mean}[1]{\ensuremath{\Mean[0]{#1}}\xspace}
+% \newcommand*{\meanWeighted}[1]{\ensuremath{\langle{#1}\rangle_{w}}\xspace}
+% \newcommand*{\MeanWeighted}[1]{\ensuremath{\left\langle{#1}\right\rangle_{\!w}}\xspace}
+\newcommand*{\MeanWeighted}[2][-1]{\ensuremath{\Mean[#1]{#2}_{\!w}}\xspace}
+% \newcommand*{\meanWeighted}[1]{\ensuremath{\mean{#1}_{w}}\xspace}
+\newcommand*{\meanWeighted}[1]{\ensuremath{\MeanWeighted[0]{#1}}\xspace}
+\renewcommand*{\abs}[1]{\ensuremath{\vert{#1}\vert}\xspace}
+\newcommand*{\Abs}[2][-1]{\ensuremath{\envert[#1]{#2}}\xspace}
+\renewcommand*{\norm}[1]{\ensuremath{\|{#1}\|}\xspace}
+\newcommand*{\Norm}[2][-1]{\ensuremath{\enVert[#1]{#2}}\xspace}
+\newcommand*{\evalAt}[2]{\ensuremath{\eval[0]{#1}_{#2}}\xspace}
+\newcommand*{\EvalAt}[3][-1]{\ensuremath{\eval[#1]{#2}_{#3}}\xspace}
+% add larger brackets than \Bigg
+% see https://tex.stackexchange.com/a/6796
+\newcommand\biggg{\bBigg@{3}}
+\newcommand\Biggg{\bBigg@{3.5}}
+\newcommand\bigggg{\bBigg@{4}}
+\newcommand\Bigggg{\bBigg@{4.5}}
 
 
 % ------------------------------------------------------------------------------
@@ -244,64 +318,6 @@
 \newcommand*{\intensity}{\ensuremath{\mathcal{I}}\xspace}
 \newcommand*{\prodAmp}{\ensuremath{\mathcal{T}}\xspace}
 \newcommand*{\decayAmp}{\ensuremath{\Psi}\xspace}
-
-
-% ------------------------------------------------------------------------------
-% brackets (see also commath package)
-% macros with capital letter produce automatically sized brackets (no
-% optional argument)
-% the optional argument of these macros can be used to select the
-% bracket size by giving values between 0 and 4
-% round brackets
-\newcommand*{\rbrk}[1]{\ensuremath{({#1})}\xspace}
-\newcommand*{\rBrk}[2][-1]{\ensuremath{\del[#1]{#2}}\xspace}
-% square brackets
-\newcommand*{\sbrk}[1]{\ensuremath{[{#1}]}\xspace}
-\newcommand*{\sBrk}[2][-1]{\ensuremath{\sbr[#1]{#2}}\xspace}
-% curly bracket
-\newcommand*{\cbrk}[1]{\ensuremath{\{{#1}\}}\xspace}
-\newcommand*{\cBrk}[2][-1]{\ensuremath{\cbr[#1]{#2}}\xspace}
-% other brackets
-\renewcommand*{\Set}[2][-1]{\ensuremath{\cBrk[#1]{#2}}\xspace}  % commath only defines \set; overwrite definition from braket
-% define macro for angle brackets analogous to commath macros
-% the value for the optional argument ranges from -1 to 4 with higher values resulting in larger delimiters
-\providecommand{\enangle}[2][-1]{
-  \ensuremath{\mathinner{
-    \ifthenelse{\equal{#1}{-1}}{
-    \!\left\langle#2\right\rangle}{}
-    \ifthenelse{\equal{#1}{0}}{
-    \langle#2\rangle}{}
-    \ifthenelse{\equal{#1}{1}}{
-    \!\bigl\langle#2\bigr\rangle}{}
-    \ifthenelse{\equal{#1}{2}}{
-    \!\Bigl\langle#2\Bigr\rangle}{}
-    \ifthenelse{\equal{#1}{3}}{
-    \!\biggl\langle#2\biggr\rangle}{}
-    \ifthenelse{\equal{#1}{4}}{
-    \!\Biggl\langle#2\Biggr\rangle}{}
-  }}
-}
-% \newcommand*{\Mean}[1]{\ensuremath{\left\langle{#1}\right\rangle}\xspace}
-\newcommand*{\Mean}[2][-1]{\ensuremath{\enangle[#1]{#2}}\xspace}
-% \newcommand*{\mean}[1]{\ensuremath{\langle{#1}\rangle}\xspace}
-\newcommand*{\mean}[1]{\ensuremath{\Mean[0]{#1}}\xspace}
-% \newcommand*{\meanWeighted}[1]{\ensuremath{\langle{#1}\rangle_{w}}\xspace}
-% \newcommand*{\MeanWeighted}[1]{\ensuremath{\left\langle{#1}\right\rangle_{\!w}}\xspace}
-\newcommand*{\MeanWeighted}[2][-1]{\ensuremath{\Mean[#1]{#2}_{\!w}}\xspace}
-% \newcommand*{\meanWeighted}[1]{\ensuremath{\mean{#1}_{w}}\xspace}
-\newcommand*{\meanWeighted}[1]{\ensuremath{\MeanWeighted[0]{#1}}\xspace}
-\renewcommand*{\abs}[1]{\ensuremath{\vert{#1}\vert}\xspace}
-\newcommand*{\Abs}[2][-1]{\ensuremath{\envert[#1]{#2}}\xspace}
-\renewcommand*{\norm}[1]{\ensuremath{\|{#1}\|}\xspace}
-\newcommand*{\Norm}[2][-1]{\ensuremath{\enVert[#1]{#2}}\xspace}
-\newcommand*{\evalAt}[2]{\ensuremath{\eval[0]{#1}_{#2}}\xspace}
-\newcommand*{\EvalAt}[3][-1]{\ensuremath{\eval[#1]{#2}_{#3}}\xspace}
-% add larger brackets than \Bigg
-% see https://tex.stackexchange.com/a/6796
-\newcommand\biggg{\bBigg@{3}}
-\newcommand\Biggg{\bBigg@{3.5}}
-\newcommand\bigggg{\bBigg@{4}}
-\newcommand\Bigggg{\bBigg@{4.5}}
 
 
 % ------------------------------------------------------------------------------
@@ -429,6 +445,7 @@
 % kaons
 \newcommand*{\PKs}{\ensuremath{K_S^0}\xspace}
 \newcommand*{\PKl}{\ensuremath{K_L^0}\xspace}
+\defParticle{K}{K}{-1}
 \defParticle{KStar}{K^*}{892}
 \defParticle{KOne}{K_1}{1270}
 \defParticle{KZeroStar}{K_0^*}{700}
@@ -442,6 +459,7 @@
 \newcommand*{\PJ}{\ensuremath{J\!/\!\psi}\xspace}
 % baryons
 \defParticleCharged{Deltapp}{\Delta}{1232}{++}
+\defParticle{L}{\Lambda}{-1}
 
 
 % ------------------------------------------------------------------------------
@@ -466,6 +484,7 @@
 \newcommand*{\etaPim}{\ensuremath{{\eta\pi^-}}\xspace}
 \newcommand*{\etaPrPim}{\ensuremath{{\eta'\pi^-}}\xspace}
 \newcommand*{\etaOrPrPim}{\ensuremath{{\protect\etaOrPr\pi^-}}\xspace}
+\newcommand*{\etaOrPrPiz}{\ensuremath{{\protect\etaOrPr\pi^0}}\xspace}
 \newcommand*{\twoPi}{\ensuremath{{\pi^-\pi^+}}\xspace}
 \newcommand*{\twoPim}{\ensuremath{{\Ppim\Ppiz}}\xspace}
 \newcommand*{\pipi}{\ensuremath{{\pi\pi}}\xspace}
@@ -605,27 +624,28 @@
 \DeclareSIUnit[per-mode=symbol]\MeVcc{\MeV\per\clight\squared}
 \DeclareSIUnit[per-mode=symbol]\GeVcc{\GeV\per\clight\squared}
 \DeclareSIUnit[per-mode=symbol]\TeVcc{\TeV\per\clight\squared}
+% the following macros work only with free-standing-units=true in siunitx package options
 % momentum squared units
-\DeclareSIUnit[per-mode=symbol]\eVcsq{(eV/\clight)^2}
-\DeclareSIUnit[per-mode=symbol]\meVcsq{(meV/\clight)^2}
-\DeclareSIUnit[per-mode=symbol]\keVcsq{(keV/\clight)^2}
-\DeclareSIUnit[per-mode=symbol]\MeVcsq{(MeV/\clight)^2}
-\DeclareSIUnit[per-mode=symbol]\GeVcsq{(GeV/\clight)^2}
-\DeclareSIUnit[per-mode=symbol]\TeVcsq{(TeV/\clight)^2}
+\DeclareSIUnit[per-mode=symbol]\eVcsq{(\eVc)^2}
+\DeclareSIUnit[per-mode=symbol]\meVcsq{(\meVc)^2}
+\DeclareSIUnit[per-mode=symbol]\keVcsq{(\keVc)^2}
+\DeclareSIUnit[per-mode=symbol]\MeVcsq{(\MeVc)^2}
+\DeclareSIUnit[per-mode=symbol]\GeVcsq{(\GeVc)^2}
+\DeclareSIUnit[per-mode=symbol]\TeVcsq{(\TeVc)^2}
 % inverse momentum squared units
-\DeclareSIUnit[per-mode=symbol]\pereVcsq{(eV/\clight)^{-2}}
-\DeclareSIUnit[per-mode=symbol]\permeVcsq{(meV/\clight)^{-2}}
-\DeclareSIUnit[per-mode=symbol]\perkeVcsq{(keV/\clight)^{-2}}
-\DeclareSIUnit[per-mode=symbol]\perMeVcsq{(MeV/\clight)^{-2}}
-\DeclareSIUnit[per-mode=symbol]\perGeVcsq{(GeV/\clight)^{-2}}
-\DeclareSIUnit[per-mode=symbol]\perTeVcsq{(TeV/\clight)^{-2}}
+\DeclareSIUnit[per-mode=symbol]\pereVcsq{(\eVc)^{-2}}
+\DeclareSIUnit[per-mode=symbol]\permeVcsq{(\meVc)^{-2}}
+\DeclareSIUnit[per-mode=symbol]\perkeVcsq{(\keVc)^{-2}}
+\DeclareSIUnit[per-mode=symbol]\perMeVcsq{(\MeVc)^{-2}}
+\DeclareSIUnit[per-mode=symbol]\perGeVcsq{(\GeVc)^{-2}}
+\DeclareSIUnit[per-mode=symbol]\perTeVcsq{(\TeVc)^{-2}}
 % mass squared units
-\DeclareSIUnit[per-mode=symbol]\eVccsq{(eV/\clight^2)^2}
-\DeclareSIUnit[per-mode=symbol]\meVccsq{(meV/\clight^2)^2}
-\DeclareSIUnit[per-mode=symbol]\keVccsq{(keV/\clight^2)^2}
-\DeclareSIUnit[per-mode=symbol]\MeVccsq{(MeV/\clight^2)^2}
-\DeclareSIUnit[per-mode=symbol]\GeVccsq{(GeV/\clight^2)^2}
-\DeclareSIUnit[per-mode=symbol]\TeVccsq{(TeV/\clight^2)^2}
+\DeclareSIUnit[per-mode=symbol]\eVccsq{(\eVcc)^2}
+\DeclareSIUnit[per-mode=symbol]\meVccsq{(\meVcc)^2}
+\DeclareSIUnit[per-mode=symbol]\keVccsq{(\keVcc)^2}
+\DeclareSIUnit[per-mode=symbol]\MeVccsq{(\MeVcc)^2}
+\DeclareSIUnit[per-mode=symbol]\GeVccsq{(\GeVcc)^2}
+\DeclareSIUnit[per-mode=symbol]\TeVccsq{(\TeVcc)^2}
 % cross section units
 \DeclareSIUnit\mbarn{\milli\barn}
 \DeclareSIUnit\mubarn{\micro\barn}
