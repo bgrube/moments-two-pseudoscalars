@@ -877,15 +877,17 @@ where $\eta(\Omega)$ is the detection efficiency for the reaction
 under study\footnote{The detection efficiency includes all effects
 that influence the probability to detect a given event, in particular
 geometric acceptance of the detectors and inefficiencies introduced by
-the detectors, by the event reconstruction, and by the trigger and
-offline event selection.  In principle, in addition to~$\Omega$ the
-detection efficiency depends on additional kinematic variables.  In
-\cref{eq:diffraction_int_meas}, we have marginalized~$\eta$ over these
-variables.  In order to perform this marginalization we need a
-realistic model of the reaction that reproduces the kinematic
-distributions in the variables we marginalize over sufficiently well.}
-and $\intensity(\Omega)$ is the physical intensity distribution.  To
-correct for the detection efficiency we use the approach described in
+the detectors, by the event reconstruction, and by the event selection
+applied by the trigger and in the offline data processing.  In
+addition to~$\Omega$ the detection efficiency depends in general on
+additional kinematic variables~\vect{\uptau}.  In
+\cref{eq:diffraction_int_meas}, we have marginalized~$\eta(\Omega;
+\vect{\uptau})$ over~\vect{\uptau}.  In order to perform this
+marginalization we need a realistic model of the reaction that
+reproduces the kinematic distribution in~\vect{\uptau} sufficiently
+well.} and $\intensity(\Omega)$ is the physical intensity
+distribution.  To correct for the detection efficiency we use the
+approach described in
 \refsCite{Jones:2023,JonesCode:2023,OmegaPhoton:1983vde,Grayer:1974cr}.
 In case resolution effects in~$\Omega$ are non-negligible for the
 channel under study one has to apply an extended approach that is
@@ -936,8 +938,8 @@ from \cref{eq:diffraction_intensity_moments_real} into
   Y_L^{M *}(\Omega) \nonumber \\
   \label{eq:diffraction_moments_meas2}
   ={}& \sum_{L' = 0}^\infty \sum_{M' = 0}^{L'} H(L', M')
-  \dUnderbrace{\sqrt{\frac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0}) \int_{4 \pi}\!\!\! \dif{\Omega}\, \eta(\Omega)\,
-  y_{L'}^{M'}(\theta)\, \cos(M'\, \phi)\, Y_L^{M *}(\Omega)}{\equiv I^\text{acc}_{L M\, L' M'}},
+  \dUnderbrace{\sqrt{\frac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0}) \int_{4 \pi}\!\!\! \dif{\Omega}\,
+  y_{L'}^{M'}(\theta)\, \cos(M'\, \phi)\, \eta(\Omega)\, Y_L^{M *}(\Omega)}{\equiv I^\text{acc}_{L M\, L' M'}},
 \end{align}
 which is equivalent to Eqs.~(B3) and~(B4) in \refCite{E852:1999xev}.
 Here, $I^\text{acc}_{L M\, L' M'}$ are the overlap integrals of the
@@ -1041,7 +1043,7 @@ detector simulation, event reconstruction, and event selection chains.
 From the remaining $N_\text{acc}$~accepted events we calculate the
 elements of the acceptance integral matrix using
 \begin{equation}
-  \label{eq:diffraction_integral_matrix}
+  \label{eq:diffraction_integral_matrix_mc}
   \rBrk{\mat{I}^\text{acc}}_{L M\, L' M'}
   = I^\text{acc}_{L M\, L' M'}
   \approx \sqrt{\frac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})\,
@@ -1050,8 +1052,27 @@ elements of the acceptance integral matrix using
 Except for the factor $4 \pi$ that represents the integration volume,
 this is identical to Eq.~(B6) in \refCite{E852:1999xev}.
 
+In case background is included in the Monte Carlo simulation,
+\cref{eq:diffraction_integral_matrix_mc} can be extended to subtract the
+background component using the event weights \set{w_i}:
+\begin{equation}
+  \label{eq:diffraction_integral_matrix_mc_weighted}
+  \rBrk{\mat{I}^\text{acc}}_{L M\, L' M'}
+  = I^\text{acc}_{L M\, L' M'}
+  \approx \sqrt{\frac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})\,
+  \frac{4 \pi}{N_\text{gen}} \sum_{i = 1}^{N_\text{acc}} w_i\, y_{L'}^{M'}(\theta_i)\, \cos(M'\, \phi_i)\, Y_L^{M *}(\Omega_i).
+\end{equation}
+
 If the integral matrix~$\mat{I}^\text{acc}$ is invertible, we can
-calculate the physical moments from the measured ones using
+calculate the physical moments from the measured ones
+using\footnote{In principle, the uncertainties on the physical
+moments~\vect{H} can be reduced by determining a larger set of
+measured moments~$\vect{H}_\text{meas}$ from the data.  In this case,
+the equation system in \cref{eq:diffraction_moments_meas_matrix}
+becomes overdetermined and has to be solved by fitting for~\vect{H}
+(see \eg Sec.~3.5.2 in \refCite{Grayer:1974cr}).  Since the problem
+remains linear in~\vect{H}, a $\chi^2$-fit can be also solved in
+closed form using matrix algebra.}
 \begin{equation}
   \label{eq:diffraction_phys_moments}
   \vect{H}
@@ -1085,7 +1106,7 @@ In order to do so, we also have to propagate the uncertainty
 from~$\hat{\vect{H}}_\text{meas}$ to~$\hat{\vect{H}}$.\footnote{%
 Here, we assume that the statistical uncertainties of $\mat{I}^\text{acc}$
 from the Monte Carlo integration in
-\cref{eq:diffraction_integral_matrix} are negligible compared to the
+\cref{eq:diffraction_integral_matrix_mc} are negligible compared to the
 statistical uncertainties of $\hat{\vect{H}}_\text{meas}$.  In
 principle, the covariance matrix of the elements of
 $\mat{I}^\text{acc}$ could be calculated similarly to the
@@ -1470,7 +1491,7 @@ covariance matrix as described in \cref{fn:cov_aug_numpy}.
 \end{figure}
 
 The acceptance integral matrix~$\mat{I}^\text{acc}$ is calculated
-using \cref{eq:diffraction_integral_matrix} based on \num{e7}~events
+using \cref{eq:diffraction_integral_matrix_mc} based on \num{e7}~events
 that are sampled randomly from the detection efficiency $\eta(\Omega)$
 in \cref{eq:diffraction_study_acc1}.  Using this matrix, the physical
 moments are calculated from the measured moments using

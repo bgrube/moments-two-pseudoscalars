@@ -46,7 +46,7 @@ inserted.}\todo{Can we express this as $\abs{\text{amplitude}}^2$?}
   = \frac{\dif{N}}{\dif{w}\, \dif{t}\, \dif{\Omega}\, \dif{\Phi}}
   = \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   Y_\ell^m(\Omega)~
-  \dUnderbrace{\sum_{\substack{\lambda = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
+  \dUnderbrace{\sum_{\substack{\lambda, \lambda' = \pm 1 \\ \mathclap{\lambda_1, \lambda_2 = \pm 1/2}}}
   \prodAmp^\ell_{\!m\, \lambda; \lambda_1\, \lambda_2}(w, t)\,
   \varrho^\gamma_{\lambda\, \lambda'}(\Phi)\,
   \prodAmp^{\ell' *}_{\!m'\, \lambda'; \lambda_1\, \lambda_2}(w, t)}{\equiv \varrho^{\ell\, \ell'}_{m\, m'}(w, t, \Phi)}~
@@ -594,7 +594,7 @@ rank~1.
 
 We can relate the moments to the partial-wave amplitudes in the
 reflectivity basis by inserting
-\crefrange{eq:photoprod_rho_0_refl}{eq:photoprod_rho_2_refl} into
+\crefrange{eq:photoprod_rho_refl}{eq:photoprod_rho_2_refl} into
 \cref{eq:photoprod_moment_unpol_pw,eq:photoprod_moments_pol_pw}:
 \begin{align}
   \label{eq:photoprod_moment_0_pw_refl}
@@ -827,22 +827,22 @@ into
   ={}& \sum_{L' = 0}^\infty \sum_{M' = 0}^{L'} \Bigg[
   H_0(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi)\,
   \rdOverbrace{\sqrt{\frac{2 L' + 1}{4 \pi}}\, (2 - \delta_{M' 0})\, y_{L'}^{M'}(\theta)\, \cos(M'\, \phi)\vphantom{\frac{Y_L^M}{\sqrt{L}}}}{\equiv f_{0, L' M'}^\text{phys}(\Omega, \Phi)}\,
+  \eta(\Omega, \Phi)\,
   \rdOverbrace{\frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega)}{\equiv f_{0, L M}^\text{meas}(\Omega, \Phi)}}%
   {\equiv I^\text{acc}_{0 0, L M\, L' M'}} \nonumber
   \\
   & + H_1(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi)\,
   \rdOverbrace{P_\gamma\, \sqrt{\frac{2 L' + 1}{4 \pi}}\, (2 - \delta_{M' 0})\, y_{L'}^{M'}(\theta)\, \cos(M'\, \phi)\, \cos(2 \Phi)}{\equiv f_{1, L' M'}^\text{phys}(\Omega, \Phi)}\,
+  \eta(\Omega, \Phi)\,
   f_{0, L M}^\text{meas}(\Omega, \Phi)}%
   {\equiv I^\text{acc}_{0 1\, L M\, L' M'}} \nonumber
   \\
   & + H_2(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi)\,
   \rdOverbrace{\imag\, P_\gamma\, \sqrt{\frac{2 L' + 1}{4 \pi}}\, (2 - \delta_{M' 0})\, y_{L'}^{M'}(\theta)\, \sin(M'\, \phi)\, \sin(2 \Phi)}{\equiv f_{2, L' M'}^\text{phys}(\Omega, \Phi)}\,
+  \eta(\Omega, \Phi)\,
   f_{0, L M}^\text{meas}(\Omega, \Phi)}%
   {\equiv I^\text{acc}_{0 2\, L M\, L' M'}}\, \Bigg] \nonumber
   \\
@@ -862,22 +862,22 @@ This is equivalent to \cref{eq:diffraction_moments_meas2}.  Similarly,
   ={}& \sum_{L' = 0}^\infty \sum_{M' = 0}^{L'} \Bigg[
   H_0(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi)\,
   f_{0, L' M'}^\text{phys}(\Omega, \Phi)\,
+  \eta(\Omega, \Phi)\,
   \rdOverbrace{\frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega)\, \cos(2 \Phi)}{\equiv f_{1, L M}^\text{meas}(\Omega, \Phi)}}%
   {\equiv I^\text{acc}_{1 0\, L M\, L' M'}} \nonumber
   \\
   & + H_1(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi)\,
   f_{1, L' M'}^\text{phys}(\Omega, \Phi)\,
+  \eta(\Omega, \Phi)\,
   f_{1, L M}^\text{meas}(\Omega, \Phi)}%
   {\equiv I^\text{acc}_{1 1\, L M\, L' M'}} \nonumber
   \\
   & + H_2(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi)\,
   f_{2, L' M'}^\text{phys}(\Omega, \Phi)\,
+  \eta(\Omega, \Phi)\,
   f_{1, L M}^\text{meas}(\Omega, \Phi)}%
   {\equiv I^\text{acc}_{1 2\, L M\, L' M'}}\, \Bigg] \nonumber
   \\
@@ -897,22 +897,22 @@ and
   ={}& \sum_{L' = 0}^\infty \sum_{M' = 0}^{L'} \Bigg[
   H_0(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi)\,
   f_{0, L' M'}^\text{phys}(\Omega, \Phi)\,
+  \eta(\Omega, \Phi)\,
   \rdOverbrace{\frac{1}{\pi P_\gamma}\, \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega)\, \sin(2 \Phi)}{\equiv f_{2, L M}^\text{meas}(\Omega, \Phi)}}%
   {\equiv I^\text{acc}_{2 0\, L M\, L' M'}} \nonumber
   \\
   & + H_1(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi)\,
   f_{1, L' M'}^\text{phys}(\Omega, \Phi)\,
+  \eta(\Omega, \Phi)\,
   f_{2, L M}^\text{meas}(\Omega, \Phi)}%
   {\equiv I^\text{acc}_{2 1\, L M\, L' M'}} \nonumber
   \\
   & + H_2(L', M')\,
   \rdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi)\,
   f_{2, L' M'}^\text{phys}(\Omega, \Phi)\,
+  \eta(\Omega, \Phi)\,
   f_{2, L M}^\text{meas}(\Omega, \Phi)}%
   {\equiv I^\text{acc}_{2 2\, L M\, L' M'}}\, \Bigg] \nonumber
   \\
@@ -990,15 +990,16 @@ Consequently, the acceptance integral matrix in
   \label{eq:photoprod_integral_matrix}
   \rBrk[0]{\mat{I}^\text{acc}}_{i j, L M\, L' M'}
   = \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \eta(\Omega, \Phi)\,
   f_{i, L M}^\text{meas}(\Omega, \Phi)\,
+  \eta(\Omega, \Phi)\,
   f_{j, L' M'}^\text{phys}(\Omega, \Phi).
 \end{equation}
 Note that in general, the elements of~$\mat{I}^\text{acc}$ are
 complex-valued.  Using similar arguments as in
 \cref{fn:diffraction_integral_matrix_perfect_det}, one can show that
 for a perfect detector with $\eta(\Omega, \Phi) = 1$,
-$\mat{I}^\text{acc}$ becomes a unit matrix.
+$\mat{I}^\text{acc}$ becomes a unit matrix, \ie the basis functions
+are orthonormal.
 
 As in the diffractive case, $\mat{I}^\text{acc}$~can be approximated
 using a Monte Carlo data sample with $N_\text{gen}$~events that are
@@ -1006,16 +1007,17 @@ uniformly distributed in the two-body phase space.\footnote{This means
 the events are uniformly distributed in the $(\cos\theta, \phi, \Phi)$
 space.}  After passing the Monte Carlo events through the detector
 simulation, event reconstruction, and event selection chains,
-$N_\text{acc}$~accepted events remain.  From these events, the
-acceptance integral matrix is calculated according to
+$N_\text{acc}$~accepted events remain with weights \set{w_k}.  From
+these events, the acceptance integral matrix is calculated according
+to
 \begin{equation}
-  \label{eq:photoprod_integral_matrix_mc}
+  \label{eq:photoprod_integral_matrix_mc_weighted}
   \rBrk[0]{\mat{I}^\text{acc}}_{i j, L M\, L' M'}
-  \approx \frac{8 \pi^2}{N_\text{gen}} \sum_{k = 1}^{N_\text{acc}}
+  \approx \frac{8 \pi^2}{N_\text{gen}} \sum_{k = 1}^{N_\text{acc}} w_k\,
   f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)\,
   f_{j, L' M'}^\text{phys}(\Omega_k, \Phi_k).
 \end{equation}
-This is equivalent to \cref{eq:diffraction_integral_matrix}.  Note
+This is equivalent to \cref{eq:diffraction_integral_matrix_mc_weighted}.  Note
 that $f^\text{phys}_{2, L 0}(\Omega, \Phi) = 0$, which is equivalent
 to \cref{eq:photoprod_moment_2_M0}.  Hence,
 $\rBrk[0]{\mat{I}^\text{acc}}_{i j, L M\, L' M'}$ is singular.  To
@@ -1250,7 +1252,7 @@ covariance matrix using the approach described in
 \end{figure}
 
 The acceptance integral matrix~$\mat{I}^\text{acc}$ is calculated
-using \cref{eq:photoprod_integral_matrix_mc} based on \num{e7}~events
+using \cref{eq:photoprod_integral_matrix_mc_weighted} based on \num{e7}~events
 that are sampled randomly from the detection efficiency $\eta(\Omega,
 \Phi)$ in \cref{eq:photoprod_study_acc1}.  Using~$\mat{I}^\text{acc}$,
 the physical moments are calculated from the measured moments using
@@ -1678,7 +1680,7 @@ For each data sample, we also generate an accepted phase-space Monte
 Carlo data sample using $\prescript{(j)}{}{\eta}(\Omega, \Phi)$.
 Based on these Monte Carlo data, we
 calculate~$\prescript{(j)}{}{\mat{I}}^\text{acc}$ using
-\cref{eq:photoprod_integral_matrix_mc}.  Finally, we calculate the
+\cref{eq:photoprod_integral_matrix_mc_weighted}.  Finally, we calculate the
 estimates for the physical moments for each data sample using
 \cref{eq:diffraction_phys_moments}, \ie
 \begin{equation}
@@ -1729,3 +1731,5 @@ for \cref{eq:photoprod_datasets_weighted_average} is
 
 
 \todo{Discuss separation of reflectivities}
+
+\todo{Add $\eta \pi^0$ example}
