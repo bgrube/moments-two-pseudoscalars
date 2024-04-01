@@ -1028,9 +1028,13 @@ Likewise, the elements $\rBrk[0]{\hat{\vect{H}}}_{2, L 0}$ and
 $\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{2, L 0}$ need to be removed
 from $\hat{\vect{H}}$ and $\hat{\vect{H}}_\text{meas}$, respectively.
 
-The measured moments are estimated from the data using the same
-approach as in \cref{sec:diffraction:estimation_uncert}, \ie by
-replacing the integrals in
+\todo{rewrite $\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{i, L M}$ in
+\cref{eq:photoprod_moment_meas_unpol,eq:photoprod_moments_meas_pol} in
+terms of basis functions}
+The measured moments are estimated from the
+data using the same approach as in
+\cref{sec:diffraction:estimation_uncert}, \ie by replacing the
+integrals in
 \cref{eq:photoprod_moment_meas_unpol,eq:photoprod_moments_meas_pol} by
 sums over measured weighted events:
 \begin{equation}
@@ -1043,16 +1047,17 @@ Here, we have chosen the factor $2 \pi$ such that
   \label{eq:photoprod_norm_00}
   \rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0}
   = \sum_{k = 1}^{N_\text{meas}} w_k
-  = N_\text{sub}
+  = N_\text{sig}
   \quad\text{because}\quad
   f_{0, 0 0}^\text{meas}(\Omega, \Phi)
   = \frac{1}{2 \pi}
   = \text{const},
 \end{equation}
-where $N_\text{sub}$~is the number of background-subtracted events.
-This is equivalent to \cref{eq:event_weights_norm}.  Note that for
-unweighted events $w_k = 1~ \forall k$ and hence
-$\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0} = N_\text{meas}$.
+where $N_\text{sig}$~is the number of signal events, \ie the number of
+events after background subtraction.  This is equivalent to
+\cref{eq:event_weights_norm}.  Note that for unweighted events $w_k =
+1~ \forall k$ and hence $\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0}
+= N_\text{meas}$.
 
 With the above definitions, we can use the same formalism as in
 \cref{sec:diffraction:estimation_uncert} to calculate the
@@ -1063,19 +1068,18 @@ that $\mat{I}^\text{acc}$~is invertible.} and to propagate the
 uncertainties from~$\hat{\vect{H}}_\text{meas}$ to~$\hat{\vect{H}}$
 using \cref{eq:complex_uncert_prop}.  For the uncertainty propagation,
 we estimate the Hermitian and the pseudo-covariance matrix for the
-measured moments using the weighted sample covariance with frequency
-weights analogous to
-\cref{eq:diffraction_sample_cov_hermit_meas,eq:diffraction_sample_cov_pseudo_meas}:
+measured moments using the sample covariance analogous to
+\cref{eq:diffraction_sample_cov_hermit_meas,eq:diffraction_sample_cov_pseudo_meas,eq:diffraction_w_f_sample_mean}:
 \begin{align}
   \rBrk[1]{\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}}_{i, L M; j, L' M'}
   ={}& \covEst[1]{\hat{H}_i^\text{meas}(L, M), \hat{H}_j^\text{meas}(L', M')} \nonumber
   \\
   \label{eq:photoprod_sample_cov_hermit_meas}
   ={}& \begin{multlined}[t][0.7\columnwidth]
-    4 \pi^2\, \frac{\sum_{k = 1}^{N_\text{meas}} w_k^2}{\sum_{k = 1}^{N_\text{meas}} w_k - 1} \sum_{k = 1}^{N_\text{meas}} w_k
-    \sBrk[2]{f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)   - \meanWeighted{f_{i, L M}^\text{meas}(\Omega, \Phi)}}
+    4 \pi^2\, \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{k = 1}^{N_\text{meas}}
+    \sBrk[2]{w_k\, f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)   - \mean{w\, f_{i, L M}^\text{meas}(\Omega, \Phi)}}
     \\
-    {} \times \sBrk[2]{f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \meanWeighted{f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}^*
+    {} \times \sBrk[2]{w_k\, f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \mean{w\, f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}^*
   \end{multlined}
   \\
   \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{i, L M; j, L' M'}
@@ -1083,26 +1087,25 @@ weights analogous to
   \\
   \label{eq:photoprod_sample_cov_pseudo_meas}
   ={}& \begin{multlined}[t][0.7\columnwidth]
-    4 \pi^2\, \frac{\sum_{k = 1}^{N_\text{meas}} w_k^2}{\sum_{k = 1}^{N_\text{meas}} w_k - 1} \sum_{k = 1}^{N_\text{meas}} w_k
-    \sBrk[2]{f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)   - \meanWeighted{f_{i, L M}^\text{meas}(\Omega, \Phi)}}
+    4 \pi^2\, \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{k = 1}^{N_\text{meas}}
+    \sBrk[2]{w_k\, f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)   - \mean{w\, f_{i, L M}^\text{meas}(\Omega, \Phi)}}
     \\
-    {} \times \sBrk[2]{f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \meanWeighted{f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}.
+    {} \times \sBrk[2]{w_k\, f_{j, L' M'}^\text{meas}(\Omega_k, \Phi_k) - \mean{w\, f_{j, L' M'}^\text{meas}(\Omega, \Phi)}}.
   \end{multlined}
 \end{align}
-
-Note that because of \cref{eq:photoprod_norm_00}
+with the sample mean
 \begin{equation}
-  \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{i, L M; 0, 0 0}
-  = \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{0, 0 0; j, L' M'}
-  = 0
-  \quad\text{and in particular}\quad
-  \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{0, 0 0; 0, 0 0}
-  = \hat{\sigma}_{\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0}}
-  = 0.
+  \label{eq:photoprod_sample_mean_meas}
+  \mean{w\, f_{i, L M}^\text{meas}(\Omega, \Phi)}
+  = \frac{1}{N_\text{meas}} \sum_{k = 1}^{N_\text{meas}} w_k\, f_{i, L M}^\text{meas}(\Omega_k, \Phi_k).
 \end{equation}
+Note that from a numerical standpoint, the above equations are
+not the most advantageous way to compute the covariance.  See
+\refCite{wikipedia:CovarianceAlgorithm} for more suitable numerical
+algorithms.
 
 For unweighted events,
-\cref{eq:photoprod_sample_cov_hermit_meas,eq:photoprod_sample_cov_pseudo_meas}
+\cref{eq:photoprod_sample_cov_hermit_meas,eq:photoprod_sample_cov_pseudo_meas,eq:photoprod_sample_mean_meas}
 reduce to
 \begin{align}
   \rBrk[1]{\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}}_{i, L M; j, L' M'}
@@ -1126,14 +1129,29 @@ with the sample mean
   \mean{f_{i, L M}^\text{meas}(\Omega, \Phi)}
   = \frac{1}{N_\text{meas}} \sum_{k = 1}^{N_\text{meas}} f_{i, L M}^\text{meas}(\Omega_k, \Phi_k).
 \end{equation}
-This is analogous to Monte Carlo integration (see \eg\
-\refCite{wikipedia:MonteCarloIntegration}).
-
-Note that from a numerical standpoint
-\cref{eq:photoprod_sample_cov_hermit_meas,eq:photoprod_sample_cov_pseudo_meas}
-are not the most advantageous way to compute the covariance.  See
-\refCite{wikipedia:CovarianceAlgorithm} for more suitable numerical
-algorithms.
+This is analogous to Monte Carlo integration of $f_{i, L
+M}^\text{meas}(\Omega, \Phi)$ (see \eg\
+\refCite{wikipedia:MonteCarloIntegration}).  Note that in the
+unweighted case
+\begin{equation}
+  \label{eq:photoprod_H0_cov_unweighted}
+  \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{i, L M; 0, 0 0}
+  = \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{0, 0 0; j, L' M'}
+  = 0
+  \quad\text{and in particular}\quad
+  \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{0, 0 0; 0, 0 0}
+  = \hat{\sigma}_{\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0}}
+  = 0.
+\end{equation}
+This is because $\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0} =
+N_\text{meas}$ (see \cref{eq:photoprod_norm_00}) and
+$N_\text{meas}$~is fixed and hence not a random
+variable.\footnote{Note that in the case of weighed events, the
+covariances in \cref{eq:photoprod_H0_cov_unweighted} are non-zero,
+because in this case $\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0} =
+N_\text{sig}$ (see \cref{eq:photoprod_norm_00}) and for
+fixed~$N_\text{meas}$ the number of signal events is a random
+variable.}
 
 
 \subsection{Examples}%
@@ -1488,8 +1506,8 @@ subtraction (\confer
 \begin{figure}[tbp]
   \centering%
   \includegraphics[width=0.5\textwidth]{photoprod_weighted/no_acc_10M/dataSbSubtr}%
-  \caption{Signal sample with $N_\text{sub} = \num{9974322.5}$ events
-  obtained from \cref{fig:photoprod_study_weighted_data_10M} by
+  \caption{Signal sample with $N_\text{sig} = \num{9974322.5}$ signal
+  events obtained from \cref{fig:photoprod_study_weighted_data_10M} by
   applying sideband subtraction using the discriminatory variable in
   \cref{fig:photoprod_study_weighted_discr_var_10M}.  Compare to
   \cref{fig:photoprod_study_weighted_intensity_sig}.}%
