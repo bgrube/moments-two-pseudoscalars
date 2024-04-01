@@ -737,83 +737,61 @@ We assume that the event weights~$w_i$ are normalized such that
   = N_\text{sig}
   = \hat{H}(0, 0)
 \end{equation}
-with $N_\text{sig}$~being the number of events after the background
-subtraction.  Note that for unweighted events $w_i = 1~ \forall i$ and
-hence $\hat{H}(0, 0) = N$.
+with $N_\text{sig}$~being the number of signal events, \ie the number
+of events after background subtraction.  Note that for unweighted
+events $w_i = 1~ \forall i$ and hence $\hat{H}(0, 0) = N$.
 
-To estimate the covariances of the $\hat{H}(L, M)$, we assume that the
-event weights are constants and exploit that the events are
-statistically independent and identically distributed according to
-$\intensity(\Omega)$.  The covariance of two moments is therefore
+The covariances of the $\hat{H}(L, M)$ is
 \begin{align}
   \cov[1]{\hat{H}(L, M), \hat{H}(L', M')}
   ={}& \cov[4]{\sum_{i = 1}^N w_i\, f_{L M}(\Omega_i), \sum_{j = 1}^N w_j\, f_{L' M'}(\Omega_j)} \nonumber
   \\
-  ={}& \exptVal[4]{\sum_{i, j = 1}^N w_i\, w_j\, f_{L M}(\Omega_i)\, f_{L' M'}(\Omega_j)}
+  ={}& \exptVal[4]{\sum_{i, j = 1}^N w_i\,f_{L M}(\Omega_i)\,  w_j\, f_{L' M'}(\Omega_j)}
      - \exptVal[4]{\sum_{i = 1}^N w_i\, f_{L M}(\Omega_i)}\, \exptVal[4]{\sum_{j = 1}^N w_j\, f_{L' M'}(\Omega_j)} \nonumber
   \\
-  ={}& \sum_{i, j = 1}^N w_i\, w_j \rBrk[2]{\exptVal[1]{f_{L M}(\Omega_i)\, f_{L' M'}(\Omega_j)}
-                                       - \exptVal[1]{f_{L M}(\Omega_i)}\, \exptVal[1]{f_{L' M'}(\Omega_j)}} \nonumber
+  ={}& \sum_{i, j = 1}^N \exptVal[1]{w_i\, f_{L M}(\Omega_i)\, w_j\, f_{L' M'}(\Omega_j)}
+     - \exptVal[1]{w_i\, f_{L M}(\Omega_i)}\, \exptVal[1]{w_j\, f_{L' M'}(\Omega_j)} \nonumber
   \\
-  ={}& \sum_{i, j = 1}^N w_i\, w_j\, \cov[1]{f_{L M}(\Omega_i), f_{L' M'}(\Omega_j)}.
+  ={}& \sum_{i, j = 1}^N \cov[1]{w_i\, f_{L M}(\Omega_i), w_j\, f_{L' M'}(\Omega_j)}.
 \end{align}
-Here, we have used that the expectation value is a linear operator.
-Since the events are statistically independent,
+Here, we have used the definition of the covariance and that the
+expectation value is a linear operator.  Since the events are
+statistically independent,
 \begin{equation}
-  \cov[1]{f_{L M}(\Omega_i), f_{L' M'}(\Omega_j)}
-  = 0
-  \quad\text{for $i \neq j$}
+  \cov[1]{w_i\, f_{L M}(\Omega_i), w_j\, f_{L' M'}(\Omega_j)}
+  = \cov[1]{w_i\, f_{L M}(\Omega_i), w_i\, f_{L' M'}(\Omega_i)} \delta_{i j}
 \end{equation}
-and hence,
+and therefore,
 \begin{equation}
   \label{eq:diffraction_moments_cov}
   \cov[1]{\hat{H}(L, M), \hat{H}(L', M')}
-  = \sum_{i = 1}^N w_i^2\, \cov[1]{f_{L M}(\Omega_i), f_{L' M'}(\Omega_i)}
-  \equalUsing{\text{iid}} \cov[1]{f_{L M}(\Omega), f_{L' M'}(\Omega)} \sum_{i = 1}^N w_i^2.
+  = \sum_{i = 1}^N \cov[1]{w_i\, f_{L M}(\Omega_i), w_i\, f_{L' M'}(\Omega_i)}
+  \equalUsing{\text{iid}} N \cov[1]{w\, f_{L M}(\Omega), w\, f_{L' M'}(\Omega)}.
 \end{equation}
-In the last step, we used that the samples are independent and
-identically distributed (iid) random variables.  Note that for
-unweighted events, $\sum_{i = 1}^N w_i^2 = N$.
+In the last step, we used that the events identically distributed
+according to $\intensity(\Omega)$, \ie the arguments of the covariance
+are independent and identically distributed~(iid) random variables.
+Note that for unweighted events,
+\begin{equation}
+  \label{eq:diffraction_moments_cov_unweighted}
+  \cov[1]{\hat{H}(L, M), \hat{H}(L', M')}
+  =  N \cov[1]{f_{L M}(\Omega), f_{L' M'}(\Omega)}.
+\end{equation}
 
-To estimate the covariance of the $f_{L M}(\Omega)$ in
-\cref{eq:diffraction_moments_cov} we use the weighted sample
-covariance with frequency weights\footnote{The prefactor in
-\cref{eq:diffraction_base_fcn_cov} is the equivalent of Bessel's bias
-correction factor $1 / (N - 1)$ in the sample (co)variance.  For
-weighted events, the bias correction factor depends on the nature of
-the weights.  In the literature, usually three types of weights are
-distinguished: \one~frequency weights (also called case or repeat
-weights), which describe the number of times each event was observed;
-\two~analytic weights (also called reliability or precision weights),
-which describe a non-random relative importance of the events; and
-\three~probability weights (also called sampling weights), which
-represent the inverse of the sampling probability for each event and
-are used to correct under- or over-sampling of certain event
-populations.  The bias correction factors for the three cases are
-\begin{align}
-  \frac{1}{\sum_{i = 1}^N w_i - 1} & \quad\text{for frequency weights},
-  \\
-  \frac{1}{\sum_{i = 1}^N w_i - \rBrk[1]{\sum_{i = 1}^N w_i^2} / \rBrk[1]{\sum_{i = 1}^N w_i}} & \quad\text{for analytic weights},
-  \\
-  \frac{n}{(n - 1) \sum_{i = 1}^N w_i} & \quad\text{for probability weights}.
-\end{align}
-Here, $n$~is the number of non-zero weights.  All three factors reduce
-to $1 / (N - 1)$ in the unweighted case.  For the estimation of the
-covariance matrix, the bias often becomes negligibly small already for
-moderate sample sizes of order of \num{1000} background-subtracted
-events.  Hence, the particular choice of the bias correction factor is
-irrelevant in practice.}~\cite{wikipedia:WeightedArithmeticMean},
-\ie
+To estimate the covariance of the $w\, f_{L M}(\Omega)$ in
+\cref{eq:diffraction_moments_cov} we use the sample
+covariance, \ie
 \begin{equation}
   \label{eq:diffraction_base_fcn_cov}
-  \covEst[1]{f_{L M}(\Omega), f_{L' M'}(\Omega)}
-  = \frac{1}{\sum_{i = 1}^N w_i - 1} \sum_{i = 1}^N w_i
-  \sBrk[2]{f_{L M}(\Omega_i) - \meanWeighted{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \meanWeighted{f_{L' M'}(\Omega)}}
+  \covEst[1]{w\, f_{L M}(\Omega), w\, f_{L' M'}(\Omega)}
+  = \frac{1}{N - 1} \sum_{i = 1}^N
+  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \mean{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \mean{w\, f_{L' M'}(\Omega)}}
 \end{equation}
-with the weighted mean
+with the sample mean
 \begin{equation}
-  \meanWeighted{f_{L M}(\Omega)}
-  = \frac{1}{\sum_{i = 1}^N w_i} \sum_{i = 1}^N w_i\, f_{L M}(\Omega_i).
+  \label{eq:diffraction_w_f_sample_mean}
+  \mean{w\, f_{L M}(\Omega)}
+  = \frac{1}{N} \sum_{i = 1}^N w_i\, f_{L M}(\Omega_i).
 \end{equation}
 
 Inserting \cref{eq:diffraction_base_fcn_cov} into
@@ -825,19 +803,13 @@ of moment estimates:
   ={}& \covEst[1]{\hat{H}(L, M), \hat{H}(L', M')} \nonumber
   \\
   \label{eq:diffraction_sample_cov}
-  ={}& \frac{\sum_{i = 1}^N w_i^2}{\sum_{i = 1}^N w_i - 1} \sum_{i = 1}^N w_i
-  \sBrk[2]{f_{L M}(\Omega_i) - \meanWeighted{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \meanWeighted{f_{L' M'}(\Omega)}}.
+  ={}& \frac{N}{N - 1} \sum_{i = 1}^N
+  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \mean{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \mean{w\, f_{L' M'}(\Omega)}}.
 \end{align}
-Note that because of \cref{eq:diffraction_norm_00}
-\begin{equation}
-  (\covMatEstSym_{\!\hat{\vect{H}}})_{L M, 0 0}
-  = (\covMatEstSym_{\!\hat{\vect{H}}})_{0 0, L' M'}
-  = 0
-  \quad\text{and in particular}\quad
-  (\covMatEstSym_{\!\hat{\vect{H}}})_{0 0, 0 0}
-  = \hat{\sigma}^2_{\hat{H}(0, 0)}
-  = 0.
-\end{equation}
+Note that from a numerical standpoint this is not the most
+advantageous way to compute the sample covariance.  See
+\refCite{wikipedia:CovarianceAlgorithm} for more suitable numerical
+algorithms.
 
 For unweighted events, \cref{eq:diffraction_sample_cov} reduces to
 \begin{equation}
@@ -849,13 +821,25 @@ with the sample mean
   \mean{f_{L M}(\Omega)}
   = \frac{1}{N} \sum_{i = 1}^N f_{L M}(\Omega_i).
 \end{equation}
-This is analogous to Monte Carlo integration (see \eg\
-\refCite{wikipedia:MonteCarloIntegration}).
-
-Note that from a numerical standpoint \cref{eq:diffraction_sample_cov}
-is not the most advantageous way to compute the covariance.  See
-\refCite{wikipedia:CovarianceAlgorithm} for more suitable numerical
-algorithms.
+This is analogous to Monte Carlo integration of $f_{L M}(\Omega)$ (see
+\eg\ \refCite{wikipedia:MonteCarloIntegration}).  Note that in the
+unweighted case
+\begin{equation}
+  \label{eq:diffraction_H0_cov_unweighted}
+  (\covMatEstSym_{\!\hat{\vect{H}}})_{L M, 0 0}
+  = (\covMatEstSym_{\!\hat{\vect{H}}})_{0 0, L' M'}
+  = 0
+  \quad\text{and in particular}\quad
+  (\covMatEstSym_{\!\hat{\vect{H}}})_{0 0, 0 0}
+  = \hat{\sigma}^2_{\hat{H}(0, 0)}
+  = 0.
+\end{equation}
+This is because $\hat{H}(0, 0) = N$ (see \cref{eq:diffraction_norm_00})
+and $N$~is fixed and hence not a random variable.\footnote{Note that
+in the case of weighed events, the covariances in
+\cref{eq:diffraction_H0_cov_unweighted} are non-zero, because in this
+case $\hat{H}(0, 0) = N_\text{sig}$ (see \cref{eq:event_weights_norm})
+and for fixed~$N$ the number of signal events is a random variable.}
 
 
 \subsubsection{Taking into account detection efficiency}%
@@ -1096,13 +1080,19 @@ To obtain an estimate for~$\vect{H}_\text{meas}$ from
   \rBrk[1]{\hat{\vect{H}}_\text{meas}}_{L, M}
   = \hat{H}_\text{meas}(L, M)
   = \sum_{i = 1}^{N_\text{meas}} w_i\, \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega_i)
-  \equiv \sum_{i = 1}^{N_\text{meas}} w_i\, f_{L M}(\Omega_i).
+  = \sum_{i = 1}^{N_\text{meas}} w_i\, f_{L M}(\Omega_i),
 \end{equation}
+where we have defined the basis functions
+\begin{equation}
+  \label{eq:diffraction_basis_fcn}
+  f_{L M}(\Omega)
+  \equiv \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega).
+\end{equation}
+
 From the estimates~$\hat{\vect{H}}_\text{meas}$ of the measured
 moments we calculate the estimates~$\hat{\vect{H}}$ of the physical
-moments using \cref{eq:diffraction_phys_moments}.
-
-In order to do so, we also have to propagate the uncertainty
+moments using \cref{eq:diffraction_phys_moments}.  In order to do so,
+we also have to propagate the uncertainty
 from~$\hat{\vect{H}}_\text{meas}$ to~$\hat{\vect{H}}$.\footnote{%
 Here, we assume that the statistical uncertainties of $\mat{I}^\text{acc}$
 from the Monte Carlo integration in
@@ -1218,48 +1208,45 @@ And conversely,
 
 Analogous to \cref{eq:diffraction_sample_cov} we can estimate the
 Hermitian and the pseudo-covariance matrix for the measured moments
-using the weighted sample covariance with frequency
-weights:\footnote{For unweighted events,
-$\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}$~can be calculated using
-NumPy by calling \pyinline{N_meas * numpy.cov(f)}, where \pyinline{f}
-is an array of $N_\text{meas}$ vectors with the values of $f_{L
-M}(\Omega_i)$ as defined in
-\cref{eq:diffraction_moments_meas_estimate_weighted}.  However, to
-calculate the pseudo-covariance matrix
-$\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$~in NumPy, we
-have to use \pyinline{N_meas * numpy.cov(f, numpy.conjugate(f))[:n,
-n:]}.\footnotemark}\footnotetext{\label{fn:diffraction_python_cov_weights}Unfortunately,
-\pyinline{numpy.cov(fweights = w)} cannot be used for sideband
-subtraction with weights~\pyinline{w} because the function rejects
-negative weights.}
+using the sample covariance:\footnote{We can calculate
+$\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}$ using NumPy by calling
+\pyinline{N_meas * numpy.cov(fWeighted)}, where \pyinline{fWeighted =
+w * f}.  Here, \pyinline{w}~is a one-dimensional array of the event
+weights and \pyinline{f}~is a two-dimensional array where the row
+index represents the basis functions (see
+\cref{eq:diffraction_basis_fcn}) and the column index represents the
+events.  To calculate the pseudo-covariance matrix
+$\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$~in NumPy we
+can use \pyinline{N_meas * numpy.cov(fWeighted,
+numpy.conjugate(fWeighted))[:n, n:]}, where \pyinline{n}~is the number
+of basis functions, \ie the number of moments.}
 \begin{align}
   \rBrk[1]{\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}}_{L M, L' M'}
   ={}& \covEst[1]{\hat{H}_\text{meas}(L, M), \hat{H}_\text{meas}(L', M')} \nonumber
   \\
   \label{eq:diffraction_sample_cov_hermit_meas}
-  ={}& \frac{\sum_{i = 1}^{N_\text{meas}} w_i^2}{\sum_{i = 1}^{N_\text{meas}} w_i - 1} \sum_{i = 1}^{N_\text{meas}} w_i
-  \sBrk[2]{f_{L M}(\Omega_i) - \meanWeighted{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \meanWeighted{f_{L' M'}(\Omega)}}^*
+  ={}& \frac{N}{N - 1} \sum_{i = 1}^{N_\text{meas}}
+  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \mean{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \mean{w\, f_{L' M'}(\Omega)}}^*
   \\
   \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{L M, L' M'}
   ={}& \covEst[1]{\hat{H}_\text{meas}(L, M), \hat{H}_\text{meas}^*(L', M')} \nonumber
   \\
   \label{eq:diffraction_sample_cov_pseudo_meas}
-  ={}& \frac{\sum_{i = 1}^{N_\text{meas}} w_i^2}{\sum_{i = 1}^{N_\text{meas}} w_i - 1} \sum_{i = 1}^{N_\text{meas}} w_i
-  \sBrk[2]{f_{L M}(\Omega_i) - \meanWeighted{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \meanWeighted{f_{L' M'}(\Omega)}}.
+  ={}& \frac{N}{N - 1} \sum_{i = 1}^{N_\text{meas}}
+  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \mean{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \mean{w\, f_{L' M'}(\Omega)}}.
 \end{align}
-
-Here, $f_{L M}(\Omega)$ is defined in
-\cref{eq:diffraction_moments_meas_estimate_weighted}.  From these two
-matrices, we construct the augmented covariance
+Here, the basis functions $f_{L M}(\Omega)$ are defined in
+\cref{eq:diffraction_basis_fcn}.  From these two matrices, we
+construct the augmented covariance
 matrix~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$
-using \cref{eq:cov_augmented}.\footnote{\label{fn:cov_aug_numpy} For
-unweighted events, we can
+using \cref{eq:cov_augmented}.\footnote{\label{fn:cov_aug_numpy}In
+NumPy, we can
 calculate~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$
-using NumPy by calling \pyinline{N_meas * numpy.cov(f,
-numpy.conjugate(f))}.  Alternatively, one can construct the augmented
-vector \pyinline{f_aug = numpy.block([[f], [numpy.conjugate(f)]])} and
-call \pyinline{N_meas * numpy.cov(f_aug)}.  See also
-\cref{fn:diffraction_python_cov_weights}.}
+directly by calling \pyinline{N_meas * numpy.cov(fWeighted,
+numpy.conjugate(fWeighted))}.  Alternatively, one can construct the
+augmented vector \pyinline{fWeightedAug = numpy.vstack((fWeighted,
+numpy.conjugate(fWeighted)))} and call \pyinline{N_meas *
+numpy.cov(fWeightedAug)}.}
 
 In \cref{eq:complex_uncert_prop}, $\underaccent{\bar}{\mat{J}}$ is the
 augmented Jacobian matrix for \cref{eq:diffraction_phys_moments}, which
@@ -1439,7 +1426,7 @@ distribution is shown in \cref{fig:diffraction_study_intensity}.
   \end{tabular}
 \end{table}
 
-We weight the intensity distribution with the hypothetical detection
+We weight the intensity distribution with the contrived detection
 efficiency
 \begin{equation}
   \label{eq:diffraction_study_acc1}
@@ -1478,8 +1465,8 @@ covariance matrix as described in \cref{fn:cov_aug_numpy}.
   \subfloatLabel{fig:diffraction_study_intensity}~Intensity
   distribution $\intensity(\Omega)$ calculated from the partial-wave
   amplitudes listed in \cref{tab:diffraction_study_waveset}.
-  \subfloatLabel{fig:diffraction_study_efficiency}~Hypothetical
-  detection efficiency $\eta(\Omega)$ as given by
+  \subfloatLabel{fig:diffraction_study_efficiency}~Contrived detection
+  efficiency $\eta(\Omega)$ as given by
   \cref{eq:diffraction_study_acc1}.
   \subfloatLabel{fig:diffraction_study_intensity_acc}~Intensity
   distribution weighted by the detection efficiency, \ie
