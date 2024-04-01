@@ -1,26 +1,31 @@
-SHELL:=$(shell which bash)
-LATEX:=TEXINPUTS=".:..:" latex
-DVIPS:=dvips
-METAPOST:=mpost
-EPSTOPDF:=epstopdf
+SHELL := $(shell which bash)
+LATEX := TEXINPUTS=".:..:" latex --file-line-error --shell-escape
+DVIPS := dvips
+METAPOST := mpost
+EPSTOPDF := epstopdf
 
-feynman.ps: feynman.tex
-	rm -f feyn.*
-	rm -f compile-stamp
-	$(LATEX) -shell-escape feynman
+STYLE_FILES = ../sty/packages.sty \
+              ../sty/macros.sty
+
+COMPILESTAMP := ./compile-stamp
+
+
+feynman.ps: feynman.tex $(STYLE_FILES)
+	rm --force feyn.*
+	rm --force $(COMPILESTAMP)
+	$(LATEX) feynman
 	$(METAPOST) feyn
-	$(LATEX) -shell-escape feynman
-	num=1;for i in `cat feynman.lst`;do \
-		$(DVIPS) -E -pp $$num -o $$i.eps feynman; \
-		$(EPSTOPDF) $$i.eps;let num++; \
+	$(LATEX) feynman
+	NUM=1;for i in `cat feynman.lst`; \
+	do \
+		$(DVIPS) -E -pp $$NUM -o $$i.eps feynman; \
+		$(EPSTOPDF) $$i.eps; \
+		let NUM++; \
 	done
 	$(DVIPS) -o -R feynman
-	touch compile-stamp
+	touch $(COMPILESTAMP)
 	gv feynman.ps
 
 clean:
-	rm -fv ./*.{aux,,dvi,eps,log,lst,out,pdf,ps}
-	rm -fv ./feyn.*
-	rm -fv ./compile-stamp
-	rm -fv ./*~
-	rm -rfv ./_minted-feynman
+	rm --recursive --force --verbose ./*.{aux,,dvi,eps,log,lst,out,pdf,ps} ./feyn.* ./_minted-feynman
+	rm --force --verbose $(COMPILESTAMP)
