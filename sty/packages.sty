@@ -109,7 +109,6 @@
 \RequirePackage{afterpage}                      % expand commands after current page is output; typical example: \afterpage{\clearpage}
 \RequirePackage{geometry}                       % allows to define page layout
 \RequirePackage{babel}                          % defines language specific typesetting
-\RequirePackage[autostyle=true]{csquotes}       % package for quoting text using the correct language-dependent symbols
 \RequirePackage{alphalph}                       % represent numbers with limited set of symbols; \eg a-z, aa-zz, ...
 \RequirePackage{enumitem}                       % adds extended customization interface to lists and enums
 %\RequirePackage{multicol}                       % adds environment for multicolumn output
@@ -151,10 +150,11 @@
   detect-weight=true,
   retain-explicit-plus=true,
 }
-\RequirePackage{relsize}                  % provides macros to change text size relative to current size
-\RequirePackage{realboxes}                % provides variants of box macros which reads their content as real box and not as macro argument
-\PassOptionsToPackage{mathlines}{lineno}  % minted loads lineno package
-\RequirePackage{minted}                   % typeset highlighted source code
+\RequirePackage{relsize}                   % provides macros to change text size relative to current size
+\RequirePackage{realboxes}                 % provides variants of box macros which reads their content as real box and not as macro argument
+\PassOptionsToPackage{mathlines}{lineno}   % minted loads lineno package
+\RequirePackage{minted}                    % typeset highlighted source code
+\RequirePackage[autostyle=true]{csquotes}  % package for quoting text using the correct language-dependent symbols; needs to be loaded after minted
 
 
 % ------------------------------------------------------------------------------
