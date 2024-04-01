@@ -1,0 +1,39 @@
+\begin{tikzpicture}[remember picture]
+
+  % decay 1(23)
+  \node at (0,0) {$\pi^-_{(1)}\, \subnode{isobarBHF}{\pi}^0_{(2)}\, \subnode{isobarB}{\omega}^{\vphantom{0}}_{(3)}(782)$};
+  \coordinate (labelBHF) at ($ (isobarBHF) + (0,0.5) $);
+  \draw[->,green!60!black] (labelBHF) to (isobarBHF);
+  \node[green!60!black] at ($ (labelBHF) + (0,0.25) $) {HF analyzer};
+  \coordinate (isobarBHFbelow) at ($ (isobarBHF) - (0,0.3) $);
+  \coordinate (isobarBbelow)   at ($ (isobarB)   - (0,0.3) $);
+  \draw[blue] (isobarBHF) -- (isobarBHFbelow) -- (isobarBbelow) -- (isobarB);
+  \coordinate (labelBXF) at ($ (isobarBHFbelow)!0.5!(isobarBbelow) $);
+  \draw[blue] (labelBXF) -- ($ (labelBXF) - (0,0.2) $);
+  \node[blue,align=center] at ($ (labelBXF) - (0,0.65) $) {$\xi$ \\ GJ analyzer};
+
+  % decay 3(12)
+  \node at (5,0) {$\omega^{\vphantom{0}}_{(3)}(782)\, \subnode{isobarAHF}{\pi}^-_{(1)}\, \subnode{isobarA}{\pi}^0_{(2)}$};
+  \coordinate (labelAHF) at ($ (isobarAHF) + (0,0.5) $);
+  \draw[->,green!60!black] (labelAHF) to (isobarAHF);
+  \node[green!60!black] at ($ (labelAHF) + (0,0.25) $) {HF analyzer};
+  \coordinate (isobarAHFbelow) at ($ (isobarAHF) - (0,0.3) $);
+  \coordinate (isobarAbelow)   at ($ (isobarA)   - (0,0.3) $);
+  \draw[blue] (isobarAHF) -- (isobarAHFbelow) -- (isobarAbelow) -- (isobarA);
+  \coordinate (labelAXF) at ($ (isobarAHFbelow)!0.5!(isobarAbelow) $);
+  \draw[blue] (labelAXF) -- ($ (labelAXF) - (0,0.2) $);
+  \node[blue,align=center] at ($ (labelAXF) - (0,0.65) $) {$\xi$ \\ GJ analyzer};
+
+  % decay 2(31)
+  \node at (10,0) {$\pi^0_{(2)}\, \subnode{isobarCHF}{\omega}^{\vphantom{0}}_{(3)}(782)\, \subnode{isobarC}{\pi}^-_{(1)}$};
+  \coordinate (labelCHF) at ($ (isobarCHF) + (0,0.5) $);
+  \draw[->,green!60!black] (labelCHF) to (isobarCHF);
+  \node[green!60!black] at ($ (labelCHF) + (0,0.25) $) {HF analyzer};
+  \coordinate (isobarCHFbelow) at ($ (isobarCHF) - (0,0.3) $);
+  \coordinate (isobarCbelow)   at ($ (isobarC)   - (0,0.3) $);
+  \draw[blue] (isobarCHF) -- (isobarCHFbelow) -- (isobarCbelow) -- (isobarC);
+  \coordinate (labelCXF) at ($ (isobarCHFbelow)!0.5!(isobarCbelow) $);
+  \draw[blue] (labelCXF) -- ($ (labelCXF) - (0,0.2) $);
+  \node[blue,align=center] at ($ (labelCXF) - (0,0.65) $) {$\xi$ \\ GJ analyzer};
+
+\end{tikzpicture}

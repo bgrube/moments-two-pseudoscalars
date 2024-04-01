@@ -1,0 +1,61 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[tikz,american]{standalone}
+
+% ------------------------------------------------------------------------------
+% load packages
+\usepackage{sty/packages}
+%\usepackage{tikz-3dplot}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{trees}
+\usetikzlibrary{arrows}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{matrix}
+\usetikzlibrary{tikzmark}
+
+
+% ------------------------------------------------------------------------------
+% TikZ definitions
+\tikzset{
+  >=stealth,  % set default arrow tip
+  particle/.style={postaction={decorate}, decoration={markings, mark=at position 0.5 with {\arrow{stealth}}}},
+  isobar/.style={particle, thick},
+  resonance/.style={particle, very thick},
+  reggeon/.style={double},
+  dot/.style={circle, fill=black, minimum size=2.5pt, inner sep=0pt},
+  photon/.style={decorate, decoration={snake}},
+  gluon/.style={decorate, decoration={coil, amplitude=4pt, segment length=5pt}},
+  pion/.style={draw=black, line width=.7, postaction={decorate}, decoration={markings, mark=at position .55 with {\arrow{stealth}}}},
+  proton/.style={draw=black, line width=.7, postaction={decorate}, decoration={markings, mark=at position .55 with {\arrow{stealth}}}}
+}
+
+
+% ------------------------------------------------------------------------------
+% load macros
+% all macro definitions should go into macro.sty
+\usepackage{sty/macros}
+
+
+% ------------------------------------------------------------------------------
+% tikz macros
+\newcommand*{\tikzAngleOfLine}{\tikz@AngleOfLine}
+\def\tikz@AngleOfLine(#1)(#2)#3{%
+ \pgfmathanglebetweenpoints{%
+   \pgfpointanchor{#1}{center}}{%
+   \pgfpointanchor{#2}{center}}
+ \pgfmathsetmacro{#3}{\pgfmathresult}%
+}
+
+% \newcommand*{\tikzmark}[3][]{\tikz[remember picture, baseline] \node [anchor=base,#1](#2) {#3};}
+
+
+\begin{document}
+
+	% the variable \tikzFigureFile has to be set from the command line and should contain the path to the TikZ file
+	% example:    pdflatex '\def\tikzFigureFile{tikz.tex}\input' documentWrapper.tex
+	\input{\tikzFigureFile}
+
+\end{document}
