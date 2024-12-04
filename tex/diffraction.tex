@@ -468,9 +468,9 @@ obtain
   \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, Y_L^M(\Omega) \\
   \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, y_L^M(\theta) \sBrk[2]{\cos(M \phi) - \imag \sin(M \phi)}
   \mustBeEq{}&
-  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, y_L^M(\theta) \sBrk[2]{\cos(M \phi) + \imag \sin(M \phi)}.
+  \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, y_L^M(\theta) \sBrk[2]{\cos(M \phi) + \imag \sin(M \phi)},
 \end{align}
-Consequently,
+wich must hold for all $\Omega = (\theta, \phi)$.  Consequently,
 \begin{align}
   \label{eq:diffraction_moments_imag}
   0
@@ -481,7 +481,7 @@ Consequently,
   \mustBeEq{}& \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity(\Omega)\, y_L^M(\theta)\, \cos(M\, \phi) \quad \in \mathbb{R}.
 \end{align}
 
-We can also rewrite \cref{eq:diffraction_intensity_moments_general}:
+Using the above, we can rewrite \cref{eq:diffraction_intensity_moments_general}:
 \begin{align}
   \intensity(\Omega)
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re[2]{H(L, M)}\, \Re[2]{Y_L^M(\Omega)} \nonumber
@@ -489,7 +489,8 @@ We can also rewrite \cref{eq:diffraction_intensity_moments_general}:
   \label{eq:diffraction_intensity_moments_real}
   ={}& \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, H(L, M)\, y_L^M(\theta)\, \cos(M\, \phi).
 \end{align}
-This is identical to Eq.~(13) in \refCite{Chung:1997qd}.
+This is identical to Eq.~(13) in \refCite{Chung:1997qd} and means that
+parity requires the intensity to be an even function in~$\phi$.
 
 
 \subsection{Reflectivity basis}%
@@ -865,9 +866,10 @@ given by
 \end{equation}
 where $\eta(\Omega)$ is the detection efficiency for the reaction
 under study\footnote{The detection efficiency includes all effects
-that influence the probability to detect a given event, in particular
-geometric acceptance of the detectors and inefficiencies introduced by
-the detectors, by the event reconstruction, and by the event selection
+that influence the probability to detect an event at the
+angles~$\Omega$.  It includes in particular the geometric acceptance
+of the detectors and the inefficiencies introduced by the detectors,
+by the event reconstruction, and by the event selection that is
 applied by the trigger and in the offline data processing.  In
 addition to~$\Omega$ the detection efficiency depends in general on
 additional kinematic variables~\vect{\uptau}.  In
@@ -893,22 +895,7 @@ we obtain
   = \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_\text{meas}(L, M)\, Y_L^M(\Omega)}
 \end{equation}
 with the measured
-moments\footnote{\label{fn:complex_moment_decomp}Note that we cannot
-use \cref{eq:diffraction_moments_real} here because this equation was
-derived using the symmetry property of the physical moments in
-\cref{eq:diffraction_moment_sym_2}, which we derived from parity
-conservation and the symmetry properties of the Clebsch-Gordan
-coefficients.  However, since $\eta(\Omega)$ can be an arbitrary
-function, the measured moments do in general not have this symmetry
-property.  Note that \cref{eq:diffraction_moment_sym_1} still holds,
-because it is related to the symmetry properties of the spherical
-harmonics in \cref{eq:spherical_harm_sym}.  This means that also for
-the measured moments we have to calculate only those with $M \geq 0$.
-Alternatively, one can use the real-valued spherical harmonics $Y_{L
-M}$\footnotemark\ as defined, for example, in
-\refsCite{wikipedia:sphericalHarm,Jones:2023} with $-L \leq M \leq
-+L$.}\footnotetext{By convention, the real-valued spherical harmonics
-$Y_{L M}$ are written with $M$~as a subscript.}\footnote{\Confer
+moments\footnote{\Confer
 \cref{eq:diffraction_moments_norm}; equivalent to Eq.~(B2) in
 \refCite{E852:1999xev}.}
 \begin{equation}
@@ -917,6 +904,26 @@ $Y_{L M}$ are written with $M$~as a subscript.}\footnote{\Confer
   = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \intensity_\text{meas}(\Omega)\, Y_L^{M *}(\Omega)
   = \sqrt{\frac{4 \pi}{2 L + 1}}\, \int_{4 \pi}\!\!\! \dif{\Omega}\, \eta(\Omega)\, \intensity(\Omega)\, Y_L^{M *}(\Omega).
 \end{equation}
+Note that \cref{eq:diffraction_moment_sym_1} still holds for the
+measured moments, because it is related only to the symmetry
+properties of the spherical harmonics in \cref{eq:spherical_harm_sym}.
+This means that we have to calculate the measured moments only for $M
+\geq
+0$.\footnote{\label{fn:real_valued_spherical_harmonics}Alternatively,
+one could use the real-valued spherical harmonics $Y_{L M}$ as
+defined, for example, in \refsCite{wikipedia:sphericalHarm,Jones:2023}
+with $-L \leq M \leq +L$.  By convention, the real-valued spherical
+harmonics $Y_{L M}$ are written with $M$~in the subscript, whereas the
+complex-valued spherical harmonics $Y_L^M$ have $M$~in the
+superscript.}  In contrast, the measured moments do not satisfy
+\cref{eq:diffraction_moment_real}.  This is because
+\cref{eq:diffraction_moment_real} was derived using the symmetry
+property of the physical moments in
+\cref{eq:diffraction_moment_sym_2}, which we derived from parity
+conservation and the symmetry properties of the Clebsch-Gordan
+coefficients.  However, since $\eta(\Omega)$ can be an arbitrary
+function, the measured moments do in general not have this symmetry
+property and are hence complex-valued.
 
 Inserting the moment decomposition for the physical intensity distribution
 from \cref{eq:diffraction_intensity_moments_real} into
@@ -933,21 +940,47 @@ from \cref{eq:diffraction_intensity_moments_real} into
   y_{L'}^{M'}(\theta)\, \cos(M'\, \phi)\, \eta(\Omega)\, Y_L^{M *}(\Omega)}{\equiv I^\text{acc}_{L M\, L' M'}},
 \end{align}
 which is equivalent to Eqs.~(B3) and~(B4) in \refCite{E852:1999xev}.
-Here, $I^\text{acc}_{L M\, L' M'}$ are the overlap integrals of the
-spherical harmonics in the accepted phase space.
+Here, the $I^\text{acc}_{L M\, L' M'}$ are the overlap integrals of
+the spherical harmonics in the accepted phase space.
 
-In practice, we want to calculate only a finite set of moments and
-only a finite set of $(L' M')$ quantum numbers contribute to each of
-these moments.  We can hence rewrite
-\cref{eq:diffraction_moments_meas2} as a matrix equation in
+Note that the acceptance integrals $I^\text{acc}_{L M\, L' M'}$
+defined in \cref{eq:diffraction_moments_meas2} are in general
+complex-valued.  Inserting \cref{eq:small_y_def} into this definition,
+we get
+\begin{equation}
+  \label{eq:diffraction_integral_matrix_detail}
+  I^\text{acc}_{L M\, L' M'}
+  = \sqrt{\dfrac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})
+  \int_{-1}^{+1}\!\!\! \dif{\cos \theta}\, \dUnderbrace{y_{L'}^{M'}(\theta)\, y_L^M(\theta)}{\in \mathbb{R}}
+  \int_{-\pi}^{+\pi}\!\!\! \dif{\phi}\,
+  \cos(M' \phi)\, \eta(\theta, \phi)\, \sBrk[2]{\cos(M \phi) - \imag \sin(M \phi)}.
+\end{equation}
+This means that
+\begin{equation}
+  \Im{I^\text{acc}_{L M\, L' M'}}
+  = -\sqrt{\dfrac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})
+  \int_{-1}^{+1}\!\!\! \dif{\cos \theta}\, y_L^M(\theta)\, y_{L'}^{M'}(\theta)
+  \int_{-\pi}^{+\pi}\!\!\! \dif{\phi}\,
+  \cos(M' \phi)\, \eta(\theta, \phi)\, \sin(M \phi)
+\end{equation}
+vanishes only if $\eta(\theta, \phi)$ is an even function in $\phi$.
+
+In practice, we can calculate only a finite set of measured moments
+and only a finite set of physical moments with $(L' M')$ quantum
+numbers contribute to each of the measured moments.  We can hence
+rewrite \cref{eq:diffraction_moments_meas2} as a matrix equation in
 quantum-number space, \ie
 \begin{equation}
   \label{eq:diffraction_moments_meas_matrix}
   \vect{H}_\text{meas}
   = \mat{I}^\text{acc}\, \vect{H},
 \end{equation}
-where $\mat{I}^\text{acc}$ is the acceptance integral matrix.  For
-an ideal detector with $\eta(\Omega) = 1$, $\mat{I}^\text{acc}$
+where $\mat{I}^\text{acc}$ is the acceptance integral matrix.  From
+the above it is clear that the measured moments are linear
+combinations of the physical moments, \ie the acceptance mixes the
+physical moments into the measured moments.
+
+For an ideal detector with $\eta(\Omega) = 1$, $\mat{I}^\text{acc}$
 becomes a unit matrix in quantum-number space, \ie
 \begin{equation}
   \label{eq:diffraction_integral_matrix_ideal}
@@ -1010,10 +1043,10 @@ elements of~$\mat{I}^\text{acc}$ represent the acceptance for the
 intensity distribution that corresponds to the respective $(L M)$
 quantum numbers.  The off-diagonal elements of~$\mat{I}^\text{acc}$
 are in general non-zero and are related to the indistinguishability of
-moments with $(L M)$ from those with $(L' M')$ quantum numbers due to
-the limited detection efficiency.  This indistinguishability between
-quantum-number combinations can be quantified by considering the
-normalized acceptance integral matrix
+measured moments with $(L M)$ quantum numbers from the physical
+moments with $(L' M')$ due to the limited detection efficiency.  This
+indistinguishability between quantum-number combinations can be
+quantified by considering the normalized acceptance integral matrix
 \begin{equation}
   \tilde{\mat{I}}^\text{acc}
   = \diag(\mat{I}^\text{acc})^{-1/2}\, \mat{I}^\text{acc}\, \diag(\mat{I}^\text{acc})^{-1/2},
@@ -1021,18 +1054,18 @@ normalized acceptance integral matrix
   \tilde{I}^\text{acc}_{L M\, L' M'}
   = \frac{I^\text{acc}_{L M\, L' M'}}{\sqrt{I^\text{acc}_{L M\, L M}}\, \sqrt{I^\text{acc}_{L' M'\, L' M'}}}.
 \end{equation}
-If the angular distributions for two moments become indistinguishable
-in the accepted phase space, the corresponding off-diagonal elements
-of~$\tilde{\mat{I}}^\text{acc}$ will approach~1.
+If the angular distributions for a pair of moments become
+indistinguishable in the accepted phase space, the corresponding
+off-diagonal elements of~$\tilde{\mat{I}}^\text{acc}$ will approach~1.
 
 $\mat{I}^\text{acc}$~can be approximated using Monte Carlo
 integration.  To this end, we first generate $N_\text{gen}$~events
-that are uniformly distributed in the two-body phase
-space\footnote{This means the events are uniformly distributed in the
-$(\cos\theta, \phi)$ plane.} and then pass these events through the
-detector simulation, event reconstruction, and event selection chains.
-From the remaining $N_\text{acc}$~accepted events we calculate the
-elements of the acceptance integral matrix using
+that are uniformly distributed in two-body phase space\footnote{This
+means the events are uniformly distributed in the $(\cos\theta, \phi)$
+plane.} and then pass these events through the detector-simulation,
+event-reconstruction, and event-selection chains.  From the remaining
+$N_\text{acc}$~accepted events we calculate the elements of the
+acceptance integral matrix using
 \begin{equation}
   \label{eq:diffraction_integral_matrix_mc}
   \rBrk{\mat{I}^\text{acc}}_{L M\, L' M'}
@@ -1040,8 +1073,8 @@ elements of the acceptance integral matrix using
   \approx \sqrt{\frac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})\,
   \frac{4 \pi}{N_\text{gen}} \sum_{i = 1}^{N_\text{acc}} y_{L'}^{M'}(\theta_i)\, \cos(M'\, \phi_i)\, Y_L^{M *}(\Omega_i).
 \end{equation}
-Except for the factor $4 \pi$ that represents the integration volume,
-this is identical to Eq.~(B6) in \refCite{E852:1999xev}.
+Except for the factor $4 \pi$, which represents the integration
+volume, this is identical to Eq.~(B6) in \refCite{E852:1999xev}.
 
 In case background is included in the Monte Carlo simulation,
 \cref{eq:diffraction_integral_matrix_mc} can be extended to subtract the
@@ -1062,18 +1095,43 @@ measured moments~$\vect{H}_\text{meas}$ from the data.  In this case,
 the equation system in \cref{eq:diffraction_moments_meas_matrix}
 becomes overdetermined and has to be solved by fitting for~\vect{H}
 (see \eg Sec.~3.5.2 in \refCite{Grayer:1974cr}).  Since the problem
-remains linear in~\vect{H}, a $\chi^2$-fit can be also solved in
+remains linear in~\vect{H}, the $\chi^2$-fit can be also solved in
 closed form using matrix algebra.}
 \begin{equation}
   \label{eq:diffraction_phys_moments}
   \vect{H}
   = \rBrk[0]{\mat{I}^\text{acc}}^{-1}\, \vect{H}_\text{meas}.
 \end{equation}
-In case the detection efficiency is close to zero over wide ranges of
-the phase space, $\mat{I}^\text{acc}$~may become (nearly) singular.
-In this case, certain moments may become immeasurable and one has to
-revert to the support-vector moments developed by
-R.~Jones~\cite{Jones:2023}.
+In the above equation, $\mat{I}^\text{acc}$ is a square matrix with a
+size defined by the maximum $L$~value, $L_\text{max}$, that we
+consider for the measured and physical moments.  On the one hand,
+$L_\text{max}$~has to be chosen large enough to cover all important
+physics and acceptance effects.  On the other hand,
+choosing~$L_\text{max}$ too large will lead to many elements
+of~$\mat{I}^\text{acc}$ being close to zero, which in turn may lead to
+numerical instabilities in the inversion of~$\mat{I}^\text{acc}$ and
+to inflated uncertainty estimates due to small eigenvalues
+of~$\mat{I}^\text{acc}$.  In case the detection efficiency is close to
+zero over wide ranges of the phase space, $\mat{I}^\text{acc}$~may
+become (nearly) singular.  In this case, certain moments may become
+immeasurable and one has to revert to the support-vector moments
+developed by R.~Jones~\cite{Jones:2023}.
+
+As already mentioned above, $\mat{I}^\text{acc}$~and
+$\vect{H}_\text{meas}$~in \cref{eq:diffraction_phys_moments} are in
+general complex-valued.  However, the physical moments must still
+satisfy \cref{eq:diffraction_moment_real}, \ie they must be
+real-valued within uncertainties.  Consequently, in
+\cref{eq:diffraction_phys_moments} the imaginary parts of
+$\mat{I}^\text{acc}$, which is estimated from Monte Carlo simulations
+(see
+\cref{eq:diffraction_integral_matrix_mc,eq:diffraction_integral_matrix_mc_weighted}),
+must compensate the imaginary parts of the measured moments, which are
+estimated from real data (see \cref{sec:diffraction:estimation_uncert}
+below).  Deviations from \cref{eq:diffraction_moment_real} of the
+physical moments estimated from data may indicate that the detector
+model does not accurately reproduce the $\phi$-odd component of the
+detection efficiency.
 
 
 \subsubsection{Estimation of measured moments and uncertainty propagation}%
@@ -1212,6 +1270,9 @@ And conversely,
   \tilde{\covMatSym}_{\!\vect{H}}
   = \covMatSym_{\!\vect{H}}^{RR} - \covMatSym_{\!\vect{H}}^{II} + \imag \rBrk{\covMatSym_{\!\vect{H}}^{IR} + \covMatSym_{\!\vect{H}}^{RI}}
 \end{align}
+Note that although $\covMatSym_{\!\vect{H}}^{RR}$~and
+$\covMatSym_{\!\vect{H}}^{II}$~are symmetric,
+$\covMatSym_{\!\vect{H}}^{RI}$~is not.
 
 Analogous to \cref{eq:diffraction_sample_cov} we can estimate the
 Hermitian and the pseudo-covariance matrix for the measured moments
@@ -1325,9 +1386,10 @@ the physical moments using \cref{eq:complex_uncert_prop} and the
 corresponding covariance matrices of the real and imaginary parts
 of~$\hat{\vect{H}}$ using \cref{eq:cov_ReRe,eq:cov_ImIm,eq:cov_ReIm}.
 
-Finally, we can verify that the acceptance correction works correctly
-by checking that the physical moments~$\hat{\vect{H}}$ fulfill
-\cref{eq:diffraction_moments_imag}, \ie that they are real-valued
+As was discussed at the end of \cref{sec:diffraction:acceptance_corr},
+we can verify that the acceptance correction works correctly by
+checking that the physical moments~$\hat{\vect{H}}$ fulfill
+\cref{eq:diffraction_moment_real}, \ie that they are real-valued
 within uncertainties.
 
 In the context of a partial-wave analysis it is often helpful to
@@ -1354,8 +1416,8 @@ in \cref{eq:diffraction_int_meas}.  Analogous to
   ={}& \sum_{L = 0}^\infty \sqrt{4 \pi}\, \sqrt{2 L + 1} \sum_{M = 0}^{L} (2 - \delta_{M 0})\, \Re{H_\text{acc}(L, M)\, Y_L^M(\Omega)}
 \end{align}
 with the acceptance moments defined analogously to
-\cref{eq:diffraction_moments_norm},\footnote{The same arguments as in
-\cref{fn:complex_moment_decomp} apply here.} \ie
+\cref{eq:diffraction_moments_norm},\footnote{The same arguments as
+given below \cref{eq:diffraction_moments_meas} apply here.} \ie
 \begin{equation}
   \label{eq:diffraction_acc_moment}
   H_\text{acc}(L, M)
@@ -1385,15 +1447,20 @@ integral matrix defined in \cref{eq:diffraction_moments_meas2}, we get
 \end{align}
 Here, we have switched back to using the complex-valued spherical
 harmonics and including the negative $M$~values into the sums.  In
-addition, we have applied \cref{eq:spherical_harm_clebsch}.\todo{Why
-does Eq.~(B9) in \refCite{E852:1999xev} contains $H_\text{acc}^*$?}
-From the above equation, it is clear that in
-\cref{eq:diffraction_moments_meas2} a measured moment with given $(L,
-M)$ depends only on those physical moments $H(L', M')$ and those
-acceptance moments $H_\text{acc}(L'', M'')$, for which $L', L'' \leq 2
-L$.  This means that under the simplifying assumptions expressed in
-\cref{eq:diffraction_int_meas} we need to know only a finite set of
-moments of the acceptance function.
+addition, we have applied \cref{eq:spherical_harm_clebsch}.
+\todo{Why does Eq.~(B9) in \refCite{E852:1999xev} contain $H_\text{acc}^*$?}
+From the above equation and the symmetry relations of the
+Clebsch-Gordan coefficients, it is clear that an acceptance moment
+$H_\text{acc}(L'', M'')$ contributes only to those elements of the
+acceptance integral matrix, for which $\abs{L - L'} \leq L'' \leq L +
+L'$ and $M'' = M - M'$.  In particular, if the moments are limited to
+$L, L' \leq L_\text{max}$ the contributing acceptance moments are
+limited to $L'' \leq 2 L_\text{max}$.  This means that under the
+simplifying assumptions expressed in \cref{eq:diffraction_int_meas} we
+need to know in principle only a finite set of moments of the
+acceptance function.\footnote{Note that
+\cref{eq:diffraction_integral_matrix_mc,eq:diffraction_integral_matrix_mc_weighted}
+take into account the full acceptance function.}
 
 
 \subsubsection{Example}%
