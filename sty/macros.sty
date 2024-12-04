@@ -147,6 +147,7 @@
 % alternatively the "physics" package could be used
 \renewcommand*{\Re}[2][]{\operatorname{Re}\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
 \renewcommand*{\Im}[2][]{\operatorname{Im}\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
+\DeclareMathOperator{\erfc}{erfc}
 \DeclareMathOperator{\trace}{Tr}
 \newcommand*{\tr}{\trace\!}  % trace
 \DeclareMathOperator{\rank}{rank}
@@ -175,6 +176,7 @@
 \DeclareMathOperator{\rot}{rot}         % curl
 \DeclareMathOperator{\sgn}{sgn}         % signum
 \newcommand*{\mustBeEq}{\overset{!}{=}}
+\newcommand*{\mustNotBeEq}{\overset{!}{\neq}}
 \newcommand*{\equalUsing}[1]{\overset{\text{#1}}{=}}  % equal sign with overset text
 \newcommand*{\equalUsingTwo}[2]{\overset{\text{#1}}{\underset{\text{#2}}{=}}}  % equal sign with over and underset text
 \newcommand{\simproptoimpl}[2]{%
@@ -299,18 +301,19 @@
 \newcommand*{\JP}{\ensuremath{J^P}\xspace}
 \newcommand*{\JPC}{\ensuremath{J^{PC}}\xspace}
 \newcommand*{\Mrefl}{\ensuremath{M^\refl}\xspace}
-\newcommand*{\JPMrefl}{\ensuremath{\JPC\,\Mrefl}\xspace}
+\newcommand*{\JPMrefl}{\ensuremath{\JP\,\Mrefl}\xspace}
 \newcommand*{\JPCMrefl}{\ensuremath{\JPC\,\Mrefl}\xspace}
-\newcommand*{\IGJPC}{\ensuremath{\IG\,\JPC}\xspace}
-\newcommand*{\IGJPCMrefl}{\ensuremath{\IG\,\allowbreak\JPC\,\allowbreak\Mrefl}\xspace}
+\newcommand*{\IGJPC}{\ensuremath{\IG(\JPC)}\xspace}
+\newcommand*{\IGJPCMrefl}{\ensuremath{\IG\allowbreak(\JPC)\allowbreak\Mrefl}\xspace}
 \newcommand*{\refl}{\ensuremath{\varepsilon}\xspace}  % reflectivity symbol
 \newcommand*{\reflOp}{\ensuremath{\Pi_y}\xspace}  % reflectivity operator
 \newcommand*{\natur}{\ensuremath{\eta}\xspace}  % naturality symbol
 \newcommand*{\naturEx}{\ensuremath{\eta_\text{ex}}\xspace}  % naturality symbol for exchange particle
 
 % expressions
-\newcommand*{\clebsch}[6]{\ensuremath{({#1}\;{#2},\;{#3}\;{#4}\; |\; {#5}\;{#6})}\xspace}
-% Clebsch-Gordan coefficient \clebsch{J_1}{M_1}{J_2}{M_2}{J}{M}
+% Clebsch-Gordan coefficient \clebsch{J_1}{M_1}{J_2}{M_2}{J}{M}; needs braket package
+\newcommand*{\clebsch}[6]{\ensuremath{\braket{{#1}\;{#2},\;{#3}\;{#4}\; |\; {#5}\;{#6}}}\xspace}
+\newcommand*{\Clebsch}[6]{\ensuremath{\Braket{{#1}\;{#2},\;{#3}\;{#4}\; |\; {#5}\;{#6}}}\xspace}
 \newcommand*{\termSym}[4]{\ensuremath{{#1} \prescript{#2}{}{#3}_{#4}}\xspace}  % quark-model meson term symbol; n, 2S + 1, L, J
 \newcommand*{\wave}[8]{\ensuremath{{#1}^{{#2}}\,\allowbreak{#3}^{#4}\,\allowbreak{#5}\,{[#6]}\,{#7}\,{[#8]}}\xspace}
 % pi pi omega partial-wave definition \wave{J}{PC}{M}{refl}{isobar}{L, S}{bachelor}{L_xi}
@@ -679,7 +682,7 @@
 \newcommand*{\stat}{\ensuremath{\text{stat.}}}
 \newcommand*{\sys}{\ensuremath{\text{sys.}}}
 \newcommand*{\valueSep}{\,}
-\sisetup{number-unit-product = \valueSep}
+\sisetup{number-unit-product=\valueSep}
 % macros that typeset values with symmetric errors with label
 \newcommand*{\NumErrl}[3][]{% typesets +- error (label)
   \begingroup
