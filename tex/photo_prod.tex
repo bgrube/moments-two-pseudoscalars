@@ -297,7 +297,7 @@ Since the formulas for the intensity components in
 \cref{eq:photoprod_intensity_moments_norm_unpol,eq:photoprod_intensity_moments_norm_pol}
 have---up to overall signs---the same form as
 \cref{eq:diffraction_intensity_moments_norm} for the diffractive case,
-we can use the same arguments that lead us to
+we can apply the same arguments that lead us to
 \cref{eq:diffraction_intensity_moments_general}.  Thus, all intensity
 components are real-valued and only moments with $M \geq 0$ are
 required to calculate them, \ie
@@ -449,7 +449,7 @@ because $H_2(L, M)$ is purely imaginary (see
 \refCite{Mathieu:2019fts}, our formulation is more symmetrical \wrt
 \cref{eq:photoprod_intensity_0_moments_real,eq:photoprod_intensity_1_moments_real}.
 
-Since $H_{0, 1}(L, M)$ is real-valued and $H_2(L, M)$ purely
+Since $H_{0, 1}(L, M)$ are real-valued and $H_2(L, M)$ is purely
 imaginary, it is clear from
 \crefrange{eq:photoprod_intensity_0_moments_real}{eq:photoprod_intensity_2_moments_imag}
 that the $\intensity_i(\Omega)$ are all real-valued, as expected.
@@ -626,9 +626,10 @@ separate these contributions.  Also note that in
 \cref{eq:photoprod_moment_0_pw_refl} the contributions from the two
 reflectivities enter with the same sign, whereas in
 \cref{eq:photoprod_moment_1_pw_refl,eq:photoprod_moment_2_pw_refl}
-they enter with opposite sign.  Similarly, each moment is an
-incoherent sum over~$k$, \ie the moments do not separate spin-flip and
-spin-non-flip amplitudes.
+they enter with opposite sign, \ie the terms in the sum over~\refl are
+multiplied by~\refl.  Similarly, each moment is an incoherent sum
+over~$k$, \ie the moments do not separate spin-flip and spin-non-flip
+amplitudes.
 
 From
 \cref{eq:photoprod_moment_0_real,eq:photoprod_moment_0_pw_refl,eq:photoprod_moment_1_pw_refl,eq:photoprod_moment_2_pw_refl}
@@ -687,7 +688,7 @@ by using
   (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}
   \in \mathbb{R}.
 \end{align}
-Using the above, we see that
+With the above, we see that
 \begin{align}
   H_1(0, 0)
   ={}& \sum_{\refl = \pm} \refl \sum_{k = 0, 1} \sum_{\ell}^\infty
@@ -717,8 +718,9 @@ Using the above, we see that
 \end{align}
 As mentioned in \cref{fn:photoprod_intensity_sign}, $H_1(0, 0) \geq 0$
 if the wave set contains only positive-reflectivity waves with $m \geq
-0$.  $H_2(0, 0)$ vanishes as expected from
-\cref{eq:photoprod_moment_2_M0}.
+0$ because in this case the amplitudes~$\sBrk{\ell}^{(\refl)}_{{-m}; k}$ in
+\cref{eq:photoprod_H_1_0_0_refl_2} are all zero.  $H_2(0, 0)$ vanishes
+as expected from \cref{eq:photoprod_moment_2_M0}.
 
 
 \subsection{Calculation of moments from data}%
@@ -768,8 +770,16 @@ measured moments:
 This is equivalent to
 \cref{eq:photoprod_moments_norm}
 and the equation for $H_0^\text{meas}(L, M)$ is equivalent to
-\cref{eq:diffraction_moments_meas} for the diffractive case.  
-
+\cref{eq:diffraction_moments_meas} for the diffractive case.  Note
+that \cref{eq:photoprod_moments_sym_1} still holds for the measured
+moments, because it is related only to the symmetry properties of the
+spherical harmonics in \cref{eq:spherical_harm_sym}.  This means that
+we have to calculate the measured moments only for $M \geq 0$ (see
+also \cref{fn:real_valued_spherical_harmonics}).  In contrast,
+\cref{eq:photoprodP_moments_real_imag} does not hold for the measured
+moments, because of arguments analogous to the ones given below
+\cref{eq:diffraction_moments_meas}, \ie all measured moments are in
+general complex-valued.
 
 With the above moments, the intensity can be written as a sum of three
 measured intensities, \ie\footnote{We use the same sign convention for
@@ -778,10 +788,7 @@ the intensity components as in \cref{eq:photoprod_intensity_sum}.}
   \intensity_\text{meas}(\Omega, \Phi)
   = \intensity_0^\text{meas}(\Omega) - \intensity_1^\text{meas}(\Omega, \Phi) - \intensity_2^\text{meas}(\Omega, \Phi)
 \end{equation}
-with\footnote{We cannot use
-\cref{eq:photoprod_intensity_0_moments_real,eq:photoprod_intensity_1_moments_real,eq:photoprod_intensity_2_moments_imag}
-for the measured intensities because of the arguments in
-\cref{fn:complex_moment_decomp}.}
+with
 \begin{equation}
   \intensity_i^\text{meas}(\Omega, \Phi)
   = \sum_{L = 0}^\infty \sqrt{\frac{2 L + 1}{4 \pi}} \sum_{M = 0}^{L} (2 - \delta_{M 0})\,
@@ -793,7 +800,7 @@ for the measured intensities because of the arguments in
 \end{equation}
 The first equation is equivalent to
 \cref{eq:diffraction_intensity_moments_meas}.  Note that
-$\intensity_0^\text{meas}(\Omega)$ is independent of~$\Phi$.
+$\intensity_0^\text{meas}$ is actually independent of~$\Phi$.
 
 To relate the measured to the physical moments, we insert
 \cref{eq:photoprod_intensity_meas} and the moment decomposition of the
@@ -981,7 +988,72 @@ Consequently, the acceptance integral matrix in
   f_{j, L' M'}^\text{phys}(\Omega, \Phi).
 \end{equation}
 Note that in general, the elements of~$\mat{I}^\text{acc}$ are
-complex-valued.  Using similar arguments as in
+complex-valued.  Inserting \cref{eq:small_y_def} into
+\cref{eq:photoprod_phys_basis_fcn,eq:photoprod_meas_basis_fcn} and then into
+\cref{eq:photoprod_integral_matrix}, we get equations analogous to
+\cref{eq:diffraction_integral_matrix_detail}:
+\begin{align}
+  \label{eq:photoprod_integral_matrix_detail_0}
+  \rBrk[0]{\mat{I}^\text{acc}}_{i 0, L M\, L' M'}
+  ={}&
+  \begin{multlined}[t]
+    \frac{1}{\pi}\, \sqrt{\dfrac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})
+    \int_{-1}^{+1}\!\!\! \dif{\cos \theta}\,
+    \dUnderbrace{y_L^M(\theta)\, y_{L'}^{M'}(\theta)}{\in \mathbb{R}}
+    \\
+    \times
+    \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \begin{cases}
+      1 / 2 & \text{for $i = 0$}, \\
+      \cos(2 \Phi) / P_\gamma & \text{for $i = 1$}, \\
+      \sin(2 \Phi) / P_\gamma & \text{for $i = 2$}
+    \end{cases}
+    \times
+    \int_{-\pi}^{+\pi}\!\!\! \dif{\phi}\,
+    \sBrk[2]{\cos(M \phi) - \imag \sin(M \phi)}\, \eta(\theta, \phi, \Phi)\, \cos(M' \phi)
+  \end{multlined}
+  \\
+  \label{eq:photoprod_integral_matrix_detail_1}
+  \rBrk[0]{\mat{I}^\text{acc}}_{i 1, L M\, L' M'}
+  ={}&
+  \begin{multlined}[t]
+    \frac{P_\gamma}{\pi}\, \sqrt{\dfrac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})
+    \int_{-1}^{+1}\!\!\! \dif{\cos \theta}\,
+    y_L^M(\theta)\, y_{L'}^{M'}(\theta
+    \\
+    \times
+    \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \cos(2 \Phi)\, \begin{cases}
+      1 / 2 & \text{for $i = 0$}, \\
+      \cos(2 \Phi) / P_\gamma & \text{for $i = 1$}, \\
+      \sin(2 \Phi) / P_\gamma & \text{for $i = 2$}
+    \end{cases}
+    \times
+    \int_{-\pi}^{+\pi}\!\!\! \dif{\phi}\,
+    \sBrk[2]{\cos(M \phi) - \imag \sin(M \phi)}\, \eta(\theta, \phi, \Phi)\, \cos(M' \phi)
+  \end{multlined}
+  \\
+  \label{eq:photoprod_integral_matrix_detail_2}
+  \rBrk[0]{\mat{I}^\text{acc}}_{i 2, L M\, L' M'}
+  ={}&
+  \begin{multlined}[t]
+    \frac{P_\gamma}{\pi}\, \sqrt{\dfrac{2 L' + 1}{2 L + 1}}\, (2 - \delta_{M' 0})
+    \int_{-1}^{+1}\!\!\! \dif{\cos \theta}\,
+    y_L^M(\theta)\, y_{L'}^{M'}(\theta)
+    \\
+    \times
+    \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \sin(2 \Phi)\, \begin{cases}
+      1 / 2 & \text{for $i = 0$}, \\
+      \cos(2 \Phi) / P_\gamma & \text{for $i = 1$}, \\
+      \sin(2 \Phi) / P_\gamma & \text{for $i = 2$}
+    \end{cases}
+    \times
+    \int_{-\pi}^{+\pi}\!\!\! \dif{\phi}\,
+    \sBrk[2]{\imag \cos(M \phi) + \sin(M \phi)}\, \eta(\theta, \phi, \Phi)\, \sin(M' \phi).
+  \end{multlined}
+\end{align}
+As in the diffractive case, the imaginary parts of
+$\rBrk[0]{\mat{I}^\text{acc}}_{i j, L M\, L' M'}$ vanish only if
+$\eta(\theta, \phi, \Phi)$ is an even function in~$\phi$.  Using
+similar arguments as in
 \cref{fn:diffraction_integral_matrix_perfect_det}, one can show that
 for a perfect detector with $\eta(\Omega, \Phi) = 1$,
 $\mat{I}^\text{acc}$ becomes a unit matrix, \ie the basis functions
@@ -1003,32 +1075,38 @@ to
   f_{i, L M}^\text{meas}(\Omega_k, \Phi_k)\,
   f_{j, L' M'}^\text{phys}(\Omega_k, \Phi_k).
 \end{equation}
-This is equivalent to \cref{eq:diffraction_integral_matrix_mc_weighted}.  Note
-that $f^\text{phys}_{2, L 0}(\Omega, \Phi) = 0$, which is equivalent
-to \cref{eq:photoprod_moment_2_M0}.  Hence,
+This is equivalent to
+\cref{eq:diffraction_integral_matrix_mc_weighted}.  Note that
+$f^\text{phys}_{2, L 0}(\Omega, \Phi) = 0$, which is equivalent to
+\cref{eq:photoprod_moment_2_M0}.  Hence,
 $\rBrk[0]{\mat{I}^\text{acc}}_{i j, L M\, L' M'}$ is singular.  To
-restore the invertibility of the acceptance integral matrix the rows
-and columns that correspond to $f^\text{phys}_{2, L 0}$ and
-$f^\text{meas}_{2, L 0}$ need to be removed from $\mat{I}^\text{acc}$.
-Likewise, the elements $\rBrk[0]{\hat{\vect{H}}}_{2, L 0}$ and
-$\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{2, L 0}$ need to be removed
-from $\hat{\vect{H}}$ and $\hat{\vect{H}}_\text{meas}$, respectively.
+restore the invertibility of the acceptance integral matrix so that we
+can apply \cref{eq:diffraction_phys_moments}, the rows and columns
+that correspond to $f^\text{phys}_{2, L 0}$ and $f^\text{meas}_{2, L
+0}$ are removed from~$\mat{I}^\text{acc}$.  Likewise, the elements
+$\rBrk[0]{\hat{\vect{H}}}_{2, L 0}$ and
+$\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{2, L 0}$ are removed
+from~$\hat{\vect{H}}$ and~$\hat{\vect{H}}_\text{meas}$, respectively.
 
-\todo{rewrite $\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{i, L M}$ in
-\cref{eq:photoprod_moment_meas_unpol,eq:photoprod_moments_meas_pol} in
-terms of basis functions}
-The measured moments are estimated from the
-data using the same approach as in
-\cref{sec:diffraction:estimation_uncert}, \ie by replacing the
-integrals in
-\cref{eq:photoprod_moment_meas_unpol,eq:photoprod_moments_meas_pol} by
-sums over measured weighted events:
+Using the definition of the basis functions in
+\cref{eq:photoprod_meas_basis_fcn}, we rewrite
+\cref{eq:photoprod_moments_meas}:
+\begin{equation}
+  H_i^\text{meas}(L, M)
+  = \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
+  \intensity_\text{meas}(\Omega, \Phi)\, f_{i, L M}^\text{meas}(\Omega, \Phi).
+\end{equation}
+The measured moments are estimated from the data using the same
+approach as in \cref{sec:diffraction:estimation_uncert}, \ie by
+replacing the integrals in the above equation by a weighted sum over
+the measured events:\footnote{This is equivalent to
+\cref{eq:diffraction_moments_estimate_weighted}.}
 \begin{equation}
   \label{eq:photoprod_moments_meas_estimate_weighted}
   \rBrk[0]{\hat{\vect{H}}_\text{meas}}_{i, L M}
   = 2 \pi \sum_{k = 1}^{N_\text{meas}} w_k\, f_{i, L M}^\text{meas}(\Omega_k, \Phi_k).
 \end{equation}
-Here, we have chosen the factor $2 \pi$ such that
+Here, we added the factor~$2 \pi$ such that
 \begin{equation}
   \label{eq:photoprod_norm_00}
   \rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0}
@@ -1045,17 +1123,31 @@ events after background subtraction.  This is equivalent to
 1~ \forall k$ and hence $\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0}
 = N_\text{meas}$.
 
-With the above definitions, we can use the same formalism as in
-\cref{sec:diffraction:estimation_uncert} to calculate the
-estimates~$\hat{\vect{H}}$ of the physical moments
-from~$\hat{\vect{H}}_\text{meas}$ using
-\cref{eq:diffraction_phys_moments}\footnote{Doing so, we again assume
-that $\mat{I}^\text{acc}$~is invertible.} and to propagate the
-uncertainties from~$\hat{\vect{H}}_\text{meas}$ to~$\hat{\vect{H}}$
-using \cref{eq:complex_uncert_prop}.  For the uncertainty propagation,
-we estimate the Hermitian and the pseudo-covariance matrix for the
-measured moments using the sample covariance analogous to
-\cref{eq:diffraction_sample_cov_hermit_meas,eq:diffraction_sample_cov_pseudo_meas,eq:diffraction_w_f_sample_mean}:
+With the above definitions, we use \cref{eq:diffraction_phys_moments}
+to calculate the estimates~$\hat{\vect{H}}$ of the physical moments
+from the measured moments~$\hat{\vect{H}}_\text{meas}$.\footnote{Doing
+so, we again assume that $\mat{I}^\text{acc}$~is invertible and hence
+have to choose a maximum $L$~value, $L_\text{max}$, that defines the
+size of~$\mat{I}^\text{acc}$ (see the discussion at the end of
+\cref{sec:diffraction:acceptance_corr}).}  Although,
+\cref{eq:photoprodP_moments_real_imag} does not hold for the measured
+moments, the physical moments have to satisfy this relation.  This
+means that the real and imaginary parts
+of~$\hat{\vect{H}}_\text{meas}$ and~$\mat{I}^\text{acc}$ must
+compensate each other such that $\hat{H}_{0, 1}(L, M)$ are real-valued
+and $\hat{H}_2(L, M)$ are purely imaginary within uncertainties.  As
+for the diffractive case, deviations from these expectations may
+indicate that the detector model does not accurately reproduce the
+$\phi$-odd component of the detection efficiency and/or that
+$L_\text{max}$ has been chosen too low.
+
+We use \cref{eq:complex_uncert_prop} to propagate the uncertainties
+from~$\hat{\vect{H}}_\text{meas}$ to~$\hat{\vect{H}}$.  For the
+uncertainty propagation, we estimate the Hermitian and the
+pseudo-covariance matrix for the measured moments using the sample
+covariance analogous to
+\cref{eq:diffraction_sample_cov_hermit_meas,eq:diffraction_sample_cov_pseudo_meas,eq:diffraction_w_f_sample_mean},
+\ie
 \begin{align}
   \rBrk[1]{\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}}_{i, L M; j, L' M'}
   ={}& \covEst[1]{\hat{H}_i^\text{meas}(L, M), \hat{H}_j^\text{meas}(L', M')} \nonumber
@@ -1126,18 +1218,17 @@ unweighted case
   = 0
   \quad\text{and in particular}\quad
   \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{0, 0 0; 0, 0 0}
-  = \hat{\sigma}_{\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0}}
+  = \hat{\sigma}_{\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0}}^2
   = 0.
 \end{equation}
 This is because $\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0} =
 N_\text{meas}$ (see \cref{eq:photoprod_norm_00}) and
-$N_\text{meas}$~is fixed and hence not a random
-variable.\footnote{Note that in the case of weighed events, the
-covariances in \cref{eq:photoprod_H0_cov_unweighted} are non-zero,
-because in this case $\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0} =
-N_\text{sig}$ (see \cref{eq:photoprod_norm_00}) and for
-fixed~$N_\text{meas}$ the number of signal events is a random
-variable.}
+$N_\text{meas}$~is fixed and hence not a random variable.\footnote{In
+contrast, the covariances in \cref{eq:photoprod_H0_cov_unweighted} are
+non-zero in the case of weighed events because in this case
+$\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0} = N_\text{sig}$ (see
+\cref{eq:photoprod_norm_00}) and for fixed~$N_\text{meas}$ the number
+of signal events is a random variable.}
 
 
 \subsection{Examples}%
