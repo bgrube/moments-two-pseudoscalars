@@ -698,7 +698,9 @@ In the literature, this is referred to as \emph{unnormalized
 moments}\footnote{This is somewhat of a misnomer because also the
 unnormalized moments have a well-defined normalization.  However, the
 normalization is not absolute and hence these moments depend on the
-number of events.} and with the chosen normalization (see
+number of events.  By dividing all unnormalized moments by~$N$, we
+obtain the \emph{normalized moments}, which are defined by $H_norm(0,
+0) = 1$.} and with the chosen normalization (see
 \cref{sec:diffraction:moments_norm}) it leads to
 \begin{equation}
   \label{eq:diffraction_norm_00}
@@ -1258,7 +1260,7 @@ of~$\vect{H}$ in the following way:
   \label{eq:cov_ReIm}
   \covMatSym_{\!\vect{H}}^{RI}
   = \exptVal[2]{\rBrk[1]{\Re{\vect{H}} - \exptVal[1]{\Re{\vect{H}}}} \rBrk[1]{\Im{\vect{H}} - \exptVal[1]{\Im{\vect{H}}}}^T}
-  ={}& \frac{1}{2}\, \Im[1]{\covMatSym_{\!\vect{H}} - \tilde{\covMatSym}_{\!\vect{H}}}
+  ={}& \frac{1}{2}\, \Im[1]{\tilde{\covMatSym}_{\!\vect{H}} - \covMatSym_{\!\vect{H}}}
   = \rBrk[1]{\covMatSym_{\!\vect{H}}^{IR}}^T
   \in \mathbb{R}^{n \times n}.
 \end{align}
