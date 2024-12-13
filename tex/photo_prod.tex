@@ -73,7 +73,7 @@ helicity~$\lambda_2 = \pm 1/2$.  The angular distribution of the
 $X$~decay products is given by the spherical harmonics
 $Y_\ell^m(\Omega)$~\cite{wikipedia:sphericalHarm} and the dependence
 on the polarization angle~$\Phi$ is given by the photon spin-density
-matrix~$\mat{\upvarrho}^\gamma(\Phi)$.  In
+matrix~$\varrho^\gamma_{\lambda\, \lambda'}(\Phi)$.  In
 \cref{eq:photoprod_intensity}, $\varrho^{\ell\, \ell'}_{m\, m'}(w, t,
 \Phi)$ is the spin-density matrix element of~$X$ defined analogously
 to the diffractive case in \cref{eq:diffraction_spin_dens_def}.
@@ -81,7 +81,11 @@ to the diffractive case in \cref{eq:diffraction_spin_dens_def}.
 Using the fact that the three Pauli matrices $\vec{\mat{\upsigma}} =
 (\mat{\upsigma}_1, \mat{\upsigma}_2, \mat{\upsigma}_3)^T$ and
 $\mat{I}_{2 \times 2}$ form a complete set in the space of Hermitian
-$2 \times 2$ matrices, we can expand $\mat{\upvarrho}^\gamma(\Phi)$,
+$2 \times 2$ matrices, we can expand the photon spin-density matrix
+$\mat{\upvarrho}^\gamma(\Phi)$,\footnote{Here, we switched to matrix
+notation, \ie the elements of the photon spin-density matrix are
+$\rBrk{\mat{\upvarrho}^\gamma}_{\lambda\, \lambda'} =
+\varrho^\gamma_{\lambda\, \lambda'}$.}
 \ie
 \begin{equation}
   \mat{\upvarrho}^\gamma(\Phi)
@@ -118,7 +122,7 @@ with the intensity components
   Y_{\ell'}^{m' *}(\Omega);
   \quad i = 0, 1, 2
 \end{equation}
-and the spin-density matrix components\footnote{See Eq.~(11) in
+and the spin-density matrix components\footnote{See Eq.~(A11) in
 \refCite{Mathieu:2019fts}.}
 \begin{align}
   \label{eq:photoprod_rho_0}
@@ -1771,13 +1775,13 @@ set~$\Set[1]{\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}_\text{meas}}$
 and the corresponding set of covariance matrices for all data samples
 using
 \cref{eq:photoprod_moments_meas_estimate_weighted,eq:photoprod_sample_cov_hermit_meas,eq:photoprod_sample_cov_pseudo_meas}.
-For each data sample, we also generate an accepted phase-space Monte
-Carlo data sample using $\prescript{(j)}{}{\eta}(\Omega, \Phi)$.
+For each data sample~$j$, we also generate an accepted phase-space
+Monte Carlo data sample that represents $\prescript{(j)}{}{\eta}(\Omega, \Phi)$.
 Based on these Monte Carlo data, we
 calculate~$\prescript{(j)}{}{\mat{I}}^\text{acc}$ using
-\cref{eq:photoprod_integral_matrix_mc_weighted}.  Finally, we calculate the
-estimates for the physical moments for each data sample using
-\cref{eq:diffraction_phys_moments}, \ie
+\cref{eq:photoprod_integral_matrix_mc_weighted}.  Finally, we
+calculate the estimates for the physical moments for each data sample
+using \cref{eq:diffraction_phys_moments}, \ie
 \begin{equation}
   \prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}
   = \rBrk[1]{\prescript{(j)}{}{\mat{I}}^\text{acc}}^{-1}\, \prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}_\text{meas}.
@@ -1812,7 +1816,7 @@ x_N}$ of independent measurements~$x_j$ is given by
 \end{equation}
 is the weight matrix, which is also called precision matrix.  The
 statistical consistency of the moment values across the data samples
-should be verified by calculating the $P$-value of the
+should be verified, for example, by calculating the $P$-value of the
 $\chi^2$~statistic of the weighted average.  The $\chi^2$~statistic
 for \cref{eq:photoprod_datasets_weighted_average} is
 \begin{equation}
