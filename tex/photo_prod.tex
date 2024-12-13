@@ -503,15 +503,15 @@ Therefore, for given~\refl, $\ell$, and~$m$, only two of the four
 possible partial-wave amplitudes are independent,%
 \footnote{In general, scattering reactions with a recoil particle with
 spin~$J_R$ are described by $2 J_R + 1$ independent amplitudes
-$\sBrk{\ell}^{(\refl)}_{m; k}$ with $k = 0, \ldots, 2 J_R$.}
+$\sBrk{\ell}^\refl_{m; k}$ with $k = 0, \ldots, 2 J_R$.}
 namely the proton spin-flip amplitude\footnote{See Eq.~(D4) in
 \refCite{Mathieu:2019fts}.}
 \begin{align}
   \prescript{\refl}{}{\prodAmp}^\ell_{\!m; {+1}\, {-1}}
-  \equiv{}& \sBrk{\ell}^{(\refl)}_{m; 0}
+  \equiv{}& \sBrk{\ell}^\refl_{m; 0}
   \intertext{and the proton spin-non-flip amplitude}
   \prescript{\refl}{}{\prodAmp}^\ell_{\!m; {+1}\, {+1}}
-  \equiv{}& \sBrk{\ell}^{(\refl)}_{m; 1}.
+  \equiv{}& \sBrk{\ell}^\refl_{m; 1}.
 \end{align}
 Furthermore, since parity is conserved the spin-flip and
 spin-non-flip amplitudes do not interfere. In the conventional basis,
@@ -533,27 +533,27 @@ with\footnote{See Eq.~(D8) in \refCite{Mathieu:2019fts} and
 \cref{fn:photoprod_ampl_redef}.}
 \begin{align}
   \label{eq:photoprod_rho_0_refl}
-  \prescript{0}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}
-  ={}& \sum_{k = 0, 1} \rBrk[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
-  + (-1)^{m - m'}\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{{-m'}; k}}
+  \prescript{0}{}{\varrho}^{\refl\, \ell\, \ell'}_{m\, m'}
+  ={}& \sum_{k = 0, 1} \rBrk[2]{\sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell'}^{\refl *}_{m'; k}
+  + (-1)^{m - m'}\, \sBrk{\ell}^\refl_{{-m}; k}\, \sBrk{\ell'}^{\refl *}_{{-m'}; k}}
   \\
   \label{eq:photoprod_rho_1_refl}
-  \prescript{1}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}
+  \prescript{1}{}{\varrho}^{\refl\, \ell\, \ell'}_{m\, m'}
   ={}& -\refl \sum_{k = 0, 1}
-  \rBrk[2]{(-1)^m\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
-  + (-1)^{m'}\, \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell'}^{(\refl) *}_{{-m'}; k}}
+  \rBrk[2]{(-1)^m\, \sBrk{\ell}^\refl_{{-m}; k}\, \sBrk{\ell'}^{\refl *}_{m'; k}
+  + (-1)^{m'}\, \sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell'}^{\refl *}_{{-m'}; k}}
   \\
   \label{eq:photoprod_rho_2_refl}
-  \prescript{2}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}
+  \prescript{2}{}{\varrho}^{\refl\, \ell\, \ell'}_{m\, m'}
   ={}& -\imag\, \refl \sum_{k = 0, 1}
-  \rBrk[2]{(-1)^m\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
-  - (-1)^{m'}\, \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell'}^{(\refl) *}_{{-m'}; k}}.
+  \rBrk[2]{(-1)^m\, \sBrk{\ell}^\refl_{{-m}; k}\, \sBrk{\ell'}^{\refl *}_{m'; k}
+  - (-1)^{m'}\, \sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell'}^{\refl *}_{{-m'}; k}}.
 \end{align}
 In \cref{eq:photoprod_rho_refl}, we sum incoherently over~$\refl =
 \pm$ and in
 \crefrange{eq:photoprod_rho_0_refl}{eq:photoprod_rho_2_refl}, we sum
 incoherently over~$k = 0, 1$, \ie the rank of the
-$\prescript{i}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}$ is in
+$\prescript{i}{}{\varrho}^{\refl\, \ell\, \ell'}_{m\, m'}$ is in
 general~2.  By inserting \cref{eq:photoprod_rho_refl} into
 \cref{eq:photoprod_intensity_components}, we obtain the intensity
 components in the reflectivity basis:
@@ -562,7 +562,7 @@ components in the reflectivity basis:
   \intensity_i(\Omega)
   = \sum_{\substack{\ell m \\ \ell' m'}}^\infty
   Y_\ell^m(\Omega)
-  \sBrk[3]{\, \sum_{\refl = \pm} \prescript{i}{}{\varrho}^{(\refl)\, \ell\, \ell'}_{m\, m'}}
+  \sBrk[3]{\, \sum_{\refl = \pm} \prescript{i}{}{\varrho}^{\refl\, \ell\, \ell'}_{m\, m'}}
   Y_{\ell'}^{m' *}(\Omega);
   \quad i = 0, 1, 2
 \end{equation}
@@ -595,8 +595,8 @@ reflectivity basis by inserting
     \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
     \\[-2ex]
     \shoveleft{\hfill \times%
-      \sum_{\refl = \pm} \sum_{k = 0, 1} \rBrk[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
-      + (-1)^{m - m'}\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{{-m'}; k}}
+      \sum_{\refl = \pm} \sum_{k = 0, 1} \rBrk[2]{\sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell'}^{\refl *}_{m'; k}
+      + (-1)^{m - m'}\, \sBrk{\ell}^\refl_{{-m}; k}\, \sBrk{\ell'}^{\refl *}_{{-m'}; k}}
     }
   \end{multlined}
   \\
@@ -607,8 +607,8 @@ reflectivity basis by inserting
     \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
     \\[-2ex]
     \shoveleft{\hfill \times%
-      \sum_{\refl = \pm} \refl \sum_{k = 0, 1} \rBrk[2]{(-1)^m\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
-      + (-1)^{m'}\, \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell'}^{(\refl) *}_{{-m'}; k}}
+      \sum_{\refl = \pm} \refl \sum_{k = 0, 1} \rBrk[2]{(-1)^m\, \sBrk{\ell}^\refl_{{-m}; k}\, \sBrk{\ell'}^{\refl *}_{m'; k}
+      + (-1)^{m'}\, \sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell'}^{\refl *}_{{-m'}; k}}
     }
   \end{multlined}
   \\
@@ -619,8 +619,8 @@ reflectivity basis by inserting
     \clebsch{\ell'}{0}{L}{0}{\ell}{0}\, \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
     \\[-2ex]
     \shoveleft{\hfill \times%
-      \sum_{\refl = \pm} \refl \sum_{k = 0, 1} \rBrk[2]{(-1)^m\, \sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell'}^{(\refl) *}_{m'; k}
-      - (-1)^{m'}\, \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell'}^{(\refl) *}_{{-m'}; k}}
+      \sum_{\refl = \pm} \refl \sum_{k = 0, 1} \rBrk[2]{(-1)^m\, \sBrk{\ell}^\refl_{{-m}; k}\, \sBrk{\ell'}^{\refl *}_{m'; k}
+      - (-1)^{m'}\, \sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell'}^{\refl *}_{{-m'}; k}}
     }.
   \end{multlined}
 \end{align}
@@ -644,23 +644,23 @@ it follows that in particular
   \intensity(\Omega, \Phi)
   ={}& \sum_{\ell m}^\infty \prescript{0}{}{\varrho}^{\ell\, \ell}_{m\, m}
   = \sum_{\ell m}^\infty \sum_{\refl = \pm} \sum_{k = 0, 1}
-  \rBrk[2]{\Abs[1]{\sBrk{\ell}^{(\refl)}_{m; k}}^2 + \Abs[1]{\sBrk{\ell}^{(\refl)}_{{-m}; k}}^2} \nonumber
+  \rBrk[2]{\Abs[1]{\sBrk{\ell}^\refl_{m; k}}^2 + \Abs[1]{\sBrk{\ell}^\refl_{{-m}; k}}^2} \nonumber
   \\
   \label{eq:photoprod_H_1_0_0_refl}
   ={}& 2 \sum_{\ell m}^\infty \sum_{k = 0, 1}
-  \rBrk[2]{\Abs[1]{\sBrk{\ell}^{(+)}_{m; k}}^2 + \Abs[1]{\sBrk{\ell}^{(-)}_{m; k}}^2}
+  \rBrk[2]{\Abs[1]{\sBrk{\ell}^+_{m; k}}^2 + \Abs[1]{\sBrk{\ell}^-_{m; k}}^2}
   \\
   H_1(0, 0)
   ={}& -\sum_{\ell m}^\infty \prescript{1}{}{\varrho}^{\ell\, \ell}_{m\, m}
   = \sum_{\ell m}^\infty \sum_{\refl = \pm} \refl \sum_{k = 0, 1}
-  (-1)^m \rBrk[2]{\sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell}^{(\refl) *}_{m; k}
-  + \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}
+  (-1)^m \rBrk[2]{\sBrk{\ell}^\refl_{{-m}; k}\, \sBrk{\ell}^{\refl *}_{m; k}
+  + \sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell}^{\refl *}_{{-m}; k}}
   \\
   H_2(0, 0)
   ={}& -\sum_{\ell m}^\infty \prescript{2}{}{\varrho}^{\ell\, \ell}_{m\, m}
   = \imag \sum_{\ell m}^\infty \sum_{\refl = \pm} \refl \sum_{k = 0, 1}
-  (-1)^m \rBrk[2]{\sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell}^{(\refl) *}_{m; k}
-  - \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}
+  (-1)^m \rBrk[2]{\sBrk{\ell}^\refl_{{-m}; k}\, \sBrk{\ell}^{\refl *}_{m; k}
+  - \sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell}^{\refl *}_{{-m}; k}}
 \end{align}
 Like in the diffractive case (\confer\
 \cref{eq:diffraction_moment_00_pw,eq:diffraction_moment_00_pw_refl}),
@@ -676,53 +676,53 @@ We can simplify the equations for $H_1(0, 0)$ and $H_2(0, 0)$ further
 by using
 \begin{align}
   \sum_{m = -\ell}^{m = +\ell}
-  (-1)^m \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}
+  (-1)^m \sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell}^{\refl *}_{{-m}; k}
   ={}& \sum_{m = -\ell}^{m = -1}
-  (-1)^m \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}
-  + \sBrk{\ell}^{(\refl)}_{0; k}\, \sBrk{\ell}^{(\refl) *}_{0; k}
+  (-1)^m \sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell}^{\refl *}_{{-m}; k}
+  + \sBrk{\ell}^\refl_{0; k}\, \sBrk{\ell}^{\refl *}_{0; k}
   + \sum_{m = +1}^{m = +\ell}
-  (-1)^m \sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k} \nonumber
+  (-1)^m \sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell}^{\refl *}_{{-m}; k} \nonumber
   \\
-  ={}& \Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  ={}& \Abs[2]{\sBrk{\ell}^\refl_{0; k}}^2
   + \sum_{m = +1}^{m = +\ell}
-  (-1)^m \rBrk[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k} + \sBrk{\ell}^{(\refl) *}_{m; k}\, \sBrk{\ell}^{(\refl)}_{{-m}; k}} \nonumber
+  (-1)^m \rBrk[2]{\sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell}^{\refl *}_{{-m}; k} + \sBrk{\ell}^{\refl *}_{m; k}\, \sBrk{\ell}^\refl_{{-m}; k}} \nonumber
   \\
-  ={}& \Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  ={}& \Abs[2]{\sBrk{\ell}^\refl_{0; k}}^2
   + 2 \sum_{m = +1}^{m = +\ell}
-  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}
+  (-1)^m \Re[2]{\sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell}^{\refl *}_{{-m}; k}}
   \in \mathbb{R}.
 \end{align}
 With the above, we see that
 \begin{align}
   H_1(0, 0)
   ={}& \sum_{\refl = \pm} \refl \sum_{k = 0, 1} \sum_{\ell}^\infty
-  \rBrk[3]{\Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  \rBrk[3]{\Abs[2]{\sBrk{\ell}^\refl_{0; k}}^2
   + 2 \sum_{m = +1}^{m = +\ell}
-  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell}^{(\refl) *}_{m; k}}
-  + \Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  (-1)^m \Re[2]{\sBrk{\ell}^\refl_{{-m}; k}\, \sBrk{\ell}^{\refl *}_{m; k}}
+  + \Abs[2]{\sBrk{\ell}^\refl_{0; k}}^2
   + 2 \sum_{m = +1}^{m = +\ell}
-  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}} \nonumber
+  (-1)^m \Re[2]{\sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell}^{\refl *}_{{-m}; k}}} \nonumber
   \\
   \label{eq:photoprod_H_1_0_0_refl_2}
   ={}& 2 \sum_{\refl = \pm} \refl \sum_{k = 0, 1} \sum_{\ell}^\infty
-  \rBrk[3]{\Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  \rBrk[3]{\Abs[2]{\sBrk{\ell}^\refl_{0; k}}^2
   + 2 \sum_{m = +1}^{m = +\ell}
-  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell}^{(\refl) *}_{m; k}}}
+  (-1)^m \Re[2]{\sBrk{\ell}^\refl_{{-m}; k}\, \sBrk{\ell}^{\refl *}_{m; k}}}
   \\
   H_2(0, 0)
   ={}& \imag \sum_{\refl = \pm} \refl \sum_{k = 0, 1} \sum_{\ell}^\infty
-  \rBrk[3]{\Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  \rBrk[3]{\Abs[2]{\sBrk{\ell}^\refl_{0; k}}^2
   + 2 \sum_{m = +1}^{m = +\ell}
-  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{{-m}; k}\, \sBrk{\ell}^{(\refl) *}_{m; k}}
-  - \Abs[2]{\sBrk{\ell}^{(\refl)}_{0; k}}^2
+  (-1)^m \Re[2]{\sBrk{\ell}^\refl_{{-m}; k}\, \sBrk{\ell}^{\refl *}_{m; k}}
+  - \Abs[2]{\sBrk{\ell}^\refl_{0; k}}^2
   - 2 \sum_{m = +1}^{m = +\ell}
-  (-1)^m \Re[2]{\sBrk{\ell}^{(\refl)}_{m; k}\, \sBrk{\ell}^{(\refl) *}_{{-m}; k}}} \nonumber
+  (-1)^m \Re[2]{\sBrk{\ell}^\refl_{m; k}\, \sBrk{\ell}^{\refl *}_{{-m}; k}}} \nonumber
   \\
   ={}& 0.
 \end{align}
 As mentioned in \cref{fn:photoprod_intensity_sign}, $H_1(0, 0) \geq 0$
 if the wave set contains only positive-reflectivity waves with $m \geq
-0$ because in this case the amplitudes~$\sBrk{\ell}^{(\refl)}_{{-m}; k}$ in
+0$ because in this case the amplitudes~$\sBrk{\ell}^\refl_{{-m}; k}$ in
 \cref{eq:photoprod_H_1_0_0_refl_2} are all zero.  $H_2(0, 0)$ vanishes
 as expected from \cref{eq:photoprod_moment_2_M0}.
 
@@ -1256,7 +1256,7 @@ distribution is shown in \cref{fig:photoprod_study_intensity}.
   \centering%
   \renewcommand{\arraystretch}{1.2}%
   \caption{Partial-wave amplitude values used to generate pseudodata.
-  The wave notation is $\ell_m^{(\refl)}$.}%
+  The wave notation is $\ell_m^\refl$.}%
   \label{tab:photoprod_study_waveset}%
   \vspace*{1ex}%
   \hfill%
@@ -1266,15 +1266,15 @@ distribution is shown in \cref{fig:photoprod_study_intensity}.
     \textbf{Amplitude value} \\
     \midrule
     % negative-reflectivity waves
-    $S_0^{(-)}$    & $\hphantom{-}1.0$ \\
-    $P_{-1}^{(-)}$ & $-0.4 + 0.1 \imag$ \\
-    $P_0^{(-)}$    & $\hphantom{-}0.3 - 0.8 \imag$ \\
-    $P_{+1}^{(-)}$ & $-0.8 + 0.7 \imag$ \\
-    $D_{-2}^{(-)}$ & $\hphantom{-}0.1 - 0.4 \imag$ \\
-    $D_{-1}^{(-)}$ & $\hphantom{-}0.5 + 0.2 \imag$ \\
-    $D_0^{(-)}$    & $-0.1 - 0.2 \imag$ \\
-    $D_{+1}^{(-)}$ & $\hphantom{-}0.2 - 0.1 \imag$ \\
-    $D_{+2}^{(-)}$ & $-0.2 + 0.3 \imag$ \\
+    $S_0^-$    & $\hphantom{-}1.0$ \\
+    $P_{-1}^-$ & $-0.4 + 0.1 \imag$ \\
+    $P_0^-$    & $\hphantom{-}0.3 - 0.8 \imag$ \\
+    $P_{+1}^-$ & $-0.8 + 0.7 \imag$ \\
+    $D_{-2}^-$ & $\hphantom{-}0.1 - 0.4 \imag$ \\
+    $D_{-1}^-$ & $\hphantom{-}0.5 + 0.2 \imag$ \\
+    $D_0^-$    & $-0.1 - 0.2 \imag$ \\
+    $D_{+1}^-$ & $\hphantom{-}0.2 - 0.1 \imag$ \\
+    $D_{+2}^-$ & $-0.2 + 0.3 \imag$ \\
     \bottomrule
   \end{tabular}
   \hfill%
@@ -1284,15 +1284,15 @@ distribution is shown in \cref{fig:photoprod_study_intensity}.
     \textbf{Amplitude value} \\
     \midrule
     % positive-reflectivity waves
-    $S_0^{(+)}$    & $\hphantom{-}0.5$ \\
-    $P_{-1}^{(+)}$ & $\hphantom{-}0.5 - 0.1 \imag$ \\
-    $P_0^{(+)}$    & $-0.8 - 0.3 \imag$ \\
-    $P_{+1}^{(+)}$ & $\hphantom{-}0.6 + 0.3 \imag$ \\
-    $D_{-2}^{(+)}$ & $\hphantom{-}0.2 + 0.1 \imag$ \\
-    $D_{-1}^{(+)}$ & $\hphantom{-}0.2 - 0.3 \imag$ \\
-    $D_0^{(+)}$    & $\hphantom{-}0.1 - 0.2 \imag$ \\
-    $D_{+1}^{(+)}$ & $\hphantom{-}0.2 + 0.5 \imag$ \\
-    $D_{+2}^{(+)}$ & $-0.3 - 0.1 \imag$ \\
+    $S_0^+$    & $\hphantom{-}0.5$ \\
+    $P_{-1}^+$ & $\hphantom{-}0.5 - 0.1 \imag$ \\
+    $P_0^+$    & $-0.8 - 0.3 \imag$ \\
+    $P_{+1}^+$ & $\hphantom{-}0.6 + 0.3 \imag$ \\
+    $D_{-2}^+$ & $\hphantom{-}0.2 + 0.1 \imag$ \\
+    $D_{-1}^+$ & $\hphantom{-}0.2 - 0.3 \imag$ \\
+    $D_0^+$    & $\hphantom{-}0.1 - 0.2 \imag$ \\
+    $D_{+1}^+$ & $\hphantom{-}0.2 + 0.5 \imag$ \\
+    $D_{+2}^+$ & $-0.3 - 0.1 \imag$ \\
     \bottomrule
   \end{tabular}
   \hfill\null%
@@ -1478,7 +1478,7 @@ angular distributions of the intensity components are shown in
   \renewcommand{\arraystretch}{1.2}%
   \caption{Partial-wave amplitude values used to generate pseudodata
   for the background component.  The wave notation is
-  $\ell_m^{(\refl)}$.}%
+  $\ell_m^\refl$.}%
   \label{tab:photoprod_study_waveset_bkg}%
   \vspace*{1ex}%
   \hfill%
@@ -1488,15 +1488,15 @@ angular distributions of the intensity components are shown in
     \textbf{Amplitude value} \\
     \midrule
     % negative-reflectivity waves
-    $S_0^{(-)}$    & $\hphantom{-}1.0$ \\
-    $P_{-1}^{(-)}$ & $-0.9 + 0.7 \imag$ \\
-    $P_0^{(-)}$    & $-0.6 + 0.4 \imag$ \\
-    $P_{+1}^{(-)}$ & $-0.9 - 0.8 \imag$ \\
-    $D_{-2}^{(-)}$ & $-1.0 - 0.7 \imag$ \\
-    $D_{-1}^{(-)}$ & $-0.8 - 0.7 \imag$ \\
-    $D_0^{(-)}$    & $\hphantom{-}0.4 + 0.3 \imag$ \\
-    $D_{+1}^{(-)}$ & $-0.6 - 0.1 \imag$ \\
-    $D_{+2}^{(-)}$ & $-0.1 - 0.9 \imag$ \\
+    $S_0^-$    & $\hphantom{-}1.0$ \\
+    $P_{-1}^-$ & $-0.9 + 0.7 \imag$ \\
+    $P_0^-$    & $-0.6 + 0.4 \imag$ \\
+    $P_{+1}^-$ & $-0.9 - 0.8 \imag$ \\
+    $D_{-2}^-$ & $-1.0 - 0.7 \imag$ \\
+    $D_{-1}^-$ & $-0.8 - 0.7 \imag$ \\
+    $D_0^-$    & $\hphantom{-}0.4 + 0.3 \imag$ \\
+    $D_{+1}^-$ & $-0.6 - 0.1 \imag$ \\
+    $D_{+2}^-$ & $-0.1 - 0.9 \imag$ \\
     \bottomrule
   \end{tabular}
   \hfill%
@@ -1506,15 +1506,15 @@ angular distributions of the intensity components are shown in
     \textbf{Amplitude value} \\
     \midrule
     % positive-reflectivity waves
-    $S_0^{(+)}$    & $\hphantom{-}0.5$ \\
-    $P_{-1}^{(+)}$ & $-1.0 + 0.8 \imag$ \\
-    $P_0^{(+)}$    & $-0.2 + 0.2 \imag$ \\
-    $P_{+1}^{(+)}$ & $\hphantom{-}0.0 - 0.3 \imag$ \\
-    $D_{-2}^{(+)}$ & $\hphantom{-}0.7 + 0.9 \imag$ \\
-    $D_{-1}^{(+)}$ & $-0.4 - 0.5 \imag$ \\
-    $D_0^{(+)}$    & $-0.3 + 0.2 \imag$ \\
-    $D_{+1}^{(+)}$ & $-1.0 - 0.4 \imag$ \\
-    $D_{+2}^{(+)}$ & $\hphantom{-}0.5 - 0.2 \imag$ \\
+    $S_0^+$    & $\hphantom{-}0.5$ \\
+    $P_{-1}^+$ & $-1.0 + 0.8 \imag$ \\
+    $P_0^+$    & $-0.2 + 0.2 \imag$ \\
+    $P_{+1}^+$ & $\hphantom{-}0.0 - 0.3 \imag$ \\
+    $D_{-2}^+$ & $\hphantom{-}0.7 + 0.9 \imag$ \\
+    $D_{-1}^+$ & $-0.4 - 0.5 \imag$ \\
+    $D_0^+$    & $-0.3 + 0.2 \imag$ \\
+    $D_{+1}^+$ & $-1.0 - 0.4 \imag$ \\
+    $D_{+2}^+$ & $\hphantom{-}0.5 - 0.2 \imag$ \\
     \bottomrule
   \end{tabular}
   \hfill\null%

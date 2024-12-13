@@ -529,7 +529,7 @@ positive-reflectivity states with $m = 0$.
 The reflectivity basis is implemented by introducing the functions
 \begin{equation}
   \label{eq:diffraction_spherical_harm_refl}
-  \prescript{(\refl)}{}{Y}_\ell^m(\Omega)
+  \prescript{\refl}{}{Y}_\ell^m(\Omega)
   \equiv \mathcal{N}_m \sBrk[2]{Y_\ell^m(\Omega) - \refl\, (-1)^m\, Y_\ell^{(-m)}(\Omega)}.
 \end{equation}
 Note that with \cref{eq:spherical_harm_sym} and the definition of the
@@ -551,21 +551,21 @@ amplitudes with opposite reflectivities do not interfere, we obtain
 \begin{equation}
   \label{eq:diffraction_intensity_refl}
   \intensity(\Omega)
-  = \sum_{\refl = \pm} \Abs[3]{\sum_{\ell m}^\infty \prescript{(\refl)}{}{\prodAmp}_{\!\ell\, m}\, \prescript{(\refl)}{}{Y}_\ell^m(\Omega)}^2
+  = \sum_{\refl = \pm} \Abs[3]{\sum_{\ell m}^\infty \prescript{\refl}{}{\prodAmp}_{\!\ell\, m}\, \prescript{\refl}{}{Y}_\ell^m(\Omega)}^2
   = \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-  \prescript{(\refl)}{}{Y}_\ell^m(\Omega)\, \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \prescript{(\refl)}{}{Y}_{\ell'}^{m' *}(\Omega),
+  \prescript{\refl}{}{Y}_\ell^m(\Omega)\, \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\, \prescript{\refl}{}{Y}_{\ell'}^{m' *}(\Omega),
 \end{equation}
 where we have introduced the spin-density matrix of~$X$,
 \begin{equation}
   \label{eq:diffraction_refl_spin-dens}
-  \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
-  = \prescript{(\refl)}{}{\prodAmp}_{\!\ell\, m}\, \prescript{(\refl)}{}{\prodAmp}_{\!\ell'\, m'}^*,
+  \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
+  = \prescript{\refl}{}{\prodAmp}_{\!\ell\, m}\, \prescript{\refl}{}{\prodAmp}_{\!\ell'\, m'}^*,
 \end{equation}
 in the reflectivity basis analogous to
 \cref{eq:diffraction_spin_dens_def}.
 
 In order to relate the partial-wave
-amplitudes~$\prescript{(\refl)}{}{\prodAmp}_{\!\ell\, m}$ and the
+amplitudes~$\prescript{\refl}{}{\prodAmp}_{\!\ell\, m}$ and the
 moments~$H(L, M)$ we insert \cref{eq:diffraction_spherical_harm_refl}
 into \cref{eq:diffraction_intensity_refl} and use
 \cref{eq:spherical_harm_prod}:
@@ -573,14 +573,14 @@ into \cref{eq:diffraction_intensity_refl} and use
   \intensity(\Omega)
   ={}&
     \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-    \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
+    \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
     \mathcal{N}_m\, \mathcal{N}_{m'}
     \sBrk[2]{Y_\ell^m(\Omega) - \refl\, (-1)^m\, Y_\ell^{(-m)}(\Omega)}
     \sBrk[2]{Y_{\ell'}^{m' *}(\Omega) - \refl\, (-1)^{m'}\, Y_{\ell'}^{(-m') *}(\Omega)}
   \\
   ={}& \begin{multlined}[t][0.85\columnwidth]
     \sum_{\refl = \pm} \sum_{\substack{\ell m \\ \ell' m'}}^\infty
-    \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
+    \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
     \sum_{L M}^\infty \sqrt{\frac{2 L + 1}{4 \pi}}\, \sqrt{\frac{2 \ell' + 1}{2 \ell + 1}}\, \clebsch{\ell'}{0}{L}{0}{\ell}{0}
     \\
     \shoveleft{\times \mathcal{N}_m\, \mathcal{N}_{m'}\, \Big[ \clebsch{\ell'}{m'}{L}{M}{\ell}{m}
@@ -609,7 +609,7 @@ arrive at
     \\
     - \refl\, (-1)^{m'}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{m}
     - \refl\, (-1)^m\, \clebsch{\ell'}{m'}{L}{M}{\ell}{-m} \Big]
-  \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
+  \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}\,
   Y_L^M(\Omega).
 \end{multline}
 Comparing with \cref{eq:diffraction_intensity_moments_norm} we see
@@ -628,7 +628,7 @@ that
     \\
     - \refl\, (-1)^{m'}\, \clebsch{\ell'}{-m'}{L}{M}{\ell}{m}
     - \refl\, (-1)^m\, \clebsch{\ell'}{m'}{L}{M}{\ell}{-m} \Big]
-  \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'},
+  \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'},
 \end{multline}
 which is identical to Eqs.~(29) and~(31) in \refCite{Chung:1997qd}.
 It is important to note that each moment is an incoherent sum of
@@ -656,11 +656,11 @@ reflectivity basis:
         \frac{1}{2}\, (1 + 1)                 & for $m > 0$, \\
         \frac{1}{4}\, (1 + 1 - \refl - \refl) & for $m = 0$
       \end{cases*}}
-    \prescript{(\refl)}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
+    \prescript{\refl}{}{\varrho}^{\ell\, \ell'}_{m\, m'}
   \end{multlined} \nonumber
   \\
   \label{eq:diffraction_moment_00_pw_refl}
-  ={}& \sum_{\refl = \pm} \sum_\ell^\infty \sum_{m = 0}^\ell \prescript{(\refl)}{}{\varrho}^{\ell\, \ell}_{m\, m},
+  ={}& \sum_{\refl = \pm} \sum_\ell^\infty \sum_{m = 0}^\ell \prescript{\refl}{}{\varrho}^{\ell\, \ell}_{m\, m},
 \end{align}
 where we have inserted the normalization factor from
 \cref{eq:refl_norm}, which removes all terms with $m < 0$ or $m' < 0$.
