@@ -4,14 +4,14 @@
 \subsection{Moment decomposition}%
 \label{sec:diffraction:moment}
 
-We start with the simplest reaction, which is the production of a
-system of two distinguishable spinless particles in the strong
-interaction of a highly energetic beam particle (usually pion or kaon)
-with a stationary nucleon or nuclear target.  We are interested in the
-short-lived intermediate mesonic states~$X$ (resonances) that are
-produced in these reactions and that decay into the observed
-two-(pseudo)scalar system.  A typical example for such a process is
-the reaction
+One of the simplest reactions to study excited mesons is the
+production of a system of two distinguishable spinless particles in
+the strong interaction of a highly energetic beam meson (usually
+pion or kaon) with a stationary nucleon or nuclear target.  We are
+interested in the short-lived intermediate mesonic states~$X$
+(resonances) that are produced in these reactions and that decay into
+the observed two-(pseudo)scalar system.  A typical example for such a
+process is the reaction
 \begin{equation}
   \pi^-\, p \to X^-\, p \to \etaOrPrPim\, p,
 \end{equation}
@@ -31,11 +31,12 @@ derive some equations.
   \label{fig:diffraction_etaprimepi}%
 \end{figure}
 
-The analysis is based on the measured intensity distribution, \ie the
-number density distribution of events, which is decomposed into
-partial-wave amplitudes:\footnote{This is the simplest possible
-formula, were we assume that the effect of the target spin is
-negligible and that all partial wave amplitudes are fully coherent.}
+The analysis is based on the intensity distribution, \ie the number
+density distribution of events produced in the studied inelastic
+scattering reaction, which we decompose into partial-wave
+amplitudes:\footnote{This is the simplest possible formula, were we
+assume that the effect of the target spin is negligible and that all
+partial wave amplitudes are fully coherent.}
 \begin{equation}
   \label{eq:diffraction_intensity}
   \intensity(\Omega; w, t)
@@ -43,17 +44,19 @@ negligible and that all partial wave amplitudes are fully coherent.}
   = \Abs[3]{\sum_{\ell m}^\infty \prodAmp_{\ell\, m}(w, t)\, Y_\ell^m(\Omega)}^2
   = \sum_{\substack{\ell m \\ \ell' m'}}^\infty Y_\ell^m(\Omega)\, \varrho^{\ell\, \ell'}_{m\, m'}(w, t)\, Y_{\ell'}^{m' *}(\Omega).
 \end{equation}
-Here, $N$~is the (acceptance-corrected) number of measured events,
-$w$~is the invariant mass of the two-(pseudo)scalar system, $t$~is the
-squared four-momentum transferred from the beam to the target
-particle, and $\Omega = (\theta, \phi)$ is the direction of one of the
-two (pseudo)scalar mesons the~$X$ decays into, measured in the
-Gottfried-Jackson rest frame of~$X$.  The $\prodAmp_{\ell\, m}(w,
-t)$ are the partial-wave amplitudes that correspond to an intermediate
-state with a spin given by the relative orbital angular
-momentum~$\ell$ between the two-(pseudo)scalar mesons and a spin
-projection~$m$ \wrt the beam axis.  The partial-wave amplitudes form
-the spin-density matrix of~$X$:
+Here, $N$~is the number of produced events,\footnote{In an analysis of
+measured data, this would correspond to the acceptance-corrected
+number of measured events.} $w$~is the invariant mass of the
+two-(pseudo)scalar system, $t$~is the squared four-momentum
+transferred from the beam to the target particle, and $\Omega =
+(\theta, \phi)$ is the direction of one of the two (pseudo)scalar
+mesons the~$X$ decays into, measured in the Gottfried-Jackson rest
+frame of~$X$.  The $\prodAmp_{\ell\, m}(w, t)$ are the partial-wave
+amplitudes that correspond to an intermediate state with a spin given
+by the relative orbital angular momentum~$\ell$ between the
+two-(pseudo)scalar mesons and a spin projection~$m$ \wrt the beam
+axis.  The partial-wave amplitudes form the spin-density matrix
+of~$X$:
 \begin{equation}
   \label{eq:diffraction_spin_dens_def}
   \varrho^{\ell\, \ell'}_{m\, m'}(w, t)
@@ -94,10 +97,10 @@ In a partial-wave analysis, the partial-wave amplitudes
 $\prodAmp_{\ell\, m}$, which contain the information about the
 produced resonances~$X$, are determined by fitting the intensity model
 in \cref{eq:diffraction_intensity} to the measured
-$\Omega$~distribution in narrow $(w, t)$ cells.  Within each kinematic
-cell, $\prodAmp_{\ell\, m}$ is treated as constant.  To simplify
-notation, we hence will omit the~$w$ and $t$~dependencies in all
-formulas below.
+$\Omega$~distribution in narrow $(w, t)$ cells taking into account the
+experimental acceptance.  Within each kinematic cell,
+$\prodAmp_{\ell\, m}$ is treated as constant.  To simplify notation,
+we hence will omit the~$w$ and $t$~dependencies in all formulas below.
 
 In addition to the partial-wave analysis, which decomposes the
 \emph{amplitudes} into spherical harmonics, we can exploit the fact
@@ -679,11 +682,11 @@ real-valued moments $H(L, M)$ with $M \geq 0$ from an intensity
 distribution~$\intensity(\Omega)$.  The moments with $M < 0$ can be
 calculated from the moments with $M \geq 0$ using
 \cref{eq:diffraction_moment_sym_2}.  Assuming an ideal detector with
-perfect acceptance, the measured events will follow the distribution
+perfect acceptance, the events will follow the distribution
 $\intensity(\Omega)$.  For a data sample with $N$~events, the best
 estimates $\hat{H}(L, M)$ for the moments are hence given by replacing
 the integral over $\intensity(\Omega)$ in
-\cref{eq:diffraction_moments_real} by a sum over the measured events,
+\cref{eq:diffraction_moments_real} by a sum over the events,
 \ie
 \begin{equation}
   \label{eq:diffraction_moments_estimate}
@@ -691,16 +694,16 @@ the integral over $\intensity(\Omega)$ in
   = \sum_{i = 1}^N \sqrt{\frac{4 \pi}{2 L + 1}}\, y_L^M(\theta_i)\, \cos(M\, \phi_i)
   \equiv \sum_{i = 1}^N f_{L M}(\Omega_i),
 \end{equation}
-where~$\theta_i$ and~$\phi_i$ are the angles measured for event~$i$.
-Here, we have omitted the $4 \pi / N$ factor that one would normally
-write when estimating an integral over the surface of the unit sphere.
-In the literature, this is referred to as \emph{unnormalized
+where~$\theta_i$ and~$\phi_i$ are the angles for event~$i$.  Here, we
+have omitted the $4 \pi / N$ factor that one would normally write when
+estimating an integral over the surface of the unit sphere.  In the
+literature, this is referred to as \emph{unnormalized
 moments}\footnote{This is somewhat of a misnomer because also the
 unnormalized moments have a well-defined normalization.  However, the
 normalization is not absolute and hence these moments depend on the
 number of events.  By dividing all unnormalized moments by~$N$, we
-obtain the \emph{normalized moments}, which are defined by $H_norm(0,
-0) = 1$.} and with the chosen normalization (see
+obtain the \emph{normalized moments}, which are defined by
+$H_\text{norm}(0, 0) = 1$.} and with the chosen normalization (see
 \cref{sec:diffraction:moments_norm}) it leads to
 \begin{equation}
   \label{eq:diffraction_norm_00}
@@ -879,9 +882,9 @@ additional kinematic variables~\vect{\uptau}.  In
 \vect{\uptau})$ over~\vect{\uptau}.  In order to perform this
 marginalization we need a realistic model of the reaction that
 reproduces the kinematic distribution in~\vect{\uptau} sufficiently
-well.} and $\intensity(\Omega)$ is the physical intensity
-distribution.  To correct for the detection efficiency we use the
-approach described in
+well.} and $\intensity(\Omega)$ is the physical intensity distribution
+of the events produced in the studied reaction.  To correct for the
+detection efficiency we use the approach described in
 \refsCite{Jones:2023,JonesCode:2023,OmegaPhoton:1983vde,Grayer:1974cr}.
 In case resolution effects in~$\Omega$ are non-negligible for the
 channel under study one has to apply an extended approach that is
@@ -968,19 +971,37 @@ This means that
 vanishes only if $\eta(\theta, \phi)$ is an even function in $\phi$.
 
 In practice, we can calculate only a finite set of measured moments
-and only a finite set of physical moments with $(L' M')$ quantum
-numbers contribute to each of the measured moments.  We can hence
-rewrite \cref{eq:diffraction_moments_meas2} as a matrix equation in
-quantum-number space, \ie
+and only a finite set of physical moments contribute to each of the
+measured moments.  Considering all moments with $L, L' \leq
+L_\text{max}$, we can rewrite \cref{eq:diffraction_moments_meas2} as a
+matrix equation in quantum-number space, \ie
 \begin{equation}
   \label{eq:diffraction_moments_meas_matrix}
   \vect{H}_\text{meas}
-  = \mat{I}^\text{acc}\, \vect{H},
+  = \mat{I}^\text{acc}\, \vect{H}.
 \end{equation}
-where $\mat{I}^\text{acc}$ is the acceptance integral matrix.  From
-the above it is clear that the measured moments are linear
-combinations of the physical moments, \ie the acceptance mixes the
-physical moments into the measured moments.
+Here, $\mat{I}^\text{acc} \in \mathbb{C}^{n \times n}$ is the
+acceptance integral matrix with $n = (L_\text{max} + 1) (L_\text{max}
++ 2) / 2$ being the number of moments.  The vector of physical moments
+is
+\begin{equation}
+  \vect{H}
+  \equiv \begin{pmatrix}
+    H(0, 0),
+    H(1, 0),
+    H(1, 1),
+    \ldots,
+    H(L_\text{max}, 0),
+    \ldots,
+    H(L_\text{max}, L_\text{max})
+  \end{pmatrix}^T
+  \in \mathbb{C}^n,
+\end{equation}
+and $\vect{H}_\text{meas}$ is constructed analogously.  From
+\cref{eq:diffraction_moments_meas_matrix} it is clear that the
+measured moments are linear combinations of the physical moments, \ie
+the acceptance, represented by $\mat{I}^\text{acc}$,mixes the physical
+moments into the measured moments.
 
 For an ideal detector with $\eta(\Omega) = 1$, $\mat{I}^\text{acc}$
 becomes a unit matrix in quantum-number space, \ie
@@ -1112,12 +1133,12 @@ physics and acceptance effects.  On the other hand,
 choosing~$L_\text{max}$ too large will lead to many elements
 of~$\mat{I}^\text{acc}$ being close to zero, which in turn may lead to
 numerical instabilities in the inversion of~$\mat{I}^\text{acc}$ and
-to inflated uncertainty estimates due to small eigenvalues
-of~$\mat{I}^\text{acc}$.  In case the detection efficiency is close to
-zero over wide ranges of the phase space, $\mat{I}^\text{acc}$~may
-become (nearly) singular.  In this case, certain moments may become
-immeasurable and one has to revert to the support-vector moments
-developed by R.~Jones~\cite{Jones:2023}.
+to inflated uncertainty estimates since~$\mat{I}^\text{acc}$ may
+develop small eigenvalues with increasing~$L_\text{max}$.  In case the
+detection efficiency is close to zero over wide ranges of the phase
+space, $\mat{I}^\text{acc}$~may become even singular.  In this case,
+certain moments may become immeasurable and one has to revert to the
+support-vector moments developed by R.~Jones~\cite{Jones:2023}.
 
 As already mentioned above, $\mat{I}^\text{acc}$~and
 $\vect{H}_\text{meas}$~in \cref{eq:diffraction_phys_moments} are in
@@ -1149,7 +1170,8 @@ To obtain an estimate for~$\vect{H}_\text{meas}$ from
   = \sum_{i = 1}^{N_\text{meas}} w_i\, \sqrt{\frac{4 \pi}{2 L + 1}}\, Y_L^{M *}(\Omega_i)
   = \sum_{i = 1}^{N_\text{meas}} w_i\, f_{L M}(\Omega_i),
 \end{equation}
-where we have defined the basis functions
+where $N_\text{meas}$~is the number of measured events and where we
+have defined the basis functions
 \begin{equation}
   \label{eq:diffraction_basis_fcn}
   f_{L M}(\Omega)
@@ -1347,19 +1369,22 @@ where
   \end{pmatrix}
   \in \mathbb{C}^{n \times n}
 \end{equation}
-is the Jacobian matrix \wrt~$\vect{H}$ and
+is the Jacobian matrix \wrt~$\vect{H}_\text{meas}$\footnote{The column
+and row indices of~$\mat{J}$ enumerate all combinations of~$L$ and~$M$
+in the considered set of moments.} and
 \begin{equation}
   \tilde{\mat{J}}
   = \pd{\vect{H}}{{\vect{H}_\text{meas}^*}}
   \in \mathbb{C}^{n \times n}
 \end{equation}
-is the conjugate Jacobian matrix \wrt~$\vect{H}^*$.
+is the conjugate Jacobian matrix \wrt~$\vect{H}_\text{meas}^*$.
 
 The advantage of Wirtinger calculus is that~$\mat{J}$
 and~$\tilde{\mat{J}}$ are easily calculable using the same rules as
 for real-valued expressions if one considers
 \cref{eq:diffraction_phys_moments} as a function of two independent
-variables, ~$\vect{H}$ and~$\vect{H}^*$.  Hence,
+variables, ~$\vect{H}_\text{meas}$ and~$\vect{H}_\text{meas}^*$.
+Hence,
 \begin{equation}
   \mat{J}
   = \pd{\vect{H}}{\vect{H}_\text{meas}}
