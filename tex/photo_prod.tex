@@ -1793,21 +1793,21 @@ are consistent with zero, which is indeed the case (see
 \subsection{Combining data samples and taking into account time dependence}%
 \label{sec:photoprod:comb_data}
 
-Up to now, we assumed that the experimental data used to
-estimate~$\vect{H}_\text{meas}$ were taken using the same experimental
-conditions.  However, in practice one often wants to combine several
-data samples that were taken with different experimental conditions.
-This means that in general the photon-beam polarization~$P_\gamma$,
-the detection efficiency $\eta(\Omega, \Phi)$, and consequently also
-the acceptance integral matrix~$\mat{I}^\text{acc}$ are functions of
-time.
+Until now, we have assumed that the experimental data used to
+estimate~$\vect{H}_\text{meas}$ were collected under constant
+experimental conditions.  However, in practice one often wants to
+combine multiple data samples obtained under varying experimental
+conditions.  This means that in general the photon-beam
+polarization~$P_\gamma$, the detection efficiency $\eta(\Omega,
+\Phi)$, and consequently also the acceptance integral
+matrix~$\mat{I}^\text{acc}$ are functions of time.
 
 Assume we have $N_\text{s}$~data samples, indexed
 by~$j$.\footnote{Each sample contains
 $\prescript{(j)}{}{N}_\text{meas}$~measured events. Out of these,
 $\prescript{(j)}{}{N}_\text{sig}$~are signal events, corresponding to
 an acceptance-corrected number of $\prescript{(j)}{}{N}$~signal
-events.}  For each data sample, which was obtained using constant
+events.}  For each data sample, which was obtained under constant
 experimental conditions represented by~$\prescript{(j)}{}{P_\gamma}$
 and $\prescript{(j)}{}{\eta}(\Omega, \Phi)$, we calculate the measured
 moments~$\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}_\text{meas}$
@@ -1824,9 +1824,9 @@ using \cref{eq:diffraction_phys_moments}, \ie
   \label{eq:photoprod_data_sample_phys_moments}
   \prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}
   = \rBrk[1]{\prescript{(j)}{}{\mat{I}}^\text{acc}}^{-1}\,
-  \prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}_\text{meas}.
+  \prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}_\text{meas},
 \end{equation}
-We use \cref{eq:complex_uncert_prop} to calculate the covariance
+and use \cref{eq:complex_uncert_prop} to calculate the covariance
 matrix~$\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}}$
 of~$\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}$.
 
@@ -1860,9 +1860,9 @@ to both sides of
 we obtain
 \begin{equation}
   \label{eq:photoprod_data_sample_phys_moments_total}
-  \hat{H}_i^\text{tot}
-  = \sum_{j = 1}^{N_\text{s}} \prescript{(j)}{}{\vphantom{H}}\hat{H}_i
-  \quad\text{and consequently}\quad
+  \hat{H}_i^\text{tot}(L, M)
+  = \sum_{j = 1}^{N_\text{s}} \prescript{(j)}{}{\vphantom{H}}\hat{H}_i(L, M)
+  \quad\text{or equivalently}\quad
   \hat{\vect{H}}_\text{tot}
   = \sum_{j = 1}^{N_\text{s}} \prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}},
 \end{equation}
@@ -1887,7 +1887,9 @@ introduced in \cref{sec:diffraction:estimation_uncert}.  Analogous to
   \underaccent{\bar}{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{tot}}
   = \underaccent{\bar}{\mat{J}}\, \underaccent{\bar}{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}\, \underaccent{\bar}{\mat{J}}^\dagger
   \in \mathbb{C}^{2n \times 2n},
-\end{equation}with the augmented covariance matrix
+\end{equation}
+with $n$~being the number of moments defined by~$L_\text{max}$ and
+with the augmented covariance matrix
 \begin{equation}
   \underaccent{\bar}{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}
   = \cov[1]{\underaccent{\bar}{\hat{\vect{H}}}_\text{s}, \underaccent{\bar}{\hat{\vect{H}}}_\text{s}}
@@ -1914,35 +1916,40 @@ where
   \end{pmatrix*}
   \in \mathbb{C}^{n\, N_\text{s}}.
 \end{equation}
-Here, $n$~is the number of moments given by~$L_\text{max}$.  Since the
-data samples are statistically independent, the Hermitian covariance
-matrix~$\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{s}}$ and the
-pseudo-covariance
-matrix~$\tilde{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}$ that
+Since the data samples are statistically independent, the Hermitian
+covariance matrix~$\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{s}}$ and
+the pseudo-covariance
+matrix~$\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}$ that
 according to \cref{eq:cov_augmented} make
 up~$\underaccent{\bar}{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}$
 are block-diagonal in the data-sample indices:
 \begin{equation}
   \label{eq:photoprod_data_sample_cov_mats}
   \hat{\covMatSym}_{\!\hat{\vect{H}}_\text{s}}
-  = \diag\rBrk[1]{\prescript{(1)}{}{\vphantom{\vect{H}}}\hat{\covMatSym}_{\!\hat{\vect{H}}},
+  = \diag\rBrk[1]{\prescript{(1)}{}{\vphantom{\vect{H}}}\hat{\covMatSym}_{\!\hat{\vect{H}}},\;
   \ldots,
   \prescript{(N_\text{s})}{}{\vphantom{\vect{H}}}\hat{\covMatSym}_{\!\hat{\vect{H}}}}
   \quad\text{and}\quad
-  \tilde{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}
-  = \diag\rBrk[1]{\prescript{(1)}{}{\vphantom{\vect{H}}}\tilde{\hat{\covMatSym}}_{\!\hat{\vect{H}}}
+  \hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}
+  = \diag\rBrk[1]{\prescript{(1)}{}{\vphantom{\vect{H}}}\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}},\;
   \ldots,
-  \prescript{(N_\text{s})}{}{\vphantom{\vect{H}}}\tilde{\hat{\covMatSym}}_{\!\hat{\vect{H}}}}.
+  \prescript{(N_\text{s})}{}{\vphantom{\vect{H}}}\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}}}.
 \end{equation}
 Here,
-$\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\covMatSym}_{\!\hat{\vect{H}}}$~and~$\prescript{(j)}{}{\vphantom{\vect{H}}}\tilde{\hat{\covMatSym}}_{\!\hat{\vect{H}}}$
+$\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\covMatSym}_{\!\hat{\vect{H}}}$~and~$\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}}$
 are the Hermitian and the pseudo-covariance matrix
 of~$\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}$,
 respectively.
 
 In \cref{eq:photoprod_data_sample_phys_moments_total},
 $\hat{\vect{H}}_\text{s}^*$~does not enter explicitly.  Hence, the
-augmented Jacobian matrix is block-diagonal (see
+conjugate Jacobian matrix is
+\begin{equation}
+  \tilde{\mat{J}}
+  = \pd{\vect{H}}{{\vect{H}_\text{meas}^*}}
+  = 0
+\end{equation}
+and the augmented Jacobian matrix becomes block-diagonal (see
 \cref{eq:J_augmented}), \ie
 \begin{equation}
   \label{eq:photoprod_data_sample_jacobian_aug}
@@ -1953,26 +1960,24 @@ augmented Jacobian matrix is block-diagonal (see
   \end{pmatrix*}
   \in \mathbb{C}^{(2n\, N_\text{s}) \times 2n}.
 \end{equation}
-Because of the simple sum over the data samples in
-\cref{eq:photoprod_data_sample_phys_moments_total}, the Jacobian
-matrix~$\mat{J}$ reduces to the identity matrix, \ie
+The Jacobian matrix is given by
 \begin{equation}
   \label{eq:photoprod_data_sample_jacobian}
   \mat{J}
   = \pd{\hat{\vect{H}}_\text{tot}}{\hat{\vect{H}}_\text{s}}
   = \begin{pmatrix}
-    \dpd{\hat{\vect{H}}_\text{tot}}{\rBrk[1]{\prescript{(1)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}},
-    \ldots,
+    \dpd{\hat{\vect{H}}_\text{tot}}{\rBrk[1]{\prescript{(1)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}}, &
+    \ldots, &
     \dpd{\hat{\vect{H}}_\text{tot}}{\rBrk[1]{\prescript{(N_\text{s})}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}}
   \end{pmatrix}
   = \begin{pmatrix}
-    \dpd{H_1^\text{tot}}{\rBrk[1]{\prescript{(1)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}}
-    & \ldots
-    & \dpd{H_1^\text{tot}}{\rBrk[1]{\prescript{(N_\text{s})}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}} \\
+    \dpd{H_1^\text{tot}}{\rBrk[1]{\prescript{(1)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}} &
+    \ldots &
+    \dpd{H_1^\text{tot}}{\rBrk[1]{\prescript{(N_\text{s})}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}} \\
     \vdots & & \vdots \\
-    \dpd{H_n^\text{tot}}{\rBrk[1]{\prescript{(1)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}}
-    & \ldots
-    & \dpd{H_n^\text{tot}}{\rBrk[1]{\prescript{(N_\text{s})}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}}
+    \dpd{H_n^\text{tot}}{\rBrk[1]{\prescript{(1)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}} &
+    \ldots &
+    \dpd{H_n^\text{tot}}{\rBrk[1]{\prescript{(N_\text{s})}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}}
   \end{pmatrix}
   \in \mathbb{C}^{(n\, N_\text{s}) \times n}
 \end{equation}
@@ -1980,13 +1985,14 @@ with
 \begin{equation}
   \dpd{H_i^\text{tot}}{\rBrk[1]{\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}}
   = \begin{pmatrix}
-    \dpd{H_i^\text{tot}}{\rBrk[1]{\prescript{(j)}{}{\vphantom{H}}\hat{H}_1}},
-    & \ldots,
-    & \dpd{H_i^\text{tot}}{\rBrk[1]{\prescript{(j)}{}{\vphantom{H}}\hat{H}_n}}
+    \dpd{H_i^\text{tot}}{\rBrk[1]{\prescript{(j)}{}{\vphantom{H}}\hat{H}_1}}, &
+    \ldots, &
+    \dpd{H_i^\text{tot}}{\rBrk[1]{\prescript{(j)}{}{\vphantom{H}}\hat{H}_n}}
   \end{pmatrix}
   \in \mathbb{C}^n.
 \end{equation}
-From \cref{eq:photoprod_data_sample_phys_moments_total} we get
+Because \cref{eq:photoprod_data_sample_phys_moments_total} is just a
+simple sum over the data samples, we have
 \begin{equation}
   \dpd{H_i^\text{tot}}{\rBrk[1]{\prescript{(j)}{}{\vphantom{H}}\hat{H}_k}}
   = \delta_{i k}
@@ -2012,28 +2018,33 @@ Inserting
 into \cref{eq:photoprod_data_sample_complex_uncert_prop}, we finally
 get
 \begin{equation}
+  \label{eq:photoprod_data_sample_cov_augmented}
   \underaccent{\bar}{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{tot}}
   = \begin{pmatrix}
     \sum_{j = 1}^{N_\text{s}}
     \prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\covMatSym}_{\!\hat{\vect{H}}} &
     \sum_{j = 1}^{N_\text{s}}
-    \prescript{(j)}{}{\vphantom{\vect{H}}}\tilde{\hat{\covMatSym}}_{\!\hat{\vect{H}}} \\[1ex]
+    \prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}} \\[1ex]
     \sum_{j = 1}^{N_\text{s}}
-    \prescript{(j)}{}{\vphantom{\vect{H}}}\tilde{\hat{\covMatSym}}_{\!\hat{\vect{H}}}^* &
+    \prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}}^* &
     \sum_{j = 1}^{N_\text{s}}
     \prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\covMatSym}_{\!\hat{\vect{H}}}^*
   \end{pmatrix}
   = \begin{pmatrix}
     \hat{\covMatSym}_{\!\hat{\vect{H}}_\text{tot}} &
-    \tilde{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{tot}} \\[1ex]
-    \tilde{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{tot}}^* &
+    \hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{tot}} \\[1ex]
+    \hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{tot}}^* &
     \hat{\covMatSym}_{\!\hat{\vect{H}}_\text{tot}}^*
   \end{pmatrix}.
 \end{equation}
 Here,
-$\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{tot}}$~and~$\tilde{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{tot}}$
+$\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{tot}}$~and~$\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{tot}}$
 are the Hermitian and the pseudo-covariance matrix
-of~$\hat{\vect{H}}_\text{tot}$, respectively. This result is not
-surprising.  It is the generalization of the fact that the variance of
-a sum of random variables is given by the sum of the variances of
-these variables.
+of~$\hat{\vect{H}}_\text{tot}$, respectively. This result is not too
+surprising, as it generalizes the principle that the variance of a sum
+of independent random variables is given by the sum of their
+individual variances.  From
+\cref{eq:photoprod_data_sample_cov_augmented}, the corresponding
+covariance matrices of the real and imaginary parts of
+$\hat{\vect{H}}_\text{tot}$ can be calculated using
+\cref{eq:cov_ReRe,eq:cov_ImIm,eq:cov_ReIm}.
