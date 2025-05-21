@@ -178,7 +178,9 @@
 \newcommand*{\mustBeEq}{\overset{!}{=}}
 \newcommand*{\mustNotBeEq}{\overset{!}{\neq}}
 \newcommand*{\equalUsing}[1]{\overset{\text{#1}}{=}}  % equal sign with overset text
+\newcommand*{\cequalUsing}[1]{\overset{\mathclap{\text{#1}}}{=}}  % equal sign with overset text
 \newcommand*{\equalUsingTwo}[2]{\overset{\text{#1}}{\underset{\text{#2}}{=}}}  % equal sign with over and underset text
+\newcommand*{\cequalUsingTwo}[2]{\overset{\mathclap{\text{#1}}}{\underset{\mathclap{\text{#2}}}{=}}}  % equal sign with over and underset text
 \newcommand{\simproptoimpl}[2]{%
   \mathrel{%
     \setbox0=\hbox{$#1\sim$}%

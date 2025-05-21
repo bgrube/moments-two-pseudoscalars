@@ -176,7 +176,15 @@ that
 \begin{equation}
   \label{eq:photoprod_unpolarized_intensity}
   \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \intensity(\Omega, \Phi; w, t)
-  = 2 \pi\, \intensity_0(\Omega; w, t).
+  = 2 \pi\, \intensity_0(\Omega; w, t)
+\end{equation}
+because
+\begin{equation}
+  \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \cos(2 \Phi)
+  = 0
+  \quad\text{and}\quad
+  \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \sin(2 \Phi)
+  = 0.
 \end{equation}
 This means that $\mathcal{I}_0(\Omega; w, t)$ corresponds---up to a
 factor of $2 \pi$---to the unpolarized intensity distribution and is
@@ -201,7 +209,7 @@ the moment decomposition are performed in narrow kinematic cells in
 the $(w, t)$ plane, assuming that within each cell all quantities are
 in good approximation independent of~$w$ and~$t$.  To simplify
 notation we hence omit the~$w$ and $t$~dependencies in all formulas
-below, \ie the given formulas are valid in a $(w, t)$ cell.
+below, \ie the given formulas are valid in a given $(w, t)$ cell.
 
 Analogously to the diffractive case in
 \cref{eq:diffraction_intensity_moments}, we decompose the intensity in
@@ -252,15 +260,10 @@ Inserting
   ={}& \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega}\,
   \intensity_0(\Omega)\, Y_L^{M *}(\Omega)
   \\
-  \label{eq:photoprod_moments_norm_H1}
-  H_1(L, M)
+  \label{eq:photoprod_moments_norm_H12}
+  H_{1, 2}(L, M)
   ={}& -\sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega}\,
-  \intensity_1(\Omega)\, Y_L^{M *}(\Omega)
-  \\
-  \label{eq:photoprod_moments_norm_H2}
-  H_2(L, M)
-  ={}& -\sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega}\,
-  \intensity_2(\Omega, \Phi)\, Y_L^{M *}(\Omega).
+  \intensity_{1, 2}(\Omega)\, Y_L^{M *}(\Omega).
 \end{align}
 Here, $H_0(L, M)$ is equivalent to \cref{eq:diffraction_moments_norm}
 for the diffractive case.\footnote{The $1 / (2 \pi)$ factor comes from
@@ -303,7 +306,7 @@ moments~$H_i(L, M)$ will vanish $L > 2 \ell_\text{max}$.
 
 
 \subsection{Symmetry properties of moments}%
-\label{sec:photo_prod:moments_sym}
+\label{sec:photoprod:moments_sym}
 
 To derive the symmetry relations for the photoproduction moments we
 use the same approach as in \cref{sec:diffraction:moments_sym}.
@@ -409,7 +412,7 @@ must be purely imaginary.  Consequently, from
 \refCite{Mathieu:2019fts}.}
 \begin{align}
   \label{eq:photoprod_moment_0_real}
-  H(L, M)
+  H_0(L, M)
   \mustBeEq{}& \frac{1}{2 \pi}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
   \intensity(\Omega, \Phi)\, y_L^M(\theta)\, \cos(M\, \phi)
   \\
@@ -532,14 +535,15 @@ Therefore, for given~\refl, $\ell$, and~$m$, only two of the four
 possible partial-wave amplitudes are independent,%
 \footnote{In general, scattering reactions with a recoil particle with
 spin~$J_R$ are described by $2 J_R + 1$ independent amplitudes
-$\sBrk{\ell}^\refl_{m; k}$ with $k = 0, \ldots, 2 J_R$.}
-namely the proton spin-flip amplitude\footnote{See Eq.~(D4) in
-\refCite{Mathieu:2019fts}.}
+$\sBrk{\ell}^\refl_{m; k}$ with $k = 0, \ldots, 2 J_R$.} namely the
+proton spin-flip amplitude\footnote{See Eq.~(D4) in
+\refCite{Mathieu:2019fts}.  We use here the short-hand notation $\pm$
+for $\lambda_{1, 2} = \pm 1 / 2$.}
 \begin{align}
-  \prescript{\refl}{}{\prodAmp}^\ell_{\!m; {+1}\, {-1}}
+  \prescript{\refl}{}{\prodAmp}^\ell_{\!m; {+}\, {-}}
   \equiv{}& \sBrk{\ell}^\refl_{m; 0}
   \intertext{and the proton spin-non-flip amplitude}
-  \prescript{\refl}{}{\prodAmp}^\ell_{\!m; {+1}\, {+1}}
+  \prescript{\refl}{}{\prodAmp}^\ell_{\!m; {+}\, {+}}
   \equiv{}& \sBrk{\ell}^\refl_{m; 1}.
 \end{align}
 Furthermore, since parity is conserved the spin-flip and
@@ -1856,7 +1860,7 @@ operator (see \cref{eq:photoprod_moments_norm})
 \end{equation}
 to both sides of
 \cref{eq:photoprod_data_sample_total_intensity}.  Using
-\cref{eq:photoprod_orthogonality_phi,eq:photoprod_moments_norm_H0,eq:photoprod_moments_norm_H1,eq:photoprod_moments_norm_H2},
+\cref{eq:photoprod_orthogonality_phi,eq:photoprod_moments_norm_H0,eq:photoprod_moments_norm_H12},
 we obtain
 \begin{equation}
   \label{eq:photoprod_data_sample_phys_moments_total}
