@@ -1,0 +1,2 @@
+{"rule":"AFFORD_VBG","sentence":"^\\QNote that we use a slightly different normalization here, chosen using \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q to ensure that for perfect acceptance, i.e. \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, the only non-zero acceptance moment is \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Qacc\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q.\\E$"}
+{"rule":"THE_WORSE_OF","sentence":"^\\Q\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q show that this is true, although the scatter of the points is somewhat larger than that of the real parts.\\E$"}
