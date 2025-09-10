@@ -151,24 +151,24 @@
 \DeclareMathOperator{\trace}{Tr}
 \newcommand*{\tr}{\trace\!}  % trace
 \DeclareMathOperator{\rank}{rank}
-\newcommand*{\rk}{\rank\!}  % trace
+\newcommand*{\rk}{\rank\!}  % rank
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator{\exptValSym}{\mathbb{E}}             % expectation value
+\DeclareMathOperator{\exptValSym}{\mathbb{E}}           % expectation value
 \newcommand*{\exptVal}[2][]{\exptValSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
-\DeclareMathOperator{\exptValEstSym}{\mathbb{E}}          % estimate for expectation value
+\DeclareMathOperator{\exptValEstSym}{\hat{\mathbb{E}}}  % estimate for expectation value
 \newcommand*{\exptValEst}[2][]{\exptValEstSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
-\DeclareMathOperator{\varSym}{V}                 % variance
+\DeclareMathOperator{\varSym}{\mathbb{V}}               % variance
 \newcommand*{\var}[2][]{\varSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
-\DeclareMathOperator{\varEstSym}{\hat{V}}        % estimate for variance
+\DeclareMathOperator{\varEstSym}{\hat{\mathbb{V}}}      % estimate for variance
 \newcommand*{\varEst}[2][]{\varEstSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
-\DeclareMathOperator{\covSym}{cov}               % covariance
+\DeclareMathOperator{\covSym}{cov}                      % covariance
 \newcommand*{\cov}[2][]{\covSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
-\DeclareMathOperator{\covEstSym}{\widehat{cov}}  % estimate for covariance
+\DeclareMathOperator{\covEstSym}{\widehat{cov}}         % estimate for covariance
 \newcommand*{\covEst}[2][]{\covEstSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
-\newcommand*{\covMatSym}{\mat{V}}                % covariance matrix
+\newcommand*{\covMatSym}{\mat{V}}                       % covariance matrix
 \newcommand*{\covMat}[2][]{\covMatSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
-\newcommand*{\covMatEstSym}{\hat{\mat{V}}}       % estimate for covariance matrix
+\newcommand*{\covMatEstSym}{\hat{\mat{V}}}              % estimate for covariance matrix
 \newcommand*{\covMatEst}[2][]{\covMatEstSym\!\ifthenelse{\equal{#1}{}}{\sBrk{#2}}{\sBrk[#1]{#2}}}
 \DeclareMathOperator{\grad}{grad}       % gradient
 \newcommand*{\gradient}{\vec{\nabla}}
