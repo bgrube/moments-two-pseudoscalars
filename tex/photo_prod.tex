@@ -242,7 +242,7 @@ contains only positive-reflectivity waves with $m \geq 0$ (see
 
 The corresponding moments are
 \begin{equation}
-  \label{eq:photoprod_moments_norm}
+  \label{eq:photoprod_moments}
   H_i(L, M)
   = \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}
   \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
@@ -255,12 +255,12 @@ The corresponding moments are
 Inserting
 \cref{eq:photoprod_intensity_sum,eq:photoprod_orthogonality_phi} gives
 \begin{align}
-  \label{eq:photoprod_moments_norm_H0}
+  \label{eq:photoprod_moments_H0}
   H_0(L, M)
   ={}& \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega}\,
   \intensity_0(\Omega)\, Y_L^{M *}(\Omega)
   \\
-  \label{eq:photoprod_moments_norm_H12}
+  \label{eq:photoprod_moments_H12}
   H_{1, 2}(L, M)
   ={}& -\sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega}\,
   \intensity_{1, 2}(\Omega)\, Y_L^{M *}(\Omega).
@@ -313,7 +313,7 @@ use the same approach as in \cref{sec:diffraction:moments_sym}.
 
 From the symmetry property of the spherical harmonics in
 \cref{eq:spherical_harm_sym} and the definition of the moments in
-\cref{eq:photoprod_moments_norm}, we get
+\cref{eq:photoprod_moments}, we get
 \begin{align}
   \label{eq:photoprod_moments_sym_1}
   H_i^*(L, M)
@@ -408,7 +408,7 @@ it follows that
 \end{equation}
 Hence, all $H_{0, 1}(L, M)$ must be real-valued and all $H_2(L, M)$
 must be purely imaginary.  Consequently, from
-\cref{eq:photoprod_moments_norm}, we get\footnote{See Eq.~(B6) in
+\cref{eq:photoprod_moments}, we get\footnote{See Eq.~(B6) in
 \refCite{Mathieu:2019fts}.}
 \begin{align}
   \label{eq:photoprod_moment_0_real}
@@ -763,9 +763,12 @@ as expected from \cref{eq:photoprod_moment_2_M0}.
 \subsection{Calculation of moments from data}%
 \label{sec:photoprod:moments_data}
 
+\subsubsection{Linear-algebra method}%
+\label{sec:photoprod:linalg_method}
+
 In order to calculate the photoproduction moments from data, we
-generalize the approach that we used to calculate the moments in the
-case of diffractive scattering discussed in
+generalize the linear-algebra approach that we used to calculate the
+moments in the case of diffractive scattering discussed in
 \cref{sec:diffraction:acceptance_corr}.  We again assume that
 resolution effects in the $(\Omega, \Phi)$ angular space are
 negligible, \ie the measured intensity distribution is given
@@ -805,7 +808,7 @@ measured moments:
   \end{cases*}
 \end{equation}
 This is equivalent to
-\cref{eq:photoprod_moments_norm}
+\cref{eq:photoprod_moments}
 and the equation for $H_0^\text{meas}(L, M)$ is equivalent to
 \cref{eq:diffraction_moments_meas} for the diffractive case.  Note
 that \cref{eq:photoprod_moments_sym_1} still holds for the measured
@@ -1274,13 +1277,198 @@ $\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0} = N_\text{sig}$ (see
 of signal events is a random variable.}
 
 
+\subsubsection{Estimating moments using extended maximum-likelihood fits}%
+\label{sec:photoprod:maximum_likelihood_method}
+
+Alternatively to the linear-algebra method described in
+\cref{sec:photoprod:linalg_method}, we can apply the extended
+maximum-likelihood approach to estimate the moments from the data.  In
+order to derive the likelihood function, we reformulate the physical
+intensity distribution by inserting
+\cref{eq:photoprod_intensity_0_moments_real,eq:photoprod_intensity_1_moments_real,eq:photoprod_intensity_2_moments_imag}
+into \cref{eq:photoprod_intensity_sum} and defining new basis functions $f_{i, L M}(\Omega, \Phi)$:
+\begin{align}
+  \intensity(\Omega, \Phi)
+  = \sum_{L = 0}^\infty \sum_{M = 0}^{L} \Bigg\{%
+         &\Re[1]{H_0(L, M)}\, \dUnderbrace{       \sqrt{\frac{2 L + 1}{4 \pi}} (2 - \delta_{M 0})\, y_L^M(\theta)\, \cos(M\, \phi)}{\equiv f_{0, L M}(\Omega, \Phi)}
+    \nonumber \\
+    {} + &\Re[1]{H_1(L, M)}\, \dUnderbrace{       \sqrt{\frac{2 L + 1}{4 \pi}} (2 - \delta_{M 0})\, y_L^M(\theta)\, \cos(M\, \phi)\, P_\gamma\, \cos(2 \Phi)}{\equiv f_{1, L M}(\Omega, \Phi)}
+    \nonumber \\
+    \label{eq:photoprod_intensity_ml_ansatz}
+    {} + &\Im[1]{H_2(L, M)}\, \dUnderbrace{(-1)\, \sqrt{\frac{2 L + 1}{4 \pi}} (2 - \delta_{M 0})\, y_L^M(\theta)\, \sin(M\, \phi)\, P_\gamma\, \sin(2 \Phi)}{\equiv f_{2, L M}(\Omega, \Phi)}
+  \Bigg\}.
+\end{align}
+Here we have used that the physical moments $H_{0, 1}(L, M)$ are
+real-valued, while $H_2(L, M)$ is purely imaginary (see
+\cref{eq:photoprodP_moments_real_imag}).  Hence, all terms in
+\cref{eq:photoprod_intensity_ml_ansatz} are real-valued.
+
+By collecting all non-zero physical moments and all basis functions
+into $n$-dimensional column vectors\footnote{Note that $H_2(L, 0) = 0
+\quad\forall\; L$ (see \cref{eq:photoprod_moment_2_M0}).}
+\begin{align}
+  \vect{H}
+  \equiv \Big(%
+    &\Re[1]{H_0(0, 0)},
+    %\Re[1]{H_0(1, 0)},
+    \ldots,
+    \Re[1]{H_0(L_\text{max}, L_\text{max})},
+    \nonumber \\
+    &\Re[1]{H_1(0, 0)},
+    \ldots,
+    \Re[1]{H_1(L_\text{max}, L_\text{max})},
+    \nonumber \\
+    &\Im[1]{H_2(1, 1)},
+    \ldots,
+    \Im[1]{H_2(L_\text{max}, L_\text{max})}
+  \Big)^T
+  \in \mathbb{R}^n
+\end{align}
+and\footnote{Note that $f_{2, L 0}(\Omega, \Phi) = 0 \quad\forall\; L$
+because $\sin(M\, \phi) = 0$ for $M = 0$.}
+\begin{align}
+  \vect{f}(\Omega, \Phi)
+  \equiv \Big(%
+    &f_{0, 0 0}(\Omega, \Phi),
+    %f_{0, 1 0}(\Omega, \Phi),
+    \ldots,
+    f_{0, L_\text{max} L_\text{max}}(\Omega, \Phi),
+    \nonumber \\
+    &f_{1, 0 0}(\Omega, \Phi),
+    \ldots,
+    f_{1, L_\text{max} L_\text{max}}(\Omega, \Phi),
+    \nonumber \\
+    &f_{2, 1 1}(\Omega, \Phi),
+    \ldots,
+    f_{2, L_\text{max} L_\text{max}}(\Omega, \Phi)
+  \Big)^T
+  \in \mathbb{R}^n,
+\end{align}
+where
+\begin{equation}
+  n
+  = 2 \frac{(L_\text{max} + 1)\, (L_\text{max} + 2)}{2} + \frac{L_\text{max}\, (L_\text{max} + 1)}{2}
+  = (L_\text{max} + 1)\, \rBrk{\frac{3}{2}\, L_\text{max} + 2}
+\end{equation}
+is the number of moments, we can simplify the expression in
+\cref{eq:photoprod_intensity_ml_ansatz} to a scalar product, \ie
+\begin{equation}
+  \label{eq:photoprod_intensity_ml}
+  \intensity(\Omega, \Phi; \vect{H})
+  = \vect{H} \cdot \vect{f}(\Omega, \Phi).
+\end{equation}
+In this expression, the moments~$\vect{H}$ are unknown parameters that
+determine the intensity distribution.
+
+To estimate the moments from the measured intensity distribution, we
+construct the extended likelihood function by normalizing the
+intensity distribution, \ie
+\begin{equation}
+  \label{eq:photoprod_likelihood_1}
+  \mathcal{L}(\vect{H}; \set{\Omega_k, \Phi_k}, N_\text{meas})
+  = \frac{(N_\text{pred})^{N_\text{meas}}\, e^{-N_\text{pred}}}{N_\text{meas}!}\,
+  \prod_{k = 1}^{N_\text{meas}}
+  \frac{\eta(\Omega_k, \Phi_k)\, \intensity(\Omega_k, \Phi_k; \vect{H})}%
+  {\dint_{4 \pi}\!\!\!\! \dif{\Omega} \dint_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \eta(\Omega, \Phi)\, \intensity(\Omega, \Phi; \vect{H})}.
+\end{equation}
+Note that~$\mathcal{L}$ is a function of the (unknown)
+moments~$\vect{H}$, given a (constant) data sample with
+$N_\text{meas}$~events represented by $\set{\Omega_k, \Phi_k}$.  In
+\cref{eq:photoprod_likelihood_1}, $N_\text{pred}$ is the number of
+measured events predicted by the model and $\eta(\Omega, \Phi)$ is the
+detection efficiency.  Since $\intensity(\Omega, \Phi; \vect{H})$ is
+the number density of produced events, we have
+\begin{equation}
+  N_\text{pred}
+  = \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \eta(\Omega, \Phi)\, \intensity(\Omega, \Phi; \vect{H}).
+\end{equation}
+Inserting this into
+\cref{eq:photoprod_likelihood_1}, taking the logarithm of the
+likelihood function, and neglecting all terms that do not depend
+on~$\vect{H}$, we arrive at
+\begin{align}
+  \ln \mathcal{L}(\vect{H}; \set{\Omega_k, \Phi_k}, N_\text{meas})
+  ={}& \sum_{k = 1}^{N_\text{meas}} \ln \intensity(\Omega_k, \Phi_k; \vect{H})
+  - \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \eta(\Omega, \Phi)\, \intensity(\Omega, \Phi; \vect{H})
+  \nonumber \\
+  \label{eq:photoprod_likelihood_2}
+  \cequalUsing{\cref{eq:photoprod_intensity_ml}}{}&\quad
+  \sum_{k = 1}^{N_\text{meas}} \ln\!\sBrk[1]{\vect{H} \cdot \vect{f}(\Omega_k, \Phi_k)}
+  - \vect{H} \cdot \dUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \eta(\Omega, \Phi)\, \vect{f}(\Omega, \Phi)}%
+                               {\equiv \vect{I}_\text{acc}}.
+\end{align}
+Note that in the case of perfect acceptance, \ie $\eta(\Omega, \Phi) =
+1$, we have\footnote{This is because
+\begin{align}
+  \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, f_{0, L M}(\Omega, \Phi)
+  ={}& 2 \pi \sqrt{\frac{2 L + 1}{4 \pi}} (2 - \delta_{M 0}) \int_{4 \pi}\!\!\!\! \dif{\Omega}\, y_L^M(\theta)\, \cos(M\, \phi)
+  \nonumber \\
+  ={}& 2 \pi \sqrt{\frac{2 L + 1}{4 \pi}} (2 - \delta_{M 0}) \cdUnderbrace{\int_{4 \pi}\!\!\!\! \dif{\Omega}\, Y_L^M(\Omega)}{\equalUsing{\cref{eq:spherical_harmonics_integral}}{} \sqrt{4 \pi}\, \delta_{L 0}\, \delta_{M 0}}
+  = 2 \pi\, \delta_{L 0}\, \delta_{M 0}
+\end{align}
+and
+\begin{equation}
+  \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, f_{i, L M}(\Omega, \Phi)
+  = 0
+  \qquad\text{for $i = 1, 2$}
+\end{equation}
+because of \cref{eq:photoprod_cos_sin_Phi_integrals}.}
+\begin{equation}
+  \vect{I}_\text{acc}
+  = \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \vect{f}(\Omega, \Phi)
+  = \rBrk[2]{\int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \dUnderbrace{f_{0, 0 0}(\Omega, \Phi)}{= 1 / (4 \pi)}, 0, \ldots, 0}^T
+  = \rBrk[1]{2 \pi, 0, \ldots, 0}^T.
+\end{equation}
+and hence the likelihood function simplifies to
+\begin{align}
+  \ln \mathcal{L}(\vect{H}; \set{\Omega_k, \Phi_k}, N_\text{meas})
+  = \sum_{k = 1}^{N_\text{meas}} \ln\!\sBrk[1]{\vect{H} \cdot \vect{f}(\Omega_k, \Phi_k)}
+  - 2 \pi\, H_0(0, 0).
+\end{align}
+
+The acceptance integral vector~$\vect{I}_\text{acc}$ is approximated
+using Monte Carlo integration.  To this end, we first generate
+$N_\text{gen}$~events that are uniformly distributed in two-body phase
+space\footnote{This means the events are uniformly distributed in the
+$(\cos\theta, \phi, \Phi)$ space.} and then pass these events through
+the detector-simulation, event-reconstruction, and event-selection
+chains.  From the remaining $N_\text{acc}$~accepted events, we
+calculate the elements of the acceptance integral vector
+using\todo{explain factor $4\pi$}
+\begin{equation}
+  \label{eq:photoprod_acceptance_integral_vector}
+  \vect{I}_\text{acc}
+  = \frac{4 \pi}{N_\text{gen}} \sum_{k = 1}^{N_\text{acc}} \vect{f}(\Omega_k, \Phi_k).
+\end{equation}
+
+To speed up the calculation of the likelihood function, we can
+precalculate~$\vect{I}_\text{acc}$ and the basis-function vectors
+\set{\vect{f}(\Omega_k, \Phi_k)} that enter
+\cref{eq:photoprod_likelihood_2}, so that
+\begin{equation}
+  \label{eq:photoprod_likelihood_3}
+  \ln \mathcal{L}(\vect{H}; \set{\Omega_k, \Phi_k}, N_\text{meas})
+  = \sum_{k = 1}^{N_\text{meas}} \ln\!\sBrk[1]{\vect{H} \cdot \vect{f}(\Omega_k, \Phi_k)}
+  - \vect{H} \cdot \vect{I}_\text{acc}.
+\end{equation}
+
+The maximum-likelihood estimate~$\hat{\vect{H}}$ of the physical
+moments corresponds to the set of moment values that maximize the
+likelihood function, \ie
+\begin{equation}
+  \label{eq:photoprod_moments_mle}
+  \hat{\vect{H}}
+  = \argmax_{\vect{H}}\sBrk[2]{\ln \mathcal{L}(\vect{H}; \set{\Omega_k, \Phi_k}, N_\text{meas})}.
+\end{equation}
+
+
 \subsection{Examples}%
 \label{sec:photoprod:example}
 
 \subsubsection{Unweighted events}%
 \label{sec:photoprod:example_unweighted}
 
-To verify the approach described in \cref{sec:photoprod:moments_data}
+To verify the approach described in \cref{sec:photoprod:linalg_method}
 for unweighted events we perform a Monte Carlo input-output study.  In
 this study, we use
 \cref{eq:photoprod_intensity_sum,eq:photoprod_intensity_components_refl,eq:photoprod_rho_0_refl,eq:photoprod_rho_1_refl,eq:photoprod_rho_2_refl}
@@ -1847,7 +2035,7 @@ individual contributions from the data samples:
 \end{equation}
 where we used \cref{eq:photoprod_intensity_sum}.  We obtain the
 moments of $\intensity_\text{tot}(\Omega, \Phi)$ by applying the
-operator (see \cref{eq:photoprod_moments_norm})
+operator (see \cref{eq:photoprod_moments})
 \begin{equation}
   \label{eq:photoprod_moments_operator}
   \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}
@@ -1860,7 +2048,7 @@ operator (see \cref{eq:photoprod_moments_norm})
 \end{equation}
 to both sides of
 \cref{eq:photoprod_data_sample_total_intensity}.  Using
-\cref{eq:photoprod_orthogonality_phi,eq:photoprod_moments_norm_H0,eq:photoprod_moments_norm_H12},
+\cref{eq:photoprod_orthogonality_phi,eq:photoprod_moments_H0,eq:photoprod_moments_H12},
 we obtain
 \begin{equation}
   \label{eq:photoprod_data_sample_phys_moments_total}
