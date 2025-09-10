@@ -305,7 +305,7 @@ the considered $\omega$~and $t$~ranges:
   {\equalUsing{\cref{eq:spherical_harmonics_integral}} \sqrt{4 \pi}\, \delta_{L 0}\, \delta_{M 0}}
   \\
   \label{eq:diffraction_H00_norm}
-  ={}& H(0, 0).
+  ={}& H(0, 0) \in \mathbb{R}.
 \end{align}
 Here, we have inserted \cref{eq:diffraction_intensity_moments_norm} in
 the first step.  This is consistent with the definition of $H(0, 0)$
@@ -776,7 +776,7 @@ We assume that the event weights~$w_i$ are normalized such that
 \end{equation}
 with $N_\text{sig}$~being the number of signal events, \ie the number
 of events after background subtraction.  Note that for unweighted
-events $w_i = 1~ \forall i$ and hence $\hat{H}(0, 0) = N$.
+events, $w_i = 1~ \forall i$ and hence $\hat{H}(0, 0) = N$.
 
 The covariances of the $\hat{H}(L, M)$ is
 \begin{align}
@@ -792,9 +792,11 @@ The covariances of the $\hat{H}(L, M)$ is
   ={}& \sum_{i, j = 1}^N \cov[1]{w_i\, f_{L M}(\Omega_i), w_j\, f_{L' M'}(\Omega_j)}.
 \end{align}
 Here, we have used the definition of the covariance and that the
-expectation value is a linear operator.  Since the events are
-statistically independent,
+expectation-value operator~$\exptValSym$ is linear.  Since the events
+are statistically independent, the covariance is diagonal in the event
+index, \ie
 \begin{equation}
+  \label{eq:diffraction_cov_indep_events}
   \cov[1]{w_i\, f_{L M}(\Omega_i), w_j\, f_{L' M'}(\Omega_j)}
   = \cov[1]{w_i\, f_{L M}(\Omega_i), w_i\, f_{L' M'}(\Omega_i)} \delta_{i j}
 \end{equation}
@@ -815,21 +817,21 @@ Note that for unweighted events,
   =  N \cov[1]{f_{L M}(\Omega), f_{L' M'}(\Omega)}.
 \end{equation}
 
-To estimate the covariance of the $w\, f_{L M}(\Omega)$ in
-\cref{eq:diffraction_moments_cov} we use the sample
-covariance, \ie
+To estimate the covariance of $w\, f_{L M}(\Omega)$ in
+\cref{eq:diffraction_moments_cov} we use the sample covariance, \ie
 \begin{equation}
   \label{eq:diffraction_base_fcn_cov}
   \covEst[1]{w\, f_{L M}(\Omega), w\, f_{L' M'}(\Omega)}
   = \frac{1}{N - 1} \sum_{i = 1}^N
-  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \mean{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \mean{w\, f_{L' M'}(\Omega)}}
+  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \exptValEst[1]{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \exptValEst[1]{w\, f_{L' M'}(\Omega)}}
 \end{equation}
 with the sample mean
 \begin{equation}
   \label{eq:diffraction_w_f_sample_mean}
-  \mean{w\, f_{L M}(\Omega)}
-  = \frac{1}{N} \sum_{i = 1}^N w_i\, f_{L M}(\Omega_i).
+  \exptValEst[1]{w\, f_{L M}(\Omega)}
+  = \frac{1}{N} \sum_{i = 1}^N w_i\, f_{L M}(\Omega_i)
 \end{equation}
+as an estimator for the expectation value.
 
 Inserting \cref{eq:diffraction_base_fcn_cov} into
 \cref{eq:diffraction_moments_cov}, we obtain an estimate for the
@@ -841,7 +843,7 @@ of moment estimates:
   \\
   \label{eq:diffraction_sample_cov}
   ={}& \frac{N}{N - 1} \sum_{i = 1}^N
-  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \mean{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \mean{w\, f_{L' M'}(\Omega)}}.
+  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \exptValEst[1]{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \exptValEst[1]{w\, f_{L' M'}(\Omega)}}.
 \end{align}
 Note that from a numerical standpoint this is not the most
 advantageous way to compute the sample covariance.  See
@@ -851,16 +853,26 @@ algorithms.
 For unweighted events, \cref{eq:diffraction_sample_cov} reduces to
 \begin{equation}
   (\covMatEstSym_{\!\hat{\vect{H}}})_{L M, L' M'}
-  = \frac{N}{N - 1} \sum_{i = 1}^N \sBrk[2]{f_{L M}(\Omega_i) - \mean{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \mean{f_{L' M'}(\Omega)}}
+  = \frac{N}{N - 1} \sum_{i = 1}^N \sBrk[2]{f_{L M}(\Omega_i) - \exptValEst[1]{f_{L M}(\Omega)}} \sBrk[2]{f_{L' M'}(\Omega_i) - \exptValEst[1]{f_{L' M'}(\Omega)}}
 \end{equation}
 with the sample mean
 \begin{equation}
-  \mean{f_{L M}(\Omega)}
-  = \frac{1}{N} \sum_{i = 1}^N f_{L M}(\Omega_i).
+  \exptValEst[1]{f_{L M}(\Omega)}
+  = \frac{1}{N} \sum_{i = 1}^N f_{L M}(\Omega_i)
 \end{equation}
-This is analogous to Monte Carlo integration of $f_{L M}(\Omega)$ (see
-\eg\ \refCite{wikipedia:MonteCarloIntegration}).  Note that in the
-unweighted case
+as an estimator for the expectation value.  This is analogous to Monte
+Carlo integration of $f_{L M}(\Omega)$ (see \eg\
+\refCite{wikipedia:MonteCarloIntegration}).
+
+Note that in the case of constant weights, \ie $w_i = w~ \forall i$,
+because $f_{0 0}(\Omega_i) = 1$ (see \cref{eq:diffraction_norm_00}),
+we have
+\begin{equation}
+  w_i\, f_{0 0}(\Omega_i) - \exptValEst[1]{w\, f_{0 0}(\Omega)}
+  = w - \exptValEst[1]{w}
+  = 0.
+\end{equation}
+Hence,
 \begin{equation}
   \label{eq:diffraction_H0_cov_unweighted}
   (\covMatEstSym_{\!\hat{\vect{H}}})_{L M, 0 0}
@@ -871,12 +883,107 @@ unweighted case
   = \hat{\sigma}^2_{\hat{H}(0, 0)}
   = 0.
 \end{equation}
-This is because $\hat{H}(0, 0) = N$ (see \cref{eq:diffraction_norm_00})
-and $N$~is fixed and hence not a random variable.\footnote{Note that
-in the case of weighed events, the covariances in
+This is because $\hat{H}(0, 0) = w\, N$, where $w$~and $N$~are both
+fixed and hence not random variables.\footnote{Note that in the case
+of individual event weights, the covariances in
 \cref{eq:diffraction_H0_cov_unweighted} are non-zero, because in this
 case $\hat{H}(0, 0) = N_\text{sig}$ (see \cref{eq:event_weights_norm})
 and for fixed~$N$ the number of signal events is a random variable.}
+The above is in particular true for the unweighted case, where $w =
+1$.
+
+If the number~$N$ of events in the data sample is not constant but a
+random variable instead, we have to take into account the statistical
+fluctuations of~$N$.  In most practical cases, $N$~will follow a
+Poisson distribution
+\begin{equation}
+  P(N; \lambda)
+  = \frac{\lambda^N\, e^{-\lambda}}{N!}
+\end{equation}
+with expectation value
+\begin{equation}
+  \exptVal{N} = \lambda
+\end{equation}
+and variance
+\begin{equation}
+  \var{N} = \lambda.
+\end{equation}
+To account for the fluctuations of~$N$, we use the law of total
+covariance~\cite{wikipedia:lawOfTotalCovariance}:
+\begin{align}
+  \label{eq:diffraction_moments_law_of_total_cov}
+  \cov[1]{\hat{H}(L, M), \hat{H}(L', M')}
+  ={}& \cov[4]{\dUnderbrace{\sum_{i = 1}^N w_i\, f_{L M}(\Omega_i)}{\equiv S},
+               \dUnderbrace{\sum_{i = 1}^N w_i\, f_{L' M'}(\Omega_i)}{\equiv S'}} \nonumber
+  \\
+  ={}& \exptVal[2]{\cov[1]{S, S' | N}} + \cov[2]{\exptVal[1]{S | N}, \exptVal[1]{S' | N}}.
+\end{align}
+Here, we have used that the events are statistically independent (see
+\cref{eq:diffraction_cov_indep_events}).  In the above equation, the
+conditional expectation value $\exptVal[1]{\orPr{S} | N}$ is the
+expectation value of~$\orPr{S}$ for a particular number of events~$N$.
+Analogous, the conditional covariance $\cov[1]{S, S' | N}$ is the
+covariance of~$S$ and~$S'$ for a particular number of events~$N$,
+which is given by \cref{eq:diffraction_moments_cov}.  Taking the
+expectation value \wrt~$N$, we get
+\begin{equation}
+  \label{eq:diffraction_moments_expt_cov_sums}
+  \exptVal[2]{\cov[1]{S, S' | N}}
+  = \exptVal[2]{N\, \cov[1]{w\, f_{L M}(\Omega), w\, f_{L' M'}(\Omega)}}
+  = \dUnderbrace{\exptVal[1]{N}}{= \lambda}\, \cov[1]{w\, f_{L M}(\Omega), w\, f_{L' M'}(\Omega)},
+\end{equation}
+where we have used that $\cov[1]{w\, f_{L M}(\Omega), w\, f_{L'
+M'}(\Omega)}$ is independent of~$N$.  Utilizing the linearity of the
+expectation-value operator and the fact that the events are
+identically distributed according to $\mathcal{I}(\Omega)$, we obtain
+\begin{equation}
+  \exptVal[1]{\orPr{S} | N}
+  = \exptVal[4]{\sum_{i = 1}^N w_i\, f_{\orPr{L} \orPr{M}}(\Omega_i)}
+  \equalUsing{\text{iid}} \sum_{i = 1}^N \exptVal[1]{w\, f_{\orPr{L} \orPr{M}}(\Omega)}
+  = N\, \exptVal[1]{w\, f_{\orPr{L} \orPr{M}}(\Omega)}.
+\end{equation}
+Consequently,
+\begin{align}
+  \cov[2]{\exptVal[1]{S | N}, \exptVal[1]{S' | N}}
+  ={}& \cov[2]{N\, \exptVal[1]{w\, f_{L M}(\Omega)}, N\, \exptVal[1]{w\, f_{L' M'}(\Omega)}}
+  \nonumber \\
+  ={}& \exptVal[2]{N^2\, \exptVal[1]{w\, f_{L M}(\Omega)}\, \exptVal[1]{w\, f_{L' M'}(\Omega)}}
+  - \exptVal[2]{N\, \exptVal[1]{w\, f_{L M}(\Omega)}}\, \exptVal[2]{N\, \exptVal[1]{w\, f_{L' M'}(\Omega)}}
+  \nonumber \\
+  ={}& \exptVal[1]{N^2}\, \exptVal[1]{w\, f_{L M}(\Omega)}\, \exptVal[1]{w\, f_{L' M'}(\Omega)}
+  - \exptVal[1]{N}^2\, \exptVal[1]{w\, f_{L M}(\Omega)}\, \exptVal[1]{w\, f_{L' M'}(\Omega)}
+  \nonumber \\
+  \label{eq:diffraction_moments_cov_expt_sums}
+  ={}& \cdUnderbrace{\var{N}}{= \lambda}\, \exptVal[1]{w\, f_{L M}(\Omega)}\, \exptVal[1]{w\, f_{L' M'}(\Omega)},
+\end{align}
+where we have used that $\exptVal[1]{w\, f_{\orPr{L}
+\orPr{M}}(\Omega)}$ is independent of~$N$.
+
+Inserting
+\cref{eq:diffraction_moments_expt_cov_sums,eq:diffraction_moments_cov_expt_sums}
+into \cref{eq:diffraction_moments_law_of_total_cov}, we obtain
+\begin{equation}
+  \cov[1]{\hat{H}(L, M), \hat{H}(L', M')}
+  = \lambda\, \rBrk[2]{\cov[1]{w\, f_{L M}(\Omega), w\, f_{L' M'}(\Omega)}
+    + \exptVal[1]{w\, f_{L M}(\Omega)}\, \exptVal[1]{w\, f_{L' M'}(\Omega)}}.
+\end{equation}
+To estimate the above covariance, we insert the estimates $\hat{\lambda} = N$ and
+\cref{eq:diffraction_base_fcn_cov}:
+\begin{align}
+  (\covMatEstSym_{\!\hat{\vect{H}}})_{L M, L' M'}
+  ={}& \covEst[1]{\hat{H}(L, M), \hat{H}(L', M')}
+  \nonumber \\
+  ={}& \frac{N}{N - 1} \sum_{i = 1}^N
+  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \exptValEst[1]{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \exptValEst[1]{w\, f_{L' M'}(\Omega)}}
+  \nonumber \\
+  \label{eq:diffraction_sample_cov_poisson}
+  {}&\qquad + N\, \exptValEst[1]{w\, f_{L M}(\Omega)}\, \exptValEst[1]{w\, f_{L' M'}(\Omega)},
+\end{align}
+where, the estimates for the expectation values are given by
+\cref{eq:diffraction_w_f_sample_mean}.  Note that the first term of
+the above equation is identical to \cref{eq:diffraction_sample_cov},
+so the additional uncertainty due to the Poissonian fluctuations
+of~$N$ is captured by the second term.
 
 
 \subsubsection{Taking into account detection efficiency}%
@@ -901,15 +1008,15 @@ angles~$\Omega$.  It includes in particular the geometric acceptance
 of the detectors and the inefficiencies introduced by the detectors,
 by the event reconstruction, and by the event selection that is
 applied by the trigger and in the offline data processing.  In
-addition to~$\Omega$ the detection efficiency depends in general on
+addition to~$\Omega$, the detection efficiency depends in general on
 additional kinematic variables~\vect{\uptau}.  In
 \cref{eq:diffraction_int_meas}, we have marginalized~$\eta(\Omega;
-\vect{\uptau})$ over~\vect{\uptau}.  In order to perform this
-marginalization we need a realistic model of the reaction that
-reproduces the kinematic distribution in~\vect{\uptau} sufficiently
-well.} and $\intensity(\Omega)$ is the physical intensity distribution
-of the events produced in the studied reaction.  To correct for the
-detection efficiency we use the approach described in
+\vect{\uptau})$ over~\vect{\uptau}.  To perform this marginalization
+we need a realistic model of the reaction that reproduces the
+kinematic distribution in~\vect{\uptau} sufficiently well.} and
+$\intensity(\Omega)$ is the physical intensity distribution of the
+events produced in the studied reaction.  To correct for the detection
+efficiency we use the approach described in
 \refsCite{Jones:2023,JonesCode:2023,OmegaPhoton:1983vde,Grayer:1974cr}.
 In case resolution effects in~$\Omega$ are non-negligible for the
 channel under study one has to apply an extended approach that is
@@ -1067,7 +1174,7 @@ because of the orthonormality of the spherical harmonics (see
     \int_{-\pi}^{+\pi}\!\!\! \dif{\phi}\, \cos(M'\, \phi) \sBrk[2]{\cos(M\, \phi) + \imag\, \sin(M\, \phi)}
     = 2 \pi\, \delta_{M M'}.
   \end{equation}
-  Also the $y_L^M(\theta)$ are orthogonal, \ie
+  The $y_L^M(\theta)$ are also orthogonal, \ie
   \begin{equation}
     \label{eq:small_y_orthogonality}
     \int_{-1}^{+1}\!\!\! \dif{\cos\theta}\, y_{L'}^{M}(\theta)\, y_L^M(\theta)
@@ -1323,9 +1430,10 @@ Note that although $\covMatSym_{\!\vect{H}}^{RR}$~and
 $\covMatSym_{\!\vect{H}}^{II}$~are symmetric,
 $\covMatSym_{\!\vect{H}}^{RI}$~is not.
 
-Analogous to \cref{eq:diffraction_sample_cov} we can estimate the
+Analogous to \cref{eq:diffraction_sample_cov}, we can estimate the
 Hermitian and the pseudo-covariance matrix for the measured moments
-using the sample covariance:\footnote{We can calculate
+for $N_\text{meas} = \text{const}$ using the sample
+covariance:\footnote{We can calculate
 $\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}$ using NumPy by calling
 \pyinline{N_meas * numpy.cov(fWeighted)}, where \pyinline{fWeighted =
 w * f}.  Here, \pyinline{w}~is a one-dimensional array of the event
@@ -1343,18 +1451,35 @@ of basis functions, \ie the number of moments.}
   \\
   \label{eq:diffraction_sample_cov_hermit_meas}
   ={}& \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{i = 1}^{N_\text{meas}}
-  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \mean{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \mean{w\, f_{L' M'}(\Omega)}}^*
+  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \exptValEst[1]{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \exptValEst[1]{w\, f_{L' M'}(\Omega)}}^*
   \\
   \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{L M, L' M'}
   ={}& \covEst[1]{\hat{H}_\text{meas}(L, M), \hat{H}_\text{meas}^*(L', M')} \nonumber
   \\
   \label{eq:diffraction_sample_cov_pseudo_meas}
   ={}& \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{i = 1}^{N_\text{meas}}
-  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \mean{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \mean{w\, f_{L' M'}(\Omega)}}.
+  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \exptValEst[1]{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \exptValEst[1]{w\, f_{L' M'}(\Omega)}}.
+\end{align}
+In case~$N_\text{meas}$ is a Poisson-distributed random variable,
+based on \cref{eq:diffraction_sample_cov_poisson} we obtain
+\begin{align}
+  \rBrk[1]{\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}}_{L M, L' M'}
+  ={}& \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{i = 1}^{N_\text{meas}}
+  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \exptValEst[1]{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \exptValEst[1]{w\, f_{L' M'}(\Omega)}}^*
+  \nonumber \\
+  \label{eq:diffraction_sample_cov_poisson_hermit_meas}
+  {}&\qquad + N_\text{meas}\, \exptValEst[1]{w\, f_{L M}(\Omega)}\, \exptValEst[1]{w\, f_{L' M'}(\Omega)}^*
+  \\
+  \rBrk[1]{\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}}_{L M, L' M'}
+  ={}& \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{i = 1}^{N_\text{meas}}
+  \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \exptValEst[1]{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \exptValEst[1]{w\, f_{L' M'}(\Omega)}}
+  \nonumber \\
+  \label{eq:diffraction_sample_cov_poisson_pseudo_meas}
+  {}&\qquad + N_\text{meas}\, \exptValEst[1]{w\, f_{L M}(\Omega)}\, \exptValEst[1]{w\, f_{L' M'}(\Omega)}.
 \end{align}
 Here, the basis functions $f_{L M}(\Omega)$ are defined in
-\cref{eq:diffraction_basis_fcn}.  From these two matrices, we
-construct the augmented covariance
+\cref{eq:diffraction_basis_fcn}.  From the two covariance matrices
+above, we construct the augmented covariance
 matrix~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$
 using \cref{eq:cov_augmented}.\footnote{\label{fn:cov_aug_numpy}In
 NumPy, we can
@@ -1475,10 +1600,10 @@ given below \cref{eq:diffraction_moments_meas} apply here.} \ie
   H_\text{acc}(L, M)
   = \frac{1}{\sqrt{4 \pi}\, \sqrt{2 L + 1}}\, \int_{4 \pi}\!\!\!\! \dif{\Omega}\, \eta(\Omega)\, Y_L^{M *}(\Omega).
 \end{equation}
-Note that we use a slightly different normalization here, which was
-chosen using \cref{eq:spherical_harmonics_integral} such that for
-perfect acceptance, \ie $\eta(\Omega) = 1$, the only non-zero
-acceptance moment is $H_\text{acc}(0, 0) = 1$.%
+Note that we use a slightly different normalization here, chosen using
+\cref{eq:spherical_harmonics_integral} to ensure that for perfect
+acceptance, \ie $\eta(\Omega) = 1$, the only non-zero acceptance
+moment is $H_\text{acc}(0, 0) = 1$.%
 
 Inserting \cref{eq:diffraction_acc_moment_decomp} into the acceptance
 integral matrix defined in \cref{eq:diffraction_moments_meas2}, we get
