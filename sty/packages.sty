@@ -279,10 +279,10 @@
   \fi
 \fi
 
+\RequirePackage{latexgit}  % used to inject repository information into the document
 \ifpackages@printGitInfo
   \RequirePackage{fancyhdr}  % used to redefine page headers and footers
   \RequirePackage{currfile}  % provides file name and path information of current input file
-  \RequirePackage{latexgit}  % used to inject repository information into the document
   % modify footer definition
   \AtBeginDocument{%
     \pagestyle{fancyplain}
