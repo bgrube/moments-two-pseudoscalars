@@ -240,17 +240,24 @@ contains only positive-reflectivity waves with $m \geq 0$ (see
 \cref{eq:photoprod_H_1_0_0_refl_2}, and Appendix~D in
 \refCite{Mathieu:2019fts}).}
 
-The corresponding moments are
+We obtain the corresponding moments from the intensity distribution by
+applying the moment operator
+\begin{equation}
+  \label{eq:photoprod_moment_operator}
+  \hat{\mathcal{H}}_i(L, M)
+  = \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}
+  \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
+  Y_L^{M *}(\Omega) \times \begin{cases*}
+    1 / 2                   & for $i = 0$, \\
+    \cos(2 \Phi) / P_\gamma & for $i = 1$, \\
+    \sin(2 \Phi) / P_\gamma & for $i = 2$,
+  \end{cases*}
+\end{equation}
+\ie
 \begin{equation}
   \label{eq:photoprod_moments}
   H_i(L, M)
-  = \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}
-  \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \intensity(\Omega, \Phi)\, Y_L^{M *}(\Omega) \times \begin{cases*}
-    1 / 2                   & for $i = 0$, \\
-    \cos(2 \Phi) / P_\gamma & for $i = 1$, \\
-    \sin(2 \Phi) / P_\gamma & for $i = 2$.
-  \end{cases*}
+  = \hat{\mathcal{H}}_i(L, M)\, \intensity(\Omega, \Phi).
 \end{equation}
 Inserting
 \cref{eq:photoprod_intensity_sum,eq:photoprod_orthogonality_phi} gives
@@ -312,8 +319,8 @@ To derive the symmetry relations for the photoproduction moments we
 use the same approach as in \cref{sec:diffraction:moments_sym}.
 
 From the symmetry property of the spherical harmonics in
-\cref{eq:spherical_harm_sym} and the definition of the moments in
-\cref{eq:photoprod_moments}, we get
+\cref{eq:spherical_harm_sym} and the definition of the moment operator in
+\cref{eq:photoprod_moment_operator}, we get
 \begin{align}
   \label{eq:photoprod_moments_sym_1}
   H_i^*(L, M)
@@ -795,17 +802,13 @@ orthogonal functions in the $(\Omega, \Phi)$ angular space, \ie
   \end{cases},
 \end{equation}
 that we already used to define the physical moments in
-\cref{sec:photoprod:moment}.  As a consequence, we get three sets of
-measured moments:
+\cref{sec:photoprod:moment}.  Applying the moment operator in
+\cref{eq:photoprod_moment_operator}, we get three sets of measured
+moments:
 \begin{equation}
   \label{eq:photoprod_moments_meas}
   H_i^\text{meas}(L, M)
-  = \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}} \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  \intensity_\text{meas}(\Omega, \Phi)\, Y_L^{M *}(\Omega) \times \begin{cases*}
-    1 / 2                   & for $i = 0$, \\
-    \cos(2 \Phi) / P_\gamma & for $i = 1$, \\
-    \sin(2 \Phi) / P_\gamma & for $i = 2$.
-  \end{cases*}
+  = \hat{\mathcal{H}}_i(L, M)\, \intensity_\text{meas}(\Omega, \Phi).
 \end{equation}
 This is equivalent to
 \cref{eq:photoprod_moments}
@@ -1277,7 +1280,7 @@ $\rBrk[0]{\hat{\vect{H}}_\text{meas}}_{0, 0 0} = N_\text{sig}$ (see
 of signal events is a random variable.}
 
 
-\subsubsection{Estimating moments using extended maximum-likelihood fits}%
+\subsubsection{Extended maximum-likelihood method}%
 \label{sec:photoprod:maximum_likelihood_method}
 
 Alternatively to the linear-algebra method described in
@@ -1379,6 +1382,7 @@ measured events predicted by the model and $\eta(\Omega, \Phi)$ is the
 detection efficiency.  Since $\intensity(\Omega, \Phi; \vect{H})$ is
 the number density of produced events, we have
 \begin{equation}
+  \label{eq:photoprod_Npred}
   N_\text{pred}
   = \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \eta(\Omega, \Phi)\, \intensity(\Omega, \Phi; \vect{H}).
 \end{equation}
@@ -1441,25 +1445,155 @@ using\todo{explain factor $4\pi$}
   = \frac{4 \pi}{N_\text{gen}} \sum_{k = 1}^{N_\text{acc}} \vect{f}(\Omega_k, \Phi_k).
 \end{equation}
 
-To speed up the calculation of the likelihood function, we can
-precalculate~$\vect{I}_\text{acc}$ and the basis-function vectors
-\set{\vect{f}(\Omega_k, \Phi_k)} that enter
-\cref{eq:photoprod_likelihood_2}, so that
+The maximum-likelihood estimate~$\hat{\vect{H}}$ of the physical
+moments is obtained by maximizing the likelihood function, \ie
+\begin{equation}
+  \label{eq:photoprod_moments_mle}
+  \hat{\vect{H}}
+  = \argmax_{\vect{H}}\sBrk[2]{\ln \mathcal{L}(\vect{H}; \set{\Omega_k, \Phi_k}, N_\text{meas})},
+\end{equation}
+with
 \begin{equation}
   \label{eq:photoprod_likelihood_3}
   \ln \mathcal{L}(\vect{H}; \set{\Omega_k, \Phi_k}, N_\text{meas})
   = \sum_{k = 1}^{N_\text{meas}} \ln\!\sBrk[1]{\vect{H} \cdot \vect{f}(\Omega_k, \Phi_k)}
   - \vect{H} \cdot \vect{I}_\text{acc}.
 \end{equation}
+To speed up the calculation of the likelihood function, it is
+advantageous to precalculate~$\vect{I}_\text{acc}$ and the
+basis-function vectors \set{\vect{f}(\Omega_k, \Phi_k)}.
 
-The maximum-likelihood estimate~$\hat{\vect{H}}$ of the physical
-moments corresponds to the set of moment values that maximize the
-likelihood function, \ie
+In the derivation above, we assumed that the data contain solely
+signal events, \ie that the intensity distribution in
+\cref{eq:photoprod_intensity_ml_ansatz} models only the signal
+process.  In practice, however, data samples are often contaminated by
+background contributions.  These contributions can be addressed either
+by explicitly modeling the background in $\intensity(\Omega, \Phi)$ or
+by statistically subtracting it using event weights.  The former
+approach requires a detailed model of the intensity distribution of
+the background across all angular variables, whereas the latter
+approach does not.  Therefore, statistical background subtraction is
+easier to implement---provided that a sample accurately representing
+the background in the signal region can be constructed.
+
+To incorporate the event weights \set{w_k} for background subtraction,
+we extend \cref{eq:photoprod_likelihood_1} as follows:
 \begin{equation}
-  \label{eq:photoprod_moments_mle}
-  \hat{\vect{H}}
-  = \argmax_{\vect{H}}\sBrk[2]{\ln \mathcal{L}(\vect{H}; \set{\Omega_k, \Phi_k}, N_\text{meas})}.
+  \label{eq:photoprod_likelihood_weighted_1}
+  \mathcal{L}_\text{weighted}(\vect{H}; \set{\Omega_k, \Phi_k, w_k}, N_\text{meas})
+  = \frac{(N_\text{sig}^\text{pred})^{N_\text{sig}^\text{meas}}\, e^{-N_\text{sig}^\text{pred}}}{N_\text{sig}^\text{meas}!}\,
+  \prod_{k = 1}^{N_\text{meas}}
+  \Biggg[ \frac{\eta(\Omega_k, \Phi_k)\, \intensity(\Omega_k, \Phi_k; \vect{H})}%
+  {\dint_{4 \pi}\!\!\!\! \dif{\Omega} \dint_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \eta(\Omega, \Phi)\, \intensity(\Omega, \Phi; \vect{H})} \Biggg]^{w_k}.
 \end{equation}
+Note that the Poisson factor now depends on the measured
+number~$N_\text{sig}^\text{meas}$ of signal events and the
+number~$N_\text{sig}^\text{pred}$ of signal events predicted by the
+model, where
+\begin{equation}
+  N_\text{sig}^\text{meas}
+  = \sum_{k = 1}^{N_\text{meas}} w_k
+  \quad\text{and}\quad
+  N_\text{sig}^\text{pred}
+  = \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \eta(\Omega, \Phi)\, \intensity(\Omega, \Phi; \vect{H}).
+\end{equation}
+The latter expression is identical to \cref{eq:photoprod_Npred}.
+Using the above, we can simplify
+\cref{eq:photoprod_likelihood_weighted_1}:
+\begin{equation}
+  \mathcal{L}_\text{weighted}(\vect{H}; \set{\Omega_k, \Phi_k, w_k}, N_\text{meas})
+  = \frac{\cancel{(N_\text{sig}^\text{pred})^{N_\text{sig}^\text{meas}}}\, e^{-N_\text{sig}^\text{pred}}}{N_\text{sig}^\text{meas}!}\,
+  \frac{\prod_{k = 1}^{N_\text{meas}} \sBrk[2]{\eta(\Omega_k, \Phi_k)\, \intensity(\Omega_k, \Phi_k; \vect{H})}^{w_k}}%
+  {\cancel{\sBrk[3]{\dint_{4 \pi}\!\!\!\! \dif{\Omega} \dint_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \eta(\Omega, \Phi)\, \intensity(\Omega, \Phi; \vect{H})}%
+  ^{\sum_{k = 1}^{N_\text{meas}} w_k}}}.
+\end{equation}
+Taking the logarithm and neglecting all terms independent of~\vect{H},
+we obtain:
+\begin{equation}
+  \label{eq:photoprod_log_likelihood_weighted}
+  \ln \mathcal{L}_\text{weighted}(\vect{H}; \set{\Omega_k, \Phi_k, w_k}, N_\text{meas})
+  = \sum_{k = 1}^{N_\text{meas}} w_k\, \ln \intensity(\Omega_k, \Phi_k; \vect{H})
+  - \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\, \eta(\Omega, \Phi)\, \intensity(\Omega, \Phi; \vect{H}),
+\end{equation}
+which is identical to \cref{eq:photoprod_likelihood_2} except for the
+event weights entering the sum in the first term.
+
+Analogous to
+\cref{eq:photoprod_likelihood_3,eq:photoprod_moments_mle}, we obtain
+the best estimate~$\hat{\vect{H}}$ by maximizing the log-likelihood
+function
+\begin{equation}
+  \label{eq:photoprod_log_likelihood_weighted}
+  \ln \mathcal{L}_\text{weighted}(\vect{H}; \set{\Omega_k, \Phi_k, w_k}, N_\text{meas})
+  = \sum_{k = 1}^{N_\text{meas}} w_k\, \ln\!\sBrk[1]{\vect{H} \cdot \vect{f}(\Omega_k, \Phi_k)}
+  - \vect{H} \cdot \vect{I}_\text{acc}.
+\end{equation}
+
+Although
+\cref{eq:photoprod_likelihood_3,eq:photoprod_log_likelihood_weighted}
+are easy to implement, in practice, the numerical maximization of the
+likelihood function using \textsc{Minuit} may often not converge.  One
+reason for this is that the intensity distribution in
+\cref{eq:photoprod_intensity_ml} is not guaranteed to be non-negative
+for all values of~$\vect{H}$.\footnote{This is in contrast to a
+partial-wave expansion as in \cref{eq:photoprod_intensity_components},
+which is a sum of squared absolute-values of coherent sums of
+partial-wave amplitudes and hence guarantees non-negativity of the
+intensity distribution.  However, for some background events, the
+intensity distribution, which models signal events only, may still
+become zero, leading to singularities in the likelihood function.}
+Even a single event in the data sample with a negative intensity value
+violates the assumptions underlying the maximum-likelihood approach
+and may hence derail the maximizatio  n of the likelihood function.  A
+simple way of circumventing this issue is to perform many fit attempts
+with random start values for~\vect{H}.
+
+Particularly problematic for \textsc{Minuit} is the presence of
+negative-valued event weights as they appear in sideband-subtraction
+schemes.  Even in idealized Monte Carlo studies none of the fits
+converged as soon as the polarized moments $H_{1,2}(L, M)$ were
+included as free parameters in the fit.  The reason for this behavior
+is not yet understood.  However, this issue can be circumvented as
+long as we can write the measured intensity distribution in the signal
+region in the form
+\begin{equation}
+  \intensity_\text{meas}(\Omega, \Phi)
+  = \intensity_\text{meas}^\text{sig}(\Omega, \Phi) + \intensity_\text{meas}^\text{bkg}(\Omega, \Phi),
+\end{equation}
+where $\intensity_\text{meas}^\text{sig}(\Omega, \Phi)$ is the
+measured intensity distribution of the signal component and
+$\intensity_\text{meas}^\text{bkg}(\Omega, \Phi)$ that of the
+background component.  Applying the moment operator in
+\cref{eq:photoprod_moment_operator} to the above equation, we exploit
+its linearity and obtain
+\begin{equation}
+  H_i^\text{meas}(L, M)
+  = \hat{\mathcal{H}}_i(L, M)\, \intensity_\text{meas}^\text{sig}(\Omega, \Phi)
+  + \hat{\mathcal{H}}_i(L, M)\, \intensity_\text{meas}^\text{bkg}(\Omega, \Phi)
+  = H_{i, \text{meas}}^\text{sig}(L, M) + H_{i, \text{meas}}^\text{bkg}(L, M).
+\end{equation}
+According to \cref{eq:diffraction_phys_moments}, the physical moments
+are related linearly to the measured moments, such that
+\begin{equation}
+  \vect{H }
+  = \rBrk[0]{\mat{I}^\text{acc}}^{-1}\, \sBrk{\vect{H}_\text{meas}^\text{sig} + \vect{H}_\text{meas}^\text{bkg}}
+  = \vect{H}^\text{sig} + \vect{H}^\text{bkg}.
+\end{equation}
+
+In a sideband-subtraction scheme, negative event weights can hence be
+avoided by determining the estimates~$\hat{\vect{H}}^\text{sig}$ of
+the moments in the signal region and the
+estimates~$\hat{\vect{H}}^\text{bkg}$ of the moments in the background
+region separately using the extended maximum-likelihood method and
+positive event weights.  The background subtraction then is performed
+at the level of the moments, \ie
+\begin{equation}
+  \hat{\vect{H}}
+  = \hat{\vect{H}}^\text{sig} - \hat{\vect{H}}^\text{bkg},
+\end{equation}
+where the covariance matrix of~$\hat{\vect{H}}$ is given by
+\cref{eq:photoprod_data_sample_cov_augmented} derived in
+\cref{sec:photoprod:comb_data}.
 
 
 \subsection{Examples}%
@@ -1996,16 +2130,17 @@ matrix~$\mat{I}^\text{acc}$ are functions of time.
 
 Assume we have $N_\text{s}$~data samples, indexed
 by~$j$.\footnote{Each sample contains
-$\prescript{(j)}{}{N}_\text{meas}$~measured events. Out of these,
-$\prescript{(j)}{}{N}_\text{sig}$~are signal events, corresponding to
-an acceptance-corrected number of $\prescript{(j)}{}{N}$~signal
-events.}  For each data sample, which was obtained under constant
-experimental conditions represented by~$\prescript{(j)}{}{P_\gamma}$
-and $\prescript{(j)}{}{\eta}(\Omega, \Phi)$, we calculate the measured
+$\prescript{(j)}{}{N}_\text{meas}$~measured events, of which
+$\prescript{(j)}{}{N}_\text{sig}$~are measured signal events. These
+correspond to an acceptance-corrected number~$\prescript{(j)}{}{N}$ of
+signal events.}  For each data sample, which was obtained under
+constant experimental conditions represented
+by~$\prescript{(j)}{}{P_\gamma}$ and $\prescript{(j)}{}{\eta}(\Omega,
+\Phi)$, we calculate the measured
 moments~$\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}_\text{meas}$
 and their covariance matrix using
-\cref{eq:photoprod_moments_meas_estimate_weighted,eq:photoprod_sample_cov_hermit_meas,eq:photoprod_sample_cov_pseudo_meas}.
-We also generate an accepted phase-space Monte Carlo data sample that
+\cref{eq:photoprod_moments_meas_estimate_weighted,eq:photoprod_sample_cov_hermit_meas,eq:photoprod_sample_cov_pseudo_meas},
+and we generate an accepted phase-space Monte Carlo data sample that
 contains information about $\prescript{(j)}{}{\eta}(\Omega, \Phi)$.
 Based on these Monte Carlo data, we
 calculate~$\prescript{(j)}{}{\mat{I}}^\text{acc}$ using
@@ -2035,19 +2170,8 @@ individual contributions from the data samples:
 \end{equation}
 where we used \cref{eq:photoprod_intensity_sum}.  We obtain the
 moments of $\intensity_\text{tot}(\Omega, \Phi)$ by applying the
-operator (see \cref{eq:photoprod_moments})
-\begin{equation}
-  \label{eq:photoprod_moments_operator}
-  \frac{1}{\pi}\, \sqrt{\frac{4 \pi}{2 L + 1}}
-  \int_{4 \pi}\!\!\!\! \dif{\Omega} \int_{-\pi}^{+\pi}\hspace{-1.2em} \dif{\Phi}\,
-  Y_L^{M *}(\Omega) \times \begin{cases*}
-    1 / 2                   & for $i = 0$, \\
-    \cos(2 \Phi) / P_\gamma & for $i = 1$, \\
-    \sin(2 \Phi) / P_\gamma & for $i = 2$
-  \end{cases*}
-\end{equation}
-to both sides of
-\cref{eq:photoprod_data_sample_total_intensity}.  Using
+moment operator in \cref{eq:photoprod_moment_operator} to both sides
+of \cref{eq:photoprod_data_sample_total_intensity}.  Using
 \cref{eq:photoprod_orthogonality_phi,eq:photoprod_moments_H0,eq:photoprod_moments_H12},
 we obtain
 \begin{equation}
@@ -2061,11 +2185,12 @@ we obtain
 \ie the total physical moments are simply the sum of the estimates
 from the individual data samples.  Note that this additive property
 does not apply to normalized moments (see
-\cref{sec:diffraction:moments_data_no_acc}).  Before combining the
-moments from different data samples using the above equation, it is
-important to verify that the moment values are consistent across the
-data samples.  This can be done either by scaling the moments from the
-individual data samples such that the
+\cref{sec:diffraction:moments_data_no_acc}).
+
+Before combining the moments from different data samples using the
+above equation, it is important to verify that the moment values are
+consistent across the data samples.  This can be done either by
+scaling the moments from the individual data samples such that the
 \Set[1]{\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{H}_0(0, 0)} match
 or by comparing the normalized moments.
 
@@ -2111,9 +2236,9 @@ where
 Since the data samples are statistically independent, the Hermitian
 covariance matrix~$\hat{\covMatSym}_{\!\hat{\vect{H}}_\text{s}}$ and
 the pseudo-covariance
-matrix~$\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}$ that
+matrix~$\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}$, that
 according to \cref{eq:cov_augmented} make
-up~$\underaccent{\bar}{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}$
+up~$\underaccent{\bar}{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}$,
 are block-diagonal in the data-sample indices:
 \begin{equation}
   \label{eq:photoprod_data_sample_cov_mats}
