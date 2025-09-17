@@ -1102,20 +1102,22 @@ This means that
 \end{equation}
 vanishes only if $\eta(\theta, \phi)$ is an even function in $\phi$.
 
-In practice, we can calculate only a finite set of measured moments
-and only a finite set of physical moments contribute to each of the
-measured moments.  Considering all moments with $L, L' \leq
-L_\text{max}$, we can rewrite \cref{eq:diffraction_moments_meas2} as a
-matrix equation in quantum-number space, \ie
+In practical applications, only a finite number of measured and
+physical moments can be considered.  In this case, we can rewrite
+\cref{eq:diffraction_moments_meas2} as a matrix equation in
+quantum-number space, \ie
 \begin{equation}
   \label{eq:diffraction_moments_meas_matrix}
   \vect{H}_\text{meas}
   = \mat{I}^\text{acc}\, \vect{H}.
 \end{equation}
-Here, $\mat{I}^\text{acc} \in \mathbb{C}^{n \times n}$ is the
-acceptance integral matrix with $n = (L_\text{max} + 1) (L_\text{max}
-+ 2) / 2$ being the number of moments.  The vector of physical moments
-is
+From this equation, it is evident that the measured moments are linear
+combinations of the physical moments; in other words, the acceptance,
+represented by the matrix $\mat{I}^\text{acc}$, mixes the physical
+moments into the measured moments.
+
+In the simplest case, we consider all moments with $L, L' \leq
+L_\text{max}$, \ie the vector of physical moments is
 \begin{equation}
   \vect{H}
   \equiv \begin{pmatrix}
@@ -1129,11 +1131,10 @@ is
   \end{pmatrix}^T
   \in \mathbb{C}^n,
 \end{equation}
-and $\vect{H}_\text{meas}$ is constructed analogously.  From
-\cref{eq:diffraction_moments_meas_matrix} it is clear that the
-measured moments are linear combinations of the physical moments, \ie
-the acceptance, represented by $\mat{I}^\text{acc}$,mixes the physical
-moments into the measured moments.
+with $n = (L_\text{max} + 1) (L_\text{max} + 2) / 2$ being the number
+of moments.  The vector of measured moments~$\vect{H}_\text{meas}$ is
+constructed analogously and consequently the acceptance integral
+matrix $\mat{I}^\text{acc}$ is an $n \times n$ complex matrix.
 
 For an ideal detector with $\eta(\Omega) = 1$, $\mat{I}^\text{acc}$
 becomes a unit matrix in quantum-number space, \ie
@@ -1242,51 +1243,70 @@ background component using the event weights \set{w_i}:
   \frac{4 \pi}{N_\text{gen}} \sum_{i = 1}^{N_\text{acc}} w_i\, y_{L'}^{M'}(\theta_i)\, \cos(M'\, \phi_i)\, Y_L^{M *}(\Omega_i).
 \end{equation}
 
-If the integral matrix~$\mat{I}^\text{acc}$ is invertible, we can
-calculate the physical moments from the measured ones
-using\footnote{In principle, the uncertainties on the physical
-moments~\vect{H} can be reduced by determining a larger set of
-measured moments~$\vect{H}_\text{meas}$ from the data.  In this case,
-the equation system in \cref{eq:diffraction_moments_meas_matrix}
-becomes overdetermined and has to be solved by fitting for~\vect{H}
-(see \eg Sec.~3.5.2 in \refCite{Grayer:1974cr}).  Since the problem
-remains linear in~\vect{H}, the $\chi^2$-fit can be also solved in
-closed form using matrix algebra.\todoInl{Implement this}}
+If the acceptance integral matrix~$\mat{I}^\text{acc}$ is invertible,
+we can calculate the physical moments from the measured ones by
+solving the linear equation system in
+\cref{eq:diffraction_moments_meas_matrix},
+\ie
 \begin{equation}
   \label{eq:diffraction_phys_moments}
   \vect{H}
   = \rBrk[0]{\mat{I}^\text{acc}}^{-1}\, \vect{H}_\text{meas}.
 \end{equation}
-In the above equation, $\mat{I}^\text{acc}$ is a square matrix with a
-size defined by the maximum $L$~value, $L_\text{max}$, that we
-consider for the measured and physical moments.  On the one hand,
-$L_\text{max}$~has to be chosen large enough to cover all important
-physics and acceptance effects.  On the other hand,
-choosing~$L_\text{max}$ too large will lead to many elements
-of~$\mat{I}^\text{acc}$ being close to zero, which in turn may lead to
-numerical instabilities in the inversion of~$\mat{I}^\text{acc}$ and
-to inflated uncertainty estimates since~$\mat{I}^\text{acc}$ may
-develop small eigenvalues with increasing~$L_\text{max}$.  In case the
-detection efficiency is close to zero over wide ranges of the phase
-space, $\mat{I}^\text{acc}$~may become even singular.  In this case,
-certain moments may become immeasurable and one has to revert to the
-support-vector moments developed by R.~Jones~\cite{Jones:2023}.
+In the above equation, $\mat{I}^\text{acc}\in \mathbb{C}^{n \times n}$
+is a square matrix with a size~$n$ defined by the maximum~$L$ and
+$L'$~value, $L_\text{max}$, that we consider for the measured and
+physical moments.  The calculated values of~\vect{H} may therefore
+depend on the choice of~$L_\text{max}$.  On one hand,
+$L_\text{max}$~must be large enough to capture all relevant physics
+and acceptance effects.  On the other hand, choosing~$L_\text{max}$
+too large can result in many elements of~$\mat{I}^\text{acc}$
+approaching zero, which may lead to numerical instabilities in its
+inversion and to inflated uncertainty estimates for the physical
+moments, as~$\mat{I}^\text{acc}$ may develop small eigenvalues with
+increasing~$L_\text{max}$.  In case the detection efficiency is close
+to zero over wide ranges of the phase space, $\mat{I}^\text{acc}$~may
+even become singular.  In this case, certain moments may become
+immeasurable and one has to revert to the support-vector moments
+developed by R.~Jones~\cite{Jones:2023}.
+
+For a given~$L_\text{max}$, the estimates for the physical
+moments~\vect{H} and their uncertainties can be improved by
+determining a larger set of measured moments~$\vect{H}_\text{meas}\in
+\mathbb{C}^m$, with $m = (L_\text{max}^\text{meas} + 1)
+(L_\text{max}^\text{meas} + 2) / 2$ and $L_\text{max}^\text{meas} >
+L_\text{max}$, from the data.  In this case, $\mat{I}^\text{acc}$ is a
+rectangular $m \times n$ complex matrix and the equation system in
+\cref{eq:diffraction_moments_meas_matrix} becomes
+overdetermined.\footnote{If $\mat{I}^\text{acc}$~has a column rank
+larger than~$n$.}  Such an equation system lacks an exact solution,
+but we can calculate an approximate solution using the
+pseudo-inverse~$\rBrk[0]{\mat{I}^\text{acc}}^\dagger \in \mathbb{C}^{n
+\times m}$ of the acceptance integral matrix
+\ie
+\begin{equation}
+  \label{eq:diffraction_phys_moments_pseudo}
+  \vect{H}
+  = \rBrk[0]{\mat{I}^\text{acc}}^\dagger\, \vect{H}_\text{meas},
+\end{equation}
+which corresponds to the linear least-squares solution (see \eg
+Sec.~3.5.2 in \refCite{Grayer:1974cr}).
 
 As already mentioned above, $\mat{I}^\text{acc}$~and
-$\vect{H}_\text{meas}$~in \cref{eq:diffraction_phys_moments} are in
-general complex-valued.  However, the physical moments must still
-satisfy \cref{eq:diffraction_moment_real}, \ie they must be
-real-valued within uncertainties.  Consequently, in
-\cref{eq:diffraction_phys_moments} the imaginary parts of
-$\mat{I}^\text{acc}$, which is estimated from Monte Carlo simulations
-(see
-\cref{eq:diffraction_integral_matrix_mc,eq:diffraction_integral_matrix_mc_weighted}),
-must compensate the imaginary parts of the measured moments, which are
+$\vect{H}_\text{meas}$ are in general complex-valued.  However, the
+physical moments must still satisfy \cref{eq:diffraction_moment_real},
+\ie they must be real-valued within uncertainties.  Consequently, in
+\cref{eq:diffraction_phys_moments,eq:diffraction_phys_moments_pseudo},
+the imaginary parts of $\mat{I}^\text{acc}$---estimated from Monte
+Carlo simulations (see
+\cref{eq:diffraction_integral_matrix_mc,eq:diffraction_integral_matrix_mc_weighted})---must
+cancel the imaginary parts of the measured moments, which are
 estimated from real data (see \cref{sec:diffraction:estimation_uncert}
 below).  Deviations from \cref{eq:diffraction_moment_real} of the
 physical moments estimated from data may indicate that the detector
 model does not accurately reproduce the $\phi$-odd component of the
-detection efficiency.
+detection efficiency.\todo{Imaginary parts of physical moments
+may be also caused by baryon and double-Regge contributions.}
 
 
 \subsubsection{Estimation of measured moments and uncertainty propagation}%
@@ -1311,10 +1331,11 @@ have defined the basis functions
 \end{equation}
 
 From the estimates~$\hat{\vect{H}}_\text{meas}$ of the measured
-moments we calculate the estimates~$\hat{\vect{H}}$ of the physical
-moments using \cref{eq:diffraction_phys_moments}.  In order to do so,
-we also have to propagate the uncertainty
-from~$\hat{\vect{H}}_\text{meas}$ to~$\hat{\vect{H}}$.\footnote{%
+moments, we compute the corresponding estimates~$\hat{\vect{H}}$ of
+the physical moments using \cref{eq:diffraction_phys_moments}
+or~\eqref{eq:diffraction_phys_moments_pseudo}.  To do so, we also
+  propagate the uncertainties from~$\hat{\vect{H}}_\text{meas}$
+to~$\hat{\vect{H}}$.\footnote{%
 Here, we assume that the statistical uncertainties of $\mat{I}^\text{acc}$
 from the Monte Carlo integration in
 \cref{eq:diffraction_integral_matrix_mc} are negligible compared to the
@@ -1324,18 +1345,19 @@ $\mat{I}^\text{acc}$ could be calculated similarly to the
 covariance matrix of $\hat{\vect{H}}_\text{meas}$ in
 \cref{eq:diffraction_sample_cov_hermit_meas,eq:diffraction_sample_cov_pseudo_meas}
 below.  However, the uncertainty propagation will become more
-complicated because the Jacobian in \cref{eq:complex_uncert_prop} will
-become a third-order
+complicated, as the Jacobian in \cref{eq:complex_uncert_prop} will
+take the form of a third-order
 tensor~\cite{Laue:2018,Laue:2020,matrixcalculus,Sourya:2019,maxtrixcookbook:2012,wikipedia:MatrixCalculus}.
-Since in most applications the size of the Monte Carlo sample is not a
-limiting factor, we will not follow this route Here.}  This is
-complicated by the fact that in general the measured moments
-$\hat{\vect{H}}_\text{meas}$~as well as the inverse of the acceptance
-matrix $\rBrk[0]{\mat{I}^\text{acc}}^{-1}$ in
-\cref{eq:diffraction_phys_moments} are complex-valued.  The most
-convenient way to formulate uncertainty propagation for complex-valued
-quantities is to use Wirtinger calculus\footnote{Sometimes this is
-also referred to as
+Since the size of the Monte Carlo sample is typically not a limiting
+factor in most applications, we do not pursue this approach here.} The
+uncertainty propagation is complicated by the fact that, in general,
+the measured moments $\hat{\vect{H}}_\text{meas}$~as well as the
+(pseudo-)inverse of the acceptance
+matrix---$\rBrk[0]{\mat{I}^\text{acc}}^{-1}$ and
+$\rBrk[0]{\mat{I}^\text{acc}}^\dagger$, respectively--are
+complex-valued.  The most convenient way to formulate uncertainty
+propagation for complex-valued quantities is to use Wirtinger
+calculus\footnote{Sometimes this is also referred to as
 $\mathbb{C}\mathbb{R}$-calculus.}~\cite{wikipedia:WirtingerCalculus,Wirtinger:1927,Kreutz-Delgado:2009,Grube:2023}.
 In this approach, the linear uncertainty propagation for
 \cref{eq:diffraction_phys_moments} takes on the familiar
@@ -1359,7 +1381,7 @@ vector is
   \end{pmatrix*}
   \in \mathbb{C}^{2n}
 \end{equation}
-with $n$~being the number of moments.
+with $n$~being the number of physical moments.
 
 In the augmented representation, the covariance matrix
 of~$\underaccent{\bar}{\vect{H}}$ is\footnote{Analogous expressions
@@ -1383,6 +1405,7 @@ This matrix has a block structure of the form
 \end{equation}
 where
 \begin{equation}
+  \label{eq:cov_Hermitian}
   \covMatSym_{\!\vect{H}}
   = \cov[1]{\vect{H}, \vect{H}}
   = \exptVal[2]{\rBrk[1]{\vect{H} - \exptVal[1]{\vect{H}}} \rBrk[1]{\vect{H} - \exptVal[1]{\vect{H}}}^\dagger}
@@ -1390,6 +1413,7 @@ where
 \end{equation}
 is the Hermitian covariance matrix of~$\vect{H}$ and
 \begin{equation}
+  \label{eq:cov_pseudo}
   \tilde{\covMatSym}_{\!\vect{H}}
   = \cov[1]{\vect{H}, \vect{H}^*}
   = \exptVal[2]{\rBrk[1]{\vect{H} - \exptVal[1]{\vect{H}}} \rBrk[1]{\vect{H} - \exptVal[1]{\vect{H}}}^T}
@@ -1430,10 +1454,30 @@ Note that although $\covMatSym_{\!\vect{H}}^{RR}$~and
 $\covMatSym_{\!\vect{H}}^{II}$~are symmetric,
 $\covMatSym_{\!\vect{H}}^{RI}$~is not.
 
-Analogous to \cref{eq:diffraction_sample_cov}, we can estimate the
-Hermitian and the pseudo-covariance matrix for the measured moments
-for $N_\text{meas} = \text{const}$ using the sample
-covariance:\footnote{We can calculate
+In a completely analogous way, we define the augmented vector
+\begin{equation}
+  \underaccent{\bar}{\vect{H}}_\text{meas}
+  \equiv \begin{pmatrix*}[l]
+    \vect{H}_\text{meas} \\
+    \vect{H}_\text{meas}^*
+  \end{pmatrix*}
+  \in \mathbb{C}^{2m}
+\end{equation}
+of the measured moments and its augmented covariance matrix
+$\underaccent{\bar}{\covMatSym}_{\!\vect{H}_\text{meas}} \in
+\mathbb{C}^{2m \times 2m}$, with $m$~being the number of measured
+  moments.  This matrix can be decomposed into a Hermitian covariance
+matrix $\covMatSym_{\!\vect{H}_\text{meas}} \in \mathbb{C}^{m \times
+m}$ and a pseudo-covariance matrix
+$\tilde{\covMatSym}_{\!\vect{H}_\text{meas}} \in \mathbb{C}^{m \times
+m}$ in the same way as in
+\cref{eq:cov_augmented,eq:cov_Hermitian,eq:cov_pseudo}.
+
+If~$N_\text{meas}$ is constant, we estimate both the Hermitian and the
+pseudo-covariance matrix of the measured moments analogous to
+\cref{eq:diffraction_sample_cov} using the sample covariance and the
+basis functions $f_{L M}(\Omega)$ defined in
+\cref{eq:diffraction_basis_fcn}:\footnote{We can calculate
 $\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}$ using NumPy by calling
 \pyinline{N_meas * numpy.cov(fWeighted)}, where \pyinline{fWeighted =
 w * f}.  Here, \pyinline{w}~is a one-dimensional array of the event
@@ -1443,8 +1487,8 @@ index represents the basis functions (see
 events.  To calculate the pseudo-covariance matrix
 $\hat{\tilde{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$~in NumPy we
 can use \pyinline{N_meas * numpy.cov(fWeighted,
-numpy.conjugate(fWeighted))[:n, n:]}, where \pyinline{n}~is the number
-of basis functions, \ie the number of moments.}
+numpy.conjugate(fWeighted))[:m, m:]}, where \pyinline{m}~is the number
+of basis functions, \ie the number of measured moments.}
 \begin{align}
   \rBrk[1]{\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}}_{L M, L' M'}
   ={}& \covEst[1]{\hat{H}_\text{meas}(L, M), \hat{H}_\text{meas}(L', M')} \nonumber
@@ -1460,8 +1504,9 @@ of basis functions, \ie the number of moments.}
   ={}& \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{i = 1}^{N_\text{meas}}
   \sBrk[2]{w_i\, f_{L M}(\Omega_i) - \exptValEst[1]{w\, f_{L M}(\Omega)}} \sBrk[2]{w_i\, f_{L' M'}(\Omega_i) - \exptValEst[1]{w\, f_{L' M'}(\Omega)}}.
 \end{align}
-In case~$N_\text{meas}$ is a Poisson-distributed random variable,
-based on \cref{eq:diffraction_sample_cov_poisson} we obtain
+If~$N_\text{meas}$ is a Poisson-distributed random variable, we obtain
+the following expressions based on
+\cref{eq:diffraction_sample_cov_poisson}:
 \begin{align}
   \rBrk[1]{\covMatEstSym_{\!\hat{\vect{H}}_\text{meas}}}_{L M, L' M'}
   ={}& \frac{N_\text{meas}}{N_\text{meas} - 1} \sum_{i = 1}^{N_\text{meas}}
@@ -1477,9 +1522,8 @@ based on \cref{eq:diffraction_sample_cov_poisson} we obtain
   \label{eq:diffraction_sample_cov_poisson_pseudo_meas}
   {}&\qquad + N_\text{meas}\, \exptValEst[1]{w\, f_{L M}(\Omega)}\, \exptValEst[1]{w\, f_{L' M'}(\Omega)}.
 \end{align}
-Here, the basis functions $f_{L M}(\Omega)$ are defined in
-\cref{eq:diffraction_basis_fcn}.  From the two covariance matrices
-above, we construct the augmented covariance
+From the two covariance matrices above, we construct the augmented
+covariance
 matrix~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$
 using \cref{eq:cov_augmented}.\footnote{\label{fn:cov_aug_numpy}In
 NumPy, we can
@@ -1501,7 +1545,7 @@ has a similar block structure as the augmented covariance matrix in
     \mat{J} & \tilde{\mat{J}} \\
     \tilde{\mat{J}}^* & \mat{J}^*
   \end{pmatrix*}
-  \in \mathbb{C}^{2n \times 2n},
+  \in \mathbb{C}^{2n \times 2m},
 \end{equation}
 where
 \begin{equation}
@@ -1513,19 +1557,19 @@ where
     \dpd{H_n}{\vect{H}_\text{meas}}
   \end{pmatrix}
   = \begin{pmatrix}
-    \dpd{H_1}{H_{\text{meas}, 1}} & \ldots & \dpd{H_1}{H_{\text{meas}, n}} \\
+    \dpd{H_1}{H_{\text{meas}, 1}} & \ldots & \dpd{H_1}{H_{\text{meas}, m}} \\
     \vdots & & \vdots \\
-    \dpd{H_n}{H_{\text{meas}, 1}} & \ldots & \dpd{H_n}{H_{\text{meas}, n}}
+    \dpd{H_n}{H_{\text{meas}, 1}} & \ldots & \dpd{H_n}{H_{\text{meas}, m}}
   \end{pmatrix}
-  \in \mathbb{C}^{n \times n}
-\end{equation}
+  \in \mathbb{C}^{n \times m}
+  \end{equation}
 is the Jacobian matrix \wrt~$\vect{H}_\text{meas}$\footnote{The column
 and row indices of~$\mat{J}$ enumerate all combinations of~$L$ and~$M$
 in the considered set of moments.} and
 \begin{equation}
   \tilde{\mat{J}}
   = \pd{\vect{H}}{{\vect{H}_\text{meas}^*}}
-  \in \mathbb{C}^{n \times n}
+  \in \mathbb{C}^{n \times m}
 \end{equation}
 is the conjugate Jacobian matrix \wrt~$\vect{H}_\text{meas}^*$.
 
@@ -1536,6 +1580,7 @@ for real-valued expressions if one considers
 variables, ~$\vect{H}_\text{meas}$ and~$\vect{H}_\text{meas}^*$.
 Hence,
 \begin{equation}
+  \label{eq:J_Hermitian_pseudo_moments}
   \mat{J}
   = \pd{\vect{H}}{\vect{H}_\text{meas}}
   = \rBrk[0]{\mat{I}^\text{acc}}^{-1}
@@ -1547,21 +1592,31 @@ Hence,
 where we have applied the rules from matrix calculus (see \eg\
 \refCite{wikipedia:MatrixCalculus}).  Consequently,
 \begin{equation}
+  \label{eq:J_augmented_moments}
   \underaccent{\bar}{\mat{J}}
   = \begin{pmatrix*}[l]
     \rBrk[0]{\mat{I}^\text{acc}}^{-1} & \mat{0} \\
     \mat{0}                           & \rBrk[1]{\rBrk[0]{\mat{I}^\text{acc}}^{-1}}^*
   \end{pmatrix*}.
 \end{equation}
-With~$\underaccent{\bar}{\mat{J}}$ and
-$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$~given
-by
-\cref{eq:diffraction_sample_cov_hermit_meas,eq:diffraction_sample_cov_pseudo_meas,eq:cov_augmented},
-we can calculate the augmented covariance
+In case, \cref{eq:diffraction_phys_moments_pseudo} is used to
+calculate the physical moments, we obtain the corresponding
+expressions by replacing~$\rBrk[0]{\mat{I}^\text{acc}}^{-1}$ with the
+pseudo-inverse~$\rBrk[0]{\mat{I}^\text{acc}}^\dagger$ in
+\cref{eq:J_Hermitian_pseudo_moments,eq:J_augmented_moments}.
+
+Using the above expressions, along with
+$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}_\text{meas}}$,
+as given by \cref{eq:diffraction_sample_cov_hermit_meas}
+and---depending on the case---by
+\cref{eq:diffraction_sample_cov_pseudo_meas,eq:cov_augmented} or
+\cref{eq:diffraction_sample_cov_poisson_hermit_meas,eq:diffraction_sample_cov_poisson_pseudo_meas},
+we compute the augmented covariance
 matrix~$\hat{\underaccent{\bar}{\covMatSym}}_{\!\hat{\vect{H}}}$ of
-the physical moments using \cref{eq:complex_uncert_prop} and the
-corresponding covariance matrices of the real and imaginary parts
-of~$\hat{\vect{H}}$ using \cref{eq:cov_ReRe,eq:cov_ImIm,eq:cov_ReIm}.
+the physical moments using \cref{eq:complex_uncert_prop}.  From this,
+we also obtain the corresponding covariance matrices of the real and
+imaginary parts of~$\hat{\vect{H}}$ using
+\cref{eq:cov_ReRe,eq:cov_ImIm,eq:cov_ReIm}.
 
 As was discussed at the end of \cref{sec:diffraction:acceptance_corr},
 we can verify that the acceptance correction works correctly by
@@ -1571,11 +1626,11 @@ within uncertainties.
 
 In the context of a partial-wave analysis it is often helpful to
 compare the moments that were directly obtained from data (as
-explained above) with the ones calculated from the partial-wave
-amplitudes obtained from a PWA fit using
-\cref{eq:diffraction_moments_pw_refl_norm}.  If the PWA model is sufficient
-to describe the data, the two sets of moments should agree with each
-other.
+explained above) with the ones computed from the partial-wave
+amplitudes, as obtained from a PWA fit using
+\cref{eq:diffraction_moments_pw_refl_norm}.  In the limit where the
+PWA model describes the data perfectly, the two sets of moments are
+expected to be identical.
 
 
 \subsubsection{Moment decomposition of the detection efficiency}%
@@ -1734,7 +1789,7 @@ extracted from the Monte Carlo data in
 moment values calculated from the partial-wave amplitudes in
 \cref{tab:diffraction_study_waveset} using
 \cref{eq:diffraction_moments_pw_refl_norm}.  As expected, the two sets
-of values  agree within statistical uncertainties (see
+of values agree within statistical uncertainties (see
 \cref{fig:diffraction_study_residual_re}).  Since the physical moments
 are real-valued (see \cref{eq:diffraction_moment_real}), we expect
 their imaginary parts to be consistent with zero.

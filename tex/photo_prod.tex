@@ -1723,7 +1723,7 @@ show the physical moments extracted from the Monte Carlo data in
 moment values calculated from the partial-wave amplitudes in
 \cref{tab:photoprod_study_waveset} using
 \crefrange{eq:photoprod_moment_0_pw_refl}{eq:photoprod_moment_2_pw_refl}.
-As expected, the two sets of values  agree within statistical
+As expected, the two sets of values agree within statistical
 uncertainties (see
 \cref{fig:photoprod_study_residual_H0_re,fig:photoprod_study_residual_H1_re,fig:photoprod_study_residual_H2_im}).
 Since the $H_0(L, M)$ and $H_1(L, M)$ are expected to be real-valued
@@ -2205,16 +2205,14 @@ introduced in \cref{sec:diffraction:estimation_uncert}.  Analogous to
   = \underaccent{\bar}{\mat{J}}\, \underaccent{\bar}{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}\, \underaccent{\bar}{\mat{J}}^\dagger
   \in \mathbb{C}^{2n \times 2n},
 \end{equation}
-with $n$~being the number of moments defined by~$L_\text{max}$ and
-with the augmented covariance matrix
+with $n$~being the number of physical moments defined
+by~$L_\text{max}$.   Here,
 \begin{equation}
   \underaccent{\bar}{\hat{\covMatSym}}_{\!\hat{\vect{H}}_\text{s}}
   = \cov[1]{\underaccent{\bar}{\hat{\vect{H}}}_\text{s}, \underaccent{\bar}{\hat{\vect{H}}}_\text{s}}
   \in \mathbb{C}^{(2n\, N_\text{s}) \times (2n\, N_\text{s})}
 \end{equation}
-and the augmented moment vector of the set
-\set{\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}} of physical
-moments
+is the augmented covariance matrix of the augmented vector
 \begin{equation}
   \underaccent{\bar}{\hat{\vect{H}}}_\text{s}
   \equiv \begin{pmatrix*}[l]
@@ -2223,7 +2221,8 @@ moments
   \end{pmatrix*}
   \in \mathbb{C}^{2n\, N_\text{s}},
 \end{equation}
-where
+of the set \set{\prescript{(j)}{}{\vphantom{\vect{H}}}\hat{\vect{H}}}
+of physical moments, where
 \begin{equation}
   \hat{\vect{H}}_\text{s}
   \equiv \begin{pmatrix*}[r]
